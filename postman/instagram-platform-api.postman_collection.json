@@ -534,7 +534,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"recipient\": {\n        \"id\":\"{{instagram_scoped_id}}\"\n    },\n    \"message\": {\n        \"text\": \"Hello World!\"\n    }\n}",
+									"raw": "{\n    \"recipient\": {\n        \"id\": \"{{ig-scoped-id}}\"\n    },\n    \"message\": {\n        \"text\": \"Hello World!\"\n    }\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -542,7 +542,7 @@
 									}
 								},
 								"url": {
-									"raw": "https://graph.instagram.com/{{api_version}}/me/messages",
+									"raw": "https://graph.instagram.com/{{api-version}}/{{ig-account-id}}/messages",
 									"protocol": "https",
 									"host": [
 										"graph",
@@ -550,8 +550,8 @@
 										"com"
 									],
 									"path": [
-										"{{api_version}}",
-										"me",
+										"{{api-version}}",
+										"{{ig-account-id}}",
 										"messages"
 									]
 								},
@@ -566,7 +566,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"recipient\":{\n    \"id\":\"{{instagram_scoped_id}}\"\n  },\n  \"message\":{\n    \"attachment\":{\n      \"type\":\"image\", \n      \"payload\":{\n        \"url\":\"MEDIA_URL\"        \n      }\n    }\n  }\n}",
+									"raw": "{\n  \"recipient\":{\n    \"id\": \"{{ig-scoped-id}}\"\n  },\n  \"message\":{\n    \"attachment\":{\n      \"type\":\"image\", \n      \"payload\":{\n        \"url\":\"MEDIA_URL\"        \n      }\n    }\n  }\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -574,7 +574,7 @@
 									}
 								},
 								"url": {
-									"raw": "https://graph.instagram.com/{{api-version}}/{{ig_account_id}}/messages",
+									"raw": "https://graph.instagram.com/{{api-version}}/{{ig-account-id}}/messages",
 									"protocol": "https",
 									"host": [
 										"graph",
@@ -583,7 +583,7 @@
 									],
 									"path": [
 										"{{api-version}}",
-										"{{ig_account_id}}",
+										"{{ig-account-id}}",
 										"messages"
 									]
 								},
@@ -598,7 +598,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"recipient\":{\n    \"id\":\"{{instagram_scoped_id}}\"\n  },\n  \"message\":{\n    \"attachment\":{\n      \"type\":\"image\", \n      \"payload\":{\n        \"url\":\"MEDIA_URL\"\n      }\n    }\n  }\n}",
+									"raw": "{\n  \"recipient\":{\n    \"id\": \"{{ig-scoped-id}}\"\n  },\n  \"message\":{\n    \"attachment\":{\n      \"type\":\"image\", \n      \"payload\":{\n        \"url\":\"MEDIA_URL\"\n      }\n    }\n  }\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -606,7 +606,7 @@
 									}
 								},
 								"url": {
-									"raw": "https://graph.instagram.com/{{api-version}}/{{ig_account_id}}/messages",
+									"raw": "https://graph.instagram.com/{{api-version}}/{{ig-account-id}}/messages",
 									"protocol": "https",
 									"host": [
 										"graph",
@@ -615,7 +615,7 @@
 									],
 									"path": [
 										"{{api-version}}",
-										"{{ig_account_id}}",
+										"{{ig-account-id}}",
 										"messages"
 									]
 								},
@@ -630,7 +630,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"recipient\":{\n    \"id\":\"{{instagram_scoped_id}}\"\n  },\n  \"message\": {\n    \"attachment\": {\n      \"type\": \"audio\",\n      \"payload\": {\n        \"url\": \"ACTUAL_AUDIO_OR_VIDEO_FILE_URL\"\n      }\n    }\n  }\n}",
+									"raw": "{\n  \"recipient\":{\n    \"id\": \"{{ig-scoped-id}}\"\n  },\n  \"message\": {\n    \"attachment\": {\n      \"type\": \"audio\",\n      \"payload\": {\n        \"url\": \"ACTUAL_AUDIO_OR_VIDEO_FILE_URL\"\n      }\n    }\n  }\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -638,7 +638,7 @@
 									}
 								},
 								"url": {
-									"raw": "https://graph.instagram.com/{{api-version}}/me/messages",
+									"raw": "https://graph.instagram.com/{{api-version}}/{{ig-account-id}}/messages",
 									"protocol": "https",
 									"host": [
 										"graph",
@@ -647,7 +647,7 @@
 									],
 									"path": [
 										"{{api-version}}",
-										"me",
+										"{{ig-account-id}}",
 										"messages"
 									]
 								},
@@ -662,7 +662,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"recipient\":{\n    \"id\":\"{{instagram_scoped_id}}\"\n  },\n  \"message\": {\n    \"attachment\": {\n      \"type\":\"like_heart\"\n    }\n  }\n}",
+									"raw": "{\n  \"recipient\":{\n    \"id\": \"{{ig-scoped-id}}\"\n  },\n  \"message\": {\n    \"attachment\": {\n      \"type\":\"like_heart\"\n    }\n  }\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -670,7 +670,7 @@
 									}
 								},
 								"url": {
-									"raw": "https://graph.instagram.com/{{api-version}}/me/messages",
+									"raw": "https://graph.instagram.com/{{api-version}}/{{ig-account-id}}/messages",
 									"protocol": "https",
 									"host": [
 										"graph",
@@ -679,7 +679,7 @@
 									],
 									"path": [
 										"{{api-version}}",
-										"me",
+										"{{ig-account-id}}",
 										"messages"
 									]
 								},
@@ -694,7 +694,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"recipient\":{\n    \"id\":\"{{instagram_scoped_id}}\"\n  },\n  \"sender_action\": \"react\",\n  \"payload\": {\n    \"message_id\": \"MESSAGE_ID\",\n    \"reaction\": \"love\"\n  }\n}",
+									"raw": "{\n  \"recipient\":{\n    \"id\": \"{{ig-scoped-id}}\"\n  },\n  \"sender_action\": \"react\",\n  \"payload\": {\n    \"message_id\": \"MESSAGE_ID\",\n    \"reaction\": \"love\"\n  }\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -702,7 +702,7 @@
 									}
 								},
 								"url": {
-									"raw": "https://graph.instagram.com/{{api-version}}/{{ig_account_id}}/messages",
+									"raw": "https://graph.instagram.com/{{api-version}}/{{ig-account-id}}/messages",
 									"protocol": "https",
 									"host": [
 										"graph",
@@ -711,7 +711,7 @@
 									],
 									"path": [
 										"{{api-version}}",
-										"{{ig_account_id}}",
+										"{{ig-account-id}}",
 										"messages"
 									]
 								},
@@ -726,7 +726,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"recipient\": {\n    \"id\":\"{{instagram_scoped_id}}\"\n  },\n  \"message\": {\n    \"attachment\": {\n      \"type\": \"MEDIA_SHARE\",\n      \"payload\": {\n        \"id\": \"POST_ID\"\n      }\n    }\n  }\n}",
+									"raw": "{\n  \"recipient\": {\n    \"id\": \"{{ig-scoped-id}}\"\n  },\n  \"message\": {\n    \"attachment\": {\n      \"type\": \"MEDIA_SHARE\",\n      \"payload\": {\n        \"id\": \"POST_ID\"\n      }\n    }\n  }\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -734,7 +734,7 @@
 									}
 								},
 								"url": {
-									"raw": "https://graph.instagram.com/{{api-version}}/{{ig_account_id}}/messages",
+									"raw": "https://graph.instagram.com/{{api-version}}/{{ig-account-id}}/messages",
 									"protocol": "https",
 									"host": [
 										"graph",
@@ -743,7 +743,7 @@
 									],
 									"path": [
 										"{{api-version}}",
-										"{{ig_account_id}}",
+										"{{ig-account-id}}",
 										"messages"
 									]
 								},
@@ -752,12 +752,22 @@
 							"response": []
 						}
 					],
-					"description": "The Instagram Send API is the main API used to send messages to users, including text, attachments, templates, sender actions, and more.\n\n### Before You Start\n\nYou will need:\n\n- An access token requested by the IG professional account who can send message to a user on the platform\n    \n- The `instagram_business_manage_messages` permission\n    \n- The message recipient user must have sent a message to your IG professional account\n    \n\n## Environment\n\nThis collection has a corresponding **Instagram Platform API** Postman [environment](https://learning.postman.com/docs/sending-requests/managing-environments/) which you must select when using the collection. Set **current values** for the variables defined in this environment if you wish to perform the queries in the collection.\n\n### Access tokens\n\nThe API supports both user and system user access tokens. You can get access tokens 3 different ways:\n\n- [Facebook login](https://developers.facebook.com/docs/facebook-login/overview) for your app\n    \n- [App Dashboard](https://developers.facebook.com/apps)\n    \n- [Graph API Explorer](https://developers.facebook.com/tools/explorer/)"
+					"description": "The Send API enables your app users to send and receive messages between their Instagram professional account and their customers, potential customers, and followers.\n\n#### An Instagram user sends a message\n\nConversations only begin when an Instagram user sends a message to your app user through your app user's Instagram Feed, posts, story mentions, and other channels.\n\n#### Instagram Inbox\n\nAn Instagram professional account has a messaging inbox that allows the user to organize messages and control message notifications however when using the API the behavior will be a little different.\n\n- **General** – Only after your app user to respond to a message, using your app, is the conversation moved to the General folder, regardless of the inbox settings.\n    \n- **Primary** – All new conversations from followers will initially appear in the Primary folder.\n    \n- **Requests** – All new conversations from Instagram users who aren't followers of your app user will appear in the Requests folder.\n    \n\n[Learn more about the Instagram Inbox.](https://www.facebook.com/business/help/1264898753662278)\n\n### Before You Start\n\nYou will need:\n\n- An access token requested by the IG professional account who can send message to a user on the platform\n    \n- The `instagram_business_manage_messages` permission\n    \n- The message recipient user must have sent a message to your IG professional account\n    \n\n## Environment\n\nThis collection has a corresponding **Instagram Platform API** Postman [environment](https://learning.postman.com/docs/sending-requests/managing-environments/) which you must select when using the collection. Set **current values** for the variables defined in this environment if you wish to perform the queries in the collection.\n\n### Access tokens\n\nThe API supports both user and system user access tokens. You can get access tokens 3 different ways:\n\n- [Facebook login](https://developers.facebook.com/docs/facebook-login/overview) for your app\n    \n- [App Dashboard](https://developers.facebook.com/apps)\n    \n- [Graph API Explorer](https://developers.facebook.com/tools/explorer/)\n    \n\n### Limitations\n\n- Your app user must own any media or posts to be used in the message.\n    \n- Group messaging is not supported. An Instagram professional account can only converse with one customer per conversation.\n    \n- Messages in the Requests folder that have not been active for 30 days will not be returned in API calls.\n    \n- Only the URL for the shared media or post is included in the webhooks notification when a customer sends a message with a share.\n    \n- Your app testers must have a role on your app, grant your app access to all the required permissions, and have a role on the Instagram professional account that owns the app."
 				}
 			],
 			"description": "The Instagram API with Instagram Login allows [Instagram professionals&nbsp;](https://l.facebook.com/l.php?u=https%3A%2F%2Fhelp.instagram.com%2F502981923235522&h=AT1ASpREEMXxdykVj-QP02tVKNkwcQ2Nl_x7xvxvGksvpWqS9BdgBQWeiclc-oXzvNfRm2dFdyjLoT6H4G8w3pjkha7gUXpIuem8PhB40ANXErLcEtpZQl2CvQlavHzKidjr7Jycg6fERoByzvOzQG8vWcM)  — businesses and creators — to use your app to manage their presence on Instagram.\n\n**Note:** This API setup does not require a Facebook Page to be linked to the Instagram professional account.\n\nTo ensure consistency between scope values and permission names, we are introducing new `scope` values for the Instagram API with Instagram login. The new `scope` values are:\n\n- `instagram_business_basic`\n    \n- `instagram_business_content_publish`\n    \n- `instagram_business_manage_messages`\n    \n- `instagram_business_manage_comments`\n    \n\nThese will replace the existing `business_basic`, `business_content_publish`, `business_manage_comments` and `business_manage_messages` `scope` values, respectively.\n\nPlease note that the old scope values were deprecated on **January 27, 2025**. It is essential to update your code to avoid any disruption in your app's functionality. Failure to do so will result in your app being unable to call the Instagram endpoints.\n\n## Limitations\n\n- This API setup cannot access ads or tagging."
 		}
 	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{access-token}}",
+				"type": "string"
+			}
+		]
+	},
 	"event": [
 		{
 			"listen": "prerequest",
