@@ -534,7 +534,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"recipient\": {\n        \"id\": \"{{ig-scoped-id}}\"\n    },\n    \"message\": {\n        \"text\": \"Hello World!\"\n    }\n}",
+									"raw": "{\n    \"recipient\": {\n        \"id\": \"{{ig_scoped_id}}\"\n    },\n    \"message\": {\n        \"text\": \"Hello World!\"\n    }\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -542,7 +542,7 @@
 									}
 								},
 								"url": {
-									"raw": "https://graph.instagram.com/{{api-version}}/{{ig-account-id}}/messages",
+									"raw": "https://graph.instagram.com/{{api_version}}/{{ig_user_id}}/messages",
 									"protocol": "https",
 									"host": [
 										"graph",
@@ -550,8 +550,8 @@
 										"com"
 									],
 									"path": [
-										"{{api-version}}",
-										"{{ig-account-id}}",
+										"{{api_version}}",
+										"{{ig_user_id}}",
 										"messages"
 									]
 								},
@@ -566,7 +566,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"recipient\":{\n    \"id\": \"{{ig-scoped-id}}\"\n  },\n  \"message\":{\n    \"attachment\":{\n      \"type\":\"image\", \n      \"payload\":{\n        \"url\":\"MEDIA_URL\"        \n      }\n    }\n  }\n}",
+									"raw": "{\n  \"recipient\":{\n    \"id\": \"{{ig_scoped_id}}\"\n  },\n  \"message\":{\n    \"attachment\":{\n      \"type\":\"image\", \n      \"payload\":{\n        \"url\":\"MEDIA_URL\"        \n      }\n    }\n  }\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -574,7 +574,7 @@
 									}
 								},
 								"url": {
-									"raw": "https://graph.instagram.com/{{api-version}}/{{ig-account-id}}/messages",
+									"raw": "https://graph.instagram.com/{{api_version}}/{{ig_user_id}}/messages",
 									"protocol": "https",
 									"host": [
 										"graph",
@@ -582,8 +582,8 @@
 										"com"
 									],
 									"path": [
-										"{{api-version}}",
-										"{{ig-account-id}}",
+										"{{api_version}}",
+										"{{ig_user_id}}",
 										"messages"
 									]
 								},
@@ -598,7 +598,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"recipient\":{\n    \"id\": \"{{ig-scoped-id}}\"\n  },\n  \"message\":{\n    \"attachment\":{\n      \"type\":\"image\", \n      \"payload\":{\n        \"url\":\"MEDIA_URL\"\n      }\n    }\n  }\n}",
+									"raw": "{\n  \"recipient\":{\n    \"id\": \"{{ig_scoped_id}}\"\n  },\n  \"message\":{\n    \"attachment\":{\n      \"type\":\"image\", \n      \"payload\":{\n        \"url\":\"MEDIA_URL\"\n      }\n    }\n  }\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -606,7 +606,7 @@
 									}
 								},
 								"url": {
-									"raw": "https://graph.instagram.com/{{api-version}}/{{ig-account-id}}/messages",
+									"raw": "https://graph.instagram.com/{{api_version}}/{{ig_user_id}}/messages",
 									"protocol": "https",
 									"host": [
 										"graph",
@@ -614,8 +614,8 @@
 										"com"
 									],
 									"path": [
-										"{{api-version}}",
-										"{{ig-account-id}}",
+										"{{api_version}}",
+										"{{ig_user_id}}",
 										"messages"
 									]
 								},
@@ -630,7 +630,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"recipient\":{\n    \"id\": \"{{ig-scoped-id}}\"\n  },\n  \"message\": {\n    \"attachment\": {\n      \"type\": \"audio\",\n      \"payload\": {\n        \"url\": \"ACTUAL_AUDIO_OR_VIDEO_FILE_URL\"\n      }\n    }\n  }\n}",
+									"raw": "{\n  \"recipient\":{\n    \"id\": \"{{ig_scoped_id}}\"\n  },\n  \"message\": {\n    \"attachment\": {\n      \"type\": \"audio\",\n      \"payload\": {\n        \"url\": \"ACTUAL_AUDIO_OR_VIDEO_FILE_URL\"\n      }\n    }\n  }\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -638,7 +638,7 @@
 									}
 								},
 								"url": {
-									"raw": "https://graph.instagram.com/{{api-version}}/{{ig-account-id}}/messages",
+									"raw": "https://graph.instagram.com/{{api_version}}/{{ig_user_id}}/messages",
 									"protocol": "https",
 									"host": [
 										"graph",
@@ -646,8 +646,8 @@
 										"com"
 									],
 									"path": [
-										"{{api-version}}",
-										"{{ig-account-id}}",
+										"{{api_version}}",
+										"{{ig_user_id}}",
 										"messages"
 									]
 								},
@@ -662,7 +662,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"recipient\":{\n    \"id\": \"{{ig-scoped-id}}\"\n  },\n  \"message\": {\n    \"attachment\": {\n      \"type\":\"like_heart\"\n    }\n  }\n}",
+									"raw": "{\n  \"recipient\":{\n    \"id\": \"{{ig_scoped_id}}\"\n  },\n  \"message\": {\n    \"attachment\": {\n      \"type\":\"like_heart\"\n    }\n  }\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -670,7 +670,7 @@
 									}
 								},
 								"url": {
-									"raw": "https://graph.instagram.com/{{api-version}}/{{ig-account-id}}/messages",
+									"raw": "https://graph.instagram.com/{{api_version}}/{{ig_user_id}}/messages",
 									"protocol": "https",
 									"host": [
 										"graph",
@@ -678,8 +678,8 @@
 										"com"
 									],
 									"path": [
-										"{{api-version}}",
-										"{{ig-account-id}}",
+										"{{api_version}}",
+										"{{ig_user_id}}",
 										"messages"
 									]
 								},
@@ -694,7 +694,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"recipient\":{\n    \"id\": \"{{ig-scoped-id}}\"\n  },\n  \"sender_action\": \"react\",\n  \"payload\": {\n    \"message_id\": \"MESSAGE_ID\",\n    \"reaction\": \"love\"\n  }\n}",
+									"raw": "{\n  \"recipient\":{\n    \"id\": \"{{ig_scoped_id}}\"\n  },\n  \"sender_action\": \"react\",\n  \"payload\": {\n    \"message_id\": \"MESSAGE_ID\",\n    \"reaction\": \"love\"\n  }\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -702,7 +702,7 @@
 									}
 								},
 								"url": {
-									"raw": "https://graph.instagram.com/{{api-version}}/{{ig-account-id}}/messages",
+									"raw": "https://graph.instagram.com/{{api_version}}/{{ig_user_id}}/messages",
 									"protocol": "https",
 									"host": [
 										"graph",
@@ -710,8 +710,8 @@
 										"com"
 									],
 									"path": [
-										"{{api-version}}",
-										"{{ig-account-id}}",
+										"{{api_version}}",
+										"{{ig_user_id}}",
 										"messages"
 									]
 								},
@@ -726,7 +726,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"recipient\": {\n    \"id\": \"{{ig-scoped-id}}\"\n  },\n  \"message\": {\n    \"attachment\": {\n      \"type\": \"MEDIA_SHARE\",\n      \"payload\": {\n        \"id\": \"POST_ID\"\n      }\n    }\n  }\n}",
+									"raw": "{\n  \"recipient\": {\n    \"id\": \"{{ig_scoped_id}}\"\n  },\n  \"message\": {\n    \"attachment\": {\n      \"type\": \"MEDIA_SHARE\",\n      \"payload\": {\n        \"id\": \"POST_ID\"\n      }\n    }\n  }\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -734,7 +734,7 @@
 									}
 								},
 								"url": {
-									"raw": "https://graph.instagram.com/{{api-version}}/{{ig-account-id}}/messages",
+									"raw": "https://graph.instagram.com/{{api_version}}/{{ig_user_id}}/messages",
 									"protocol": "https",
 									"host": [
 										"graph",
@@ -742,8 +742,8 @@
 										"com"
 									],
 									"path": [
-										"{{api-version}}",
-										"{{ig-account-id}}",
+										"{{api_version}}",
+										"{{ig_user_id}}",
 										"messages"
 									]
 								},
@@ -763,7 +763,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "{{access-token}}",
+				"value": "{{user_access_token}}",
 				"type": "string"
 			}
 		]
