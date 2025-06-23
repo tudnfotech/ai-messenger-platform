@@ -560,7 +560,7 @@
 							"response": []
 						},
 						{
-							"name": "Media Message (Photo)",
+							"name": "Media Message (Photo or GIF)",
 							"request": {
 								"method": "POST",
 								"header": [],
@@ -592,13 +592,13 @@
 							"response": []
 						},
 						{
-							"name": "Media Message (GIF)",
+							"name": "Media Message (Audio)",
 							"request": {
 								"method": "POST",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"recipient\":{\n    \"id\": \"{{ig_scoped_id}}\"\n  },\n  \"message\":{\n    \"attachment\":{\n      \"type\":\"image\", \n      \"payload\":{\n        \"url\":\"MEDIA_URL\"\n      }\n    }\n  }\n}",
+									"raw": "{\n  \"recipient\":{\n    \"id\": \"{{ig_scoped_id}}\"\n  },\n  \"message\": {\n    \"attachment\": {\n      \"type\": \"audio\",\n      \"payload\": {\n        \"url\": \"ACTUAL_AUDIO_FILE_URL\"\n      }\n    }\n  }\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -619,18 +619,18 @@
 										"messages"
 									]
 								},
-								"description": "### Instagram Messages\n\nThis endpoint allows you to send a message with an attachment to a recipient on Instagram.\n\n#### Request Body\n\n- `recipient.id` (string) - The Instagram user ID of the recipient.\n    \n- `message.attachment.type` (string) - The type of attachment, in this case, \"image\".\n    \n- `message.attachment.payload.url` (string) - The URL of the image to be sent as an attachment.\n    \n\n#### Response\n\nThe response for this request can be represented as a JSON schema. Here is an example of the response schema:\n\n``` json\n{\n  \"recipient_id\": \"IGSID\",\n  \"message_id\": \"MESSAGE-ID\"\n}\n\n ```\n\nThe `message_id` is the ID of the sent message, and the `attachment_id` is the ID of the attachment."
+								"description": "### POST /{{api-version}}/me/messages\n\nThis endpoint is used to send a message to the authenticated user on Instagram.\n\n#### Request Body\n\n- recipient (object, required): The recipient of the message.\n    \n    - id (string, required): The Instagram user ID of the recipient.\n        \n- message (object, required): The message content.\n    \n    - attachment (object, required): The attachment included in the message.\n        \n        - type (string, required): The type of attachment, e.g. \"audio\".\n            \n        - payload (object, required): The payload of the attachment.\n            \n            - url (string, required): The URL of the audio or video file to be sent as the attachment.\n                \n\n#### Response (JSON Schema)\n\n``` json\n{\n  \"recipient_id\": \"IGSID\",\n  \"message_id\": \"MESSAGE-ID\"\n}\n\n ```"
 							},
 							"response": []
 						},
 						{
-							"name": "Media Message (Audio or Video)",
+							"name": "Media Message (Video)",
 							"request": {
 								"method": "POST",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"recipient\":{\n    \"id\": \"{{ig_scoped_id}}\"\n  },\n  \"message\": {\n    \"attachment\": {\n      \"type\": \"audio\",\n      \"payload\": {\n        \"url\": \"ACTUAL_AUDIO_OR_VIDEO_FILE_URL\"\n      }\n    }\n  }\n}",
+									"raw": "{\n  \"recipient\":{\n    \"id\": \"{{ig_scoped_id}}\"\n  },\n  \"message\": {\n    \"attachment\": {\n      \"type\": \"video\",\n      \"payload\": {\n        \"url\": \"ACTUAL_VIDEO_FILE_URL\"\n      }\n    }\n  }\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -716,38 +716,6 @@
 									]
 								},
 								"description": "### POST /{{api-version}}/me/messages\n\nThis endpoint is used to send a message reaction to a specific Instagram user.\n\n#### Request Body\n\n- `recipient` (object, required): The recipient of the message.\n    \n    - `id` (string, required): The Instagram user ID of the recipient.\n        \n- `sender_action` (string, required): The action to be taken by the sender.\n    \n- `payload` (object, required): Additional payload for the message reaction.\n    \n    - `message_id` (string, required): The ID of the message to react to.\n        \n    - `reaction` (string, required): The type of reaction to be sent.\n        \n\n#### Response\n\nThe response for this request will be a JSON object with the relevant message reaction details.\n\n``` json\n{\n  \"recipient_id\": \"IGSID\"\n}\n\n ```"
-							},
-							"response": []
-						},
-						{
-							"name": "Published Post",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"recipient\": {\n    \"id\": \"{{ig_scoped_id}}\"\n  },\n  \"message\": {\n    \"attachment\": {\n      \"type\": \"MEDIA_SHARE\",\n      \"payload\": {\n        \"id\": \"POST_ID\"\n      }\n    }\n  }\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "https://graph.instagram.com/{{api_version}}/{{ig_user_id}}/messages",
-									"protocol": "https",
-									"host": [
-										"graph",
-										"instagram",
-										"com"
-									],
-									"path": [
-										"{{api_version}}",
-										"{{ig_user_id}}",
-										"messages"
-									]
-								},
-								"description": "### POST /{{api-version}}/me/messages\n\nThis endpoint is used to send a message to the authenticated user on Instagram.\n\n#### Request\n\n- Method: POST\n    \n- URL: `https://graph.instagram.com/{{api-version}}/me/messages`\n    \n- Body:\n    \n    - recipient (object)\n        \n        - id (string): The Instagram ID of the recipient.\n            \n    - message (object)\n        \n        - attachment (object)\n            \n            - type (string): The type of attachment, in this case \"MEDIA_SHARE\".\n                \n            - payload (object)\n                \n                - id (string): The ID of the post to be shared.\n                    \n\n#### Response\n\nThe response for this request is not provided.\n\n#### JSON Schema\n\n``` json\n{\n  \"recipient_id\": \"IGSID\",\n  \"message_id\": \"MESSAGE-ID\"\n}\n\n ```"
 							},
 							"response": []
 						}
