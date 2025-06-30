@@ -748,7 +748,125 @@
 									]
 								}
 							},
-							"response": []
+							"response": [
+								{
+									"name": "Quick replies",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"recipient\":{\n    \"id\":\"{{ig_scoped_id}}\"\n  },\n  \"messaging_type\": \"RESPONSE\",\n  \"message\":{\n    \"text\": \"<SOME_TEXT>\",\n    \"quick_replies\":[\n      {\n        \"content_type\":\"text\",\n        \"title\":\"<TITLE_1>\",\n        \"payload\":\"<POSTBACK_PAYLOAD_1>\"\n      },\n      {\n        \"content_type\":\"text\",\n        \"title\":\"<TITLE_2>\",\n        \"payload\":\"<POSTBACK_PAYLOAD_2>\"\n      }\n    ]\n  }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://graph.instagram.com/{{api_version}}/{{ig_user_id}}/messages",
+											"protocol": "https",
+											"host": [
+												"graph",
+												"instagram",
+												"com"
+											],
+											"path": [
+												"{{api_version}}",
+												"{{ig_user_id}}",
+												"messages"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=UTF-8"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										},
+										{
+											"key": "cross-origin-resource-policy",
+											"value": "cross-origin"
+										},
+										{
+											"key": "x-app-usage",
+											"value": "{\"call_volume\":0,\"cpu_time\":0}"
+										},
+										{
+											"key": "instagram-api-version",
+											"value": "v22.0"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=31536000; preload; includeSubDomains"
+										},
+										{
+											"key": "Pragma",
+											"value": "no-cache"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "private, no-cache, no-store, must-revalidate"
+										},
+										{
+											"key": "Expires",
+											"value": "Sat, 01 Jan 2000 00:00:00 GMT"
+										},
+										{
+											"key": "x-fb-request-id",
+											"value": "A-X_ybfoFf6waAj9t6vqwZv"
+										},
+										{
+											"key": "x-fb-trace-id",
+											"value": "HU2oOCYow6r"
+										},
+										{
+											"key": "x-fb-rev",
+											"value": "1024312014"
+										},
+										{
+											"key": "x-stack",
+											"value": "www"
+										},
+										{
+											"key": "X-FB-Debug",
+											"value": "HBqsTPQIIDCY6W4u/Kza7NA2Nii9BwLVI7f14YIXpLi7fOzi/pdXmv7BD7tjCicuTDfYeKfb7pDha/IpH75msA=="
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 30 Jun 2025 17:40:10 GMT"
+										},
+										{
+											"key": "X-FB-Connection-Quality",
+											"value": "EXCELLENT; q=0.9, rtt=23, rtx=0, c=17, mss=1208, tbw=10600, tp=-1, tpl=-1, uplat=425, ullat=0"
+										},
+										{
+											"key": "Alt-Svc",
+											"value": "h3=\":443\"; ma=86400"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Content-Length",
+											"value": "209"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"recipient_id\": \"48102409688037\",\n    \"message_id\": \"aWdfZAG1faXRlbToxOklHTWVzc2FnZAUlEOjIzOTAyNDYxMzQ5Njk3OjM0MDI4MjM2Njg0MTcxMDMwMTI0NDI1ODE5ODkyMDA5ODI1NTA2NjozMjMwNTg3OTAwODc0MjEzNzUyODg5MTk4MDY1OTAzMjA2NAZDZD\"\n}"
+								}
+							]
 						},
 						{
 							"name": "Private Reply",
@@ -757,7 +875,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"recipient\": {\"comment_id\": 18000158536435933},\n    \"message\": {\"text\": \"It is cool\"}\n}",
+									"raw": "{\n    \"recipient\": {\"comment_id\": {{comment_id}}},\n    \"message\": {\"text\": \"It is cool\"}\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -779,7 +897,125 @@
 									]
 								}
 							},
-							"response": []
+							"response": [
+								{
+									"name": "Private Reply",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"recipient\": {\"comment_id\": {{comment_id}}},\n    \"message\": {\"text\": \"It is cool\"}\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://graph.instagram.com/{{api_version}}/{{ig_user_id}}/messages",
+											"protocol": "https",
+											"host": [
+												"graph",
+												"instagram",
+												"com"
+											],
+											"path": [
+												"{{api_version}}",
+												"{{ig_user_id}}",
+												"messages"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=UTF-8"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										},
+										{
+											"key": "cross-origin-resource-policy",
+											"value": "cross-origin"
+										},
+										{
+											"key": "x-app-usage",
+											"value": "{\"call_volume\":0,\"cpu_time\":0}"
+										},
+										{
+											"key": "instagram-api-version",
+											"value": "v22.0"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=31536000; preload; includeSubDomains"
+										},
+										{
+											"key": "Pragma",
+											"value": "no-cache"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "private, no-cache, no-store, must-revalidate"
+										},
+										{
+											"key": "Expires",
+											"value": "Sat, 01 Jan 2000 00:00:00 GMT"
+										},
+										{
+											"key": "x-fb-request-id",
+											"value": "AvmO06QN1iwUmowJ4MAqLvP"
+										},
+										{
+											"key": "x-fb-trace-id",
+											"value": "GUwzHM7FzDr"
+										},
+										{
+											"key": "x-fb-rev",
+											"value": "1024312014"
+										},
+										{
+											"key": "x-stack",
+											"value": "www"
+										},
+										{
+											"key": "X-FB-Debug",
+											"value": "c9YZOxIcm2Rz0pUTu0Kw2OM3jZwRhv6GKoGeCevEbY5nYVR3u4IVAJab29KOwf5KcGuj7MJJZRTzOFt5ue1lXQ=="
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 30 Jun 2025 17:42:47 GMT"
+										},
+										{
+											"key": "X-FB-Connection-Quality",
+											"value": "EXCELLENT; q=0.9, rtt=24, rtx=0, c=14, mss=1208, tbw=3288, tp=-1, tpl=-1, uplat=2175, ullat=0"
+										},
+										{
+											"key": "Alt-Svc",
+											"value": "h3=\":443\"; ma=86400"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Content-Length",
+											"value": "209"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"recipient_id\": \"48102409688037\",\n    \"message_id\": \"aWdfZAG1faXRlbToxOklHTWVzc2FnZAUlEOjIzOTAyNDYxMzQ5Njk3OjM0MDI4MjM2Njg0MTcxMDMwMTI0NDI1ODE5ODkyMDA5ODI1NTA2NjozMjMwNTg4MTkxMDI4MjM4NTEyNzAwMjYyNTU5ODgxNjI1NgZDZD\"\n}"
+								}
+							]
 						}
 					],
 					"description": "The Send API enables your app users to send and receive messages between their Instagram professional account and their customers, potential customers, and followers.\n\n#### An Instagram user sends a message\n\nConversations only begin when an Instagram user sends a message to your app user through your app user's Instagram Feed, posts, story mentions, and other channels.\n\n#### Instagram Inbox\n\nAn Instagram professional account has a messaging inbox that allows the user to organize messages and control message notifications however when using the API the behavior will be a little different.\n\n- **General** – Only after your app user to respond to a message, using your app, is the conversation moved to the General folder, regardless of the inbox settings.\n    \n- **Primary** – All new conversations from followers will initially appear in the Primary folder.\n    \n- **Requests** – All new conversations from Instagram users who aren't followers of your app user will appear in the Requests folder.\n    \n\n[Learn more about the Instagram Inbox.](https://www.facebook.com/business/help/1264898753662278)\n\n### Before You Start\n\nYou will need:\n\n- An access token requested by the IG professional account who can send message to a user on the platform\n    \n- The `instagram_business_manage_messages` permission\n    \n- The message recipient user must have sent a message to your IG professional account\n    \n\n## Environment\n\nThis collection has a corresponding **Instagram Platform API** Postman [environment](https://learning.postman.com/docs/sending-requests/managing-environments/) which you must select when using the collection. Set **current values** for the variables defined in this environment if you wish to perform the queries in the collection.\n\n### Access tokens\n\nThe API supports both user and system user access tokens. You can get access tokens 3 different ways:\n\n- [Facebook login](https://developers.facebook.com/docs/facebook-login/overview) for your app\n    \n- [App Dashboard](https://developers.facebook.com/apps)\n    \n- [Graph API Explorer](https://developers.facebook.com/tools/explorer/)\n    \n\n### Limitations\n\n- Your app user must own any media or posts to be used in the message.\n    \n- Group messaging is not supported. An Instagram professional account can only converse with one customer per conversation.\n    \n- Messages in the Requests folder that have not been active for 30 days will not be returned in API calls.\n    \n- Only the URL for the shared media or post is included in the webhooks notification when a customer sends a message with a share.\n    \n- Your app testers must have a role on your app, grant your app access to all the required permissions, and have a role on the Instagram professional account that owns the app."
