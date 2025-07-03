@@ -1173,6 +1173,716 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Moderate Conversations API",
+			"item": [
+				{
+					"name": "Block a user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"user_ids\":[\n    {\n      \"id\":\"{{page-scoped-id}}\"\n    }\n  ],\n  \"actions\": [\n    \"block_user\"\n  ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://graph.facebook.com/{{version}}/{{page-id}}/moderate_conversations",
+							"protocol": "https",
+							"host": [
+								"graph",
+								"facebook",
+								"com"
+							],
+							"path": [
+								"{{version}}",
+								"{{page-id}}",
+								"moderate_conversations"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Block a user",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"user_ids\":[\n    {\n      \"id\":\"{{page-scoped-id}}\"\n    }\n  ],\n  \"actions\": [\n    \"block_user\"\n  ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://graph.facebook.com/{{version}}/{{page-id}}/moderate_conversations",
+									"protocol": "https",
+									"host": [
+										"graph",
+										"facebook",
+										"com"
+									],
+									"path": [
+										"{{version}}",
+										"{{page-id}}",
+										"moderate_conversations"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "x-business-use-case-usage",
+									"value": "{\"602662469590800\":[{\"type\":\"messenger\",\"call_count\":0,\"total_cputime\":0,\"total_time\":0,\"estimated_time_to_regain_access\":0}]}"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "facebook-api-version",
+									"value": "v22.0"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; preload"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "private, no-cache, no-store, must-revalidate"
+								},
+								{
+									"key": "Expires",
+									"value": "Sat, 01 Jan 2000 00:00:00 GMT"
+								},
+								{
+									"key": "x-fb-request-id",
+									"value": "A19TMdURNwgEUTIKbn1vYBP"
+								},
+								{
+									"key": "x-fb-trace-id",
+									"value": "HQ1h+dcIrXn"
+								},
+								{
+									"key": "x-fb-rev",
+									"value": "1024319249"
+								},
+								{
+									"key": "X-FB-Debug",
+									"value": "z7F1kMvvwFzxMfmFuGbZ6NphSoVxD+kbzYxMYeB7JSsyFU77WfbcFW/ellRChLcuCp9py4eh8gZkji2UnAHL0Q=="
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 30 Jun 2025 17:43:06 GMT"
+								},
+								{
+									"key": "X-FB-Connection-Quality",
+									"value": "EXCELLENT; q=0.9, rtt=6, rtx=0, c=10, mss=1208, tbw=3456, tp=-1, tpl=-1, uplat=3739, ullat=0"
+								},
+								{
+									"key": "Alt-Svc",
+									"value": "h3=\":443\"; ma=86400"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Content-Length",
+									"value": "16"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Unblock a user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"user_ids\":[\n    {\n      \"id\":\"{{page-scoped-id}}\"\n    }\n  ],\n  \"actions\": [\n    \"unblock_user\"\n  ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://graph.facebook.com/{{version}}/{{page-id}}/moderate_conversations",
+							"protocol": "https",
+							"host": [
+								"graph",
+								"facebook",
+								"com"
+							],
+							"path": [
+								"{{version}}",
+								"{{page-id}}",
+								"moderate_conversations"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Unblock a user",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"user_ids\":[\n    {\n      \"id\":\"{{page-scoped-id}}\"\n    }\n  ],\n  \"actions\": [\n    \"unblock_user\"\n  ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://graph.facebook.com/{{version}}/{{page-id}}/moderate_conversations",
+									"protocol": "https",
+									"host": [
+										"graph",
+										"facebook",
+										"com"
+									],
+									"path": [
+										"{{version}}",
+										"{{page-id}}",
+										"moderate_conversations"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "x-business-use-case-usage",
+									"value": "{\"602662469590800\":[{\"type\":\"messenger\",\"call_count\":1,\"total_cputime\":1,\"total_time\":1,\"estimated_time_to_regain_access\":0}]}"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "facebook-api-version",
+									"value": "v22.0"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; preload"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "private, no-cache, no-store, must-revalidate"
+								},
+								{
+									"key": "Expires",
+									"value": "Sat, 01 Jan 2000 00:00:00 GMT"
+								},
+								{
+									"key": "x-fb-request-id",
+									"value": "AISixzkmdLATHcA1HYP9Vs_"
+								},
+								{
+									"key": "x-fb-trace-id",
+									"value": "HWvZCVrDvGr"
+								},
+								{
+									"key": "x-fb-rev",
+									"value": "1024319249"
+								},
+								{
+									"key": "X-FB-Debug",
+									"value": "oFur2OYj6XgoPaBcPoke5SOIZzRVS4nOvDCjbqAZMchqm0ZOBD7ogL2edmT3G+GTVpxsFV+e1W0NDW74pgCzBA=="
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 30 Jun 2025 17:44:00 GMT"
+								},
+								{
+									"key": "X-FB-Connection-Quality",
+									"value": "EXCELLENT; q=0.9, rtt=9, rtx=1, c=10, mss=1208, tbw=8222, tp=-1, tpl=-1, uplat=3224, ullat=0"
+								},
+								{
+									"key": "Alt-Svc",
+									"value": "h3=\":443\"; ma=86400"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Content-Length",
+									"value": "16"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Ban a user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"user_ids\":[\n    {\n      \"id\":\"{{page-scoped-id}}\"\n    }\n  ],\n  \"actions\": [\n    \"ban_user\"\n  ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://graph.facebook.com/{{version}}/{{page-id}}/moderate_conversations",
+							"protocol": "https",
+							"host": [
+								"graph",
+								"facebook",
+								"com"
+							],
+							"path": [
+								"{{version}}",
+								"{{page-id}}",
+								"moderate_conversations"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Ban a user",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"user_ids\":[\n    {\n      \"id\":\"{{page-scoped-id}}\"\n    }\n  ],\n  \"actions\": [\n    \"ban_user\"\n  ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://graph.facebook.com/{{version}}/{{page-id}}/moderate_conversations",
+									"protocol": "https",
+									"host": [
+										"graph",
+										"facebook",
+										"com"
+									],
+									"path": [
+										"{{version}}",
+										"{{page-id}}",
+										"moderate_conversations"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "x-business-use-case-usage",
+									"value": "{\"602662469590800\":[{\"type\":\"messenger\",\"call_count\":1,\"total_cputime\":1,\"total_time\":1,\"estimated_time_to_regain_access\":0}]}"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "facebook-api-version",
+									"value": "v22.0"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; preload"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "private, no-cache, no-store, must-revalidate"
+								},
+								{
+									"key": "Expires",
+									"value": "Sat, 01 Jan 2000 00:00:00 GMT"
+								},
+								{
+									"key": "x-fb-request-id",
+									"value": "ACC0_5a3BLDDGuEvpyTZDbk"
+								},
+								{
+									"key": "x-fb-trace-id",
+									"value": "HnzIgUlWtqY"
+								},
+								{
+									"key": "x-fb-rev",
+									"value": "1024319249"
+								},
+								{
+									"key": "X-FB-Debug",
+									"value": "u8mwrwO+B1ni0gQt7u2V5XQDFdewwz9MnLyAnElfDRuGBECiug9OJvCMJa1wxfMV1jJ72AMItVA94Ds6xWzkNA=="
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 30 Jun 2025 17:43:30 GMT"
+								},
+								{
+									"key": "X-FB-Connection-Quality",
+									"value": "EXCELLENT; q=0.9, rtt=9, rtx=1, c=10, mss=1208, tbw=5363, tp=-1, tpl=-1, uplat=8791, ullat=0"
+								},
+								{
+									"key": "Alt-Svc",
+									"value": "h3=\":443\"; ma=86400"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Content-Length",
+									"value": "16"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Unban a user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"user_ids\":[\n    {\n      \"id\":\"{{page-scoped-id}}\"\n    }\n  ],\n  \"actions\": [\n    \"unban_user\"\n  ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://graph.facebook.com/{{version}}/{{page-id}}/moderate_conversations",
+							"protocol": "https",
+							"host": [
+								"graph",
+								"facebook",
+								"com"
+							],
+							"path": [
+								"{{version}}",
+								"{{page-id}}",
+								"moderate_conversations"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Unban a user",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"user_ids\":[\n    {\n      \"id\":\"{{page-scoped-id}}\"\n    }\n  ],\n  \"actions\": [\n    \"unban_user\"\n  ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://graph.facebook.com/{{version}}/{{page-id}}/moderate_conversations",
+									"protocol": "https",
+									"host": [
+										"graph",
+										"facebook",
+										"com"
+									],
+									"path": [
+										"{{version}}",
+										"{{page-id}}",
+										"moderate_conversations"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "x-business-use-case-usage",
+									"value": "{\"602662469590800\":[{\"type\":\"messenger\",\"call_count\":1,\"total_cputime\":1,\"total_time\":1,\"estimated_time_to_regain_access\":0}]}"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "facebook-api-version",
+									"value": "v22.0"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; preload"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "private, no-cache, no-store, must-revalidate"
+								},
+								{
+									"key": "Expires",
+									"value": "Sat, 01 Jan 2000 00:00:00 GMT"
+								},
+								{
+									"key": "x-fb-request-id",
+									"value": "AT9JGldNGQ7EA9BgkF56SR3"
+								},
+								{
+									"key": "x-fb-trace-id",
+									"value": "BTkvm4DRaxD"
+								},
+								{
+									"key": "x-fb-rev",
+									"value": "1024319249"
+								},
+								{
+									"key": "X-FB-Debug",
+									"value": "1AEw10hJjg/y5LmNrAi1A/GtTKtYOJDawXy9DR+AORbWY/YbqYJ463YBZrtiktKjJGGe5XoMqPzSHJLHnCVKyw=="
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 30 Jun 2025 17:43:41 GMT"
+								},
+								{
+									"key": "X-FB-Connection-Quality",
+									"value": "EXCELLENT; q=0.9, rtt=9, rtx=1, c=10, mss=1208, tbw=6316, tp=-1, tpl=-1, uplat=3319, ullat=0"
+								},
+								{
+									"key": "Alt-Svc",
+									"value": "h3=\":443\"; ma=86400"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Content-Length",
+									"value": "16"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Move conversation to spam",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"user_ids\":[\n    {\n      \"id\":\"{{page-scoped-id}}\"\n    }\n  ],\n  \"actions\": [\n    \"move_to_spam\"\n  ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://graph.facebook.com/{{version}}/{{page-id}}/moderate_conversations",
+							"protocol": "https",
+							"host": [
+								"graph",
+								"facebook",
+								"com"
+							],
+							"path": [
+								"{{version}}",
+								"{{page-id}}",
+								"moderate_conversations"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Move conversation to spam",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"user_ids\":[\n    {\n      \"id\":\"{{page-scoped-id}}\"\n    }\n  ],\n  \"actions\": [\n    \"move_to_spam\"\n  ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://graph.facebook.com/{{version}}/{{page-id}}/moderate_conversations",
+									"protocol": "https",
+									"host": [
+										"graph",
+										"facebook",
+										"com"
+									],
+									"path": [
+										"{{version}}",
+										"{{page-id}}",
+										"moderate_conversations"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "x-business-use-case-usage",
+									"value": "{\"602662469590800\":[{\"type\":\"messenger\",\"call_count\":1,\"total_cputime\":1,\"total_time\":1,\"estimated_time_to_regain_access\":0}]}"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "facebook-api-version",
+									"value": "v22.0"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; preload"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "private, no-cache, no-store, must-revalidate"
+								},
+								{
+									"key": "Expires",
+									"value": "Sat, 01 Jan 2000 00:00:00 GMT"
+								},
+								{
+									"key": "x-fb-request-id",
+									"value": "AqPfhYD9m7fhEKen8lSiz4R"
+								},
+								{
+									"key": "x-fb-trace-id",
+									"value": "Gz4DcNfhuG7"
+								},
+								{
+									"key": "x-fb-rev",
+									"value": "1024319249"
+								},
+								{
+									"key": "X-FB-Debug",
+									"value": "45afST53Z77GaKodWvw0XRdiI4Cr6IehoCPKUsAdR+SCeJ5zppltka0SveLPqLmjqisrBQZDM5JJgeSUwD6yaA=="
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 30 Jun 2025 17:44:08 GMT"
+								},
+								{
+									"key": "X-FB-Connection-Quality",
+									"value": "EXCELLENT; q=0.9, rtt=9, rtx=1, c=10, mss=1208, tbw=9175, tp=-1, tpl=-1, uplat=419, ullat=0"
+								},
+								{
+									"key": "Alt-Svc",
+									"value": "h3=\":443\"; ma=86400"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Content-Length",
+									"value": "16"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true\n}"
+						}
+					]
+				}
+			]
 		}
 	],
 	"auth": {
