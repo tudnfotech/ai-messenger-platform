@@ -1046,166 +1046,6 @@
 							]
 						}
 					},
-					"response": []
-				},
-				{
-					"name": "Unblock a user",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"user_ids\":[\n    {\n      \"id\":\"{{page-scoped-id}}\"\n    }\n  ],\n  \"actions\": [\n    \"unblock_user\"\n  ]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "https://graph.facebook.com/{{version}}/{{page-id}}/moderate_conversations",
-							"protocol": "https",
-							"host": [
-								"graph",
-								"facebook",
-								"com"
-							],
-							"path": [
-								"{{version}}",
-								"{{page-id}}",
-								"moderate_conversations"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Ban a user",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"user_ids\":[\n    {\n      \"id\":\"{{page-scoped-id}}\"\n    }\n  ],\n  \"actions\": [\n    \"ban_user\"\n  ]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "https://graph.facebook.com/{{version}}/{{page-id}}/moderate_conversations",
-							"protocol": "https",
-							"host": [
-								"graph",
-								"facebook",
-								"com"
-							],
-							"path": [
-								"{{version}}",
-								"{{page-id}}",
-								"moderate_conversations"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Unban a user",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"user_ids\":[\n    {\n      \"id\":\"{{page-scoped-id}}\"\n    }\n  ],\n  \"actions\": [\n    \"unban_user\"\n  ]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "https://graph.facebook.com/{{version}}/{{page-id}}/moderate_conversations",
-							"protocol": "https",
-							"host": [
-								"graph",
-								"facebook",
-								"com"
-							],
-							"path": [
-								"{{version}}",
-								"{{page-id}}",
-								"moderate_conversations"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Move conversation to spam",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"user_ids\":[\n    {\n      \"id\":\"{{page-scoped-id}}\"\n    }\n  ],\n  \"actions\": [\n    \"move_to_spam\"\n  ]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "https://graph.facebook.com/{{version}}/{{page-id}}/moderate_conversations",
-							"protocol": "https",
-							"host": [
-								"graph",
-								"facebook",
-								"com"
-							],
-							"path": [
-								"{{version}}",
-								"{{page-id}}",
-								"moderate_conversations"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Moderate Conversations API",
-			"item": [
-				{
-					"name": "Block a user",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"user_ids\":[\n    {\n      \"id\":\"{{page-scoped-id}}\"\n    }\n  ],\n  \"actions\": [\n    \"block_user\"\n  ]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "https://graph.facebook.com/{{version}}/{{page-id}}/moderate_conversations",
-							"protocol": "https",
-							"host": [
-								"graph",
-								"facebook",
-								"com"
-							],
-							"path": [
-								"{{version}}",
-								"{{page-id}}",
-								"moderate_conversations"
-							]
-						}
-					},
 					"response": [
 						{
 							"name": "Block a user",
@@ -1879,6 +1719,293 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"success\": true\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Templates",
+			"item": [
+				{
+					"name": "Generic Template",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"recipient\":{\n    \"id\":\"{{page-scoped-id}}\"\n  },\n  \"message\":{\n    \"attachment\":{\n      \"type\":\"template\",\n      \"payload\":{\n        \"template_type\":\"generic\",\n        \"elements\":[\n           {\n            \"title\":\"Welcome!\",\n            \"image_url\":\"https://raw.githubusercontent.com/fbsamples/original-coast-clothing/main/public/styles/male-work.jpg\",\n            \"subtitle\":\"We have the right hat for everyone.\",\n            \"default_action\": {\n              \"type\": \"web_url\",\n              \"url\": \"https://www.originalcoastclothing.com/\",\n              \"webview_height_ratio\": \"tall\"\n            },\n            \"buttons\":[\n              {\n                \"type\":\"web_url\",\n                \"url\":\"https://www.originalcoastclothing.com/\",\n                \"title\":\"View Website\"\n              },{\n                \"type\":\"postback\",\n                \"title\":\"Start Chatting\",\n                \"payload\":\"DEVELOPER_DEFINED_PAYLOAD\"\n              }              \n            ]      \n          }\n        ]\n      }\n    }\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://graph.facebook.com/{{version}}/{{page-id}}/messages",
+							"protocol": "https",
+							"host": [
+								"graph",
+								"facebook",
+								"com"
+							],
+							"path": [
+								"{{version}}",
+								"{{page-id}}",
+								"messages"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Generic template",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"recipient\":{\n    \"id\":\"{{page-scoped-id}}\"\n  },\n  \"message\":{\n    \"attachment\":{\n      \"type\":\"template\",\n      \"payload\":{\n        \"template_type\":\"generic\",\n        \"elements\":[\n           {\n            \"title\":\"Welcome!\",\n            \"image_url\":\"https://raw.githubusercontent.com/fbsamples/original-coast-clothing/main/public/styles/male-work.jpg\",\n            \"subtitle\":\"We have the right hat for everyone.\",\n            \"default_action\": {\n              \"type\": \"web_url\",\n              \"url\": \"https://www.originalcoastclothing.com/\",\n              \"webview_height_ratio\": \"tall\"\n            },\n            \"buttons\":[\n              {\n                \"type\":\"web_url\",\n                \"url\":\"https://www.originalcoastclothing.com/\",\n                \"title\":\"View Website\"\n              },{\n                \"type\":\"postback\",\n                \"title\":\"Start Chatting\",\n                \"payload\":\"DEVELOPER_DEFINED_PAYLOAD\"\n              }              \n            ]      \n          }\n        ]\n      }\n    }\n  }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://graph.facebook.com/{{version}}/{{page-id}}/messages",
+									"protocol": "https",
+									"host": [
+										"graph",
+										"facebook",
+										"com"
+									],
+									"path": [
+										"{{version}}",
+										"{{page-id}}",
+										"messages"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "x-business-use-case-usage",
+									"value": "{\"556828760849295\":[{\"type\":\"messenger\",\"call_count\":0,\"total_cputime\":0,\"total_time\":0,\"estimated_time_to_regain_access\":0}]}"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "facebook-api-version",
+									"value": "v22.0"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; preload"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "private, no-cache, no-store, must-revalidate"
+								},
+								{
+									"key": "Expires",
+									"value": "Sat, 01 Jan 2000 00:00:00 GMT"
+								},
+								{
+									"key": "x-fb-request-id",
+									"value": "ARh8MbIP_vVwDY0ks5vkyGG"
+								},
+								{
+									"key": "x-fb-trace-id",
+									"value": "EIycj2lmXds"
+								},
+								{
+									"key": "x-fb-rev",
+									"value": "1024734990"
+								},
+								{
+									"key": "X-FB-Debug",
+									"value": "u8e0CcElwilrHv7CQssYkcO6/e1Uar95Ex2gV87I/OCaVxCQma2BPB+AdDL+ofP/qqKdGftURHAPtJ3r5dJSoA=="
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 14 Jul 2025 21:11:34 GMT"
+								},
+								{
+									"key": "X-FB-Connection-Quality",
+									"value": "EXCELLENT; q=0.9, rtt=7, rtx=0, c=10, mss=1208, tbw=18808, tp=-1, tpl=-1, uplat=1219, ullat=0"
+								},
+								{
+									"key": "Alt-Svc",
+									"value": "h3=\":443\"; ma=86400"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Content-Length",
+									"value": "140"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"recipient_id\": \"28860385560243840\",\n    \"message_id\": \"m_Ses1ar2IgOtoonzXfenDkDm_d4OFucFpIfIKCO_Nf5ontK2SWFvxWuAAZXRDUmopuGTdblwEa7FW_JxweOqztQ\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Button Template",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"recipient\":{\n    \"id\":\"{{page-scoped-id}}\"\n  },\n  \"message\":{\n    \"attachment\":{\n      \"type\":\"template\",\n      \"payload\":{\n        \"template_type\":\"button\",\n        \"text\":\"What do you want to do next?\",\n        \"buttons\":[\n          {\n            \"type\":\"web_url\",\n            \"url\":\"https://www.messenger.com\",\n            \"title\":\"Visit Messenger\"\n          }\n        ]\n      }\n    }\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://graph.facebook.com/{{version}}/{{page-id}}/messages",
+							"protocol": "https",
+							"host": [
+								"graph",
+								"facebook",
+								"com"
+							],
+							"path": [
+								"{{version}}",
+								"{{page-id}}",
+								"messages"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Button template",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"recipient\":{\n    \"id\":\"{{page-scoped-id}}\"\n  },\n  \"message\":{\n    \"attachment\":{\n      \"type\":\"template\",\n      \"payload\":{\n        \"template_type\":\"button\",\n        \"text\":\"What do you want to do next?\",\n        \"buttons\":[\n          {\n            \"type\":\"web_url\",\n            \"url\":\"https://www.messenger.com\",\n            \"title\":\"Visit Messenger\"\n          }\n        ]\n      }\n    }\n  }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://graph.facebook.com/{{version}}/{{page-id}}/messages",
+									"protocol": "https",
+									"host": [
+										"graph",
+										"facebook",
+										"com"
+									],
+									"path": [
+										"{{version}}",
+										"{{page-id}}",
+										"messages"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "x-business-use-case-usage",
+									"value": "{\"556828760849295\":[{\"type\":\"messenger\",\"call_count\":1,\"total_cputime\":1,\"total_time\":1,\"estimated_time_to_regain_access\":0}]}"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "facebook-api-version",
+									"value": "v22.0"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; preload"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "private, no-cache, no-store, must-revalidate"
+								},
+								{
+									"key": "Expires",
+									"value": "Sat, 01 Jan 2000 00:00:00 GMT"
+								},
+								{
+									"key": "x-fb-request-id",
+									"value": "AOPH-QWTbFNllC57Z7EX57V"
+								},
+								{
+									"key": "x-fb-trace-id",
+									"value": "HCotgLYKaH7"
+								},
+								{
+									"key": "x-fb-rev",
+									"value": "1024734990"
+								},
+								{
+									"key": "X-FB-Debug",
+									"value": "SoaIv0LNhz4aBPukdZZz2VQDfC7SMz9MaWfWw25CojgNBB7kf3kmtNmJ8noksTCKNs+3biyAMRKIFdTwsAFqgA=="
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 14 Jul 2025 21:21:19 GMT"
+								},
+								{
+									"key": "X-FB-Connection-Quality",
+									"value": "EXCELLENT; q=0.9, rtt=6, rtx=0, c=10, mss=1208, tbw=3458, tp=-1, tpl=-1, uplat=905, ullat=0"
+								},
+								{
+									"key": "Alt-Svc",
+									"value": "h3=\":443\"; ma=86400"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Content-Length",
+									"value": "140"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"recipient_id\": \"28860385560243840\",\n    \"message_id\": \"m_2aUWfbxKZUqCx0cKvmKf7zm_d4OFucFpIfIKCO_Nf5o8GkXs9eQ0lf5eZkDNG_lvnWvjgqbZek0XK4eCNPIYnA\"\n}"
 						}
 					]
 				}
