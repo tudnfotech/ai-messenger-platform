@@ -9,7 +9,7 @@ LICENSE file in the root directory of this source tree.
 import json
 
 import requests
-from flask import Flask, jsonify, request
+from flask import Flask, request
 
 FB_GRAPH_BASE_URL = "https://graph.facebook.com/v15.0"
 PAGE_ID = "<page_id>"
