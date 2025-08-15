@@ -1019,6 +1019,813 @@
 						}
 					],
 					"description": "The Send API enables your app users to send and receive messages between their Instagram professional account and their customers, potential customers, and followers.\n\n#### An Instagram user sends a message\n\nConversations only begin when an Instagram user sends a message to your app user through your app user's Instagram Feed, posts, story mentions, and other channels.\n\n#### Instagram Inbox\n\nAn Instagram professional account has a messaging inbox that allows the user to organize messages and control message notifications however when using the API the behavior will be a little different.\n\n- **General** – Only after your app user to respond to a message, using your app, is the conversation moved to the General folder, regardless of the inbox settings.\n    \n- **Primary** – All new conversations from followers will initially appear in the Primary folder.\n    \n- **Requests** – All new conversations from Instagram users who aren't followers of your app user will appear in the Requests folder.\n    \n\n[Learn more about the Instagram Inbox.](https://www.facebook.com/business/help/1264898753662278)\n\n### Before You Start\n\nYou will need:\n\n- An access token requested by the IG professional account who can send message to a user on the platform\n    \n- The `instagram_business_manage_messages` permission\n    \n- The message recipient user must have sent a message to your IG professional account\n    \n\n## Environment\n\nThis collection has a corresponding **Instagram Platform API** Postman [environment](https://learning.postman.com/docs/sending-requests/managing-environments/) which you must select when using the collection. Set **current values** for the variables defined in this environment if you wish to perform the queries in the collection.\n\n### Access tokens\n\nThe API supports both user and system user access tokens. You can get access tokens 3 different ways:\n\n- [Facebook login](https://developers.facebook.com/docs/facebook-login/overview) for your app\n    \n- [App Dashboard](https://developers.facebook.com/apps)\n    \n- [Graph API Explorer](https://developers.facebook.com/tools/explorer/)\n    \n\n### Limitations\n\n- Your app user must own any media or posts to be used in the message.\n    \n- Group messaging is not supported. An Instagram professional account can only converse with one customer per conversation.\n    \n- Messages in the Requests folder that have not been active for 30 days will not be returned in API calls.\n    \n- Only the URL for the shared media or post is included in the webhooks notification when a customer sends a message with a share.\n    \n- Your app testers must have a role on your app, grant your app access to all the required permissions, and have a role on the Instagram professional account that owns the app."
+				},
+				{
+					"name": "Welcome Message Flows API",
+					"item": [
+						{
+							"name": "Get all flows",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://graph.instagram.com/{{api_version}}/{{ig_user_id}}/welcome_message_flows",
+									"protocol": "https",
+									"host": [
+										"graph",
+										"instagram",
+										"com"
+									],
+									"path": [
+										"{{api_version}}",
+										"{{ig_user_id}}",
+										"welcome_message_flows"
+									]
+								},
+								"description": "Use this request to get a list of Welcome Message Flows for the given instagram business user.\n\nOn success, your app will receive a list of flows created for that particular app."
+							},
+							"response": [
+								{
+									"name": "Get all flows",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"recipient\":{\n    \"id\": \"{{ig_scoped_id}}\"\n  },\n  \"message\": {\n    \"attachment\": {\n      \"type\":\"like_heart\"\n    }\n  }\n}"
+										},
+										"url": {
+											"raw": "https://graph.instagram.com/{{api_version}}/{{ig_user_id}}/welcome_message_flows",
+											"protocol": "https",
+											"host": [
+												"graph",
+												"instagram",
+												"com"
+											],
+											"path": [
+												"{{api_version}}",
+												"{{ig_user_id}}",
+												"welcome_message_flows"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Encoding",
+											"value": "br"
+										},
+										{
+											"key": "ETag",
+											"value": "\"3f35eb17c3f95cda680ebe5fd7c7ea8f7463c354\""
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=UTF-8"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "cross-origin-resource-policy",
+											"value": "cross-origin"
+										},
+										{
+											"key": "x-app-usage",
+											"value": "{\"call_volume\":0,\"cpu_time\":0}"
+										},
+										{
+											"key": "instagram-api-version",
+											"value": "v23.0"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=31536000; preload; includeSubDomains"
+										},
+										{
+											"key": "Pragma",
+											"value": "no-cache"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "private, no-cache, no-store, must-revalidate"
+										},
+										{
+											"key": "Expires",
+											"value": "Sat, 01 Jan 2000 00:00:00 GMT"
+										},
+										{
+											"key": "x-fb-request-id",
+											"value": "AeNGyFJSG1NU_IByWL-G-tI"
+										},
+										{
+											"key": "x-fb-trace-id",
+											"value": "HGParsYStHp"
+										},
+										{
+											"key": "x-fb-rev",
+											"value": "1025899819"
+										},
+										{
+											"key": "x-stack",
+											"value": "www"
+										},
+										{
+											"key": "X-FB-Debug",
+											"value": "wInxUkPrr9My+UW3YhD+yCvO5Mxb9vl7H3Ygfk6ewNy/mCEpes053gukKKEAp9IdwK75c5KGxlBSclR0gHgT7A=="
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 14 Aug 2025 19:11:23 GMT"
+										},
+										{
+											"key": "X-FB-Connection-Quality",
+											"value": "EXCELLENT; q=0.9, rtt=16, rtx=0, c=17, mss=1208, tbw=5816, tp=-1, tpl=-1, uplat=450, ullat=0"
+										},
+										{
+											"key": "Alt-Svc",
+											"value": "h3=\":443\"; ma=86400"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Content-Length",
+											"value": "748"
+										}
+									],
+									"cookie": [
+										{
+											"expires": "Invalid Date"
+										}
+									],
+									"body": "{\n    \"data\": [\n        {\n            \"name\": \"Customer intake flow\",\n            \"eligible_platforms\": [\n                \"INSTAGRAM\"\n            ],\n            \"welcome_message_flow\": \"[{\\\"message\\\":{\\\"text\\\":\\\"Learn more about our summer sale!\\\",\\\"quick_replies\\\":[{\\\"title\\\":\\\"I am interested!\\\",\\\"content_type\\\":\\\"text\\\",\\\"payload\\\":\\\"summer-sale-interest\\\"},{\\\"title\\\":\\\"I have another quest...\\\",\\\"content_type\\\":\\\"text\\\",\\\"payload\\\":\\\"another-question\\\"}]}}]\",\n            \"last_update_time\": \"2025-08-14T19:06:34+0000\",\n            \"is_used_in_ad\": false,\n            \"id\": \"<flow_id_1>\"\n        },\n        {\n            \"name\": \"New customer welcome flow\",\n            \"eligible_platforms\": [\n                \"INSTAGRAM\"\n            ],\n            \"welcome_message_flow\": \"[{\\\"message\\\":{\\\"text\\\":\\\"Welcome to our community!\\\"}}]\",\n            \"last_update_time\": \"2024-10-10T20:44:04+0000\",\n            \"is_used_in_ad\": false,\n            \"id\": \"<flow_id_2>\"\n        }\n    ],\n    \"paging\": {\n        \"cursors\": {\n            \"before\": \"<before_cursor_hash>\",\n            \"after\": \"<after_cursor_hash>\"\n        }\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Get a specific flow",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://graph.instagram.com/{{api_version}}/{{ig_user_id}}/welcome_message_flows?flow_id={{flow_id}}",
+									"protocol": "https",
+									"host": [
+										"graph",
+										"instagram",
+										"com"
+									],
+									"path": [
+										"{{api_version}}",
+										"{{ig_user_id}}",
+										"welcome_message_flows"
+									],
+									"query": [
+										{
+											"key": "flow_id",
+											"value": "{{flow_id}}"
+										}
+									]
+								},
+								"description": "Use this request to get a particular Welcome Message Flows for the given instagram business user, using the flow_id.\n\nOn success, your app will receive the flow in JSON format."
+							},
+							"response": [
+								{
+									"name": "Get a specific flow",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"recipient\":{\n    \"id\": \"{{ig_scoped_id}}\"\n  },\n  \"message\": {\n    \"attachment\": {\n      \"type\":\"like_heart\"\n    }\n  }\n}"
+										},
+										"url": {
+											"raw": "https://graph.instagram.com/{{api_version}}/{{ig_user_id}}/welcome_message_flows?flow_id={{flow_id}}",
+											"protocol": "https",
+											"host": [
+												"graph",
+												"instagram",
+												"com"
+											],
+											"path": [
+												"{{api_version}}",
+												"{{ig_user_id}}",
+												"welcome_message_flows"
+											],
+											"query": [
+												{
+													"key": "flow_id",
+													"value": "{{flow_id}}"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Encoding",
+											"value": "br"
+										},
+										{
+											"key": "ETag",
+											"value": "\"9b45f6c992c6adba44a5684ae3da79dcac97fc82\""
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=UTF-8"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "cross-origin-resource-policy",
+											"value": "cross-origin"
+										},
+										{
+											"key": "x-app-usage",
+											"value": "{\"call_volume\":0,\"cpu_time\":0}"
+										},
+										{
+											"key": "instagram-api-version",
+											"value": "v23.0"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=31536000; preload; includeSubDomains"
+										},
+										{
+											"key": "Pragma",
+											"value": "no-cache"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "private, no-cache, no-store, must-revalidate"
+										},
+										{
+											"key": "Expires",
+											"value": "Sat, 01 Jan 2000 00:00:00 GMT"
+										},
+										{
+											"key": "x-fb-request-id",
+											"value": "A2P2LcFrvIEPWLB7F5qNcQf"
+										},
+										{
+											"key": "x-fb-trace-id",
+											"value": "ABl/m1bfczh"
+										},
+										{
+											"key": "x-fb-rev",
+											"value": "1025894799"
+										},
+										{
+											"key": "x-stack",
+											"value": "www"
+										},
+										{
+											"key": "X-FB-Debug",
+											"value": "pzkS+r4S+HK10g5HW10lgX6RZKPx6v1dM87ans4iT7pjtbMccH14bYtPvV1908dfm5g4E3QNJa88MHVnwqyfew=="
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 14 Aug 2025 19:14:51 GMT"
+										},
+										{
+											"key": "X-FB-Connection-Quality",
+											"value": "EXCELLENT; q=0.9, rtt=9, rtx=0, c=14, mss=1208, tbw=3290, tp=-1, tpl=-1, uplat=273, ullat=0"
+										},
+										{
+											"key": "Alt-Svc",
+											"value": "h3=\":443\"; ma=86400"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Content-Length",
+											"value": "465"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": [\n        {\n            \"name\": \"Customer intake flow - updated for Winter 2025\",\n            \"eligible_platforms\": [\n                \"INSTAGRAM\"\n            ],\n            \"welcome_message_flow\": \"[{\\\"message\\\":{\\\"text\\\":\\\"Learn more about our new winter sale!\\\",\\\"quick_replies\\\":[{\\\"title\\\":\\\"I am interested!\\\",\\\"content_type\\\":\\\"text\\\",\\\"payload\\\":\\\"winter-sale-interest\\\"},{\\\"title\\\":\\\"I have another quest...\\\",\\\"content_type\\\":\\\"text\\\",\\\"payload\\\":\\\"another-question\\\"}]}}]\",\n            \"last_update_time\": \"2025-08-14T19:11:44+0000\",\n            \"is_used_in_ad\": false,\n            \"id\": \"<flow_id_1>\"\n        }\n    ],\n    \"paging\": {\n        \"cursors\": {\n            \"before\": \"<before_cursor_hash>\",\n            \"after\": \"<after_cursor_hash>\"\n        }\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Create a new flow",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Customer intake flow\",\n    \"welcome_message_flow\": [\n        {\n            \"message\": {\n                \"text\": \"Learn more about our summer sale!\",\n                \"quick_replies\": [\n                    {\n                        \"content_type\": \"text\",\n                        \"title\": \"I am interested!\",\n                        \"payload\": \"summer-sale-interest\"\n                    },\n                    {\n                        \"content_type\": \"text\",\n                        \"title\": \"I have another question.\",\n                        \"payload\": \"another-question\"\n                    }\n                ]\n            }\n        }\n    ],\n    \"eligible_platforms\" : [\n        \"instagram\"\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://graph.instagram.com/{{api_version}}/{{ig_user_id}}/welcome_message_flows",
+									"protocol": "https",
+									"host": [
+										"graph",
+										"instagram",
+										"com"
+									],
+									"path": [
+										"{{api_version}}",
+										"{{ig_user_id}}",
+										"welcome_message_flows"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Create a new flow",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"Customer intake flow\",\n    \"welcome_message_flow\": [\n        {\n            \"message\": {\n                \"text\": \"Learn more about our summer sale!\",\n                \"quick_replies\": [\n                    {\n                        \"content_type\": \"text\",\n                        \"title\": \"I am interested!\",\n                        \"payload\": \"summer-sale-interest\"\n                    },\n                    {\n                        \"content_type\": \"text\",\n                        \"title\": \"I have another question.\",\n                        \"payload\": \"another-question\"\n                    }\n                ]\n            }\n        }\n    ],\n    \"eligible_platforms\" : [\n        \"instagram\"\n    ]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://graph.instagram.com/{{api_version}}/{{ig_user_id}}/welcome_message_flows",
+											"protocol": "https",
+											"host": [
+												"graph",
+												"instagram",
+												"com"
+											],
+											"path": [
+												"{{api_version}}",
+												"{{ig_user_id}}",
+												"welcome_message_flows"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=UTF-8"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										},
+										{
+											"key": "cross-origin-resource-policy",
+											"value": "cross-origin"
+										},
+										{
+											"key": "x-app-usage",
+											"value": "{\"call_volume\":0,\"cpu_time\":0}"
+										},
+										{
+											"key": "instagram-api-version",
+											"value": "v23.0"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=31536000; preload; includeSubDomains"
+										},
+										{
+											"key": "Pragma",
+											"value": "no-cache"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "private, no-cache, no-store, must-revalidate"
+										},
+										{
+											"key": "Expires",
+											"value": "Sat, 01 Jan 2000 00:00:00 GMT"
+										},
+										{
+											"key": "x-fb-request-id",
+											"value": "AmLXE-x0B_vO8OYUSZb8pof"
+										},
+										{
+											"key": "x-fb-trace-id",
+											"value": "GwqDfCTuc3q"
+										},
+										{
+											"key": "x-fb-rev",
+											"value": "1025894799"
+										},
+										{
+											"key": "x-stack",
+											"value": "www"
+										},
+										{
+											"key": "X-FB-Debug",
+											"value": "BifBEIJv2GIhTDjc9inKfa34qAc7sF5/55c+rVCLJxIMTkEAMYUB9QfrIi2kCutw6wP6+OUCWsP5zhnZB9pk5w=="
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 14 Aug 2025 19:06:34 GMT"
+										},
+										{
+											"key": "X-FB-Connection-Quality",
+											"value": "EXCELLENT; q=0.9, rtt=16, rtx=0, c=16, mss=1208, tbw=7386, tp=-1, tpl=-1, uplat=587, ullat=0"
+										},
+										{
+											"key": "Alt-Svc",
+											"value": "h3=\":443\"; ma=86400"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Content-Length",
+											"value": "30"
+										}
+									],
+									"cookie": [
+										{
+											"expires": "Invalid Date"
+										}
+									],
+									"body": "{\n    \"flow_id\": \"1234567890\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Update an existing flow",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Customer intake flow - updated for Winter 2025\",\n    \"welcome_message_flow\": [\n        {\n            \"message\": {\n                \"text\": \"Learn more about our new winter sale!\",\n                \"quick_replies\": [\n                    {\n                        \"content_type\": \"text\",\n                        \"title\": \"I am interested!\",\n                        \"payload\": \"winter-sale-interest\"\n                    },\n                    {\n                        \"content_type\": \"text\",\n                        \"title\": \"I have another question.\",\n                        \"payload\": \"another-question\"\n                    }\n                ]\n            }\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://graph.instagram.com/{{api_version}}/{{ig_user_id}}/welcome_message_flows?flow_id={{flow_id}}",
+									"protocol": "https",
+									"host": [
+										"graph",
+										"instagram",
+										"com"
+									],
+									"path": [
+										"{{api_version}}",
+										"{{ig_user_id}}",
+										"welcome_message_flows"
+									],
+									"query": [
+										{
+											"key": "flow_id",
+											"value": "{{flow_id}}"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Update an existing flow",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"Customer intake flow - updated for Winter 2025\",\n    \"welcome_message_flow\": [\n        {\n            \"message\": {\n                \"text\": \"Learn more about our new winter sale!\",\n                \"quick_replies\": [\n                    {\n                        \"content_type\": \"text\",\n                        \"title\": \"I am interested!\",\n                        \"payload\": \"winter-sale-interest\"\n                    },\n                    {\n                        \"content_type\": \"text\",\n                        \"title\": \"I have another question.\",\n                        \"payload\": \"another-question\"\n                    }\n                ]\n            }\n        }\n    ]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://graph.instagram.com/{{api_version}}/{{ig_user_id}}/welcome_message_flows?flow_id={{flow_id}}",
+											"protocol": "https",
+											"host": [
+												"graph",
+												"instagram",
+												"com"
+											],
+											"path": [
+												"{{api_version}}",
+												"{{ig_user_id}}",
+												"welcome_message_flows"
+											],
+											"query": [
+												{
+													"key": "flow_id",
+													"value": "{{flow_id}}"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=UTF-8"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										},
+										{
+											"key": "cross-origin-resource-policy",
+											"value": "cross-origin"
+										},
+										{
+											"key": "x-app-usage",
+											"value": "{\"call_volume\":0,\"cpu_time\":0}"
+										},
+										{
+											"key": "instagram-api-version",
+											"value": "v23.0"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=31536000; preload; includeSubDomains"
+										},
+										{
+											"key": "Pragma",
+											"value": "no-cache"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "private, no-cache, no-store, must-revalidate"
+										},
+										{
+											"key": "Expires",
+											"value": "Sat, 01 Jan 2000 00:00:00 GMT"
+										},
+										{
+											"key": "x-fb-request-id",
+											"value": "AdzvlBK-bL8GsNG1ygUWlWq"
+										},
+										{
+											"key": "x-fb-trace-id",
+											"value": "GNa6toSwDlT"
+										},
+										{
+											"key": "x-fb-rev",
+											"value": "1025899819"
+										},
+										{
+											"key": "x-stack",
+											"value": "www"
+										},
+										{
+											"key": "X-FB-Debug",
+											"value": "QhFGpmkzGKcUqTVs1a/d6HoXBMtu7F/ETDtMEGhdB1Q/70SOwiXvDE8Yz+vx37s32migvyeJ+xcmheYAvEWcZw=="
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 14 Aug 2025 19:11:44 GMT"
+										},
+										{
+											"key": "X-FB-Connection-Quality",
+											"value": "EXCELLENT; q=0.9, rtt=16, rtx=0, c=17, mss=1208, tbw=9014, tp=-1, tpl=-1, uplat=445, ullat=0"
+										},
+										{
+											"key": "Alt-Svc",
+											"value": "h3=\":443\"; ma=86400"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Content-Length",
+											"value": "16"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": true\n}"
+								}
+							]
+						},
+						{
+							"name": "Delete an existing flow",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://graph.instagram.com/{{api_version}}/{{ig_user_id}}/welcome_message_flows?flow_id={{flow_id}}",
+									"protocol": "https",
+									"host": [
+										"graph",
+										"instagram",
+										"com"
+									],
+									"path": [
+										"{{api_version}}",
+										"{{ig_user_id}}",
+										"welcome_message_flows"
+									],
+									"query": [
+										{
+											"key": "flow_id",
+											"value": "{{flow_id}}"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Delete an existing flow",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://graph.instagram.com/{{api_version}}/{{ig_user_id}}/welcome_message_flows?flow_id={{flow_id}}",
+											"protocol": "https",
+											"host": [
+												"graph",
+												"instagram",
+												"com"
+											],
+											"path": [
+												"{{api_version}}",
+												"{{ig_user_id}}",
+												"welcome_message_flows"
+											],
+											"query": [
+												{
+													"key": "flow_id",
+													"value": "{{flow_id}}"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=UTF-8"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										},
+										{
+											"key": "cross-origin-resource-policy",
+											"value": "cross-origin"
+										},
+										{
+											"key": "x-app-usage",
+											"value": "{\"call_volume\":0,\"cpu_time\":0}"
+										},
+										{
+											"key": "instagram-api-version",
+											"value": "v23.0"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=31536000; preload; includeSubDomains"
+										},
+										{
+											"key": "Pragma",
+											"value": "no-cache"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "private, no-cache, no-store, must-revalidate"
+										},
+										{
+											"key": "Expires",
+											"value": "Sat, 01 Jan 2000 00:00:00 GMT"
+										},
+										{
+											"key": "x-fb-request-id",
+											"value": "AOKpvJrN3ibCtNunHxzHdi5"
+										},
+										{
+											"key": "x-fb-trace-id",
+											"value": "ACRsdfec1i/"
+										},
+										{
+											"key": "x-fb-rev",
+											"value": "1025894799"
+										},
+										{
+											"key": "x-stack",
+											"value": "www"
+										},
+										{
+											"key": "X-FB-Debug",
+											"value": "9lqzDXhpA6YGJDK02TStBCir+8kmxELwHsgUtH+5iputuS+3rAVU7d0aFQRbzJmDhgW9YHaoHfjGm4cfoT13rA=="
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 14 Aug 2025 19:19:11 GMT"
+										},
+										{
+											"key": "X-FB-Connection-Quality",
+											"value": "EXCELLENT; q=0.9, rtt=17, rtx=0, c=16, mss=1208, tbw=5050, tp=-1, tpl=-1, uplat=3995, ullat=0"
+										},
+										{
+											"key": "Alt-Svc",
+											"value": "h3=\":443\"; ma=86400"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Content-Length",
+											"value": "16"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": true\n}"
+								}
+							]
+						}
+					],
+					"description": "When creating ads that Click to Messenger or Click to Instagram Direct, you can connect a message flow from a messaging partner app. A message flow can include text, images, emoji, buttons, and other message types supported by the [Messenger Send API](https://developers.facebook.com/docs/messenger-platform/reference/send-api) or [Instagram Messaging API](https://developers.facebook.com/docs/messenger-platform/instagram).\n\n### Before You Start\n\nYou will need:\n\n- An access token requested by the IG professional account who can send message to a user on the platform\n    \n- The `instagram_business_manage_messages` permission\n    \n\n## Environment\n\nThis collection has a corresponding **Instagram Platform API** Postman [environment](https://learning.postman.com/docs/sending-requests/managing-environments/) which you must select when using the collection. Set **current values** for the variables defined in this environment if you wish to perform the queries in the collection.\n\n### Access tokens\n\nThe API supports both user and system user access tokens. You can get access tokens 3 different ways:\n\n- [Facebook login](https://developers.facebook.com/docs/facebook-login/overview) for your app\n    \n- [App Dashboard](https://developers.facebook.com/apps)\n    \n- [Graph API Explorer](https://developers.facebook.com/tools/explorer/)\n    \n\n## What to do after setting up the Welcome Message Flows\n\n## Ads Manager experience\n\nOnce welcome message flows have been successfully submitted over the API, they will show up in Ads Manager for messaging destinations within the Engagement and Sales objectives. The flows will show up in the Partner App option within the Message Template section of the Ad Creative.\n\n### Example use\n\nIn the Message Template section of the Ad Creative, select Partner App.\n\n<img src=\"https://content.pstmn.io/ece28905-cf9f-4e77-9f7e-ed26b7024425/aW1hZ2UucG5n\" width=\"1224\" height=\"1116\">\n\nSelect the appropriate messaging Partner App.\n\n<img src=\"https://content.pstmn.io/4c86fad3-30d7-4854-bf25-5e5daa4353f4/aW1hZ2UucG5n\" alt=\"\" height=\"1192\" width=\"1218\">\n\nSelect the Welcome Message Flow that you submitted via the API.\n\n<img src=\"https://content.pstmn.io/22473018-baff-4086-ba4e-b321f96885b0/aW1hZ2UucG5n\" alt=\"\" height=\"1214\" width=\"1224\">\n\nPreview your message flow.\n\n<img src=\"https://content.pstmn.io/3eee8361-fd24-4bd5-9955-b719ab102d45/aW1hZ2UucG5n\" alt=\"\" height=\"1228\" width=\"1218\">\n\n## Marketing API Experience\n\nOnce welcome message flows have been successfully submitted over the API, the flow ID can be used to configure ads through the marketing API.\n\nIn the ad creative, the flow ID can be set as follows:\n\n```\n{\n  \"name\": \"creative\",\n  \"object_story_spec\": {...},\n  \"asset_feed_spec\": {\n    \"additional_data\": {\n      \"partner_app_welcome_message_flow_id\": \"<FLOW_ID_RETURNED_FROM_POST_REQUEST>\"\n    }\n  }\n}\n\n ```\n\nFor more information about messaging ads, please refer to [Messaging Ads](https://developers.facebook.com/docs/marketing-api/ad-creative/messaging-ads) in the Marketing API documentation."
 				}
 			],
 			"description": "The Instagram API with Instagram Login allows [Instagram professionals&nbsp;](https://l.facebook.com/l.php?u=https%3A%2F%2Fhelp.instagram.com%2F502981923235522&h=AT1ASpREEMXxdykVj-QP02tVKNkwcQ2Nl_x7xvxvGksvpWqS9BdgBQWeiclc-oXzvNfRm2dFdyjLoT6H4G8w3pjkha7gUXpIuem8PhB40ANXErLcEtpZQl2CvQlavHzKidjr7Jycg6fERoByzvOzQG8vWcM)  — businesses and creators — to use your app to manage their presence on Instagram.\n\n**Note:** This API setup does not require a Facebook Page to be linked to the Instagram professional account.\n\nTo ensure consistency between scope values and permission names, we are introducing new `scope` values for the Instagram API with Instagram login. The new `scope` values are:\n\n- `instagram_business_basic`\n    \n- `instagram_business_content_publish`\n    \n- `instagram_business_manage_messages`\n    \n- `instagram_business_manage_comments`\n    \n\nThese will replace the existing `business_basic`, `business_content_publish`, `business_manage_comments` and `business_manage_messages` `scope` values, respectively.\n\nPlease note that the old scope values were deprecated on **January 27, 2025**. It is essential to update your code to avoid any disruption in your app's functionality. Failure to do so will result in your app being unable to call the Instagram endpoints.\n\n## Limitations\n\n- This API setup cannot access ads or tagging."
