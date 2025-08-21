@@ -1869,6 +1869,147 @@
 					]
 				},
 				{
+					"name": "Receipt Template",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"recipient\": {\n        \"id\": \"{{page-scoped-id}}\",\n        \"message\": {\n            \"attachment\": {\n                \"type\": \"template\",\n                \"payload\": {\n                    \"template_type\": \"receipt\",\n                    \"recipient_name\": \"Stephane Crozatier\",\n                    \"order_number\": \"12345678902\",\n                    \"currency\": \"USD\",\n                    \"payment_method\": \"Visa 2345\",\n                    \"order_url\": \"http://originalcoastclothing.com/order?order_id=123456\",\n                    \"timestamp\": \"1428444852\",\n                    \"address\": {\n                        \"street_1\": \"1 Hacker Way\",\n                        \"street_2\": \"\",\n                        \"city\": \"Menlo Park\",\n                        \"postal_code\": \"94025\",\n                        \"state\": \"CA\",\n                        \"country\": \"US\"\n                    },\n                    \"summary\": {\n                        \"subtotal\": 75.00,\n                        \"shipping_cost\": 4.95,\n                        \"total_tax\": 6.19,\n                        \"total_cost\": 56.14\n                    },\n                    \"adjustments\": [\n                        {\n                            \"name\": \"New Customer Discount\",\n                            \"amount\": 20\n                        },\n                        {\n                            \"name\": \"$10 Off Coupon\",\n                            \"amount\": 10\n                        }\n                    ],\n                    \"elements\": [\n                        {\n                            \"title\": \"Classic White T-Shirt\",\n                            \"subtitle\": \"100% Soft and Luxurious Cotton\",\n                            \"quantity\": 2,\n                            \"price\": 50,\n                            \"currency\": \"USD\",\n                            \"image_url\": \"http://originalcoastclothing.com/img/whiteshirt.png\"\n                        },\n                        {\n                            \"title\": \"Classic Gray T-Shirt\",\n                            \"subtitle\": \"100% Soft and Luxurious Cotton\",\n                            \"quantity\": 1,\n                            \"price\": 25,\n                            \"currency\": \"USD\",\n                            \"image_url\": \"http://originalcoastclothing.com/img/grayshirt.png\"\n                        }\n                    ]\n                }\n            }\n        }\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://graph.facebook.com/{{version}}/{{page-id}}/messages",
+							"protocol": "https",
+							"host": [
+								"graph",
+								"facebook",
+								"com"
+							],
+							"path": [
+								"{{version}}",
+								"{{page-id}}",
+								"messages"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Receipt Template",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"recipient\": {\n        \"id\": \"{{page-scoped-id}}\"\n    },\n    \"message\": {\n        \"attachment\": {\n            \"type\": \"template\",\n            \"payload\": {\n                \"template_type\": \"receipt\",\n                \"recipient_name\": \"Stephane Crozatier\",\n                \"order_number\": \"12345678902\",\n                \"currency\": \"USD\",\n                \"payment_method\": \"Visa 2345\",\n                \"order_url\": \"http://originalcoastclothing.com/order?order_id=123456\",\n                \"timestamp\": \"1428444852\",\n                \"address\": {\n                    \"street_1\": \"1 Hacker Way\",\n                    \"street_2\": \"\",\n                    \"city\": \"Menlo Park\",\n                    \"postal_code\": \"94025\",\n                    \"state\": \"CA\",\n                    \"country\": \"US\"\n                },\n                \"summary\": {\n                    \"subtotal\": 75.00,\n                    \"shipping_cost\": 4.95,\n                    \"total_tax\": 6.19,\n                    \"total_cost\": 56.14\n                },\n                \"adjustments\": [\n                    {\n                        \"name\": \"New Customer Discount\",\n                        \"amount\": 20\n                    },\n                    {\n                        \"name\": \"$10 Off Coupon\",\n                        \"amount\": 10\n                    }\n                ],\n                \"elements\": [\n                    {\n                        \"title\": \"Classic White T-Shirt\",\n                        \"subtitle\": \"100% Soft and Luxurious Cotton\",\n                        \"quantity\": 2,\n                        \"price\": 50,\n                        \"currency\": \"USD\",\n                        \"image_url\": \"http://originalcoastclothing.com/img/whiteshirt.png\"\n                    },\n                    {\n                        \"title\": \"Classic Gray T-Shirt\",\n                        \"subtitle\": \"100% Soft and Luxurious Cotton\",\n                        \"quantity\": 1,\n                        \"price\": 25,\n                        \"currency\": \"USD\",\n                        \"image_url\": \"http://originalcoastclothing.com/img/grayshirt.png\"\n                    }\n                ]\n            }\n        }\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://graph.facebook.com/{{version}}/{{page-id}}/messages",
+									"protocol": "https",
+									"host": [
+										"graph",
+										"facebook",
+										"com"
+									],
+									"path": [
+										"{{version}}",
+										"{{page-id}}",
+										"messages"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "x-business-use-case-usage",
+									"value": "{\"602662469590800\":[{\"type\":\"messenger\",\"call_count\":1,\"total_cputime\":1,\"total_time\":1,\"estimated_time_to_regain_access\":0}]}"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "facebook-api-version",
+									"value": "v22.0"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; preload"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "private, no-cache, no-store, must-revalidate"
+								},
+								{
+									"key": "Expires",
+									"value": "Sat, 01 Jan 2000 00:00:00 GMT"
+								},
+								{
+									"key": "x-fb-request-id",
+									"value": "Ark7ewWgn36ydKtF0XN5IV0"
+								},
+								{
+									"key": "x-fb-trace-id",
+									"value": "DJtvLITjvWR"
+								},
+								{
+									"key": "x-fb-rev",
+									"value": "1026123141"
+								},
+								{
+									"key": "X-FB-Debug",
+									"value": "jU5l70z+N7P3OB/bSDYMDj3OEJvWhYvhvNZMAo01MqptmeHdxJN3aTalFs0A3Bm2r4VHwMkrbl0GH/fJQrscJA=="
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 20 Aug 2025 17:10:09 GMT"
+								},
+								{
+									"key": "X-FB-Connection-Quality",
+									"value": "EXCELLENT; q=0.9, rtt=7, rtx=0, c=10, mss=1208, tbw=3457, tp=-1, tpl=-1, uplat=1504, ullat=0"
+								},
+								{
+									"key": "Alt-Svc",
+									"value": "h3=\":443\"; ma=86400"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Content-Length",
+									"value": "139"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"recipient_id\": \"9665725193552786\",\n    \"message_id\": \"m_N_QdmYG-RZs-j218uZCmFZDE6lKR-pprCwDO5evbcLJEAFjgbh_O4mFZgtWSGWAB-oJzCD5ZDwb7S69uwKMdxA\"\n}"
+						}
+					]
+				},
+				{
 					"name": "Button Template",
 					"request": {
 						"method": "POST",
