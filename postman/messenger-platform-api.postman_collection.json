@@ -294,574 +294,6 @@
 							"body": "{\n    \"recipient_id\": \"5275811702471834\",\n    \"message_id\": \"m_8jw49phNrbbdRTp6PbYL7IAcfn2p3T7uiO5jm0L_PMSzOUezi9uBPNnhL701j3AtJtQmzRtoHwk15jAWQa_MvA\"\n}"
 						}
 					]
-				},
-				{
-					"name": "Quick Replies",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"recipient\":{\n    \"id\":\"{{page-scoped-id}}\"\n  },\n  \"message\":{\n    \"text\": \"Pick a color:\",\n    \"quick_replies\":[\n      {\n        \"content_type\":\"text\",\n        \"title\":\"<TITLE>\",\n        \"payload\":\"<DEVELOPER_DEFINED_PAYLOAD>\",\n        \"image_url\":\"<PATH_TO_ASSET>\"\n      },{\n        \"content_type\":\"text\",\n        \"title\":\"<TITLE>\",\n        \"payload\":\"<DEVELOPER_DEFINED_PAYLOAD>\",\n        \"image_url\":\"<PATH_TO_ASSET>\"\n      }\n    ]\n  }\n}\n\n",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "https://graph.facebook.com/{{version}}/{{page-id}}/messages",
-							"protocol": "https",
-							"host": [
-								"graph",
-								"facebook",
-								"com"
-							],
-							"path": [
-								"{{version}}",
-								"{{page-id}}",
-								"messages"
-							]
-						},
-						"description": "To send a quick reply, add the `quick_replies` array to a text message, and include objects that define up to 13 quick reply buttons.\n\nThe following quick reply types are supported:\n\n- [Text](https://developers.facebook.com/docs/messenger-platform/send-messages/quick-replies#text)\n    \n- [Phone Number](https://developers.facebook.com/docs/messenger-platform/send-messages/quick-replies#phone)\n    \n- [Email](https://developers.facebook.com/docs/messenger-platform/send-messages/quick-replies#email)"
-					},
-					"response": [
-						{
-							"name": "Quick Replies",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"recipient\":{\n    \"id\":\"{{page-scoped-id}}\"\n  },\n  \"message\":{\n    \"text\": \"Pick a color:\",\n    \"quick_replies\":[\n      {\n        \"content_type\":\"text\",\n        \"title\":\"Red\",\n        \"payload\":\"red fish selected\",\n        \"image_url\":\"https://www.fisheries.noaa.gov/s3/styles/original/s3/2022-07/640x427-Acadian-Redfish-NOAAFisheries.png?itok=2MlNuAf5\"\n      },{\n        \"content_type\":\"text\",\n        \"title\":\"Green\",\n        \"payload\":\"green fish selected\",\n        \"image_url\":\"https://images.fineartamerica.com/images-medium-large-5/green-fish-wendy-j-st-christopher.jpg\"\n      }\n    ]\n  }\n}\n\n",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "https://graph.facebook.com/{{version}}/{{page-id}}/messages",
-									"protocol": "https",
-									"host": [
-										"graph",
-										"facebook",
-										"com"
-									],
-									"path": [
-										"{{version}}",
-										"{{page-id}}",
-										"messages"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=UTF-8"
-								},
-								{
-									"key": "Vary",
-									"value": "Origin"
-								},
-								{
-									"key": "x-business-use-case-usage",
-									"value": "{\"106378625516323\":[{\"type\":\"messenger\",\"call_count\":1,\"total_cputime\":1,\"total_time\":1,\"estimated_time_to_regain_access\":0}]}"
-								},
-								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "*"
-								},
-								{
-									"key": "facebook-api-version",
-									"value": "v20.0"
-								},
-								{
-									"key": "Strict-Transport-Security",
-									"value": "max-age=15552000; preload"
-								},
-								{
-									"key": "Pragma",
-									"value": "no-cache"
-								},
-								{
-									"key": "Cache-Control",
-									"value": "private, no-cache, no-store, must-revalidate"
-								},
-								{
-									"key": "Expires",
-									"value": "Sat, 01 Jan 2000 00:00:00 GMT"
-								},
-								{
-									"key": "x-fb-request-id",
-									"value": "AYdafvntNKeaL1HUzDF1ocK"
-								},
-								{
-									"key": "x-fb-trace-id",
-									"value": "AmTLXRxa2IR"
-								},
-								{
-									"key": "x-fb-rev",
-									"value": "1018678277"
-								},
-								{
-									"key": "X-FB-Debug",
-									"value": "McixBHy9uUR0epgBQtvTeU8j5jOTTleoIepzKGUuopnBevmGh4Ai7uXsWeQwvW/P+cjXw4vmaALG3nAlerM0qg=="
-								},
-								{
-									"key": "Date",
-									"value": "Fri, 06 Dec 2024 13:45:34 GMT"
-								},
-								{
-									"key": "X-FB-Connection-Quality",
-									"value": "EXCELLENT; q=0.9, rtt=14, rtx=0, c=10, mss=1380, tbw=5514, tp=-1, tpl=-1, uplat=799, ullat=0"
-								},
-								{
-									"key": "Alt-Svc",
-									"value": "h3=\":443\"; ma=86400"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Content-Length",
-									"value": "139"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"recipient_id\": \"5275811702471834\",\n    \"message_id\": \"m_YdMe0I_Voymqb55W2OSMfYAcfn2p3T7uiO5jm0L_PMSS3zote3yPZoQ92_iKbsFn9qBy_YX6KJJRbCvQFbav6A\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Button Template",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"recipient\":{\n    \"id\":\"{{page-scoped-id}}\"\n  },\n  \"message\":{\n    \"attachment\":{\n      \"type\":\"template\",\n      \"payload\":{\n        \"template_type\":\"button\",\n        \"text\":\"What do you want to do next?\",\n        \"buttons\":[\n          {\n            \"type\":\"web_url\",\n            \"url\":\"https://www.messenger.com\",\n            \"title\":\"Visit Messenger\"\n          },\n          {\n            \"type\":\"web_url\",\n            \"url\":\"https://www.facebook.com\",\n            \"title\":\"Visit Facebook\"\n          }\n        ]\n      }\n    }\n  }\n}\n\n",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "https://graph.facebook.com/{{version}}/{{page-id}}/messages",
-							"protocol": "https",
-							"host": [
-								"graph",
-								"facebook",
-								"com"
-							],
-							"path": [
-								"{{version}}",
-								"{{page-id}}",
-								"messages"
-							]
-						},
-						"description": "The button template sends a text message with up to three attached buttons. This template is useful for offering the message recipient options to choose from, such as pre-determined responses to a question, or actions to take.\n\n## Available Buttons\n\nFor a complete list of available buttons, see [Buttons](https://developers.facebook.com/docs/messenger-platform/send-messages/buttons)."
-					},
-					"response": [
-						{
-							"name": "Button Template",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"recipient\":{\n    \"id\":\"{{page-scoped-id}}\"\n  },\n  \"message\":{\n    \"attachment\":{\n      \"type\":\"template\",\n      \"payload\":{\n        \"template_type\":\"button\",\n        \"text\":\"What do you want to do next?\",\n        \"buttons\":[\n          {\n            \"type\":\"web_url\",\n            \"url\":\"https://www.messenger.com\",\n            \"title\":\"Visit Messenger\"\n          },\n          {\n            \"type\":\"web_url\",\n            \"url\":\"https://www.facebook.com\",\n            \"title\":\"Visit Facebook\"\n          }\n        ]\n      }\n    }\n  }\n}\n\n",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "https://graph.facebook.com/{{version}}/{{page-id}}/messages",
-									"protocol": "https",
-									"host": [
-										"graph",
-										"facebook",
-										"com"
-									],
-									"path": [
-										"{{version}}",
-										"{{page-id}}",
-										"messages"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=UTF-8"
-								},
-								{
-									"key": "Vary",
-									"value": "Origin"
-								},
-								{
-									"key": "x-business-use-case-usage",
-									"value": "{\"106378625516323\":[{\"type\":\"messenger\",\"call_count\":1,\"total_cputime\":1,\"total_time\":1,\"estimated_time_to_regain_access\":0}]}"
-								},
-								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "*"
-								},
-								{
-									"key": "facebook-api-version",
-									"value": "v20.0"
-								},
-								{
-									"key": "Strict-Transport-Security",
-									"value": "max-age=15552000; preload"
-								},
-								{
-									"key": "Pragma",
-									"value": "no-cache"
-								},
-								{
-									"key": "Cache-Control",
-									"value": "private, no-cache, no-store, must-revalidate"
-								},
-								{
-									"key": "Expires",
-									"value": "Sat, 01 Jan 2000 00:00:00 GMT"
-								},
-								{
-									"key": "x-fb-request-id",
-									"value": "AFC7Z0-bhVxBq8axoAYXk8p"
-								},
-								{
-									"key": "x-fb-trace-id",
-									"value": "ARMjmJJwMae"
-								},
-								{
-									"key": "x-fb-rev",
-									"value": "1018678277"
-								},
-								{
-									"key": "X-FB-Debug",
-									"value": "hNQfyCpjZrE5TiP6lAQrz9FVJA+rTXYYPNeIIy87dn5EGmafMZTDb8DsS6nQwzdx4bnxg4J/aKV31OJFh8jnnw=="
-								},
-								{
-									"key": "Date",
-									"value": "Fri, 06 Dec 2024 13:46:42 GMT"
-								},
-								{
-									"key": "X-FB-Connection-Quality",
-									"value": "EXCELLENT; q=0.9, rtt=13, rtx=0, c=10, mss=1380, tbw=3404, tp=-1, tpl=-1, uplat=881, ullat=0"
-								},
-								{
-									"key": "Alt-Svc",
-									"value": "h3=\":443\"; ma=86400"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Content-Length",
-									"value": "139"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"recipient_id\": \"5275811702471834\",\n    \"message_id\": \"m_O8fcodHxfaww7Koo_Ofbd4Acfn2p3T7uiO5jm0L_PMRfDBZhONYKRVUihzXU7jEFouzSL96emJr0nXDR0M2e_w\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Generic Template",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"recipient\":{\n    \"id\":\"{{page-scoped-id}}\"\n  },\n  \"message\":{\n    \"attachment\":{\n      \"type\":\"template\",\n      \"payload\":{\n        \"template_type\":\"generic\",\n        \"elements\":[\n           {\n            \"title\":\"Welcome!\",\n            \"image_url\":\"https://raw.githubusercontent.com/fbsamples/original-coast-clothing-ig/refs/heads/main/public/logo.png\",\n            \"subtitle\":\"We have the right hat for everyone.\",\n            \"default_action\": {\n              \"type\": \"web_url\",\n              \"url\": \"https://www.originalcoastclothing.com/\",\n              \"webview_height_ratio\": \"tall\"\n            },\n            \"buttons\":[\n              {\n                \"type\":\"web_url\",\n                \"url\":\"https://www.originalcoastclothing.com/\",\n                \"title\":\"View Website\"\n              },{\n                \"type\":\"postback\",\n                \"title\":\"Start Chatting\",\n                \"payload\":\"DEVELOPER_DEFINED_PAYLOAD\"\n              }              \n            ]      \n          }\n        ]\n      }\n    }\n  }\n}\n\n",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "https://graph.facebook.com/{{version}}/{{page-id}}/messages",
-							"protocol": "https",
-							"host": [
-								"graph",
-								"facebook",
-								"com"
-							],
-							"path": [
-								"{{version}}",
-								"{{page-id}}",
-								"messages"
-							]
-						},
-						"description": "The generic template is a simple structured message that includes a title, subtitle, image, and up to three buttons. You may also specify a `default_action` object that sets a URL that will be opened in the Messenger webview when the template is tapped.\n\nFor more details see [https://developers.facebook.com/docs/messenger-platform/send-messages/template/generic](https://developers.facebook.com/docs/messenger-platform/send-messages/template/generic)"
-					},
-					"response": [
-						{
-							"name": "Generic Template",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"recipient\":{\n    \"id\":\"{{page-scoped-id}}\"\n  },\n  \"message\":{\n    \"attachment\":{\n      \"type\":\"template\",\n      \"payload\":{\n        \"template_type\":\"generic\",\n        \"elements\":[\n           {\n            \"title\":\"Welcome!\",\n            \"image_url\":\"https://services.meteored.com/img/article/big-fish-little-fish-1694686088190_768.jpeg\",\n            \"subtitle\":\"We have the right hat for everyone.\",\n            \"default_action\": {\n              \"type\": \"web_url\",\n              \"url\": \"https://www.originalcoastclothing.com/\",\n              \"webview_height_ratio\": \"tall\"\n            },\n            \"buttons\":[\n              {\n                \"type\":\"web_url\",\n                \"url\":\"https://www.originalcoastclothing.com/\",\n                \"title\":\"View Website\"\n              },{\n                \"type\":\"postback\",\n                \"title\":\"Start Chatting\",\n                \"payload\":\"DEVELOPER_DEFINED_PAYLOAD\"\n              }              \n            ]      \n          }\n        ]\n      }\n    }\n  }\n}\n\n",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "https://graph.facebook.com/{{version}}/{{page-id}}/messages",
-									"protocol": "https",
-									"host": [
-										"graph",
-										"facebook",
-										"com"
-									],
-									"path": [
-										"{{version}}",
-										"{{page-id}}",
-										"messages"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=UTF-8"
-								},
-								{
-									"key": "Vary",
-									"value": "Origin"
-								},
-								{
-									"key": "x-business-use-case-usage",
-									"value": "{\"106378625516323\":[{\"type\":\"messenger\",\"call_count\":1,\"total_cputime\":1,\"total_time\":1,\"estimated_time_to_regain_access\":0}]}"
-								},
-								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "*"
-								},
-								{
-									"key": "facebook-api-version",
-									"value": "v20.0"
-								},
-								{
-									"key": "Strict-Transport-Security",
-									"value": "max-age=15552000; preload"
-								},
-								{
-									"key": "Pragma",
-									"value": "no-cache"
-								},
-								{
-									"key": "Cache-Control",
-									"value": "private, no-cache, no-store, must-revalidate"
-								},
-								{
-									"key": "Expires",
-									"value": "Sat, 01 Jan 2000 00:00:00 GMT"
-								},
-								{
-									"key": "x-fb-request-id",
-									"value": "AtFsKWXqNfkVsA9AVbYn89L"
-								},
-								{
-									"key": "x-fb-trace-id",
-									"value": "B5NDiVeBYzt"
-								},
-								{
-									"key": "x-fb-rev",
-									"value": "1018678277"
-								},
-								{
-									"key": "X-FB-Debug",
-									"value": "Tp+KJDhizM13+e28rigTcIHwd03pUn55p0JfsKFkEnu7cRSj0yg7Hr4OZZ8jyv8m3vZiZqFuADZ3K7xEfDTClw=="
-								},
-								{
-									"key": "Date",
-									"value": "Fri, 06 Dec 2024 13:47:01 GMT"
-								},
-								{
-									"key": "X-FB-Connection-Quality",
-									"value": "EXCELLENT; q=0.9, rtt=13, rtx=0, c=10, mss=1380, tbw=4459, tp=-1, tpl=-1, uplat=905, ullat=0"
-								},
-								{
-									"key": "Alt-Svc",
-									"value": "h3=\":443\"; ma=86400"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Content-Length",
-									"value": "139"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"recipient_id\": \"5275811702471834\",\n    \"message_id\": \"m_T-gmHvIw_zL1kYBxCB7Ff4Acfn2p3T7uiO5jm0L_PMQ0HPcuaIaEY3RnG2Ke9xTLFnTCd0r6614V-66PBmiN2Q\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Media Template",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"recipient\":{\n    \"id\":\"{{page-scoped-id}}\"\n  },\n  \"message\":{\n    \"attachment\": {\n      \"type\": \"template\",\n      \"payload\": {\n         \"template_type\": \"media\",\n         \"elements\": [\n            {\n               \"media_type\": \"image\",\n               \"attachment_id\": \"<ATTACHMENT_ID>\",\n               \"buttons\" : [\n                {\n                    \"type\": \"web_url\",\n                    \"url\": \"https://google.com\",\n                    \"title\": \"View Website\"\n                }\n               ]\n            }\n         ]\n      }\n    }    \n  }\n}\n\n",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "https://graph.facebook.com/{{version}}/{{page-id}}/messages",
-							"protocol": "https",
-							"host": [
-								"graph",
-								"facebook",
-								"com"
-							],
-							"path": [
-								"{{version}}",
-								"{{page-id}}",
-								"messages"
-							]
-						},
-						"description": "The media template allows you to send images, GIFs, and video as a structured message with an optional [button](https://developers.facebook.com/docs/messenger-platform/send-api-reference/buttons). Videos and animated GIFs sent with the media template are playable in the conversation.\n\nTo send an image, send a `POST` request to the Send API, with the following `payload` property in the request body, where `attachment_id` is an ID generated from the [attachment upload API](https://developers.facebook.com/docs/messenger-platform/send-api-reference/attachment-upload). For requests using the `attachment_id` property, images and videos are supported.\n\nFor complete request property details, see [Media Template Reference](https://developers.facebook.com/docs/messenger-platform/reference/template/media)."
-					},
-					"response": [
-						{
-							"name": "Media Template",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"recipient\":{\n    \"id\":\"{{page-scoped-id}}\"\n  },\n  \"message\":{\n    \"attachment\": {\n      \"type\": \"template\",\n      \"payload\": {\n         \"template_type\": \"media\",\n         \"elements\": [\n            {\n               \"media_type\": \"image\",\n               \"attachment_id\": \"1601472827243653\",\n               \"buttons\" : [\n                {\n                    \"type\": \"web_url\",\n                    \"url\": \"https://google.com\",\n                    \"title\": \"View Website\"\n                }\n               ]\n            }\n         ]\n      }\n    }    \n  }\n}\n\n",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "https://graph.facebook.com/{{version}}/{{page-id}}/messages",
-									"protocol": "https",
-									"host": [
-										"graph",
-										"facebook",
-										"com"
-									],
-									"path": [
-										"{{version}}",
-										"{{page-id}}",
-										"messages"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=UTF-8"
-								},
-								{
-									"key": "Vary",
-									"value": "Origin"
-								},
-								{
-									"key": "x-business-use-case-usage",
-									"value": "{\"106378625516323\":[{\"type\":\"messenger\",\"call_count\":1,\"total_cputime\":1,\"total_time\":1,\"estimated_time_to_regain_access\":0}]}"
-								},
-								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "*"
-								},
-								{
-									"key": "facebook-api-version",
-									"value": "v20.0"
-								},
-								{
-									"key": "Strict-Transport-Security",
-									"value": "max-age=15552000; preload"
-								},
-								{
-									"key": "Pragma",
-									"value": "no-cache"
-								},
-								{
-									"key": "Cache-Control",
-									"value": "private, no-cache, no-store, must-revalidate"
-								},
-								{
-									"key": "Expires",
-									"value": "Sat, 01 Jan 2000 00:00:00 GMT"
-								},
-								{
-									"key": "x-fb-request-id",
-									"value": "Aij4-vdd2DatMs1CcgHkOJn"
-								},
-								{
-									"key": "x-fb-trace-id",
-									"value": "Ds3duCm3FKT"
-								},
-								{
-									"key": "x-fb-rev",
-									"value": "1018678277"
-								},
-								{
-									"key": "X-FB-Debug",
-									"value": "jabSKhaON4nBTYBZ13QsdRt/3ZQdS9x5SZLj4tDS0fgPpT6Wj1wI0HLx2yUl8uNakGuSIUVAYlGxRg7mgPlHbg=="
-								},
-								{
-									"key": "Date",
-									"value": "Fri, 06 Dec 2024 13:47:50 GMT"
-								},
-								{
-									"key": "X-FB-Connection-Quality",
-									"value": "EXCELLENT; q=0.9, rtt=13, rtx=1, c=10, mss=1380, tbw=6569, tp=-1, tpl=-1, uplat=1951, ullat=0"
-								},
-								{
-									"key": "Alt-Svc",
-									"value": "h3=\":443\"; ma=86400"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Content-Length",
-									"value": "139"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"recipient_id\": \"5275811702471834\",\n    \"message_id\": \"m_uAma1RVB92m2QwtXfq03coAcfn2p3T7uiO5jm0L_PMS47LnbUp72BESMc4motRiWQTQafAsjMzGcv8G7ppj2_Q\"\n}"
-						}
-					]
 				}
 			],
 			"description": "The Send API is the main API used to send messages to users, including text, attachments, templates, sender actions, and more.\n\n### Before You Start\n\nYou will need:\n\n- A Page access token requested by a person who can perform the `MESSAGE` task on the Page\n    \n- The `pages_messaging` permission\n    \n- The message recipient must have sent your Page a message within the last 24 hours or agreed to receive messages from your Page outside of the standard 24 hour messaging window"
@@ -1722,7 +1154,8 @@
 						}
 					]
 				}
-			]
+			],
+			"description": "Moderate Conversations API can be used to:\n\n- Block a user\n    \n- Unblock a user\n    \n- Ban a user\n    \n- Unban a user\n    \n- Move a conversation to spam in the Meta Business Suite Inbox\n    \n\nFor more details see [https://developers.facebook.com/docs/messenger-platform/moderate-conversations-api](https://developers.facebook.com/docs/messenger-platform/moderate-conversations-api)"
 		},
 		{
 			"name": "Templates",
@@ -2149,8 +1582,151 @@
 							"body": "{\n    \"recipient_id\": \"28860385560243840\",\n    \"message_id\": \"m_2aUWfbxKZUqCx0cKvmKf7zm_d4OFucFpIfIKCO_Nf5o8GkXs9eQ0lf5eZkDNG_lvnWvjgqbZek0XK4eCNPIYnA\"\n}"
 						}
 					]
+				},
+				{
+					"name": "Media Template",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"recipient\":{\n    \"id\":\"{{page-scoped-id}}\"\n  },\n  \"message\":{\n    \"attachment\": {\n      \"type\": \"template\",\n      \"payload\": {\n         \"template_type\": \"media\",\n         \"elements\": [\n            {\n               \"media_type\": \"image\",\n               \"attachment_id\": \"<ATTACHMENT_ID>\",\n               \"buttons\" : [\n                {\n                    \"type\": \"web_url\",\n                    \"url\": \"https://google.com\",\n                    \"title\": \"View Website\"\n                }\n               ]\n            }\n         ]\n      }\n    }    \n  }\n}\n\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://graph.facebook.com/{{version}}/{{page-id}}/messages",
+							"protocol": "https",
+							"host": [
+								"graph",
+								"facebook",
+								"com"
+							],
+							"path": [
+								"{{version}}",
+								"{{page-id}}",
+								"messages"
+							]
+						},
+						"description": "The media template allows you to send images, GIFs, and video as a structured message with an optional [button](https://developers.facebook.com/docs/messenger-platform/send-api-reference/buttons). Videos and animated GIFs sent with the media template are playable in the conversation.\n\nTo send an image, send a `POST` request to the Send API, with the following `payload` property in the request body, where `attachment_id` is an ID generated from the [attachment upload API](https://developers.facebook.com/docs/messenger-platform/send-api-reference/attachment-upload). For requests using the `attachment_id` property, images and videos are supported.\n\nFor complete request property details, see [Media Template Reference](https://developers.facebook.com/docs/messenger-platform/reference/template/media)."
+					},
+					"response": [
+						{
+							"name": "Media Template",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"recipient\":{\n    \"id\":\"{{page-scoped-id}}\"\n  },\n  \"message\":{\n    \"attachment\": {\n      \"type\": \"template\",\n      \"payload\": {\n         \"template_type\": \"media\",\n         \"elements\": [\n            {\n               \"media_type\": \"image\",\n               \"attachment_id\": \"1601472827243653\",\n               \"buttons\" : [\n                {\n                    \"type\": \"web_url\",\n                    \"url\": \"https://google.com\",\n                    \"title\": \"View Website\"\n                }\n               ]\n            }\n         ]\n      }\n    }    \n  }\n}\n\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://graph.facebook.com/{{version}}/{{page-id}}/messages",
+									"protocol": "https",
+									"host": [
+										"graph",
+										"facebook",
+										"com"
+									],
+									"path": [
+										"{{version}}",
+										"{{page-id}}",
+										"messages"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "x-business-use-case-usage",
+									"value": "{\"106378625516323\":[{\"type\":\"messenger\",\"call_count\":1,\"total_cputime\":1,\"total_time\":1,\"estimated_time_to_regain_access\":0}]}"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "facebook-api-version",
+									"value": "v20.0"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; preload"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "private, no-cache, no-store, must-revalidate"
+								},
+								{
+									"key": "Expires",
+									"value": "Sat, 01 Jan 2000 00:00:00 GMT"
+								},
+								{
+									"key": "x-fb-request-id",
+									"value": "Aij4-vdd2DatMs1CcgHkOJn"
+								},
+								{
+									"key": "x-fb-trace-id",
+									"value": "Ds3duCm3FKT"
+								},
+								{
+									"key": "x-fb-rev",
+									"value": "1018678277"
+								},
+								{
+									"key": "X-FB-Debug",
+									"value": "jabSKhaON4nBTYBZ13QsdRt/3ZQdS9x5SZLj4tDS0fgPpT6Wj1wI0HLx2yUl8uNakGuSIUVAYlGxRg7mgPlHbg=="
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 06 Dec 2024 13:47:50 GMT"
+								},
+								{
+									"key": "X-FB-Connection-Quality",
+									"value": "EXCELLENT; q=0.9, rtt=13, rtx=1, c=10, mss=1380, tbw=6569, tp=-1, tpl=-1, uplat=1951, ullat=0"
+								},
+								{
+									"key": "Alt-Svc",
+									"value": "h3=\":443\"; ma=86400"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Content-Length",
+									"value": "139"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"recipient_id\": \"5275811702471834\",\n    \"message_id\": \"m_uAma1RVB92m2QwtXfq03coAcfn2p3T7uiO5jm0L_PMS47LnbUp72BESMc4motRiWQTQafAsjMzGcv8G7ppj2_Q\"\n}"
+						}
+					]
 				}
-			]
+			],
+			"description": "## **Generic Template**\n\nThe generic template is a simple structured message that includes a title, subtitle, image, and up to three buttons. You may also specify a `default_action` object that sets a URL that will be opened in the Messenger webview when the template is tapped.\n\nFor more details see [https://developers.facebook.com/docs/messenger-platform/send-messages/template/generic<br>](https://developers.facebook.com/docs/messenger-platform/send-messages/template/generic)\n\n## Receipt Template\n\nThe receipt template allows you to send an order confirmation as a structured message. The template may include an order summary, payment details, and shipping information.\n\nFor more details see [https://developers.facebook.com/docs/messenger-platform/send-messages/template/receipt](https://developers.facebook.com/docs/messenger-platform/send-messages/template/receipt)\n\n## Button Template\n\nThe button template sends a text message with up to three attached buttons. This template is useful for offering the message recipient options to choose from, such as pre-determined responses to a question, or actions to take.\n\nFor more details see [https://developers.facebook.com/docs/messenger-platform/send-messages/template/button](https://developers.facebook.com/docs/messenger-platform/send-messages/template/button)\n\n## Media Template\n\nThe media template allows you to send images, GIFs, and video as a structured message with an optional [button](https://developers.facebook.com/docs/messenger-platform/send-api-reference/buttons). Videos and animated GIFs sent with the media template are playable in the conversation.\n\nFor more details see [https://developers.facebook.com/docs/messenger-platform/send-messages/template/media](https://developers.facebook.com/docs/messenger-platform/send-messages/template/media)"
 		},
 		{
 			"name": "Quick Replies",
@@ -2578,7 +2154,8 @@
 						}
 					]
 				}
-			]
+			],
+			"description": "Quick replies provide a way to present a set of up to 13 buttons in-conversation that contain a title and optional image, and appear prominently above the composer. You can also use quick replies to request a person's location, email address, and phone number.\n\nWhen a quick reply is tapped, the buttons are dismissed, and the title of the tapped button is posted to the conversation as a message. A `messages` event will be sent to your webhook that contains the button title and an optional payload.\n\nFor more details see: [https://developers.facebook.com/docs/messenger-platform/send-messages/quick-replies](https://developers.facebook.com/docs/messenger-platform/send-messages/quick-replies)"
 		}
 	],
 	"auth": {
