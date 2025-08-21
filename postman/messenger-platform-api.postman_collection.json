@@ -2151,6 +2151,434 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Quick Replies",
+			"item": [
+				{
+					"name": "Text Quick reply",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"recipient\":{\n    \"id\":\"{{page-scoped-id}}\"\n  },\n  \n  \"messaging_type\": \"RESPONSE\",\n  \"message\":{\n    \"text\": \"Pick a color:\",\n    \"quick_replies\":[\n      {\n        \"content_type\":\"text\",\n        \"title\":\"Red\",\n        \"payload\":\"{POSTBACK_PAYLOAD}\",\n        \"image_url\":\"http://example.com/img/red.png\"\n      },{\n        \"content_type\":\"text\",\n        \"title\":\"Green\",\n        \"payload\":\"{POSTBACK_PAYLOAD}\",\n        \"image_url\":\"http://example.com/img/green.png\"\n      }\n    ]\n  }\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://graph.facebook.com/{{version}}/{{page-id}}/messages",
+							"protocol": "https",
+							"host": [
+								"graph",
+								"facebook",
+								"com"
+							],
+							"path": [
+								"{{version}}",
+								"{{page-id}}",
+								"messages"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Text Quick Reply",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"recipient\": {\n        \"id\": \"{{page-scoped-id}}\"\n    },\n    \"messaging_type\": \"RESPONSE\",\n    \"message\": {\n        \"text\": \"Pick a color:\",\n        \"quick_replies\": [\n            {\n                \"content_type\": \"text\",\n                \"title\": \"Red\",\n                \"payload\": \"{POSTBACK_PAYLOAD}\",\n                \"image_url\": \"http://example.com/img/red.png\"\n            },\n            {\n                \"content_type\": \"text\",\n                \"title\": \"Green\",\n                \"payload\": \"{POSTBACK_PAYLOAD}\",\n                \"image_url\": \"http://example.com/img/green.png\"\n            }\n        ]\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://graph.facebook.com/{{version}}/{{page-id}}/messages",
+									"protocol": "https",
+									"host": [
+										"graph",
+										"facebook",
+										"com"
+									],
+									"path": [
+										"{{version}}",
+										"{{page-id}}",
+										"messages"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "x-business-use-case-usage",
+									"value": "{\"602662469590800\":[{\"type\":\"messenger\",\"call_count\":1,\"total_cputime\":1,\"total_time\":1,\"estimated_time_to_regain_access\":0}]}"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "facebook-api-version",
+									"value": "v22.0"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; preload"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "private, no-cache, no-store, must-revalidate"
+								},
+								{
+									"key": "Expires",
+									"value": "Sat, 01 Jan 2000 00:00:00 GMT"
+								},
+								{
+									"key": "x-fb-request-id",
+									"value": "ADbhm05JveTfEDMJaF_xv4r"
+								},
+								{
+									"key": "x-fb-trace-id",
+									"value": "BSaOp0ri4Jh"
+								},
+								{
+									"key": "x-fb-rev",
+									"value": "1026124386"
+								},
+								{
+									"key": "X-FB-Debug",
+									"value": "RTp4okAmH9JoPWZMjaSc4HIRD0kZcnNEcL97bjC9Ez7mdKakdr5eASdbjB/gweeu115zprRHFXCzR0dI+Rfqpg=="
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 20 Aug 2025 17:30:24 GMT"
+								},
+								{
+									"key": "X-FB-Connection-Quality",
+									"value": "EXCELLENT; q=0.9, rtt=7, rtx=0, c=10, mss=1208, tbw=4536, tp=-1, tpl=-1, uplat=1498, ullat=0"
+								},
+								{
+									"key": "Alt-Svc",
+									"value": "h3=\":443\"; ma=86400"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Content-Length",
+									"value": "139"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"recipient_id\": \"9665725193552786\",\n    \"message_id\": \"m_zaUhFD-E4-E6yjyOao3_SpDE6lKR-pprCwDO5evbcLIH6NYSJndt4dJTsBusnyq_CIIiP-LilpKULgcx8eTvbQ\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Phone Number Quick Reply",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"recipient\":{\n    \"id\":\"{{page-scoped-id}}\"\n  },\n  \n  \"messaging_type\": \"RESPONSE\",\n  \"message\":{\n    \"text\": \"Pick a color:\",\n    \"quick_replies\":[\n      {\n        \"content_type\":\"text\",\n        \"title\":\"Red\",\n        \"payload\":\"{POSTBACK_PAYLOAD}\",\n        \"image_url\":\"http://example.com/img/red.png\"\n      },{\n        \"content_type\":\"text\",\n        \"title\":\"Green\",\n        \"payload\":\"{POSTBACK_PAYLOAD}\",\n        \"image_url\":\"http://example.com/img/green.png\"\n      }\n    ]\n  }\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://graph.facebook.com/{{version}}/{{page-id}}/messages",
+							"protocol": "https",
+							"host": [
+								"graph",
+								"facebook",
+								"com"
+							],
+							"path": [
+								"{{version}}",
+								"{{page-id}}",
+								"messages"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Phone Number Quick Reply",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"recipient\": {\n        \"id\": \"{{page-scoped-id}}\"\n    },\n    \"messaging_type\": \"RESPONSE\",\n    \"message\": {\n        \"text\": \"Let us know your phone number\",\n        \"quick_replies\": [\n            {\n                \"content_type\": \"user_phone_number\"\n            }\n        ]\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://graph.facebook.com/{{version}}/{{page-id}}/messages",
+									"protocol": "https",
+									"host": [
+										"graph",
+										"facebook",
+										"com"
+									],
+									"path": [
+										"{{version}}",
+										"{{page-id}}",
+										"messages"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "x-business-use-case-usage",
+									"value": "{\"602662469590800\":[{\"type\":\"messenger\",\"call_count\":1,\"total_cputime\":1,\"total_time\":1,\"estimated_time_to_regain_access\":0}]}"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "facebook-api-version",
+									"value": "v22.0"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; preload"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "private, no-cache, no-store, must-revalidate"
+								},
+								{
+									"key": "Expires",
+									"value": "Sat, 01 Jan 2000 00:00:00 GMT"
+								},
+								{
+									"key": "x-fb-request-id",
+									"value": "AQP-D3a2XggLP9U6N7eS_La"
+								},
+								{
+									"key": "x-fb-trace-id",
+									"value": "Aa6eofHE1J0"
+								},
+								{
+									"key": "x-fb-rev",
+									"value": "1026128416"
+								},
+								{
+									"key": "X-FB-Debug",
+									"value": "3ffoVmV/+qeYvCoUXqZzRq5IEwlLEeN4xmtKhn7Dyj1Qkjv1/gUyQHTVKwwZnSxPROyd16Wk5Epdez128nMW4g=="
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 20 Aug 2025 18:30:58 GMT"
+								},
+								{
+									"key": "X-FB-Connection-Quality",
+									"value": "EXCELLENT; q=0.9, rtt=13, rtx=0, c=10, mss=1208, tbw=4537, tp=-1, tpl=-1, uplat=1510, ullat=0"
+								},
+								{
+									"key": "Alt-Svc",
+									"value": "h3=\":443\"; ma=86400"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Content-Length",
+									"value": "139"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"recipient_id\": \"9665725193552786\",\n    \"message_id\": \"m_UNYuh_34G9UCpW8IWxppfZDE6lKR-pprCwDO5evbcLK6FIRZELziJV60LOzT08uxLjKJHmv_meaaT4ndO8laAg\"\n}"
+						}
+					]
+				},
+				{
+					"name": "User Email Quick Reply",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"recipient\":{\n    \"id\":\"{{page-scoped-id}}\"\n  },\n  \n  \"messaging_type\": \"RESPONSE\",\n  \"message\":{\n    \"text\": \"Pick a color:\",\n    \"quick_replies\":[\n      {\n        \"content_type\":\"text\",\n        \"title\":\"Red\",\n        \"payload\":\"{POSTBACK_PAYLOAD}\",\n        \"image_url\":\"http://example.com/img/red.png\"\n      },{\n        \"content_type\":\"text\",\n        \"title\":\"Green\",\n        \"payload\":\"{POSTBACK_PAYLOAD}\",\n        \"image_url\":\"http://example.com/img/green.png\"\n      }\n    ]\n  }\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://graph.facebook.com/{{version}}/{{page-id}}/messages",
+							"protocol": "https",
+							"host": [
+								"graph",
+								"facebook",
+								"com"
+							],
+							"path": [
+								"{{version}}",
+								"{{page-id}}",
+								"messages"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "User Email Quick Reply",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"recipient\": {\n        \"id\": \"{{page-scoped-id}}\"\n    },\n    \"messaging_type\": \"RESPONSE\",\n    \"message\": {\n        \"text\": \"Email?\",\n        \"quick_replies\": [\n            {\n                \"content_type\": \"user_email\"\n            }\n        ]\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://graph.facebook.com/{{version}}/{{page-id}}/messages",
+									"protocol": "https",
+									"host": [
+										"graph",
+										"facebook",
+										"com"
+									],
+									"path": [
+										"{{version}}",
+										"{{page-id}}",
+										"messages"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "x-business-use-case-usage",
+									"value": "{\"602662469590800\":[{\"type\":\"messenger\",\"call_count\":1,\"total_cputime\":1,\"total_time\":1,\"estimated_time_to_regain_access\":0}]}"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "facebook-api-version",
+									"value": "v22.0"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; preload"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "private, no-cache, no-store, must-revalidate"
+								},
+								{
+									"key": "Expires",
+									"value": "Sat, 01 Jan 2000 00:00:00 GMT"
+								},
+								{
+									"key": "x-fb-request-id",
+									"value": "AbOssVyrjI807lFhIa1Daj4"
+								},
+								{
+									"key": "x-fb-trace-id",
+									"value": "DP6kXDIoA0T"
+								},
+								{
+									"key": "x-fb-rev",
+									"value": "1026128416"
+								},
+								{
+									"key": "X-FB-Debug",
+									"value": "wA/QXMb/p/f1HPpgWMOYJN9U9KjN7J2Wjfp1uGZt4Rd9FBwG4d1uanCLJS+zASAUm1lo5vjr5fH7DyGxkyAQJQ=="
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 20 Aug 2025 18:34:23 GMT"
+								},
+								{
+									"key": "X-FB-Connection-Quality",
+									"value": "EXCELLENT; q=0.9, rtt=11, rtx=1, c=10, mss=1208, tbw=3458, tp=-1, tpl=-1, uplat=1380, ullat=0"
+								},
+								{
+									"key": "Alt-Svc",
+									"value": "h3=\":443\"; ma=86400"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Content-Length",
+									"value": "139"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"recipient_id\": \"9665725193552786\",\n    \"message_id\": \"m_eaKO73fGwa9ddZnK_tovKpDE6lKR-pprCwDO5evbcLKGmp_IJ9zzmAcQMdTKYoFMMWH5NMJVgE4xphOF5NEm0w\"\n}"
+						}
+					]
+				}
+			]
 		}
 	],
 	"auth": {
