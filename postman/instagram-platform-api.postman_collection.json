@@ -669,9 +669,158 @@
 											"body": "{\n    \"recipient_id\": \"20802401916297\",\n    \"message_id\": \"aWdfZAG1faXRlbToxOklHTWVzc2FnZAUlEOjEyNTAyNDAyNjQwOTMwOjM0MDI4MjM2Njg0MTcxMDMwMTI0NDI1ODE4NzUxOTk3OTcyODI5MjozMjM4NzQ4MDk1NTU2NDIxMjIzNDE1NjY3NTg0NzY4NDA5NgZDZD\"\n}"
 										}
 									]
+								},
+								{
+									"name": "Button Template",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"recipient\": {\n        \"id\": {{ig_scoped_id}}\n    },\n    \"message\": {\n        \"attachment\": {\n            \"type\": \"template\",\n            \"payload\": {\n  \"template_type\":\"button\",\n  \"text\":\"<MESSAGE_TEXT>\",\n  \"buttons\":[\n    <BUTTON_OBJECT>, \n    <BUTTON_OBJECT>, \n    ...\n  ]\n}\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://graph.instagram.com/{{api_version}}/{{ig_user_id}}/messages",
+											"protocol": "https",
+											"host": [
+												"graph",
+												"instagram",
+												"com"
+											],
+											"path": [
+												"{{api_version}}",
+												"{{ig_user_id}}",
+												"messages"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Button Template",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"recipient\": {\n        \"id\": {{ig_scoped_id}}\n    },\n    \"message\": {\n        \"attachment\": {\n            \"type\": \"template\",\n            \"payload\": {\n                \"template_type\": \"button\",\n                \"text\": \"What do you want to do next?\",\n                \"buttons\": [\n                    {\n                        \"type\": \"web_url\",\n                        \"url\": \"https://www.messenger.com\",\n                        \"title\": \"Visit Messenger\"\n                    }\n                ]\n            }\n        }\n    }\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "https://graph.instagram.com/{{api_version}}/{{ig_user_id}}/messages",
+													"protocol": "https",
+													"host": [
+														"graph",
+														"instagram",
+														"com"
+													],
+													"path": [
+														"{{api_version}}",
+														"{{ig_user_id}}",
+														"messages"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json; charset=UTF-8"
+												},
+												{
+													"key": "Vary",
+													"value": "Origin"
+												},
+												{
+													"key": "cross-origin-resource-policy",
+													"value": "cross-origin"
+												},
+												{
+													"key": "x-app-usage",
+													"value": "{\"call_volume\":0,\"cpu_time\":0}"
+												},
+												{
+													"key": "instagram-api-version",
+													"value": "v22.0"
+												},
+												{
+													"key": "Access-Control-Allow-Origin",
+													"value": "*"
+												},
+												{
+													"key": "Strict-Transport-Security",
+													"value": "max-age=31536000; preload; includeSubDomains"
+												},
+												{
+													"key": "Pragma",
+													"value": "no-cache"
+												},
+												{
+													"key": "Cache-Control",
+													"value": "private, no-cache, no-store, must-revalidate"
+												},
+												{
+													"key": "Expires",
+													"value": "Sat, 01 Jan 2000 00:00:00 GMT"
+												},
+												{
+													"key": "x-fb-request-id",
+													"value": "AQwUB5p6JMvfSCttSqB4sod"
+												},
+												{
+													"key": "x-fb-trace-id",
+													"value": "EO6SKp0bLlA"
+												},
+												{
+													"key": "x-fb-rev",
+													"value": "1026131876"
+												},
+												{
+													"key": "x-stack",
+													"value": "www"
+												},
+												{
+													"key": "X-FB-Debug",
+													"value": "rehU73StfwO7gQxQa0bcFRROnWVdUpy2mrJdMichjzzZr2TMi7s6ROIhriT6wi4hJo+DDogUWEd3Zbw+lvIR/w=="
+												},
+												{
+													"key": "Date",
+													"value": "Wed, 20 Aug 2025 22:34:54 GMT"
+												},
+												{
+													"key": "X-FB-Connection-Quality",
+													"value": "EXCELLENT; q=0.9, rtt=28, rtx=0, c=14, mss=1208, tbw=3288, tp=-1, tpl=-1, uplat=1166, ullat=0"
+												},
+												{
+													"key": "Alt-Svc",
+													"value": "h3=\":443\"; ma=86400"
+												},
+												{
+													"key": "Connection",
+													"value": "keep-alive"
+												},
+												{
+													"key": "Content-Length",
+													"value": "209"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"recipient_id\": \"20802401916297\",\n    \"message_id\": \"aWdfZAG1faXRlbToxOklHTWVzc2FnZAUlEOjEyNTAyNDAyNjQwOTMwOjM0MDI4MjM2Njg0MTcxMDMwMTI0NDI1ODE4NzUxOTk3OTcyODI5MjozMjM4NzQ4ODk0Njg5MDkwMzc2NTc5NDI0MzU4NjU1NTkwNAZDZD\"\n}"
+										}
+									]
 								}
 							],
-							"description": "## Generic Template\n\nThe generic template allows you to send a structured message that includes an image, text and buttons. A generic template with multiple templates described in the [<code>elements</code>](https://developers.facebook.com/docs/messenger-platform/instagram/features/generic-template#elements) array will send a horizontally scrollable carousel of items, each composed of an image, text and buttons."
+							"description": "## Generic Template\n\nThe generic template allows you to send a structured message that includes an image, text and buttons. A generic template with multiple templates described in the [<code>elements</code>](https://developers.facebook.com/docs/messenger-platform/instagram/features/generic-template#elements) array will send a horizontally scrollable carousel of items, each composed of an image, text and buttons.\n\n## Button Template\n\nThe button template sends a text message with up to three attached buttons. This template is useful for offering the message recipient options to choose from, such as predetermined responses to a question, or actions to take."
 						},
 						{
 							"name": "Text Message",
