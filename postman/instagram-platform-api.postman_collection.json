@@ -1263,6 +1263,368 @@
 						}
 					],
 					"description": "The Send API enables your app users to send and receive messages between their Instagram professional account and their customers, potential customers, and followers.\n\n#### An Instagram user sends a message\n\nConversations only begin when an Instagram user sends a message to your app user through your app user's Instagram Feed, posts, story mentions, and other channels.\n\n#### Instagram Inbox\n\nAn Instagram professional account has a messaging inbox that allows the user to organize messages and control message notifications however when using the API the behavior will be a little different.\n\n- **General** – Only after your app user to respond to a message, using your app, is the conversation moved to the General folder, regardless of the inbox settings.\n    \n- **Primary** – All new conversations from followers will initially appear in the Primary folder.\n    \n- **Requests** – All new conversations from Instagram users who aren't followers of your app user will appear in the Requests folder.\n    \n\n[Learn more about the Instagram Inbox.](https://www.facebook.com/business/help/1264898753662278)\n\n### Before You Start\n\nYou will need:\n\n- An access token requested by the IG professional account who can send message to a user on the platform\n    \n- The `instagram_business_manage_messages` permission\n    \n- The message recipient user must have sent a message to your IG professional account\n    \n\n## Environment\n\nThis collection has a corresponding **Instagram Platform API** Postman [environment](https://learning.postman.com/docs/sending-requests/managing-environments/) which you must select when using the collection. Set **current values** for the variables defined in this environment if you wish to perform the queries in the collection.\n\n### Access tokens\n\nThe API supports both user and system user access tokens. You can get access tokens 3 different ways:\n\n- [Facebook login](https://developers.facebook.com/docs/facebook-login/overview) for your app\n    \n- [App Dashboard](https://developers.facebook.com/apps)\n    \n- [Graph API Explorer](https://developers.facebook.com/tools/explorer/)\n    \n\n### Limitations\n\n- Your app user must own any media or posts to be used in the message.\n    \n- Group messaging is not supported. An Instagram professional account can only converse with one customer per conversation.\n    \n- Messages in the Requests folder that have not been active for 30 days will not be returned in API calls.\n    \n- Only the URL for the shared media or post is included in the webhooks notification when a customer sends a message with a share.\n    \n- Your app testers must have a role on your app, grant your app access to all the required permissions, and have a role on the Instagram professional account that owns the app."
+				},
+				{
+					"name": "Welcome Message Flows API",
+					"item": [
+						{
+							"name": "Get all flows",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://graph.instagram.com/{{api_version}}/{{ig_user_id}}/welcome_message_flows",
+									"protocol": "https",
+									"host": [
+										"graph",
+										"instagram",
+										"com"
+									],
+									"path": [
+										"{{api_version}}",
+										"{{ig_user_id}}",
+										"welcome_message_flows"
+									]
+								},
+								"description": "Use this request to get a list of Welcome Message Flows for the given instagram business user.\n\nOn success, your app will receive a list of flows created for that particular app."
+							},
+							"response": [
+								{
+									"name": "Get all flows",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://graph.instagram.com/{{api_version}}/{{ig_user_id}}/welcome_message_flows",
+											"protocol": "https",
+											"host": [
+												"graph",
+												"instagram",
+												"com"
+											],
+											"path": [
+												"{{api_version}}",
+												"{{ig_user_id}}",
+												"welcome_message_flows"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [],
+									"cookie": [],
+									"body": "{\n    \"data\": [\n        {\n            \"name\": \"Customer intake flow\",\n            \"eligible_platforms\": [\n                \"INSTAGRAM\"\n            ],\n            \"welcome_message_flow\": \"[{\\\"message\\\":{\\\"text\\\":\\\"Learn more about our summer sale!\\\",\\\"quick_replies\\\":[{\\\"title\\\":\\\"I am interested!\\\",\\\"content_type\\\":\\\"text\\\",\\\"payload\\\":\\\"summer-sale-interest\\\"},{\\\"title\\\":\\\"I have another quest...\\\",\\\"content_type\\\":\\\"text\\\",\\\"payload\\\":\\\"another-question\\\"}]}}]\",\n            \"last_update_time\": \"2025-08-14T19:06:34+0000\",\n            \"is_used_in_ad\": false,\n            \"id\": \"<flow_id_1>\"\n        },\n        {\n            \"name\": \"New customer welcome flow\",\n            \"eligible_platforms\": [\n                \"INSTAGRAM\"\n            ],\n            \"welcome_message_flow\": \"[{\\\"message\\\":{\\\"text\\\":\\\"Welcome to our community!\\\"}}]\",\n            \"last_update_time\": \"2024-10-10T20:44:04+0000\",\n            \"is_used_in_ad\": false,\n            \"id\": \"<flow_id_2>\"\n        }\n    ],\n    \"paging\": {\n        \"cursors\": {\n            \"before\": \"<before_cursor_hash>\",\n            \"after\": \"<after_cursor_hash>\"\n        }\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Get a specific flow",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://graph.instagram.com/{{api_version}}/{{ig_user_id}}/welcome_message_flows?flow_id={{flow_id}}",
+									"protocol": "https",
+									"host": [
+										"graph",
+										"instagram",
+										"com"
+									],
+									"path": [
+										"{{api_version}}",
+										"{{ig_user_id}}",
+										"welcome_message_flows"
+									],
+									"query": [
+										{
+											"key": "flow_id",
+											"value": "{{flow_id}}"
+										}
+									]
+								},
+								"description": "Use this request to get a particular Welcome Message Flows for the given instagram business user, using the flow_id.\n\nOn success, your app will receive the flow in JSON format."
+							},
+							"response": [
+								{
+									"name": "Get a specific flow",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://graph.instagram.com/{{api_version}}/{{ig_user_id}}/welcome_message_flows?flow_id={{flow_id}}",
+											"protocol": "https",
+											"host": [
+												"graph",
+												"instagram",
+												"com"
+											],
+											"path": [
+												"{{api_version}}",
+												"{{ig_user_id}}",
+												"welcome_message_flows"
+											],
+											"query": [
+												{
+													"key": "flow_id",
+													"value": "{{flow_id}}"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [],
+									"cookie": [],
+									"body": "{\n    \"data\": [\n        {\n            \"name\": \"Customer intake flow - updated for Winter 2025\",\n            \"eligible_platforms\": [\n                \"INSTAGRAM\"\n            ],\n            \"welcome_message_flow\": \"[{\\\"message\\\":{\\\"text\\\":\\\"Learn more about our new winter sale!\\\",\\\"quick_replies\\\":[{\\\"title\\\":\\\"I am interested!\\\",\\\"content_type\\\":\\\"text\\\",\\\"payload\\\":\\\"winter-sale-interest\\\"},{\\\"title\\\":\\\"I have another quest...\\\",\\\"content_type\\\":\\\"text\\\",\\\"payload\\\":\\\"another-question\\\"}]}}]\",\n            \"last_update_time\": \"2025-08-14T19:11:44+0000\",\n            \"is_used_in_ad\": false,\n            \"id\": \"<flow_id_1>\"\n        }\n    ],\n    \"paging\": {\n        \"cursors\": {\n            \"before\": \"<before_cursor_hash>\",\n            \"after\": \"<after_cursor_hash>\"\n        }\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Create a new flow",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Customer intake flow\",\n    \"welcome_message_flow\": [\n        {\n            \"message\": {\n                \"text\": \"Learn more about our summer sale!\",\n                \"quick_replies\": [\n                    {\n                        \"content_type\": \"text\",\n                        \"title\": \"I am interested!\",\n                        \"payload\": \"summer-sale-interest\"\n                    },\n                    {\n                        \"content_type\": \"text\",\n                        \"title\": \"I have another question.\",\n                        \"payload\": \"another-question\"\n                    }\n                ]\n            }\n        }\n    ],\n    \"eligible_platforms\" : [\n        \"instagram\"\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://graph.instagram.com/{{api_version}}/{{ig_user_id}}/welcome_message_flows",
+									"protocol": "https",
+									"host": [
+										"graph",
+										"instagram",
+										"com"
+									],
+									"path": [
+										"{{api_version}}",
+										"{{ig_user_id}}",
+										"welcome_message_flows"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Create a new flow",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"Customer intake flow\",\n    \"welcome_message_flow\": [\n        {\n            \"message\": {\n                \"text\": \"Learn more about our summer sale!\",\n                \"quick_replies\": [\n                    {\n                        \"content_type\": \"text\",\n                        \"title\": \"I am interested!\",\n                        \"payload\": \"summer-sale-interest\"\n                    },\n                    {\n                        \"content_type\": \"text\",\n                        \"title\": \"I have another question.\",\n                        \"payload\": \"another-question\"\n                    }\n                ]\n            }\n        }\n    ],\n    \"eligible_platforms\" : [\n        \"instagram\"\n    ]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://graph.instagram.com/{{api_version}}/{{ig_user_id}}/welcome_message_flows",
+											"protocol": "https",
+											"host": [
+												"graph",
+												"instagram",
+												"com"
+											],
+											"path": [
+												"{{api_version}}",
+												"{{ig_user_id}}",
+												"welcome_message_flows"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [],
+									"cookie": [],
+									"body": "{\n    \"flow_id\": \"1234567890\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Update an existing flow",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Customer intake flow - updated for Winter 2025\",\n    \"welcome_message_flow\": [\n        {\n            \"message\": {\n                \"text\": \"Learn more about our new winter sale!\",\n                \"quick_replies\": [\n                    {\n                        \"content_type\": \"text\",\n                        \"title\": \"I am interested!\",\n                        \"payload\": \"winter-sale-interest\"\n                    },\n                    {\n                        \"content_type\": \"text\",\n                        \"title\": \"I have another question.\",\n                        \"payload\": \"another-question\"\n                    }\n                ]\n            }\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://graph.instagram.com/{{api_version}}/{{ig_user_id}}/welcome_message_flows?flow_id={{flow_id}}",
+									"protocol": "https",
+									"host": [
+										"graph",
+										"instagram",
+										"com"
+									],
+									"path": [
+										"{{api_version}}",
+										"{{ig_user_id}}",
+										"welcome_message_flows"
+									],
+									"query": [
+										{
+											"key": "flow_id",
+											"value": "{{flow_id}}"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Update an existing flow",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"Customer intake flow - updated for Winter 2025\",\n    \"welcome_message_flow\": [\n        {\n            \"message\": {\n                \"text\": \"Learn more about our new winter sale!\",\n                \"quick_replies\": [\n                    {\n                        \"content_type\": \"text\",\n                        \"title\": \"I am interested!\",\n                        \"payload\": \"winter-sale-interest\"\n                    },\n                    {\n                        \"content_type\": \"text\",\n                        \"title\": \"I have another question.\",\n                        \"payload\": \"another-question\"\n                    }\n                ]\n            }\n        }\n    ]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://graph.instagram.com/{{api_version}}/{{ig_user_id}}/welcome_message_flows?flow_id={{flow_id}}",
+											"protocol": "https",
+											"host": [
+												"graph",
+												"instagram",
+												"com"
+											],
+											"path": [
+												"{{api_version}}",
+												"{{ig_user_id}}",
+												"welcome_message_flows"
+											],
+											"query": [
+												{
+													"key": "flow_id",
+													"value": "{{flow_id}}"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [],
+									"cookie": [],
+									"body": "{\n    \"success\": true\n}"
+								}
+							]
+						},
+						{
+							"name": "Delete an existing flow",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://graph.instagram.com/{{api_version}}/{{ig_user_id}}/welcome_message_flows?flow_id={{flow_id}}",
+									"protocol": "https",
+									"host": [
+										"graph",
+										"instagram",
+										"com"
+									],
+									"path": [
+										"{{api_version}}",
+										"{{ig_user_id}}",
+										"welcome_message_flows"
+									],
+									"query": [
+										{
+											"key": "flow_id",
+											"value": "{{flow_id}}"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Delete an existing flow",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://graph.instagram.com/{{api_version}}/{{ig_user_id}}/welcome_message_flows?flow_id={{flow_id}}",
+											"protocol": "https",
+											"host": [
+												"graph",
+												"instagram",
+												"com"
+											],
+											"path": [
+												"{{api_version}}",
+												"{{ig_user_id}}",
+												"welcome_message_flows"
+											],
+											"query": [
+												{
+													"key": "flow_id",
+													"value": "{{flow_id}}"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [],
+									"cookie": [],
+									"body": "{\n    \"success\": true\n}"
+								}
+							]
+						}
+					],
+					"description": "When creating ads that Click to Messenger or Click to Instagram Direct, you can connect a message flow from a messaging partner app. A message flow can include text, images, emoji, buttons, and other message types supported by the [Messenger Send API](https://developers.facebook.com/docs/messenger-platform/reference/send-api) or [Instagram Messaging API](https://developers.facebook.com/docs/messenger-platform/instagram).\n\n### Before You Start\n\nYou will need:\n\n- An access token requested by the IG professional account who can send message to a user on the platform\n    \n- The `instagram_business_manage_messages` permission\n    \n\n## Environment\n\nThis collection has a corresponding **Instagram Platform API** Postman [environment](https://learning.postman.com/docs/sending-requests/managing-environments/) which you must select when using the collection. Set **current values** for the variables defined in this environment if you wish to perform the queries in the collection.\n\n### Access tokens\n\nThe API supports both user and system user access tokens. You can get access tokens 3 different ways:\n\n- [Facebook login](https://developers.facebook.com/docs/facebook-login/overview) for your app\n    \n- [App Dashboard](https://developers.facebook.com/apps)\n    \n- [Graph API Explorer](https://developers.facebook.com/tools/explorer/)\n    \n\n## What to do after setting up the Welcome Message Flows\n\n## Ads Manager experience\n\nOnce welcome message flows have been successfully submitted over the API, they will show up in Ads Manager for messaging destinations within the Engagement and Sales objectives. The flows will show up in the Partner App option within the Message Template section of the Ad Creative.\n\n### Example use\n\nIn the Message Template section of the Ad Creative, select Partner App.\n\n<img src=\"https://content.pstmn.io/ece28905-cf9f-4e77-9f7e-ed26b7024425/aW1hZ2UucG5n\" width=\"1224\" height=\"1116\">\n\nSelect the appropriate messaging Partner App.\n\n<img src=\"https://content.pstmn.io/4c86fad3-30d7-4854-bf25-5e5daa4353f4/aW1hZ2UucG5n\" alt=\"\" height=\"1192\" width=\"1218\">\n\nSelect the Welcome Message Flow that you submitted via the API.\n\n<img src=\"https://content.pstmn.io/22473018-baff-4086-ba4e-b321f96885b0/aW1hZ2UucG5n\" alt=\"\" height=\"1214\" width=\"1224\">\n\nPreview your message flow.\n\n<img src=\"https://content.pstmn.io/3eee8361-fd24-4bd5-9955-b719ab102d45/aW1hZ2UucG5n\" alt=\"\" height=\"1228\" width=\"1218\">\n\n## Marketing API Experience\n\nOnce welcome message flows have been successfully submitted over the API, the flow ID can be used to configure ads through the marketing API.\n\nIn the ad creative, the flow ID can be set as follows:\n\n```\n{\n  \"name\": \"creative\",\n  \"object_story_spec\": {...},\n  \"asset_feed_spec\": {\n    \"additional_data\": {\n      \"partner_app_welcome_message_flow_id\": \"<FLOW_ID_RETURNED_FROM_POST_REQUEST>\"\n    }\n  }\n}\n\n ```\n\nFor more information about messaging ads, please refer to [Messaging Ads](https://developers.facebook.com/docs/marketing-api/ad-creative/messaging-ads) in the Marketing API documentation."
 				}
 			],
 			"description": "The Instagram API with Instagram Login allows [Instagram professionals&nbsp;](https://l.facebook.com/l.php?u=https%3A%2F%2Fhelp.instagram.com%2F502981923235522&h=AT1ASpREEMXxdykVj-QP02tVKNkwcQ2Nl_x7xvxvGksvpWqS9BdgBQWeiclc-oXzvNfRm2dFdyjLoT6H4G8w3pjkha7gUXpIuem8PhB40ANXErLcEtpZQl2CvQlavHzKidjr7Jycg6fERoByzvOzQG8vWcM)  — businesses and creators — to use your app to manage their presence on Instagram.\n\n## Limitations\n\n- This API setup cannot access ads or tagging.\n    \n\n## Access Token Permissions needed\n\nThese are the permissions needed for the requests in this collection:\n\n- `instagram_business_basic`\n    \n- `instagram_business_manage_messages`\n    \n- `instagram_business_manage_comments`\n    \n- `instagram_business_content_publish`"
