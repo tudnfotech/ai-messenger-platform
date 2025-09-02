@@ -1625,6 +1625,431 @@
 						}
 					],
 					"description": "When creating ads that Click to Messenger or Click to Instagram Direct, you can connect a message flow from a messaging partner app. A message flow can include text, images, emoji, buttons, and other message types supported by the [Messenger Send API](https://developers.facebook.com/docs/messenger-platform/reference/send-api) or [Instagram Messaging API](https://developers.facebook.com/docs/messenger-platform/instagram).\n\n### Before You Start\n\nYou will need:\n\n- An access token requested by the IG professional account who can send message to a user on the platform\n    \n- The `instagram_business_manage_messages` permission\n    \n\n## Environment\n\nThis collection has a corresponding **Instagram Platform API** Postman [environment](https://learning.postman.com/docs/sending-requests/managing-environments/) which you must select when using the collection. Set **current values** for the variables defined in this environment if you wish to perform the queries in the collection.\n\n### Access tokens\n\nThe API supports both user and system user access tokens. You can get access tokens 3 different ways:\n\n- [Facebook login](https://developers.facebook.com/docs/facebook-login/overview) for your app\n    \n- [App Dashboard](https://developers.facebook.com/apps)\n    \n- [Graph API Explorer](https://developers.facebook.com/tools/explorer/)\n    \n\n## What to do after setting up the Welcome Message Flows\n\n## Ads Manager experience\n\nOnce welcome message flows have been successfully submitted over the API, they will show up in Ads Manager for messaging destinations within the Engagement and Sales objectives. The flows will show up in the Partner App option within the Message Template section of the Ad Creative.\n\n### Example use\n\nIn the Message Template section of the Ad Creative, select Partner App.\n\n<img src=\"https://content.pstmn.io/ece28905-cf9f-4e77-9f7e-ed26b7024425/aW1hZ2UucG5n\" width=\"1224\" height=\"1116\">\n\nSelect the appropriate messaging Partner App.\n\n<img src=\"https://content.pstmn.io/4c86fad3-30d7-4854-bf25-5e5daa4353f4/aW1hZ2UucG5n\" alt=\"\" height=\"1192\" width=\"1218\">\n\nSelect the Welcome Message Flow that you submitted via the API.\n\n<img src=\"https://content.pstmn.io/22473018-baff-4086-ba4e-b321f96885b0/aW1hZ2UucG5n\" alt=\"\" height=\"1214\" width=\"1224\">\n\nPreview your message flow.\n\n<img src=\"https://content.pstmn.io/3eee8361-fd24-4bd5-9955-b719ab102d45/aW1hZ2UucG5n\" alt=\"\" height=\"1228\" width=\"1218\">\n\n## Marketing API Experience\n\nOnce welcome message flows have been successfully submitted over the API, the flow ID can be used to configure ads through the marketing API.\n\nIn the ad creative, the flow ID can be set as follows:\n\n```\n{\n  \"name\": \"creative\",\n  \"object_story_spec\": {...},\n  \"asset_feed_spec\": {\n    \"additional_data\": {\n      \"partner_app_welcome_message_flow_id\": \"<FLOW_ID_RETURNED_FROM_POST_REQUEST>\"\n    }\n  }\n}\n\n ```\n\nFor more information about messaging ads, please refer to [Messaging Ads](https://developers.facebook.com/docs/marketing-api/ad-creative/messaging-ads) in the Marketing API documentation."
+				},
+				{
+					"name": "Messenger Profile API",
+					"item": [
+						{
+							"name": "Create Ice Breakers",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "platform",
+											"value": "instagram",
+											"type": "text"
+										},
+										{
+											"key": "ice_breakers",
+											"value": "[\n    {\n      \"question\": \"What is your favorite sport?\",\n      \"payload\": \"<PAYLOAD_FOR_QUESTION_1>\"\n    },\n    {\n      \"question\": \"What is the capital of USA?\",\n      \"payload\": \"<PAYLOAD_FOR_QUESTION_2>\"\n    }\n  ]",
+											"description": "This is a required param",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://graph.instagram.com/{{api_version}}/{{ig_user_id}}/messenger_profile",
+									"protocol": "https",
+									"host": [
+										"graph",
+										"instagram",
+										"com"
+									],
+									"path": [
+										"{{api_version}}",
+										"{{ig_user_id}}",
+										"messenger_profile"
+									]
+								},
+								"description": "To create ice breakers, send a `POST` request to the `/messenger_profile` endpoint, where is the ID for your app user's Instagram professional account, and include the `platform` property set to `instagram` and the `ice_breakers` property with a `call_to_actions` array of `question` and `payload` objects."
+							},
+							"response": [
+								{
+									"name": "Create Ice Breakers",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "https://graph.instagram.com/v23.0/me/messenger_profile",
+											"protocol": "https",
+											"host": [
+												"graph",
+												"instagram",
+												"com"
+											],
+											"path": [
+												"v23.0",
+												"me",
+												"messenger_profile"
+											]
+										}
+									},
+									"_postman_previewlanguage": "",
+									"header": [],
+									"cookie": [
+										{
+											"expires": "Invalid Date",
+											"domain": "",
+											"path": ""
+										}
+									],
+									"body": "{\n    \"result\": \"success\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Get Ice Breakers",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://graph.instagram.com/{{api_version}}/{{ig_user_id}}/messenger_profile?fields=ice_breakers",
+									"protocol": "https",
+									"host": [
+										"graph",
+										"instagram",
+										"com"
+									],
+									"path": [
+										"{{api_version}}",
+										"{{ig_user_id}}",
+										"messenger_profile"
+									],
+									"query": [
+										{
+											"key": "fields",
+											"value": "ice_breakers"
+										}
+									]
+								},
+								"description": "To get a list of your ice breakers, send a `GET` request to the `/me/messenger_profile` endpoint, where `me` is the ID for your app user's Instagram professional account, with the `fields` parameter set to `ice_breakers`."
+							},
+							"response": [
+								{
+									"name": "Get Ice Breakers",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://graph.instagram.com/v23.0/me/messenger_profile?fields=ice_breakers",
+											"protocol": "https",
+											"host": [
+												"graph",
+												"instagram",
+												"com"
+											],
+											"path": [
+												"v23.0",
+												"me",
+												"messenger_profile"
+											],
+											"query": [
+												{
+													"key": "fields",
+													"value": "ice_breakers",
+													"description": "Set `fields` parameter to `ice_breakers`"
+												}
+											]
+										}
+									},
+									"_postman_previewlanguage": "",
+									"header": [],
+									"cookie": [
+										{
+											"expires": "Invalid Date",
+											"domain": "",
+											"path": ""
+										}
+									],
+									"body": "{\n   \"data\": [\n        {\n          \"call_to_actions\" : [\n               {\n                \"question\": \"<QUESTION_1>\",\n                \"payload\": \"<PAYLOAD_1>\",\n             \n               },\n               {\n                \"question\": \"<QUESTION_2>\",\n                \"payload\": \"<PAYLOAD_2>\",\n             \n               },\n          ],\n          \"locale\": \"<LOCALE_1>\",\n      },\n      {\n          \"call_to_actions\" : [\n               {\n                \"question\": \"<QUESTION_3>\",\n                \"payload\": \"<PAYLOAD_3>\",\n             \n               },\n               {\n                \"question\": \"<QUESTION_4>\",\n                \"payload\": \"<PAYLOAD_4>\",\n             \n               },\n          ],\n          \"locale\": \"<LOCALE_2>\",\n      }\n   ]\n}"
+								}
+							]
+						},
+						{
+							"name": "Delete Ice Breakers",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://graph.instagram.com/{{api_version}}/{{ig_user_id}}/messenger_profile?fields=['ice_breakers']",
+									"protocol": "https",
+									"host": [
+										"graph",
+										"instagram",
+										"com"
+									],
+									"path": [
+										"{{api_version}}",
+										"{{ig_user_id}}",
+										"messenger_profile"
+									],
+									"query": [
+										{
+											"key": "fields",
+											"value": "['ice_breakers']"
+										}
+									]
+								},
+								"description": "To delete ice breakers, send a `DELETE` request to the `//messenger_profile` endpoint, where  is the ID for your app user's Instagram professional account, with the `fields` parameter set to an array that includes `ice_breakers`."
+							},
+							"response": [
+								{
+									"name": "Delete Ice Breakers",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "https://graph.instagram.com/v23.0/me/messenger_profile?fields=['ice_breakers']",
+											"protocol": "https",
+											"host": [
+												"graph",
+												"instagram",
+												"com"
+											],
+											"path": [
+												"v23.0",
+												"me",
+												"messenger_profile"
+											],
+											"query": [
+												{
+													"key": "fields",
+													"value": "['ice_breakers']"
+												}
+											]
+										}
+									},
+									"_postman_previewlanguage": "",
+									"header": [],
+									"cookie": [
+										{
+											"expires": "Invalid Date",
+											"domain": "",
+											"path": ""
+										}
+									],
+									"body": "{\n    \"result\": \"success\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Set Persistent Menu",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "persistent_menu",
+											"value": "[\n        {\n            \"locale\": \"default\",\n            \"call_to_actions\": [\n                {\n                    \"type\": \"postback\",\n                    \"title\": \"Talk to an agent\",\n                    \"payload\": \"CARE_HELP\"\n                },\n                {\n                    \"type\": \"postback\",\n                    \"title\": \"Outfit suggestions\",\n                    \"payload\": \"CURATION\"\n                },\n                {\n                    \"type\": \"web_url\",\n                    \"title\": \"Shop now\",\n                    \"url\": \"https://www.originalcoastclothing.com/\"\n                 \n                }\n            ],\n        }\n    ]",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://graph.instagram.com/{{api_version}}/{{ig_user_id}}/messenger_profile",
+									"protocol": "https",
+									"host": [
+										"graph",
+										"instagram",
+										"com"
+									],
+									"path": [
+										"{{api_version}}",
+										"{{ig_user_id}}",
+										"messenger_profile"
+									]
+								},
+								"description": "To set a persistent menu, send a `POST` request to the `//messenger_profile` endpoint with the `platform` property set to `instagram` and `persistent_menu` property with `composer_input_disabled` set to `false`, `locale` set to `default` or the locale of your choice, and an array of `call_to_action` objects. Each `call_to_action` object defines a menu item with the following parameters:\n\n- `title` set to the button text\n    \n- `type` set to `postback` or `web_url` button type\n    \n- `payload` for a `postback` button or `url` for a `web_url` button\n    \n- `webview_height_ratio` set to `full` for `web_url` buttons\n    \n\n### Localize a menu\n\nTo localize a menu, create a `call_to_actions` array for each locale. The locale code is a combination of ISO 639-1 language code and ISO 3166-1 country code."
+							},
+							"response": [
+								{
+									"name": "Set Persistent Menu",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "?persistent_menu=[\n        {\n            \"locale\": \"default\",\n            \"call_to_actions\": [\n                {\n                    \"type\": \"postback\",\n                    \"title\": \"Talk to an agent\",\n                    \"payload\": \"CARE_HELP\"\n                },\n                {\n                    \"type\": \"postback\",\n                    \"title\": \"Outfit suggestions\",\n                    \"payload\": \"CURATION\"\n                },\n                {\n                    \"type\": \"web_url\",\n                    \"title\": \"Shop now\",\n                    \"url\": \"https://www.originalcoastclothing.com/\"\n                 \n                }\n            ],\n        }\n    ]",
+											"query": [
+												{
+													"key": "persistent_menu",
+													"value": "[\n        {\n            \"locale\": \"default\",\n            \"call_to_actions\": [\n                {\n                    \"type\": \"postback\",\n                    \"title\": \"Talk to an agent\",\n                    \"payload\": \"CARE_HELP\"\n                },\n                {\n                    \"type\": \"postback\",\n                    \"title\": \"Outfit suggestions\",\n                    \"payload\": \"CURATION\"\n                },\n                {\n                    \"type\": \"web_url\",\n                    \"title\": \"Shop now\",\n                    \"url\": \"https://www.originalcoastclothing.com/\"\n                 \n                }\n            ],\n        }\n    ]"
+												}
+											]
+										}
+									},
+									"_postman_previewlanguage": "",
+									"header": [],
+									"cookie": [
+										{
+											"expires": "Invalid Date",
+											"domain": "",
+											"path": ""
+										}
+									],
+									"body": "{\n    \"result\": \"success\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Get Persistent Menu",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://graph.instagram.com/{{api_version}}/{{ig_user_id}}/messenger_profile?fields=persistent_menu",
+									"protocol": "https",
+									"host": [
+										"graph",
+										"instagram",
+										"com"
+									],
+									"path": [
+										"{{api_version}}",
+										"{{ig_user_id}}",
+										"messenger_profile"
+									],
+									"query": [
+										{
+											"key": "fields",
+											"value": "persistent_menu"
+										}
+									]
+								},
+								"description": "To get a list of your ice breakers, send a `GET` request to the `/me/messenger_profile` endpoint, where `me` is the ID for your app user's Instagram professional account, with the `fields` parameter set to `ice_breakers`."
+							},
+							"response": [
+								{
+									"name": "Get Persistent Menu",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://graph.instagram.com/v23.0/me/messenger_profile?fields=ice_breakers",
+											"protocol": "https",
+											"host": [
+												"graph",
+												"instagram",
+												"com"
+											],
+											"path": [
+												"v23.0",
+												"me",
+												"messenger_profile"
+											],
+											"query": [
+												{
+													"key": "fields",
+													"value": "ice_breakers",
+													"description": "Set `fields` parameter to `ice_breakers`"
+												}
+											]
+										}
+									},
+									"_postman_previewlanguage": "",
+									"header": [],
+									"cookie": [
+										{
+											"expires": "Invalid Date",
+											"domain": "",
+											"path": ""
+										}
+									],
+									"body": "{\n    \"data\": [\n        {\n            \"persistent_menu\": [\n                {\n                    \"locale\": \"default\",\n                    \"call_to_actions\": [\n                        {\n                            \"type\": \"postback\",\n                            \"title\": \"Talk to an agent\",\n                            \"payload\": \"CARE_HELP\"\n                        },\n                        {\n                            \"type\": \"postback\",\n                            \"title\": \"Outfit suggestions\",\n                            \"payload\": \"CURATION\"\n                        },\n                        {\n                            \"type\": \"web_url\",\n                            \"title\": \"Shop now\",\n                            \"url\": \"https://www.originalcoastclothing.com/\"\n                        }\n                    ]\n                }\n            ]\n        }\n    ]\n}"
+								}
+							]
+						},
+						{
+							"name": "Delete Persistent Menu",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://graph.instagram.com/{{api_version}}/{{ig_user_id}}/messenger_profile?fields=['persistent_menu']",
+									"protocol": "https",
+									"host": [
+										"graph",
+										"instagram",
+										"com"
+									],
+									"path": [
+										"{{api_version}}",
+										"{{ig_user_id}}",
+										"messenger_profile"
+									],
+									"query": [
+										{
+											"key": "fields",
+											"value": "['persistent_menu']"
+										}
+									]
+								},
+								"description": "To delete ice breakers, send a `DELETE` request to the `//messenger_profile` endpoint, where  is the ID for your app user's Instagram professional account, with the `fields` parameter set to an array that includes `ice_breakers`."
+							},
+							"response": [
+								{
+									"name": "Delete Persistent Menu",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "https://graph.instagram.com/v23.0/me/messenger_profile?fields=['persistent_menu']",
+											"protocol": "https",
+											"host": [
+												"graph",
+												"instagram",
+												"com"
+											],
+											"path": [
+												"v23.0",
+												"me",
+												"messenger_profile"
+											],
+											"query": [
+												{
+													"key": "fields",
+													"value": "['persistent_menu']"
+												}
+											]
+										}
+									},
+									"_postman_previewlanguage": "",
+									"header": [],
+									"cookie": [
+										{
+											"expires": "Invalid Date",
+											"domain": "",
+											"path": ""
+										}
+									],
+									"body": "{\n    \"result\": \"success\"\n}"
+								}
+							]
+						}
+					],
+					"description": "The Messenger Profile API provides endpoints to configure and manage key conversational features for Instagram Direct Messaging, including:\n\n- **Icebreakers**: Predefined questions that appear at the start of a conversation to help guide users and automate common queries.\n    \n- **Persistent Menu**: An always-available menu in the chat interface, allowing users to access core actions or information at any time.\n    \n\n# Ice Breakers\n\n| Ice Breakers provide a way for your app users to start a conversation with a business with a list of frequently asked questions. A maximum of 4 questions can be set via the Ice Breaker API.<br><br>This feature is currently not available on desktop.<br><br>## Requirements<br><br>This guide assumes you have read the [Instagram Platform Overview](https://developers.facebook.com/docs/instagram-platform/overview) and implemented the needed components for using this API, such as a Meta login flow and a webhooks server to receive notifications.<br><br>You will need the following:<br><br>#### Access Level<br><br>- Advanced Access if your app serves Instagram professional accounts you don't own or manage<br>    <br>- Standard Access if your app serves Instagram professional accounts you own or manage and have added to your app in the App Dashboard<br>    <br><br>#### Access tokens<br><br>- An Instagram User access token requested from a person who can manage comments on the Instagram professional account<br>    <br><br>#### Base URL<br><br>All endpoints can be accessed via the `graph.instagram.com` host.<br><br>#### Endpoints<br><br>- [<code>GET /<your_app_users_your_app_users_ig_id>/messenger_profile</your_app_users_your_app_users_ig_id></code>](https://developers.facebook.com/docs/instagram-platform/reference/ig-user)<br>    <br>- [<code>POST /<your_app_users_your_app_users_ig_id>/messenger_profile</your_app_users_your_app_users_ig_id></code>](https://developers.facebook.com/docs/instagram-platform/reference/ig-user)<br>    <br>- [<code>DELETE /<your_app_users_your_app_users_ig_id>/messenger_profile</your_app_users_your_app_users_ig_id></code>](https://developers.facebook.com/docs/instagram-platform/reference/ig-user)<br>    <br><br>You can also use the `/me/messenger_profile` endpoints. | <img src=\"https://scontent-sjc3-1.xx.fbcdn.net/v/t39.2365-6/118818823_700834857168298_1003772079812652258_n.png?_nc_cat=110&amp;ccb=1-7&amp;_nc_sid=e280be&amp;_nc_ohc=ObmabLGm1VEQ7kNvwFH5yqf&amp;_nc_oc=AdnrM6hQEys0pXe7yojSsHY4TNyQu83x7DDGKZuM2xKZq0Mlv9-EFJpuMeUBXHqx1MLdcVVMAgPjrWeF2tKX2ciW&amp;_nc_zt=14&amp;_nc_ht=scontent-sjc3-1.xx&amp;_nc_gid=ZvY_9OyGKAIXzbtNKRq9cA&amp;oh=00_AfXk9GklFFx1koLNz1T76-lHp5m7V358eEUDm3fzwA-EAA&amp;oe=68CFFF5E\" alt=\"\"> |\n\n#### IDs\n\n- The ID for your app user's Instagram professional account\n    \n\n#### Permissions\n\n- `instagram_business_basic`\n    \n- `instagram_business_manage_messages`\n    \n\n#### Webhook event subscriptions\n\n- `messages`\n    \n- `messaging_postbacks`\n    \n\n---\n\n# The Persistent Menu\n\n| The Persistent Menu allows you to create a menu of the main features of your business, such as hours of operation, store locations, and products, that is always visible in a person's Instagram conversation with your business.<br><br>When a person clicks an item in the menu, a `postback` webhook notification is sent to your server, with information about what item was select and by whom, and the standard messaging window opens. You have 24 hours to respond to the person after the CTA. | <img src=\"https://scontent-sjc6-1.xx.fbcdn.net/v/t39.8562-6/274682791_507543544063430_8065749697228031629_n.png?_nc_cat=101&amp;ccb=1-7&amp;_nc_sid=f537c7&amp;_nc_ohc=bxEY4FtK5ygQ7kNvwGZx2KN&amp;_nc_oc=AdmSy93omRzuuEnbygk-pWRbKfVCwicXAvMxJlJfk2oCMiKy8lz7uD_gwfJUPFCuQjhz-2vIR4vywfUTna3o2jgv&amp;_nc_zt=14&amp;_nc_ht=scontent-sjc6-1.xx&amp;_nc_gid=f_kt9CAXEBZ41_e2fTOy_g&amp;oh=00_AfVedpCTrEZ78Mo0sSnq-MQClUElwjV8tUBD-7redOo9Zg&amp;oe=68BB9C8F\" alt=\"\"> |\n\n## Before you start\n\nThis guide assumes you have set up your webhooks server to receive notifications and subscribed your app to Instagram `messages` and `messaging_postbacks` events.\n\nYou will need:\n\n- The ID for the Instagram professional account (`IG_ID`)\n    \n- the Instagram-scoped ID (`IGSID`) for the person to whom you are sending the message\n    \n\n#### Host URL\n\n`https://graph.instagram.com`\n\nTo view recent changes to the persistent menu within the Instagram app, go to the messages inbox and swipe down to refresh.\n\n### Limitations\n\n- A menu is not updated in real time\n    \n    - Existing conversations will not see an updated menu unless a person refreshes their inbox; new conversations will see updated menus. Be sure your app can handle deprecated menu items.\n        \n- The `composer_input_disabled` parameter is not available\n    \n- The `webview_height_ratio` parameter is not available\n    \n- You can not customize a menu based on the recipient's Instagram-scoped ID (IGSID)\n    \n\n### Button types\n\nThe persistent menu is composed of an array of buttons. The following button types are supported in the persistent menu:\n\n#### URL Button\n\nThe URL Button opens a web page in the in-app browser. This allows you to enrich the conversation with a web-based experience, where you have the full development flexibility of the web. For example, you might display a product summary in-conversation, then use the URL button to open the full product page on your website.\n\n#### Postback Button\n\nThe postback button sends a [<code>messaging_postbacks</code>](https://developers.facebook.com/docs/messenger-platform/reference/webhook-events/messaging_postbacks) event to your webhook with the string set in the `payload` property. This allows you to take arbitrary actions when the button is tapped. For example, you might display a list of products, then send the product ID in the postback to your webhook, where it can be used to query your database and return the product details as a structured message."
 				}
 			],
 			"description": "The Instagram API with Instagram Login allows [Instagram professionals&nbsp;](https://l.facebook.com/l.php?u=https%3A%2F%2Fhelp.instagram.com%2F502981923235522&h=AT1ASpREEMXxdykVj-QP02tVKNkwcQ2Nl_x7xvxvGksvpWqS9BdgBQWeiclc-oXzvNfRm2dFdyjLoT6H4G8w3pjkha7gUXpIuem8PhB40ANXErLcEtpZQl2CvQlavHzKidjr7Jycg6fERoByzvOzQG8vWcM)  — businesses and creators — to use your app to manage their presence on Instagram.\n\n## Limitations\n\n- This API setup cannot access ads or tagging.\n    \n\n## Access Token Permissions needed\n\nThese are the permissions needed for the requests in this collection:\n\n- `instagram_business_basic`\n    \n- `instagram_business_manage_messages`\n    \n- `instagram_business_manage_comments`\n    \n- `instagram_business_content_publish`"
