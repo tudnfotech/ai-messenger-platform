@@ -2050,6 +2050,154 @@
 						}
 					],
 					"description": "The Messenger Profile API provides endpoints to configure and manage key conversational features for Instagram Direct Messaging, including:\n\n- **Icebreakers**: Predefined questions that appear at the start of a conversation to help guide users and automate common queries.\n    \n- **Persistent Menu**: An always-available menu in the chat interface, allowing users to access core actions or information at any time.\n    \n\n# Ice Breakers\n\n| Ice Breakers provide a way for your app users to start a conversation with a business with a list of frequently asked questions. A maximum of 4 questions can be set via the Ice Breaker API.<br><br>This feature is currently not available on desktop.<br><br>## Requirements<br><br>This guide assumes you have read the [Instagram Platform Overview](https://developers.facebook.com/docs/instagram-platform/overview) and implemented the needed components for using this API, such as a Meta login flow and a webhooks server to receive notifications.<br><br>You will need the following:<br><br>#### Access Level<br><br>- Advanced Access if your app serves Instagram professional accounts you don't own or manage<br>    <br>- Standard Access if your app serves Instagram professional accounts you own or manage and have added to your app in the App Dashboard<br>    <br><br>#### Access tokens<br><br>- An Instagram User access token requested from a person who can manage comments on the Instagram professional account<br>    <br><br>#### Base URL<br><br>All endpoints can be accessed via the `graph.instagram.com` host.<br><br>#### Endpoints<br><br>- [<code>GET /<your_app_users_your_app_users_ig_id>/messenger_profile</your_app_users_your_app_users_ig_id></code>](https://developers.facebook.com/docs/instagram-platform/reference/ig-user)<br>    <br>- [<code>POST /<your_app_users_your_app_users_ig_id>/messenger_profile</your_app_users_your_app_users_ig_id></code>](https://developers.facebook.com/docs/instagram-platform/reference/ig-user)<br>    <br>- [<code>DELETE /<your_app_users_your_app_users_ig_id>/messenger_profile</your_app_users_your_app_users_ig_id></code>](https://developers.facebook.com/docs/instagram-platform/reference/ig-user)<br>    <br><br>You can also use the `/me/messenger_profile` endpoints. | <img src=\"https://scontent-sjc3-1.xx.fbcdn.net/v/t39.2365-6/118818823_700834857168298_1003772079812652258_n.png?_nc_cat=110&amp;ccb=1-7&amp;_nc_sid=e280be&amp;_nc_ohc=ObmabLGm1VEQ7kNvwFH5yqf&amp;_nc_oc=AdnrM6hQEys0pXe7yojSsHY4TNyQu83x7DDGKZuM2xKZq0Mlv9-EFJpuMeUBXHqx1MLdcVVMAgPjrWeF2tKX2ciW&amp;_nc_zt=14&amp;_nc_ht=scontent-sjc3-1.xx&amp;_nc_gid=ZvY_9OyGKAIXzbtNKRq9cA&amp;oh=00_AfXk9GklFFx1koLNz1T76-lHp5m7V358eEUDm3fzwA-EAA&amp;oe=68CFFF5E\" alt=\"\"> |\n\n#### IDs\n\n- The ID for your app user's Instagram professional account\n    \n\n#### Permissions\n\n- `instagram_business_basic`\n    \n- `instagram_business_manage_messages`\n    \n\n#### Webhook event subscriptions\n\n- `messages`\n    \n- `messaging_postbacks`\n    \n\n---\n\n# The Persistent Menu\n\n| The Persistent Menu allows you to create a menu of the main features of your business, such as hours of operation, store locations, and products, that is always visible in a person's Instagram conversation with your business.<br><br>When a person clicks an item in the menu, a `postback` webhook notification is sent to your server, with information about what item was select and by whom, and the standard messaging window opens. You have 24 hours to respond to the person after the CTA. | <img src=\"https://scontent-sjc6-1.xx.fbcdn.net/v/t39.8562-6/274682791_507543544063430_8065749697228031629_n.png?_nc_cat=101&amp;ccb=1-7&amp;_nc_sid=f537c7&amp;_nc_ohc=bxEY4FtK5ygQ7kNvwGZx2KN&amp;_nc_oc=AdmSy93omRzuuEnbygk-pWRbKfVCwicXAvMxJlJfk2oCMiKy8lz7uD_gwfJUPFCuQjhz-2vIR4vywfUTna3o2jgv&amp;_nc_zt=14&amp;_nc_ht=scontent-sjc6-1.xx&amp;_nc_gid=f_kt9CAXEBZ41_e2fTOy_g&amp;oh=00_AfVedpCTrEZ78Mo0sSnq-MQClUElwjV8tUBD-7redOo9Zg&amp;oe=68BB9C8F\" alt=\"\"> |\n\n## Before you start\n\nThis guide assumes you have set up your webhooks server to receive notifications and subscribed your app to Instagram `messages` and `messaging_postbacks` events.\n\nYou will need:\n\n- The ID for the Instagram professional account (`IG_ID`)\n    \n- the Instagram-scoped ID (`IGSID`) for the person to whom you are sending the message\n    \n\n#### Host URL\n\n`https://graph.instagram.com`\n\nTo view recent changes to the persistent menu within the Instagram app, go to the messages inbox and swipe down to refresh.\n\n### Limitations\n\n- A menu is not updated in real time\n    \n    - Existing conversations will not see an updated menu unless a person refreshes their inbox; new conversations will see updated menus. Be sure your app can handle deprecated menu items.\n        \n- The `composer_input_disabled` parameter is not available\n    \n- The `webview_height_ratio` parameter is not available\n    \n- You can not customize a menu based on the recipient's Instagram-scoped ID (IGSID)\n    \n\n### Button types\n\nThe persistent menu is composed of an array of buttons. The following button types are supported in the persistent menu:\n\n#### URL Button\n\nThe URL Button opens a web page in the in-app browser. This allows you to enrich the conversation with a web-based experience, where you have the full development flexibility of the web. For example, you might display a product summary in-conversation, then use the URL button to open the full product page on your website.\n\n#### Postback Button\n\nThe postback button sends a [<code>messaging_postbacks</code>](https://developers.facebook.com/docs/messenger-platform/reference/webhook-events/messaging_postbacks) event to your webhook with the string set in the `payload` property. This allows you to take arbitrary actions when the button is tapped. For example, you might display a list of products, then send the product ID in the postback to your webhook, where it can be used to query your database and return the product details as a structured message."
+				},
+				{
+					"name": "Instagram User Profile API",
+					"item": [
+						{
+							"name": "Get User Profile Info",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://graph.instagram.com/{{api_version}}/{{ig_scoped_id}}",
+									"protocol": "https",
+									"host": [
+										"graph",
+										"instagram",
+										"com"
+									],
+									"path": [
+										"{{api_version}}",
+										"{{ig_scoped_id}}"
+									]
+								},
+								"description": "To get an the Instagram user's profile information, send a `GET` request to the `/` endpoint, where is the Instagram-scoped ID received in a messaging webhook notification, with the `fields` parameter set to a comma separated list of information you would like to view.\n\nFollowing are the fields you can request for.\n\n| Field Name | Description |\n| --- | --- |\n| `access_token`  <br>  <br>_string_ | The Instagram user access token from your app user who can manage messages on the Instagram professional account who received the webhook notification |\n| `follower_count`  <br>  <br>_int_ | The number of followers the Instagram user has |\n| _int_ | The Instagram-scoped ID returned in a webhook notification that represents the Instagram user who interacted with your app user's Instagram professional account and triggered the notification |\n| `is_business_follow_user`  <br>  <br>_boolean_ | Indicates whether your app user follows the Instagram user (`true`) or not (`false`) |\n| `is_user_follow_business`  <br>  <br>_boolean_ | Indicates whether the Instagram user follows your app user (`true`) or not (`false`) |\n| `is_verified_user`  <br>  <br>_boolean_ | Indicates whether the Instagram user has a verified Instagram account (`true`) or not (`false`) |\n| `name`  <br>  <br>_string_ | The Instagram user's name (can be null if name not set) |\n| `profile_pic`  <br>  <br>_url_ | The URL for the Instagram user's profile picture (can be null if profile pic not set). The URL will expire in a few days |\n| `username`  <br>  <br>_string_ | The Instagram user's username |\n\n### User Consent is required to access an Instagram user's profile\n\nUser consent is set only when an Instagram user sends a message to your app user, or clicks an icebreaker or persistent menu. If an Instagram user comments on a post or comment but has not sent a message to your app user, and your app tries to send the Instagram user a message, your app will receive an error, **User consent is required to access user profile.**\n\n### Limitations\n\n- If the Instagram user has blocked your app user, your app will not be able to view the Instagram user's information."
+							},
+							"response": [
+								{
+									"name": "Get User Profile Info",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://graph.instagram.com/{{api_version}}/{{ig_scoped_id}}",
+											"protocol": "https",
+											"host": [
+												"graph",
+												"instagram",
+												"com"
+											],
+											"path": [
+												"{{api_version}}",
+												"{{ig_scoped_id}}"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "Content-Encoding",
+											"value": "br"
+										},
+										{
+											"key": "ETag",
+											"value": "\"f09dd98b845faf0601eee87f4bf8912418b5a633\""
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=UTF-8"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "cross-origin-resource-policy",
+											"value": "cross-origin"
+										},
+										{
+											"key": "x-app-usage",
+											"value": "{\"call_volume\":0,\"cpu_time\":0}"
+										},
+										{
+											"key": "instagram-api-version",
+											"value": "v22.0"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=31536000; preload; includeSubDomains"
+										},
+										{
+											"key": "Pragma",
+											"value": "no-cache"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "private, no-cache, no-store, must-revalidate"
+										},
+										{
+											"key": "Expires",
+											"value": "Sat, 01 Jan 2000 00:00:00 GMT"
+										},
+										{
+											"key": "x-fb-request-id",
+											"value": "AVAUmAq4bepg034Vn9aSJVK"
+										},
+										{
+											"key": "x-fb-trace-id",
+											"value": "CxXNJdYI7om"
+										},
+										{
+											"key": "x-fb-rev",
+											"value": "1026621553"
+										},
+										{
+											"key": "x-stack",
+											"value": "www"
+										},
+										{
+											"key": "X-FB-Debug",
+											"value": "KpAjPIwcE3MsK/1bpULA2o0OsLKxiOkhA51XRp6wx9XJMtLn55t2+7gePrRzyG+YZzM9DF0igU2FiZm8W7YrpA=="
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 03 Sep 2025 04:53:07 GMT"
+										},
+										{
+											"key": "X-FB-Connection-Quality",
+											"value": "EXCELLENT; q=0.9, rtt=7, rtx=0, c=15, mss=1380, tbw=2781, tp=-1, tpl=-1, uplat=233, ullat=0"
+										},
+										{
+											"key": "Alt-Svc",
+											"value": "h3=\":443\"; ma=86400"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Content-Length",
+											"value": "480"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"name\": \"Stories Store\",\n    \"username\": \"stories.in.store\",\n    \"profile_pic\": \"https://scontent-iad3-2.cdninstagram.com/v/t51.2885-19/449445260_501305562464505_1905785811469754437_n.jpg?stp=dst-jpg_s206x206_tt6&_nc_cat=105&ccb=7-5&_nc_sid=bf7eb4&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4xMDgwLkMzIn0%3D&_nc_ohc=KE3yLoZOgTAQ7kNvwEyKOHi&_nc_oc=AdntpL0ve4nNdyrs3LASXp548mCjL-c1zl8cQzERfaoHJiIKaJ4ZJqPlOyWYiWW06u0&_nc_zt=24&_nc_ht=scontent-iad3-2.cdninstagram.com&oh=00_AfYpbRzhNfCHsUR3ye6V0pk2l1KDkx-RZpnablClozdlMQ&oe=68BDB031\",\n    \"is_verified_user\": false,\n    \"follower_count\": 1,\n    \"is_user_follow_business\": false,\n    \"is_business_follow_user\": false,\n    \"id\": \"819898670256713\"\n}"
+								}
+							]
+						}
+					],
+					"description": "The User Profile API allows your app to get an Instagram user's profile information using the user's Instagram-scoped ID received from an Instagram messaging webhook notification. Your app can use this information to create a personalized messaging experience for Instagram users who are interacting with your app users.\n\n## User Consent\n\n**User consent is required to access an Instagram user's profile.**\n\nUser consent is set only when an Instagram user sends a message to your app user, or clicks an icebreaker or persistent menu. If an Instagram user comments on a post or comment but has not sent a message to your app user, and your app tries to send the Instagram user a message, your app will receive an error, **User consent is required to access user profile.**\n\n## Requirements\n\nThis guide assumes you have read the [Instagram Platform Overview](https://developers.facebook.com/docs/instagram-platform/overview) and implemented the needed components for using this API, such as a Meta login flow and a webhooks server to receive notifications.\n\nYou will need the following:\n\n#### Access Level\n\n- Advanced Access if your app serves Instagram professional accounts you don't own or manage\n    \n- Standard Access if your app serves Instagram professional accounts you own or manage and have added to your app in the App Dashboard\n    \n\n#### Access tokens\n\n- An Instagram user access token requested from your app user who received the webhook notification and who can manage messages on the Instagram professional account\n    \n\n#### Base URL\n\nAll endpoints can be accessed via the `graph.instagram.com` host.\n\n#### Endpoints\n\n- `/`\n    \n\n#### IDs\n\n- The Instagram-scoped ID () for the Instagram user interested in your app user; [received from a webhook notification](https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/messaging-api/user-profile#webhook-notification)\n    \n\n#### Permissions\n\n- `instagram_business_basic`\n    \n- `instagram_business_manage_messages`\n    \n\n#### Webhook event subscriptions\n\n- `messages`\n    \n- `messaging_optins`\n    \n- `messaging_postbacks`\n    \n- `messaging_referral`\n    \n\n### Limitations\n\n- If the Instagram user has blocked your app user, your app will not be able to view the Instagram user's information.\n    \n\n## Webhook notification\n\nIn order to get profile information for an Instagram user who has messaged your app user's Instagram professional account, you need the Instagram-scoped ID for the Instagram user that was sent in a message notification, the value of the `messages.sender.id` property.\n\n```\n{\n  \"object\": \"instagram\",\n  \"entry\": [\n    {\n      \"id\": \"<YOUR_APP_USERS_IG_ID>\",  // Your app user&#x27;s Instagram Professional account ID\n      \"time\": <UNIX_TIMESTAMP>,\n      \"messaging\": [\n        {\n          \"sender\": { \"id\": \"<INSTAGRAM_SCOPED_ID>\" },    // Instagram-scoped ID for the Instagram user who sent the message\n...  \n\n ```\n\n## Get profile information\n\nTo get an the Instagram user's profile information, send a `GET` request to the `/` endpoint, where is the Instagram-scoped ID received in a messaging webhook notification, with the `fields` parameter set to a comma separated list of information you would like to view.\n\n#### Sample Request\n\n_Formatted for readability._\n\n```\ncurl -X GET \"https://graph.instagram.com/v23.0/<INSTAGRAM_SCOPED_ID> \\\n  ?fields=name,username,profile_pic,follower_count,is_user_follow_business,is_business_follow_user \\\n  &access_token=<INSTAGRAM_ACCESS_TOKEN>\"\n\n ```\n\nOn success, your app will receive the following JSON response:\n\n```\n{\n  \"name\": \"Peter Chang\",\n  \"username\": \"peter_chang_live\",\n  \"profile_pic\": \"https://fbcdn-profile-...\",\n  \"follower_count\": 1234\n  \"is_user_follow_business\": false,\n  \"is_business_follow_user\": true,\n}\n\n ```\n\n## Reference\n\n| Field Name | Description |\n| --- | --- |\n| `access_token`  <br>  <br>_string_ | The Instagram user access token from your app user who can manage messages on the Instagram professional account who received the webhook notification |\n| `follower_count`  <br>  <br>_int_ | The number of followers the Instagram user has |\n| _int_ | The Instagram-scoped ID returned in a webhook notification that represents the Instagram user who interacted with your app user's Instagram professional account and triggered the notification |\n| `is_business_follow_user`  <br>  <br>_boolean_ | Indicates whether your app user follows the Instagram user (`true`) or not (`false`) |\n| `is_user_follow_business`  <br>  <br>_boolean_ | Indicates whether the Instagram user follows your app user (`true`) or not (`false`) |\n| `is_verified_user`  <br>  <br>_boolean_ | Indicates whether the Instagram user has a verified Instagram account (`true`) or not (`false`) |\n| `name`  <br>  <br>_string_ | The Instagram user's name (can be null if name not set) |\n| `profile_pic`  <br>  <br>_url_ | The URL for the Instagram user's profile picture (can be null if profile pic not set). The URL will expire in a few days |\n| `username`  <br>  <br>_string_ | The Instagram user's username |"
 				}
 			],
 			"description": "The Instagram API with Instagram Login allows [Instagram professionals&nbsp;](https://l.facebook.com/l.php?u=https%3A%2F%2Fhelp.instagram.com%2F502981923235522&h=AT1ASpREEMXxdykVj-QP02tVKNkwcQ2Nl_x7xvxvGksvpWqS9BdgBQWeiclc-oXzvNfRm2dFdyjLoT6H4G8w3pjkha7gUXpIuem8PhB40ANXErLcEtpZQl2CvQlavHzKidjr7Jycg6fERoByzvOzQG8vWcM)  — businesses and creators — to use your app to manage their presence on Instagram.\n\n## Limitations\n\n- This API setup cannot access ads or tagging.\n    \n\n## Access Token Permissions needed\n\nThese are the permissions needed for the requests in this collection:\n\n- `instagram_business_basic`\n    \n- `instagram_business_manage_messages`\n    \n- `instagram_business_manage_comments`\n    \n- `instagram_business_content_publish`"
