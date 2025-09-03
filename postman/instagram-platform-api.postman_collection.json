@@ -1630,318 +1630,25 @@
 					"name": "Messenger Profile API",
 					"item": [
 						{
-							"name": "Create Ice Breakers",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "platform",
-											"value": "instagram",
-											"type": "text"
-										},
-										{
-											"key": "ice_breakers",
-											"value": "[\n    {\n      \"question\": \"What is your favorite sport?\",\n      \"payload\": \"<PAYLOAD_FOR_QUESTION_1>\"\n    },\n    {\n      \"question\": \"What is the capital of USA?\",\n      \"payload\": \"<PAYLOAD_FOR_QUESTION_2>\"\n    }\n  ]",
-											"description": "This is a required param",
-											"type": "text"
-										}
-									]
-								},
-								"url": {
-									"raw": "https://graph.instagram.com/{{api_version}}/{{ig_user_id}}/messenger_profile",
-									"protocol": "https",
-									"host": [
-										"graph",
-										"instagram",
-										"com"
-									],
-									"path": [
-										"{{api_version}}",
-										"{{ig_user_id}}",
-										"messenger_profile"
-									]
-								},
-								"description": "To create ice breakers, send a `POST` request to the `/messenger_profile` endpoint, where is the ID for your app user's Instagram professional account, and include the `platform` property set to `instagram` and the `ice_breakers` property with a `call_to_actions` array of `question` and `payload` objects."
-							},
-							"response": [
-								{
-									"name": "Create Ice Breakers",
-									"originalRequest": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "https://graph.instagram.com/v23.0/me/messenger_profile",
-											"protocol": "https",
-											"host": [
-												"graph",
-												"instagram",
-												"com"
-											],
-											"path": [
-												"v23.0",
-												"me",
-												"messenger_profile"
-											]
-										}
-									},
-									"_postman_previewlanguage": "",
-									"header": [],
-									"cookie": [
-										{
-											"expires": "Invalid Date",
-											"domain": "",
-											"path": ""
-										}
-									],
-									"body": "{\n    \"result\": \"success\"\n}"
-								}
-							]
-						},
-						{
-							"name": "Get Ice Breakers",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "https://graph.instagram.com/{{api_version}}/{{ig_user_id}}/messenger_profile?fields=ice_breakers",
-									"protocol": "https",
-									"host": [
-										"graph",
-										"instagram",
-										"com"
-									],
-									"path": [
-										"{{api_version}}",
-										"{{ig_user_id}}",
-										"messenger_profile"
-									],
-									"query": [
-										{
-											"key": "fields",
-											"value": "ice_breakers"
-										}
-									]
-								},
-								"description": "To get a list of your ice breakers, send a `GET` request to the `/me/messenger_profile` endpoint, where `me` is the ID for your app user's Instagram professional account, with the `fields` parameter set to `ice_breakers`."
-							},
-							"response": [
-								{
-									"name": "Get Ice Breakers",
-									"originalRequest": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "https://graph.instagram.com/v23.0/me/messenger_profile?fields=ice_breakers",
-											"protocol": "https",
-											"host": [
-												"graph",
-												"instagram",
-												"com"
-											],
-											"path": [
-												"v23.0",
-												"me",
-												"messenger_profile"
-											],
-											"query": [
-												{
-													"key": "fields",
-													"value": "ice_breakers",
-													"description": "Set `fields` parameter to `ice_breakers`"
-												}
-											]
-										}
-									},
-									"_postman_previewlanguage": "",
-									"header": [],
-									"cookie": [
-										{
-											"expires": "Invalid Date",
-											"domain": "",
-											"path": ""
-										}
-									],
-									"body": "{\n   \"data\": [\n        {\n          \"call_to_actions\" : [\n               {\n                \"question\": \"<QUESTION_1>\",\n                \"payload\": \"<PAYLOAD_1>\",\n             \n               },\n               {\n                \"question\": \"<QUESTION_2>\",\n                \"payload\": \"<PAYLOAD_2>\",\n             \n               },\n          ],\n          \"locale\": \"<LOCALE_1>\",\n      },\n      {\n          \"call_to_actions\" : [\n               {\n                \"question\": \"<QUESTION_3>\",\n                \"payload\": \"<PAYLOAD_3>\",\n             \n               },\n               {\n                \"question\": \"<QUESTION_4>\",\n                \"payload\": \"<PAYLOAD_4>\",\n             \n               },\n          ],\n          \"locale\": \"<LOCALE_2>\",\n      }\n   ]\n}"
-								}
-							]
-						},
-						{
-							"name": "Delete Ice Breakers",
-							"request": {
-								"method": "DELETE",
-								"header": [],
-								"url": {
-									"raw": "https://graph.instagram.com/{{api_version}}/{{ig_user_id}}/messenger_profile?fields=['ice_breakers']",
-									"protocol": "https",
-									"host": [
-										"graph",
-										"instagram",
-										"com"
-									],
-									"path": [
-										"{{api_version}}",
-										"{{ig_user_id}}",
-										"messenger_profile"
-									],
-									"query": [
-										{
-											"key": "fields",
-											"value": "['ice_breakers']"
-										}
-									]
-								},
-								"description": "To delete ice breakers, send a `DELETE` request to the `//messenger_profile` endpoint, where  is the ID for your app user's Instagram professional account, with the `fields` parameter set to an array that includes `ice_breakers`."
-							},
-							"response": [
-								{
-									"name": "Delete Ice Breakers",
-									"originalRequest": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "https://graph.instagram.com/v23.0/me/messenger_profile?fields=['ice_breakers']",
-											"protocol": "https",
-											"host": [
-												"graph",
-												"instagram",
-												"com"
-											],
-											"path": [
-												"v23.0",
-												"me",
-												"messenger_profile"
-											],
-											"query": [
-												{
-													"key": "fields",
-													"value": "['ice_breakers']"
-												}
-											]
-										}
-									},
-									"_postman_previewlanguage": "",
-									"header": [],
-									"cookie": [
-										{
-											"expires": "Invalid Date",
-											"domain": "",
-											"path": ""
-										}
-									],
-									"body": "{\n    \"result\": \"success\"\n}"
-								}
-							]
-						},
-						{
-							"name": "Set Persistent Menu",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "persistent_menu",
-											"value": "[\n        {\n            \"locale\": \"default\",\n            \"call_to_actions\": [\n                {\n                    \"type\": \"postback\",\n                    \"title\": \"Talk to an agent\",\n                    \"payload\": \"CARE_HELP\"\n                },\n                {\n                    \"type\": \"postback\",\n                    \"title\": \"Outfit suggestions\",\n                    \"payload\": \"CURATION\"\n                },\n                {\n                    \"type\": \"web_url\",\n                    \"title\": \"Shop now\",\n                    \"url\": \"https://www.originalcoastclothing.com/\"\n                 \n                }\n            ],\n        }\n    ]",
-											"type": "text"
-										}
-									]
-								},
-								"url": {
-									"raw": "https://graph.instagram.com/{{api_version}}/{{ig_user_id}}/messenger_profile",
-									"protocol": "https",
-									"host": [
-										"graph",
-										"instagram",
-										"com"
-									],
-									"path": [
-										"{{api_version}}",
-										"{{ig_user_id}}",
-										"messenger_profile"
-									]
-								},
-								"description": "To set a persistent menu, send a `POST` request to the `//messenger_profile` endpoint with the `platform` property set to `instagram` and `persistent_menu` property with `composer_input_disabled` set to `false`, `locale` set to `default` or the locale of your choice, and an array of `call_to_action` objects. Each `call_to_action` object defines a menu item with the following parameters:\n\n- `title` set to the button text\n    \n- `type` set to `postback` or `web_url` button type\n    \n- `payload` for a `postback` button or `url` for a `web_url` button\n    \n- `webview_height_ratio` set to `full` for `web_url` buttons\n    \n\n### Localize a menu\n\nTo localize a menu, create a `call_to_actions` array for each locale. The locale code is a combination of ISO 639-1 language code and ISO 3166-1 country code."
-							},
-							"response": [
+							"name": "Persistent Menu",
+							"item": [
 								{
 									"name": "Set Persistent Menu",
-									"originalRequest": {
-										"method": "GET",
+									"request": {
+										"method": "POST",
 										"header": [],
-										"url": {
-											"raw": "?persistent_menu=[\n        {\n            \"locale\": \"default\",\n            \"call_to_actions\": [\n                {\n                    \"type\": \"postback\",\n                    \"title\": \"Talk to an agent\",\n                    \"payload\": \"CARE_HELP\"\n                },\n                {\n                    \"type\": \"postback\",\n                    \"title\": \"Outfit suggestions\",\n                    \"payload\": \"CURATION\"\n                },\n                {\n                    \"type\": \"web_url\",\n                    \"title\": \"Shop now\",\n                    \"url\": \"https://www.originalcoastclothing.com/\"\n                 \n                }\n            ],\n        }\n    ]",
-											"query": [
+										"body": {
+											"mode": "formdata",
+											"formdata": [
 												{
 													"key": "persistent_menu",
-													"value": "[\n        {\n            \"locale\": \"default\",\n            \"call_to_actions\": [\n                {\n                    \"type\": \"postback\",\n                    \"title\": \"Talk to an agent\",\n                    \"payload\": \"CARE_HELP\"\n                },\n                {\n                    \"type\": \"postback\",\n                    \"title\": \"Outfit suggestions\",\n                    \"payload\": \"CURATION\"\n                },\n                {\n                    \"type\": \"web_url\",\n                    \"title\": \"Shop now\",\n                    \"url\": \"https://www.originalcoastclothing.com/\"\n                 \n                }\n            ],\n        }\n    ]"
+													"value": "[\n        {\n            \"locale\": \"default\",\n            \"call_to_actions\": [\n                {\n                    \"type\": \"postback\",\n                    \"title\": \"Talk to an agent\",\n                    \"payload\": \"CARE_HELP\"\n                },\n                {\n                    \"type\": \"postback\",\n                    \"title\": \"Outfit suggestions\",\n                    \"payload\": \"CURATION\"\n                },\n                {\n                    \"type\": \"web_url\",\n                    \"title\": \"Shop now\",\n                    \"url\": \"https://www.originalcoastclothing.com/\"\n                 \n                }\n            ],\n        }\n    ]",
+													"type": "text"
 												}
 											]
-										}
-									},
-									"_postman_previewlanguage": "",
-									"header": [],
-									"cookie": [
-										{
-											"expires": "Invalid Date",
-											"domain": "",
-											"path": ""
-										}
-									],
-									"body": "{\n    \"result\": \"success\"\n}"
-								}
-							]
-						},
-						{
-							"name": "Get Persistent Menu",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "https://graph.instagram.com/{{api_version}}/{{ig_user_id}}/messenger_profile?fields=persistent_menu",
-									"protocol": "https",
-									"host": [
-										"graph",
-										"instagram",
-										"com"
-									],
-									"path": [
-										"{{api_version}}",
-										"{{ig_user_id}}",
-										"messenger_profile"
-									],
-									"query": [
-										{
-											"key": "fields",
-											"value": "persistent_menu"
-										}
-									]
-								},
-								"description": "To get a list of your ice breakers, send a `GET` request to the `/me/messenger_profile` endpoint, where `me` is the ID for your app user's Instagram professional account, with the `fields` parameter set to `ice_breakers`."
-							},
-							"response": [
-								{
-									"name": "Get Persistent Menu",
-									"originalRequest": {
-										"method": "GET",
-										"header": [],
+										},
 										"url": {
-											"raw": "https://graph.instagram.com/v23.0/me/messenger_profile?fields=ice_breakers",
+											"raw": "https://graph.instagram.com/{{api_version}}/{{ig_user_id}}/messenger_profile",
 											"protocol": "https",
 											"host": [
 												"graph",
@@ -1949,73 +1656,105 @@
 												"com"
 											],
 											"path": [
-												"v23.0",
-												"me",
+												"{{api_version}}",
+												"{{ig_user_id}}",
+												"messenger_profile"
+											]
+										},
+										"description": "To set a persistent menu, send a `POST` request to the `//messenger_profile` endpoint with the `platform` property set to `instagram` and `persistent_menu` property with `composer_input_disabled` set to `false`, `locale` set to `default` or the locale of your choice, and an array of `call_to_action` objects. Each `call_to_action` object defines a menu item with the following parameters:\n\n- `title` set to the button text\n    \n- `type` set to `postback` or `web_url` button type\n    \n- `payload` for a `postback` button or `url` for a `web_url` button\n    \n- `webview_height_ratio` set to `full` for `web_url` buttons\n    \n\n### Localize a menu\n\nTo localize a menu, create a `call_to_actions` array for each locale. The locale code is a combination of ISO 639-1 language code and ISO 3166-1 country code."
+									},
+									"response": [
+										{
+											"name": "Set Persistent Menu",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "?persistent_menu=[\n        {\n            \"locale\": \"default\",\n            \"call_to_actions\": [\n                {\n                    \"type\": \"postback\",\n                    \"title\": \"Talk to an agent\",\n                    \"payload\": \"CARE_HELP\"\n                },\n                {\n                    \"type\": \"postback\",\n                    \"title\": \"Outfit suggestions\",\n                    \"payload\": \"CURATION\"\n                },\n                {\n                    \"type\": \"web_url\",\n                    \"title\": \"Shop now\",\n                    \"url\": \"https://www.originalcoastclothing.com/\"\n                 \n                }\n            ],\n        }\n    ]",
+													"query": [
+														{
+															"key": "persistent_menu",
+															"value": "[\n        {\n            \"locale\": \"default\",\n            \"call_to_actions\": [\n                {\n                    \"type\": \"postback\",\n                    \"title\": \"Talk to an agent\",\n                    \"payload\": \"CARE_HELP\"\n                },\n                {\n                    \"type\": \"postback\",\n                    \"title\": \"Outfit suggestions\",\n                    \"payload\": \"CURATION\"\n                },\n                {\n                    \"type\": \"web_url\",\n                    \"title\": \"Shop now\",\n                    \"url\": \"https://www.originalcoastclothing.com/\"\n                 \n                }\n            ],\n        }\n    ]"
+														}
+													]
+												}
+											},
+											"_postman_previewlanguage": "Text",
+											"header": [],
+											"cookie": [],
+											"body": "{\n    \"result\": \"success\"\n}"
+										}
+									]
+								},
+								{
+									"name": "Get Persistent Menu",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://graph.instagram.com/{{api_version}}/{{ig_user_id}}/messenger_profile?fields=persistent_menu",
+											"protocol": "https",
+											"host": [
+												"graph",
+												"instagram",
+												"com"
+											],
+											"path": [
+												"{{api_version}}",
+												"{{ig_user_id}}",
 												"messenger_profile"
 											],
 											"query": [
 												{
 													"key": "fields",
-													"value": "ice_breakers",
-													"description": "Set `fields` parameter to `ice_breakers`"
+													"value": "persistent_menu"
 												}
 											]
-										}
+										},
+										"description": "To get a list of your ice breakers, send a `GET` request to the `/me/messenger_profile` endpoint, where `me` is the ID for your app user's Instagram professional account, with the `fields` parameter set to `ice_breakers`."
 									},
-									"_postman_previewlanguage": "",
-									"header": [],
-									"cookie": [
+									"response": [
 										{
-											"expires": "Invalid Date",
-											"domain": "",
-											"path": ""
-										}
-									],
-									"body": "{\n    \"data\": [\n        {\n            \"persistent_menu\": [\n                {\n                    \"locale\": \"default\",\n                    \"call_to_actions\": [\n                        {\n                            \"type\": \"postback\",\n                            \"title\": \"Talk to an agent\",\n                            \"payload\": \"CARE_HELP\"\n                        },\n                        {\n                            \"type\": \"postback\",\n                            \"title\": \"Outfit suggestions\",\n                            \"payload\": \"CURATION\"\n                        },\n                        {\n                            \"type\": \"web_url\",\n                            \"title\": \"Shop now\",\n                            \"url\": \"https://www.originalcoastclothing.com/\"\n                        }\n                    ]\n                }\n            ]\n        }\n    ]\n}"
-								}
-							]
-						},
-						{
-							"name": "Delete Persistent Menu",
-							"request": {
-								"method": "DELETE",
-								"header": [],
-								"url": {
-									"raw": "https://graph.instagram.com/{{api_version}}/{{ig_user_id}}/messenger_profile?fields=['persistent_menu']",
-									"protocol": "https",
-									"host": [
-										"graph",
-										"instagram",
-										"com"
-									],
-									"path": [
-										"{{api_version}}",
-										"{{ig_user_id}}",
-										"messenger_profile"
-									],
-									"query": [
-										{
-											"key": "fields",
-											"value": "['persistent_menu']"
+											"name": "Get Persistent Menu",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "https://graph.instagram.com/v23.0/me/messenger_profile?fields=ice_breakers",
+													"protocol": "https",
+													"host": [
+														"graph",
+														"instagram",
+														"com"
+													],
+													"path": [
+														"v23.0",
+														"me",
+														"messenger_profile"
+													],
+													"query": [
+														{
+															"key": "fields",
+															"value": "ice_breakers",
+															"description": "Set `fields` parameter to `ice_breakers`"
+														}
+													]
+												}
+											},
+											"_postman_previewlanguage": "Text",
+											"header": [],
+											"cookie": [],
+											"body": "{\n    \"data\": [\n        {\n            \"persistent_menu\": [\n                {\n                    \"locale\": \"default\",\n                    \"call_to_actions\": [\n                        {\n                            \"type\": \"postback\",\n                            \"title\": \"Talk to an agent\",\n                            \"payload\": \"CARE_HELP\"\n                        },\n                        {\n                            \"type\": \"postback\",\n                            \"title\": \"Outfit suggestions\",\n                            \"payload\": \"CURATION\"\n                        },\n                        {\n                            \"type\": \"web_url\",\n                            \"title\": \"Shop now\",\n                            \"url\": \"https://www.originalcoastclothing.com/\"\n                        }\n                    ]\n                }\n            ]\n        }\n    ]\n}"
 										}
 									]
 								},
-								"description": "To delete ice breakers, send a `DELETE` request to the `//messenger_profile` endpoint, where  is the ID for your app user's Instagram professional account, with the `fields` parameter set to an array that includes `ice_breakers`."
-							},
-							"response": [
 								{
 									"name": "Delete Persistent Menu",
-									"originalRequest": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json",
-												"type": "text"
-											}
-										],
+									"request": {
+										"method": "DELETE",
+										"header": [],
 										"url": {
-											"raw": "https://graph.instagram.com/v23.0/me/messenger_profile?fields=['persistent_menu']",
+											"raw": "https://graph.instagram.com/{{api_version}}/{{ig_user_id}}/messenger_profile?fields=['persistent_menu']",
 											"protocol": "https",
 											"host": [
 												"graph",
@@ -2023,8 +1762,8 @@
 												"com"
 											],
 											"path": [
-												"v23.0",
-												"me",
+												"{{api_version}}",
+												"{{ig_user_id}}",
 												"messenger_profile"
 											],
 											"query": [
@@ -2033,18 +1772,253 @@
 													"value": "['persistent_menu']"
 												}
 											]
-										}
+										},
+										"description": "To delete ice breakers, send a `DELETE` request to the `//messenger_profile` endpoint, where  is the ID for your app user's Instagram professional account, with the `fields` parameter set to an array that includes `ice_breakers`."
 									},
-									"_postman_previewlanguage": "",
-									"header": [],
-									"cookie": [
+									"response": [
 										{
-											"expires": "Invalid Date",
-											"domain": "",
-											"path": ""
+											"name": "Delete Persistent Menu",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "https://graph.instagram.com/v23.0/me/messenger_profile?fields=['persistent_menu']",
+													"protocol": "https",
+													"host": [
+														"graph",
+														"instagram",
+														"com"
+													],
+													"path": [
+														"v23.0",
+														"me",
+														"messenger_profile"
+													],
+													"query": [
+														{
+															"key": "fields",
+															"value": "['persistent_menu']"
+														}
+													]
+												}
+											},
+											"_postman_previewlanguage": "Text",
+											"header": [],
+											"cookie": [],
+											"body": "{\n    \"result\": \"success\"\n}"
 										}
-									],
-									"body": "{\n    \"result\": \"success\"\n}"
+									]
+								}
+							]
+						},
+						{
+							"name": "Ice Breakers",
+							"item": [
+								{
+									"name": "Create Ice Breakers",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "platform",
+													"value": "instagram",
+													"type": "text"
+												},
+												{
+													"key": "ice_breakers",
+													"value": "[\n    {\n      \"question\": \"What is your favorite sport?\",\n      \"payload\": \"<PAYLOAD_FOR_QUESTION_1>\"\n    },\n    {\n      \"question\": \"What is the capital of USA?\",\n      \"payload\": \"<PAYLOAD_FOR_QUESTION_2>\"\n    }\n  ]",
+													"description": "This is a required param",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "https://graph.instagram.com/{{api_version}}/{{ig_user_id}}/messenger_profile",
+											"protocol": "https",
+											"host": [
+												"graph",
+												"instagram",
+												"com"
+											],
+											"path": [
+												"{{api_version}}",
+												"{{ig_user_id}}",
+												"messenger_profile"
+											]
+										},
+										"description": "To create ice breakers, send a `POST` request to the `/messenger_profile` endpoint, where is the ID for your app user's Instagram professional account, and include the `platform` property set to `instagram` and the `ice_breakers` property with a `call_to_actions` array of `question` and `payload` objects."
+									},
+									"response": [
+										{
+											"name": "Create Ice Breakers",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "https://graph.instagram.com/v23.0/me/messenger_profile",
+													"protocol": "https",
+													"host": [
+														"graph",
+														"instagram",
+														"com"
+													],
+													"path": [
+														"v23.0",
+														"me",
+														"messenger_profile"
+													]
+												}
+											},
+											"_postman_previewlanguage": "Text",
+											"header": [],
+											"cookie": [],
+											"body": "{\n    \"result\": \"success\"\n}"
+										}
+									]
+								},
+								{
+									"name": "Get Ice Breakers",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://graph.instagram.com/{{api_version}}/{{ig_user_id}}/messenger_profile?fields=ice_breakers",
+											"protocol": "https",
+											"host": [
+												"graph",
+												"instagram",
+												"com"
+											],
+											"path": [
+												"{{api_version}}",
+												"{{ig_user_id}}",
+												"messenger_profile"
+											],
+											"query": [
+												{
+													"key": "fields",
+													"value": "ice_breakers"
+												}
+											]
+										},
+										"description": "To get a list of your ice breakers, send a `GET` request to the `/me/messenger_profile` endpoint, where `me` is the ID for your app user's Instagram professional account, with the `fields` parameter set to `ice_breakers`."
+									},
+									"response": [
+										{
+											"name": "Get Ice Breakers",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "https://graph.instagram.com/v23.0/me/messenger_profile?fields=ice_breakers",
+													"protocol": "https",
+													"host": [
+														"graph",
+														"instagram",
+														"com"
+													],
+													"path": [
+														"v23.0",
+														"me",
+														"messenger_profile"
+													],
+													"query": [
+														{
+															"key": "fields",
+															"value": "ice_breakers",
+															"description": "Set `fields` parameter to `ice_breakers`"
+														}
+													]
+												}
+											},
+											"_postman_previewlanguage": "Text",
+											"header": [],
+											"cookie": [],
+											"body": "{\n   \"data\": [\n        {\n          \"call_to_actions\" : [\n               {\n                \"question\": \"<QUESTION_1>\",\n                \"payload\": \"<PAYLOAD_1>\",\n             \n               },\n               {\n                \"question\": \"<QUESTION_2>\",\n                \"payload\": \"<PAYLOAD_2>\",\n             \n               },\n          ],\n          \"locale\": \"<LOCALE_1>\",\n      },\n      {\n          \"call_to_actions\" : [\n               {\n                \"question\": \"<QUESTION_3>\",\n                \"payload\": \"<PAYLOAD_3>\",\n             \n               },\n               {\n                \"question\": \"<QUESTION_4>\",\n                \"payload\": \"<PAYLOAD_4>\",\n             \n               },\n          ],\n          \"locale\": \"<LOCALE_2>\",\n      }\n   ]\n}"
+										}
+									]
+								},
+								{
+									"name": "Delete Ice Breakers",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "https://graph.instagram.com/{{api_version}}/{{ig_user_id}}/messenger_profile?fields=['ice_breakers']",
+											"protocol": "https",
+											"host": [
+												"graph",
+												"instagram",
+												"com"
+											],
+											"path": [
+												"{{api_version}}",
+												"{{ig_user_id}}",
+												"messenger_profile"
+											],
+											"query": [
+												{
+													"key": "fields",
+													"value": "['ice_breakers']"
+												}
+											]
+										},
+										"description": "To delete ice breakers, send a `DELETE` request to the `//messenger_profile` endpoint, where  is the ID for your app user's Instagram professional account, with the `fields` parameter set to an array that includes `ice_breakers`."
+									},
+									"response": [
+										{
+											"name": "Delete Ice Breakers",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "https://graph.instagram.com/v23.0/me/messenger_profile?fields=['ice_breakers']",
+													"protocol": "https",
+													"host": [
+														"graph",
+														"instagram",
+														"com"
+													],
+													"path": [
+														"v23.0",
+														"me",
+														"messenger_profile"
+													],
+													"query": [
+														{
+															"key": "fields",
+															"value": "['ice_breakers']"
+														}
+													]
+												}
+											},
+											"_postman_previewlanguage": "Text",
+											"header": [],
+											"cookie": [],
+											"body": "{\n    \"result\": \"success\"\n}"
+										}
+									]
 								}
 							]
 						}
@@ -2096,7 +2070,7 @@
 									},
 									"status": "OK",
 									"code": 200,
-									"_postman_previewlanguage": null,
+									"_postman_previewlanguage": "Text",
 									"header": [
 										{
 											"key": "Content-Encoding",
