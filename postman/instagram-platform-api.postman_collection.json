@@ -2246,6 +2246,643 @@
 						}
 					],
 					"description": "The Attachment Upload API allows you to upload assets that can be sent in messages at a later time. This allows you to avoid the need to upload commonly used files multiple times. The API supports saving assets from a URL and from your local file system."
+				},
+				{
+					"name": "Conversations API",
+					"item": [
+						{
+							"name": "Get a List of Conversations",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://graph.instagram.com/{{api_version}}/{{ig_user_id}}/conversations?platform=instagram",
+									"protocol": "https",
+									"host": [
+										"graph",
+										"instagram",
+										"com"
+									],
+									"path": [
+										"{{api_version}}",
+										"{{ig_user_id}}",
+										"conversations"
+									],
+									"query": [
+										{
+											"key": "platform",
+											"value": "instagram"
+										}
+									]
+								},
+								"description": "To get a list of your app user's conversations for an Instagram professional account, send a `GET` request to the `/conversations` endpoint."
+							},
+							"response": [
+								{
+									"name": "Get a list of Conversations",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "https://graph.instagram.com/{{api_version}}/{{ig_user_id}}/conversations?platform=instagram",
+											"protocol": "https",
+											"host": [
+												"graph",
+												"instagram",
+												"com"
+											],
+											"path": [
+												"{{api_version}}",
+												"{{ig_user_id}}",
+												"conversations"
+											],
+											"query": [
+												{
+													"key": "platform",
+													"value": "instagram"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "",
+									"header": [
+										{
+											"key": "Content-Encoding",
+											"value": "br"
+										},
+										{
+											"key": "ETag",
+											"value": "\"c546a87ab6a6ce64168e9cbc2c1097ef61c46216\""
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=UTF-8"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "cross-origin-resource-policy",
+											"value": "cross-origin"
+										},
+										{
+											"key": "x-app-usage",
+											"value": "{\"call_volume\":0,\"cpu_time\":0}"
+										},
+										{
+											"key": "instagram-api-version",
+											"value": "v23.0"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=31536000; preload; includeSubDomains"
+										},
+										{
+											"key": "Pragma",
+											"value": "no-cache"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "private, no-cache, no-store, must-revalidate"
+										},
+										{
+											"key": "Expires",
+											"value": "Sat, 01 Jan 2000 00:00:00 GMT"
+										},
+										{
+											"key": "x-fb-request-id",
+											"value": "ATRJOwuMEfwzKEMCw3Su59k"
+										},
+										{
+											"key": "x-fb-trace-id",
+											"value": "HTZnxpA1Od0"
+										},
+										{
+											"key": "x-fb-rev",
+											"value": "1026701099"
+										},
+										{
+											"key": "x-stack",
+											"value": "www"
+										},
+										{
+											"key": "X-FB-Debug",
+											"value": "/Aql+5F0lmvlwfhdOhbQSe7kAOWL6sR14knGGKVF7BBDgyRVArfTTYwpKfOuTs8oP+1WTE5+QFym2qIwZC+XYw=="
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 04 Sep 2025 17:34:39 GMT"
+										},
+										{
+											"key": "X-FB-Connection-Quality",
+											"value": "EXCELLENT; q=0.9, rtt=8, rtx=0, c=14, mss=1380, tbw=3336, tp=-1, tpl=-1, uplat=5244, ullat=0"
+										},
+										{
+											"key": "Alt-Svc",
+											"value": "h3=\":443\"; ma=86400"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Content-Length",
+											"value": "829"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": [\n        {\n            \"id\": \"converasationID1\",\n            \"updated_time\": \"2025-07-28T22:44:49+0000\"\n        },\n        {\n            \"id\": \"converasationID2\",\n            \"updated_time\": \"2025-07-18T18:24:04+0000\"\n        },\n        {\n            \"id\": \"converasationID3\",\n            \"updated_time\": \"2025-06-27T23:25:09+0000\"\n        },\n        {\n            \"id\": \"converasationID4\",\n            \"updated_time\": \"2025-05-02T17:46:11+0000\"\n        },\n        {\n            \"id\": \"converasationID5\",\n            \"updated_time\": \"2025-05-02T06:49:56+0000\"\n        },\n        {\n            \"id\": \"converasationID6\",\n            \"updated_time\": \"2024-10-02T04:21:49+0000\"\n        },\n    ],\n    \"paging\": {\n        \"cursors\": {\n            \"after\": \"afterCursorInformation\"\n        },\n        \"next\": \"next_url\"\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Find a conversation with a specific person",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://graph.instagram.com/{{api_version}}/{{ig_user_id}}/conversations?user_id={{igsid}}",
+									"protocol": "https",
+									"host": [
+										"graph",
+										"instagram",
+										"com"
+									],
+									"path": [
+										"{{api_version}}",
+										"{{ig_user_id}}",
+										"conversations"
+									],
+									"query": [
+										{
+											"key": "user_id",
+											"value": "{{igsid}}"
+										}
+									]
+								},
+								"description": "To get a conversation between your app user's Instagram professional account and a specific Instagram user, send a `GET` request to the `//conversations` endpoint with the following parameters:\n\n- `user_id` parameter set to the Instagram-scoped ID for the Instagram user in the conversation"
+							},
+							"response": [
+								{
+									"name": "Find a conversation with a specific person",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://graph.instagram.com/{{api_version}}/{{ig_user_id}}/conversations?user_id={{igsid}}",
+											"protocol": "https",
+											"host": [
+												"graph",
+												"instagram",
+												"com"
+											],
+											"path": [
+												"{{api_version}}",
+												"{{ig_user_id}}",
+												"conversations"
+											],
+											"query": [
+												{
+													"key": "user_id",
+													"value": "{{igsid}}"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "",
+									"header": [
+										{
+											"key": "ETag",
+											"value": "\"590786ae36d0ab680ec6a4f4cb80aee7d085f97c\""
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=UTF-8"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										},
+										{
+											"key": "cross-origin-resource-policy",
+											"value": "cross-origin"
+										},
+										{
+											"key": "x-app-usage",
+											"value": "{\"call_volume\":0,\"cpu_time\":0}"
+										},
+										{
+											"key": "instagram-api-version",
+											"value": "v23.0"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=31536000; preload; includeSubDomains"
+										},
+										{
+											"key": "Pragma",
+											"value": "no-cache"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "private, no-cache, no-store, must-revalidate"
+										},
+										{
+											"key": "Expires",
+											"value": "Sat, 01 Jan 2000 00:00:00 GMT"
+										},
+										{
+											"key": "x-fb-request-id",
+											"value": "AQZZhGKaq9lkuk1hcOFTn0p"
+										},
+										{
+											"key": "x-fb-trace-id",
+											"value": "FBxHylt4IBG"
+										},
+										{
+											"key": "x-fb-rev",
+											"value": "1026701099"
+										},
+										{
+											"key": "x-stack",
+											"value": "www"
+										},
+										{
+											"key": "X-FB-Debug",
+											"value": "7tr/XiUoLvWsDbQZuv6M3Wr03qvCQ5OwyqX9UaRnIgQM3wcAUlACn+Ho1+Z7h3rZfOPFoYUQWNPmmGZv7cEDJg=="
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 04 Sep 2025 17:38:10 GMT"
+										},
+										{
+											"key": "X-FB-Connection-Quality",
+											"value": "EXCELLENT; q=0.9, rtt=7, rtx=0, c=12, mss=1380, tbw=379, tp=-1, tpl=-1, uplat=785, ullat=0"
+										},
+										{
+											"key": "Alt-Svc",
+											"value": "h3=\":443\"; ma=86400"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Content-Length",
+											"value": "123"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": [\n        {\n            \"id\": \"conversationID1\",\n            \"updated_time\": \"2025-07-28T22:44:49+0000\"\n        }\n    ]\n}"
+								}
+							]
+						},
+						{
+							"name": "Get a List of Messages in a Conversation",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://graph.instagram.com/{{api_version}}/{{conversation_id}}?fields=messages{from,to}",
+									"protocol": "https",
+									"host": [
+										"graph",
+										"instagram",
+										"com"
+									],
+									"path": [
+										"{{api_version}}",
+										"{{conversation_id}}"
+									],
+									"query": [
+										{
+											"key": "fields",
+											"value": "messages{from,to}"
+										}
+									]
+								},
+								"description": "To get a list of messages in a conversations, send a `GET` request to the `/` endpoint with the `fields` parameter set to `messages`."
+							},
+							"response": [
+								{
+									"name": "Get a List of Messages in a Conversation",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://graph.instagram.com/{{api_version}}/{{conversation_id}}?fields=messages",
+											"protocol": "https",
+											"host": [
+												"graph",
+												"instagram",
+												"com"
+											],
+											"path": [
+												"{{api_version}}",
+												"{{conversation_id}}"
+											],
+											"query": [
+												{
+													"key": "fields",
+													"value": "messages"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "Content-Encoding",
+											"value": "br"
+										},
+										{
+											"key": "ETag",
+											"value": "\"2735449985d611e0cedb38109eb43e91b18d8fa6\""
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=UTF-8"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "cross-origin-resource-policy",
+											"value": "cross-origin"
+										},
+										{
+											"key": "x-app-usage",
+											"value": "{\"call_volume\":0,\"cpu_time\":0}"
+										},
+										{
+											"key": "instagram-api-version",
+											"value": "v23.0"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=31536000; preload; includeSubDomains"
+										},
+										{
+											"key": "Pragma",
+											"value": "no-cache"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "private, no-cache, no-store, must-revalidate"
+										},
+										{
+											"key": "Expires",
+											"value": "Sat, 01 Jan 2000 00:00:00 GMT"
+										},
+										{
+											"key": "x-fb-request-id",
+											"value": "AN8sXDFKoCwBmHIeifqiJq4"
+										},
+										{
+											"key": "x-fb-trace-id",
+											"value": "BLV/i8olyw8"
+										},
+										{
+											"key": "x-fb-rev",
+											"value": "1026701099"
+										},
+										{
+											"key": "x-stack",
+											"value": "www"
+										},
+										{
+											"key": "X-FB-Debug",
+											"value": "YaSvAXa5Qk8KQEgaMIKNmVSZzcHe3coi6jxa9zwsqDDN2HmSrYds3l22tzsxLTSHsG97wxDiqzAjl1G8P+0MGg=="
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 04 Sep 2025 17:36:41 GMT"
+										},
+										{
+											"key": "X-FB-Connection-Quality",
+											"value": "EXCELLENT; q=0.9, rtt=7, rtx=0, c=14, mss=1380, tbw=1445, tp=-1, tpl=-1, uplat=1145, ullat=0"
+										},
+										{
+											"key": "Alt-Svc",
+											"value": "h3=\":443\"; ma=86400"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Content-Length",
+											"value": "886"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"messages\": {\n        \"data\": [\n            {\n                \"id\": \"messageID1\",\n                \"created_time\": \"2025-07-28T22:44:49+0000\",\n                \"is_unsupported\": false\n            },\n            {\n                \"id\": \"messageID2\",\n                \"created_time\": \"2025-07-28T21:20:58+0000\",\n                \"is_unsupported\": false\n            },\n            {\n                \"id\": \"messageID3\",\n                \"created_time\": \"2025-07-28T21:20:13+0000\",\n                \"is_unsupported\": false\n            },\n            {\n                \"id\": \"messageID4\",\n                \"created_time\": \"2025-07-28T21:19:26+0000\",\n                \"is_unsupported\": false\n            },\n            {\n                \"id\": \"messageID5\",\n                \"created_time\": \"2025-02-18T18:46:37+0000\",\n                \"is_unsupported\": false\n            },\n            {\n                \"id\": \"messageID6\",\n                \"created_time\": \"2025-02-18T16:46:14+0000\",\n                \"is_unsupported\": false\n            },\n            {\n                \"id\": \"messageID7\",\n                \"created_time\": \"2025-02-18T16:46:01+0000\",\n                \"is_unsupported\": false\n            },\n        ],\n        \"paging\": {\n            \"cursors\": {\n                \"after\": \"afterCursorInformation\"\n            },\n            \"next\": \"next_url\"\n        }\n    },\n    \"id\": \"converasationID1\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Get information about a message",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://graph.instagram.com/v23.0/{{message_id}}?&fields=id,created_time,from,to,message",
+									"protocol": "https",
+									"host": [
+										"graph",
+										"instagram",
+										"com"
+									],
+									"path": [
+										"v23.0",
+										"{{message_id}}"
+									],
+									"query": [
+										{
+											"key": null,
+											"value": null
+										},
+										{
+											"key": "fields",
+											"value": "id,created_time,from,to,message"
+										}
+									]
+								},
+								"description": "To get information about a message, such as the sender, receiver, and message content, send a `GET` request to the `/` endpoint with the `fields` parameter set to a comma separated list of fields you are interested in.\n\nDefault fields are `id` and `created_time`.\n\n**Note:** Queries to the `/` endpoint will return all message IDs in a conversation. However, you can only get details about the 20 most recent messages in the conversation. If you query a message that is older than the last 20, you will see an error that the message has been deleted."
+							},
+							"response": [
+								{
+									"name": "Get information about a message",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://graph.instagram.com/v23.0/{{message_id}}?&fields=id,created_time,from,to,message",
+											"protocol": "https",
+											"host": [
+												"graph",
+												"instagram",
+												"com"
+											],
+											"path": [
+												"v23.0",
+												"{{message_id}}"
+											],
+											"query": [
+												{
+													"key": null,
+													"value": null
+												},
+												{
+													"key": "fields",
+													"value": "id,created_time,from,to,message"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "Content-Encoding",
+											"value": "br"
+										},
+										{
+											"key": "ETag",
+											"value": "\"c98caf002ce205c8f3194351ca7ce75be592056e\""
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=UTF-8"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "cross-origin-resource-policy",
+											"value": "cross-origin"
+										},
+										{
+											"key": "x-app-usage",
+											"value": "{\"call_volume\":0,\"cpu_time\":0}"
+										},
+										{
+											"key": "instagram-api-version",
+											"value": "v23.0"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=31536000; preload; includeSubDomains"
+										},
+										{
+											"key": "Pragma",
+											"value": "no-cache"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "private, no-cache, no-store, must-revalidate"
+										},
+										{
+											"key": "Expires",
+											"value": "Sat, 01 Jan 2000 00:00:00 GMT"
+										},
+										{
+											"key": "x-fb-request-id",
+											"value": "A-IwtKjdPucPzUMNqOxp2JT"
+										},
+										{
+											"key": "x-fb-trace-id",
+											"value": "HENew9ow9QI"
+										},
+										{
+											"key": "x-fb-rev",
+											"value": "1026701099"
+										},
+										{
+											"key": "x-stack",
+											"value": "www"
+										},
+										{
+											"key": "X-FB-Debug",
+											"value": "OIu0BsabLvNjFExXguwzHmrmuV4hcYrEbtRqrpy98Wl65uILqvbA88i05YaLHyOzKhjoGlDXm1SUdNNLHlhMdw=="
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 04 Sep 2025 17:39:57 GMT"
+										},
+										{
+											"key": "X-FB-Connection-Quality",
+											"value": "EXCELLENT; q=0.9, rtt=8, rtx=0, c=12, mss=1380, tbw=379, tp=-1, tpl=-1, uplat=692, ullat=0"
+										},
+										{
+											"key": "Alt-Svc",
+											"value": "h3=\":443\"; ma=86400"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Content-Length",
+											"value": "283"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": \"messageID1\",\n    \"created_time\": \"2025-07-28T22:44:49+0000\",\n    \"from\": {\n        \"username\": \"username_of_sender\",\n        \"id\": \"id/igsid_of_sender\"\n    },\n    \"to\": {\n        \"data\": [\n            {\n                \"username\": \"username_of_recipient\",\n                \"id\": \"id/igsid_of_recipient\"\n            }\n        ]\n    },\n    \"message\": \"hi\"\n}"
+								}
+							]
+						}
+					],
+					"description": "The Conversations API helps you get information about conversations between your app user and an Instagram user interested in your app user's Instagram media. You can get:\n\n- A list of conversations for your app user's Instagram professional account\n    \n- A list of messages within each conversation\n    \n- Details about each message including when the message was sent and from who\n    \n\n## Requirements\n\nThis guide assumes you have read the [Instagram Platform Overview](https://developers.facebook.com/docs/instagram-platform/overview) and implemented the needed components for using this API, such as a Meta login flow and a webhooks server to receive notifications.\n\nYou will need the following:\n\n#### Access Level\n\n- Advanced Access if your app serves Instagram professional accounts you don't own or manage\n    \n- Standard Access if your app serves Instagram professional accounts you own or manage and have added to your app in the App Dashboard\n    \n\n#### Access tokens\n\n- An Instagram User access token requested from a person who can manage messages on the Instagram professional account\n    \n\n#### Base URL\n\nAll endpoints can be accessed via the `graph.instagram.com` host.\n\n#### Endpoints\n\n- `//conversations` or `/me/conversations`\n    \n\n#### IDs\n\n- The ID for the Instagram professional account ()\n    \n- The Instagram-scoped ID for the Instagram user in the conversation\n    \n\n#### Permissions\n\n- `instagram_business_basic`\n    \n- `instagram_business_manage_messages`\n    \n\n### Limitations\n\n- Only the image or video URL for a share will be included in the data returned in a call to the API or in the webhooks notification.\n    \n- Conversations that are within the Requests folder that have not been active for 30 days will not be returned in API calls."
 				}
 			],
 			"description": "The Instagram API with Instagram Login allows [Instagram professionals&nbsp;](https://l.facebook.com/l.php?u=https%3A%2F%2Fhelp.instagram.com%2F502981923235522&h=AT1ASpREEMXxdykVj-QP02tVKNkwcQ2Nl_x7xvxvGksvpWqS9BdgBQWeiclc-oXzvNfRm2dFdyjLoT6H4G8w3pjkha7gUXpIuem8PhB40ANXErLcEtpZQl2CvQlavHzKidjr7Jycg6fERoByzvOzQG8vWcM)  — businesses and creators — to use your app to manage their presence on Instagram.\n\n## Limitations\n\n- This API setup cannot access ads or tagging.\n    \n\n## Access Token Permissions needed\n\nThese are the permissions needed for the requests in this collection:\n\n- `instagram_business_basic`\n    \n- `instagram_business_manage_messages`\n    \n- `instagram_business_manage_comments`\n    \n- `instagram_business_content_publish`"
