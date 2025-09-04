@@ -2174,6 +2174,78 @@
 						}
 					],
 					"description": "The User Profile API allows your app to get an Instagram user's profile information using the user's Instagram-scoped ID received from an Instagram messaging webhook notification. Your app can use this information to create a personalized messaging experience for Instagram users who are interacting with your app users.\n\n## User Consent\n\n**User consent is required to access an Instagram user's profile.**\n\nUser consent is set only when an Instagram user sends a message to your app user, or clicks an icebreaker or persistent menu. If an Instagram user comments on a post or comment but has not sent a message to your app user, and your app tries to send the Instagram user a message, your app will receive an error, **User consent is required to access user profile.**\n\n## Requirements\n\nThis guide assumes you have read the [Instagram Platform Overview](https://developers.facebook.com/docs/instagram-platform/overview) and implemented the needed components for using this API, such as a Meta login flow and a webhooks server to receive notifications.\n\nYou will need the following:\n\n#### Access Level\n\n- Advanced Access if your app serves Instagram professional accounts you don't own or manage\n    \n- Standard Access if your app serves Instagram professional accounts you own or manage and have added to your app in the App Dashboard\n    \n\n#### Access tokens\n\n- An Instagram user access token requested from your app user who received the webhook notification and who can manage messages on the Instagram professional account\n    \n\n#### Base URL\n\nAll endpoints can be accessed via the `graph.instagram.com` host.\n\n#### Endpoints\n\n- `/`\n    \n\n#### IDs\n\n- The Instagram-scoped ID () for the Instagram user interested in your app user; [received from a webhook notification](https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/messaging-api/user-profile#webhook-notification)\n    \n\n#### Permissions\n\n- `instagram_business_basic`\n    \n- `instagram_business_manage_messages`\n    \n\n#### Webhook event subscriptions\n\n- `messages`\n    \n- `messaging_optins`\n    \n- `messaging_postbacks`\n    \n- `messaging_referral`\n    \n\n### Limitations\n\n- If the Instagram user has blocked your app user, your app will not be able to view the Instagram user's information.\n    \n\n## Webhook notification\n\nIn order to get profile information for an Instagram user who has messaged your app user's Instagram professional account, you need the Instagram-scoped ID for the Instagram user that was sent in a message notification, the value of the `messages.sender.id` property.\n\n```\n{\n  \"object\": \"instagram\",\n  \"entry\": [\n    {\n      \"id\": \"<YOUR_APP_USERS_IG_ID>\",  // Your app user&#x27;s Instagram Professional account ID\n      \"time\": <UNIX_TIMESTAMP>,\n      \"messaging\": [\n        {\n          \"sender\": { \"id\": \"<INSTAGRAM_SCOPED_ID>\" },    // Instagram-scoped ID for the Instagram user who sent the message\n...  \n\n ```\n\n## Get profile information\n\nTo get an the Instagram user's profile information, send a `GET` request to the `/` endpoint, where is the Instagram-scoped ID received in a messaging webhook notification, with the `fields` parameter set to a comma separated list of information you would like to view.\n\n#### Sample Request\n\n_Formatted for readability._\n\n```\ncurl -X GET \"https://graph.instagram.com/v23.0/<INSTAGRAM_SCOPED_ID> \\\n  ?fields=name,username,profile_pic,follower_count,is_user_follow_business,is_business_follow_user \\\n  &access_token=<INSTAGRAM_ACCESS_TOKEN>\"\n\n ```\n\nOn success, your app will receive the following JSON response:\n\n```\n{\n  \"name\": \"Peter Chang\",\n  \"username\": \"peter_chang_live\",\n  \"profile_pic\": \"https://fbcdn-profile-...\",\n  \"follower_count\": 1234\n  \"is_user_follow_business\": false,\n  \"is_business_follow_user\": true,\n}\n\n ```\n\n## Reference\n\n| Field Name | Description |\n| --- | --- |\n| `access_token`  <br>  <br>_string_ | The Instagram user access token from your app user who can manage messages on the Instagram professional account who received the webhook notification |\n| `follower_count`  <br>  <br>_int_ | The number of followers the Instagram user has |\n| _int_ | The Instagram-scoped ID returned in a webhook notification that represents the Instagram user who interacted with your app user's Instagram professional account and triggered the notification |\n| `is_business_follow_user`  <br>  <br>_boolean_ | Indicates whether your app user follows the Instagram user (`true`) or not (`false`) |\n| `is_user_follow_business`  <br>  <br>_boolean_ | Indicates whether the Instagram user follows your app user (`true`) or not (`false`) |\n| `is_verified_user`  <br>  <br>_boolean_ | Indicates whether the Instagram user has a verified Instagram account (`true`) or not (`false`) |\n| `name`  <br>  <br>_string_ | The Instagram user's name (can be null if name not set) |\n| `profile_pic`  <br>  <br>_url_ | The URL for the Instagram user's profile picture (can be null if profile pic not set). The URL will expire in a few days |\n| `username`  <br>  <br>_string_ | The Instagram user's username |"
+				},
+				{
+					"name": "Attachment Upload API",
+					"item": [
+						{
+							"name": "Attachment Upload(Photo)",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"message\": {\n        \"attachment\": {\n            \"type\": \"image\",\n            \"payload\": {\n                \"url\": \"<PATH_TO_ASSET>\",\n                \"is_reusable\": \"<IS_REUSABLE?>\"\n            }\n        }\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://graph.instagram.com/{{api_version}}/{{ig_user_id}}/message_attachments",
+									"protocol": "https",
+									"host": [
+										"graph",
+										"instagram",
+										"com"
+									],
+									"path": [
+										"{{api_version}}",
+										"{{ig_user_id}}",
+										"message_attachments"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Attachment Upload(Photo)",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"message\": {\n        \"attachment\": {\n            \"type\": \"image\",\n            \"payload\": {\n                \"url\": \"<PATH_TO_ASSET>\",\n                \"is_reusable\": \"<IS_REUSABLE?>\"\n            }\n        }\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://graph.facebook.com/{{api_version}}/{{ig_user_id}}/message_attachments",
+											"protocol": "https",
+											"host": [
+												"graph",
+												"facebook",
+												"com"
+											],
+											"path": [
+												"{{api_version}}",
+												"{{ig_user_id}}",
+												"message_attachments"
+											]
+										}
+									},
+									"_postman_previewlanguage": "",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					],
+					"description": "The Attachment Upload API allows you to upload assets that can be sent in messages at a later time. This allows you to avoid the need to upload commonly used files multiple times. The API supports saving assets from a URL and from your local file system."
 				}
 			],
 			"description": "The Instagram API with Instagram Login allows [Instagram professionals&nbsp;](https://l.facebook.com/l.php?u=https%3A%2F%2Fhelp.instagram.com%2F502981923235522&h=AT1ASpREEMXxdykVj-QP02tVKNkwcQ2Nl_x7xvxvGksvpWqS9BdgBQWeiclc-oXzvNfRm2dFdyjLoT6H4G8w3pjkha7gUXpIuem8PhB40ANXErLcEtpZQl2CvQlavHzKidjr7Jycg6fERoByzvOzQG8vWcM)  — businesses and creators — to use your app to manage their presence on Instagram.\n\n## Limitations\n\n- This API setup cannot access ads or tagging.\n    \n\n## Access Token Permissions needed\n\nThese are the permissions needed for the requests in this collection:\n\n- `instagram_business_basic`\n    \n- `instagram_business_manage_messages`\n    \n- `instagram_business_manage_comments`\n    \n- `instagram_business_content_publish`"
