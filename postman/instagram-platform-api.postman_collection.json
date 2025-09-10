@@ -2237,7 +2237,7 @@
 											]
 										}
 									},
-									"_postman_previewlanguage": "",
+									"_postman_previewlanguage": "Text",
 									"header": [],
 									"cookie": [],
 									"body": ""
@@ -2317,7 +2317,7 @@
 									},
 									"status": "OK",
 									"code": 200,
-									"_postman_previewlanguage": "",
+									"_postman_previewlanguage": "Text",
 									"header": [
 										{
 											"key": "Content-Encoding",
@@ -2473,7 +2473,7 @@
 									},
 									"status": "OK",
 									"code": 200,
-									"_postman_previewlanguage": "",
+									"_postman_previewlanguage": "Text",
 									"header": [
 										{
 											"key": "ETag",
@@ -2619,7 +2619,7 @@
 									},
 									"status": "OK",
 									"code": 200,
-									"_postman_previewlanguage": null,
+									"_postman_previewlanguage": "Text",
 									"header": [
 										{
 											"key": "Content-Encoding",
@@ -2724,8 +2724,12 @@
 							"request": {
 								"method": "GET",
 								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
 								"url": {
-									"raw": "https://graph.instagram.com/v23.0/{{message_id}}?&fields=id,created_time,from,to,message",
+									"raw": "https://graph.instagram.com/v23.0/{{message_id}}?fields=id,created_time,from,to,message",
 									"protocol": "https",
 									"host": [
 										"graph",
@@ -2737,10 +2741,6 @@
 										"{{message_id}}"
 									],
 									"query": [
-										{
-											"key": null,
-											"value": null
-										},
 										{
 											"key": "fields",
 											"value": "id,created_time,from,to,message"
@@ -2781,7 +2781,7 @@
 									},
 									"status": "OK",
 									"code": 200,
-									"_postman_previewlanguage": null,
+									"_postman_previewlanguage": "Text",
 									"header": [
 										{
 											"key": "Content-Encoding",
@@ -2883,6 +2883,802 @@
 						}
 					],
 					"description": "The Conversations API helps you get information about conversations between your app user and an Instagram user interested in your app user's Instagram media. You can get:\n\n- A list of conversations for your app user's Instagram professional account\n    \n- A list of messages within each conversation\n    \n- Details about each message including when the message was sent and from who\n    \n\n## Requirements\n\nThis guide assumes you have read the [Instagram Platform Overview](https://developers.facebook.com/docs/instagram-platform/overview) and implemented the needed components for using this API, such as a Meta login flow and a webhooks server to receive notifications.\n\nYou will need the following:\n\n#### Access Level\n\n- Advanced Access if your app serves Instagram professional accounts you don't own or manage\n    \n- Standard Access if your app serves Instagram professional accounts you own or manage and have added to your app in the App Dashboard\n    \n\n#### Access tokens\n\n- An Instagram User access token requested from a person who can manage messages on the Instagram professional account\n    \n\n#### Base URL\n\nAll endpoints can be accessed via the `graph.instagram.com` host.\n\n#### Endpoints\n\n- `//conversations` or `/me/conversations`\n    \n\n#### IDs\n\n- The ID for the Instagram professional account ()\n    \n- The Instagram-scoped ID for the Instagram user in the conversation\n    \n\n#### Permissions\n\n- `instagram_business_basic`\n    \n- `instagram_business_manage_messages`\n    \n\n### Limitations\n\n- Only the image or video URL for a share will be included in the data returned in a call to the API or in the webhooks notification.\n    \n- Conversations that are within the Requests folder that have not been active for 30 days will not be returned in API calls."
+				},
+				{
+					"name": "Publish Content",
+					"item": [
+						{
+							"name": "Create an image container",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "image_url",
+											"value": "https://media.istockphoto.com/id/2167996762/photo/flamingos-on-lake.jpg?s=1024x1024&w=is&k=20&c=SwMgbR6f0EZ8HiyCn46kYOWzXDoWY11QbRByAh4XRPE=\n",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://graph.instagram.com/{{api_version}}/{{ig_user_id}}/media",
+									"protocol": "https",
+									"host": [
+										"graph",
+										"instagram",
+										"com"
+									],
+									"path": [
+										"{{api_version}}",
+										"{{ig_user_id}}",
+										"media"
+									]
+								},
+								"description": "In order to publish a media object, it must have a container. To create the media container and upload a media file, send a `POST` request to the `/media` endpoint with the following parameters:\n\n- `access_token` – Set to your app user's access token\n    \n- `image_url` or `video_url` – Set to the path of the image or video. We will cURL your image using the passed in URL so it must be on a public server.\n    \n- `media_type` — If the container will be for a video, set to `VIDEO`, `REELS`, or `STORIES`.\n    \n- `is_carousel_item` – If the media will be part of a carousel, set to `true`\n    \n- `upload_type` – Set to `resumable`, if creating a resumable upload session for a large video file\n    \n\nVisit the [Instagram User Media Endpoint Reference](https://developers.facebook.com/docs/instagram-platform/instagram-graph-api/reference/ig-user/media#query-string-parameters) for additional optional parameters."
+							},
+							"response": [
+								{
+									"name": "Create an image container",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "image_url",
+													"value": "https://media.istockphoto.com/id/2167996762/photo/flamingos-on-lake.jpg?s=1024x1024&w=is&k=20&c=SwMgbR6f0EZ8HiyCn46kYOWzXDoWY11QbRByAh4XRPE=\n",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "https://graph.instagram.com/{{api_version}}/{{ig_user_id}}/media",
+											"protocol": "https",
+											"host": [
+												"graph",
+												"instagram",
+												"com"
+											],
+											"path": [
+												"{{api_version}}",
+												"{{ig_user_id}}",
+												"media"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=UTF-8"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										},
+										{
+											"key": "cross-origin-resource-policy",
+											"value": "cross-origin"
+										},
+										{
+											"key": "x-app-usage",
+											"value": "{\"call_volume\":0,\"cpu_time\":0}"
+										},
+										{
+											"key": "instagram-api-version",
+											"value": "v23.0"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=31536000; preload; includeSubDomains"
+										},
+										{
+											"key": "Pragma",
+											"value": "no-cache"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "private, no-cache, no-store, must-revalidate"
+										},
+										{
+											"key": "Expires",
+											"value": "Sat, 01 Jan 2000 00:00:00 GMT"
+										},
+										{
+											"key": "x-fb-request-id",
+											"value": "AFsJMNR2Czwjf5FTaX2wDb4"
+										},
+										{
+											"key": "x-fb-trace-id",
+											"value": "DZyHeHhdTHf"
+										},
+										{
+											"key": "x-fb-rev",
+											"value": "1026937209"
+										},
+										{
+											"key": "x-stack",
+											"value": "www"
+										},
+										{
+											"key": "X-FB-Debug",
+											"value": "fl4GhcewJlpDIrgZavFavH1YK7LVcmzyo91jAQdO2Z05LilmPAnf4MlxOg08sE/YfN81axlhzB06qwnnOlBRew=="
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 10 Sep 2025 14:48:20 GMT"
+										},
+										{
+											"key": "X-FB-Connection-Quality",
+											"value": "EXCELLENT; q=0.9, rtt=7, rtx=0, c=12, mss=1380, tbw=387, tp=-1, tpl=-1, uplat=6979, ullat=0"
+										},
+										{
+											"key": "Alt-Svc",
+											"value": "h3=\":443\"; ma=86400"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Content-Length",
+											"value": "26"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": \"<IG_CONTAINER_ID>\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Create a video container",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "video_url",
+											"value": "https://media.istockphoto.com/id/2154918234/video/aerial-view-of-powerful-blue-wave-crashing-onto-shallow-reef-in-the-ocean-with-a-strong.mp4?s=mp4-640x640-is&k=20&c=j1oH-HpR2kFwBfvV-5v105GTz3icU5r8V37VCSbZ77k=",
+											"type": "text"
+										},
+										{
+											"key": "media_type",
+											"value": "STORIES",
+											"type": "text"
+										},
+										{
+											"key": "upload_type",
+											"value": "resumable",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://graph.instagram.com/{{api_version}}/{{ig_user_id}}/media",
+									"protocol": "https",
+									"host": [
+										"graph",
+										"instagram",
+										"com"
+									],
+									"path": [
+										"{{api_version}}",
+										"{{ig_user_id}}",
+										"media"
+									]
+								},
+								"description": "In order to publish a media object, it must have a container. To create the media container and upload a media file, send a `POST` request to the `/media` endpoint with the following parameters:\n\n- `access_token` – Set to your app user's access token\n    \n- `image_url` or `video_url` – Set to the path of the image or video. We will cURL your image using the passed in URL so it must be on a public server.\n    \n- `media_type` — set to `REELS`, or `STORIES`.\n    \n- `is_carousel_item` – If the media will be part of a carousel, set to `true`\n    \n- `upload_type` – Set to `resumable`, if creating a resumable upload session for a large video file\n    \n\nVisit the [Instagram User Media Endpoint Reference](https://developers.facebook.com/docs/instagram-platform/instagram-graph-api/reference/ig-user/media#query-string-parameters) for additional optional parameters."
+							},
+							"response": [
+								{
+									"name": "Create a video container",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "image_url",
+													"value": "https://media.istockphoto.com/id/2167996762/photo/flamingos-on-lake.jpg?s=1024x1024&w=is&k=20&c=SwMgbR6f0EZ8HiyCn46kYOWzXDoWY11QbRByAh4XRPE=\n",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "https://graph.instagram.com/{{api_version}}/{{ig_user_id}}/media",
+											"protocol": "https",
+											"host": [
+												"graph",
+												"instagram",
+												"com"
+											],
+											"path": [
+												"{{api_version}}",
+												"{{ig_user_id}}",
+												"media"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=UTF-8"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										},
+										{
+											"key": "cross-origin-resource-policy",
+											"value": "cross-origin"
+										},
+										{
+											"key": "x-app-usage",
+											"value": "{\"call_volume\":0,\"cpu_time\":0}"
+										},
+										{
+											"key": "instagram-api-version",
+											"value": "v23.0"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=31536000; preload; includeSubDomains"
+										},
+										{
+											"key": "Pragma",
+											"value": "no-cache"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "private, no-cache, no-store, must-revalidate"
+										},
+										{
+											"key": "Expires",
+											"value": "Sat, 01 Jan 2000 00:00:00 GMT"
+										},
+										{
+											"key": "x-fb-request-id",
+											"value": "AFsJMNR2Czwjf5FTaX2wDb4"
+										},
+										{
+											"key": "x-fb-trace-id",
+											"value": "DZyHeHhdTHf"
+										},
+										{
+											"key": "x-fb-rev",
+											"value": "1026937209"
+										},
+										{
+											"key": "x-stack",
+											"value": "www"
+										},
+										{
+											"key": "X-FB-Debug",
+											"value": "fl4GhcewJlpDIrgZavFavH1YK7LVcmzyo91jAQdO2Z05LilmPAnf4MlxOg08sE/YfN81axlhzB06qwnnOlBRew=="
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 10 Sep 2025 14:48:20 GMT"
+										},
+										{
+											"key": "X-FB-Connection-Quality",
+											"value": "EXCELLENT; q=0.9, rtt=7, rtx=0, c=12, mss=1380, tbw=387, tp=-1, tpl=-1, uplat=6979, ullat=0"
+										},
+										{
+											"key": "Alt-Svc",
+											"value": "h3=\":443\"; ma=86400"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Content-Length",
+											"value": "26"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": \"<IG_CONTAINER_ID>\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Create a carousel container",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "caption",
+											"value": "New Carousel!",
+											"type": "text"
+										},
+										{
+											"key": "media_type",
+											"value": "CAROUSEL",
+											"type": "text"
+										},
+										{
+											"key": "children",
+											"value": "{{ig_container_id_1}}, {{ig_container_id_2}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://graph.instagram.com/{{api_version}}/{{ig_user_id}}/media",
+									"protocol": "https",
+									"host": [
+										"graph",
+										"instagram",
+										"com"
+									],
+									"path": [
+										"{{api_version}}",
+										"{{ig_user_id}}",
+										"media"
+									]
+								},
+								"description": "To publish up to 10 images, videos, or a combination of the two, in a single post, a carousel post, you must create a carousel container. This carousel containter will contain a list of all media containers.\n\nTo create the carousel container, send a `POST` request to the `//media` endpoint with the following parameters:\n\n- `media_type` — Set to `CAROUSEL`. Indicates that the container is for a carousel.\n    \n- `children` — A comma separated list of up to 10 container IDs of each image and video that should appear in the published carousel.\n    \n- `media_type` — Caption for the container\n    \n\n#### Limitations\n\n- Carousels are limited to 10 images, videos, or a mix of the two.\n    \n- Carousel images are all cropped based on the first image in the carousel, with the default being a 1:1 aspect ratio.\n    \n- Accounts are limited to 50 published posts within a 24-hour period. Publishing a carousel counts as a single post.\n    \n\n<img src=\"https://content.pstmn.io/a2aa3b9c-0b56-4114-b24d-6c8416ccb8b0/aW1hZ2UucG5n\" width=\"412\" height=\"329\">"
+							},
+							"response": [
+								{
+									"name": "Create a carousel container",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "caption",
+													"value": "New Carousel!",
+													"type": "text"
+												},
+												{
+													"key": "media_type",
+													"value": "CAROUSEL",
+													"type": "text"
+												},
+												{
+													"key": "children",
+													"value": "{{ig_container_id_1}}, {{ig_container_id_2}}",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "https://graph.instagram.com/{{api_version}}/{{ig_user_id}}/media",
+											"protocol": "https",
+											"host": [
+												"graph",
+												"instagram",
+												"com"
+											],
+											"path": [
+												"{{api_version}}",
+												"{{ig_user_id}}",
+												"media"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=UTF-8"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										},
+										{
+											"key": "cross-origin-resource-policy",
+											"value": "cross-origin"
+										},
+										{
+											"key": "x-app-usage",
+											"value": "{\"call_volume\":0,\"cpu_time\":0}"
+										},
+										{
+											"key": "instagram-api-version",
+											"value": "v23.0"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=31536000; preload; includeSubDomains"
+										},
+										{
+											"key": "Pragma",
+											"value": "no-cache"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "private, no-cache, no-store, must-revalidate"
+										},
+										{
+											"key": "Expires",
+											"value": "Sat, 01 Jan 2000 00:00:00 GMT"
+										},
+										{
+											"key": "x-fb-request-id",
+											"value": "AmAF4oT8O1ket5Oky0WThiL"
+										},
+										{
+											"key": "x-fb-trace-id",
+											"value": "FmXF25afBRR"
+										},
+										{
+											"key": "x-fb-rev",
+											"value": "1026937209"
+										},
+										{
+											"key": "x-stack",
+											"value": "www"
+										},
+										{
+											"key": "X-FB-Debug",
+											"value": "HVBv6cHBLyutBKw8C13JGd/lt72J8WtSAQcgYna4qgoqtlv3Rms+YpdonMqfg0/hUa/8WOnblXuT0aYJrOjYnw=="
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 10 Sep 2025 15:10:59 GMT"
+										},
+										{
+											"key": "X-FB-Connection-Quality",
+											"value": "EXCELLENT; q=0.9, rtt=8, rtx=0, c=14, mss=1380, tbw=3345, tp=-1, tpl=-1, uplat=1339, ullat=0"
+										},
+										{
+											"key": "Alt-Svc",
+											"value": "h3=\":443\"; ma=86400"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Content-Length",
+											"value": "26"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": \"<IG_CAROUSEL_CONTAINER_ID>\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Publish the container",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "creation_id",
+											"value": "{{ig_container_id}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://graph.instagram.com/{{api_version}}/{{ig_user_id}}/media_publish",
+									"protocol": "https",
+									"host": [
+										"graph",
+										"instagram",
+										"com"
+									],
+									"path": [
+										"{{api_version}}",
+										"{{ig_user_id}}",
+										"media_publish"
+									]
+								},
+								"description": "To publish the media,\n\nSend a `POST` request to the `/media_publish` endpoint with the following parameters:\n\n- `creation_id` set to the container ID, either for a single media container or a carousel container"
+							},
+							"response": [
+								{
+									"name": "Publish the container",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "creation_id",
+													"value": "{{ig_container_id}}",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "https://graph.instagram.com/{{api_version}}/{{ig_user_id}}/media_publish",
+											"protocol": "https",
+											"host": [
+												"graph",
+												"instagram",
+												"com"
+											],
+											"path": [
+												"{{api_version}}",
+												"{{ig_user_id}}",
+												"media_publish"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=UTF-8"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										},
+										{
+											"key": "cross-origin-resource-policy",
+											"value": "cross-origin"
+										},
+										{
+											"key": "x-app-usage",
+											"value": "{\"call_volume\":0,\"cpu_time\":0}"
+										},
+										{
+											"key": "instagram-api-version",
+											"value": "v23.0"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=31536000; preload; includeSubDomains"
+										},
+										{
+											"key": "Pragma",
+											"value": "no-cache"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "private, no-cache, no-store, must-revalidate"
+										},
+										{
+											"key": "Expires",
+											"value": "Sat, 01 Jan 2000 00:00:00 GMT"
+										},
+										{
+											"key": "x-fb-request-id",
+											"value": "Ak-_TCgZ1XqJO6s5WbW4HAM"
+										},
+										{
+											"key": "x-fb-trace-id",
+											"value": "GlMfoaK1QpU"
+										},
+										{
+											"key": "x-fb-rev",
+											"value": "1026937209"
+										},
+										{
+											"key": "x-stack",
+											"value": "www"
+										},
+										{
+											"key": "X-FB-Debug",
+											"value": "a9HlxhPHRQJjaBY1nnz+wBFQNAqYSiN2biOg8O4C5OId+OzU+Mk7jZIzv5KIgYmlcjEtooy5QiZiiWHEJgoI6Q=="
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 10 Sep 2025 15:13:58 GMT"
+										},
+										{
+											"key": "X-FB-Connection-Quality",
+											"value": "EXCELLENT; q=0.9, rtt=9, rtx=0, c=12, mss=1380, tbw=387, tp=-1, tpl=-1, uplat=4027, ullat=0"
+										},
+										{
+											"key": "Alt-Svc",
+											"value": "h3=\":443\"; ma=86400"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Content-Length",
+											"value": "26"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": \"<IG_MEDIA_ID>\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Publish the container (Reels)",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "creation_id",
+											"value": "{{ig_container_id}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://graph.instagram.com/{{api_version}}/{{ig_user_id}}/media_publish",
+									"protocol": "https",
+									"host": [
+										"graph",
+										"instagram",
+										"com"
+									],
+									"path": [
+										"{{api_version}}",
+										"{{ig_user_id}}",
+										"media_publish"
+									]
+								},
+								"description": "To publish the media,\n\nSend a `POST` request to the `/media_publish` endpoint with the following parameters:\n\n- `creation_id` set to the container ID, either for a single media container or a carousel container\n    \n\nReels are short-form videos that appears in the **Reels** tab of the Instagram app. To publish a reel, create a container for the video and include the `media_type=REELS` parameter along with the path to the video using the `video_url` parameter.\n\nIf you publish a reel and then request its `media_type` field, the value returned is `VIDEO`. To determine if a published video has been designated as a reel, request its `media_product_type` field instead.\n\nYou can use the [code sample on GitHub (insta_reels_publishing_api_sample)](https://github.com/fbsamples/reels_publishing_apis/tree/main/insta_reels_publishing_api_sample?fbclid=IwZXh0bgNhZW0CMTEAYnJpZBExWGpYbjdsdzBIMkVFSTR3MgEezm_WMrAtCneUsgb9cjPQp7WUZfine8kjJ6kQfGNXlZFcFbLjVhgO-65aqPw_aem_19YHsmFuOpepy8LZSzIhyQ) to learn how to publish Reels to Instagram."
+							},
+							"response": [
+								{
+									"name": "Publish the container (Reels)",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "creation_id",
+													"value": "{{ig_container_id}}",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "https://graph.instagram.com/{{api_version}}/{{ig_user_id}}/media_publish",
+											"protocol": "https",
+											"host": [
+												"graph",
+												"instagram",
+												"com"
+											],
+											"path": [
+												"{{api_version}}",
+												"{{ig_user_id}}",
+												"media_publish"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=UTF-8"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										},
+										{
+											"key": "cross-origin-resource-policy",
+											"value": "cross-origin"
+										},
+										{
+											"key": "x-app-usage",
+											"value": "{\"call_volume\":0,\"cpu_time\":0}"
+										},
+										{
+											"key": "instagram-api-version",
+											"value": "v23.0"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=31536000; preload; includeSubDomains"
+										},
+										{
+											"key": "Pragma",
+											"value": "no-cache"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "private, no-cache, no-store, must-revalidate"
+										},
+										{
+											"key": "Expires",
+											"value": "Sat, 01 Jan 2000 00:00:00 GMT"
+										},
+										{
+											"key": "x-fb-request-id",
+											"value": "AEk9onYvWiDnxDCEmzi0Kds"
+										},
+										{
+											"key": "x-fb-trace-id",
+											"value": "BE99CYY4Do+"
+										},
+										{
+											"key": "x-fb-rev",
+											"value": "1026937209"
+										},
+										{
+											"key": "x-stack",
+											"value": "www"
+										},
+										{
+											"key": "X-FB-Debug",
+											"value": "6EMhS3Wa1Hf0q/SlfTTx7hVEHWqVMoxjIKInTIprpEnwBrTS18WgEJ/pePEqGb2AvE1qQC9FQmGRdElA4dXMsw=="
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 10 Sep 2025 15:16:33 GMT"
+										},
+										{
+											"key": "X-FB-Connection-Quality",
+											"value": "EXCELLENT; q=0.9, rtt=8, rtx=0, c=14, mss=1380, tbw=3344, tp=-1, tpl=-1, uplat=10102, ullat=0"
+										},
+										{
+											"key": "Alt-Svc",
+											"value": "h3=\":443\"; ma=86400"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Content-Length",
+											"value": "26"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": \"<IG_MEDIA_ID>\"\n}"
+								}
+							]
+						}
+					],
+					"description": "This guide shows you how to publish single images, videos, reels (single media posts), or posts containing multiple images and videos (carousel posts) on Instagram professional accounts using the Instagram Platform.\n\n## Requirements\n\nThis guide assumes you have read the [Instagram Platform Overview](https://developers.facebook.com/docs/instagram-platform/overview) and implemented the needed components for using this API, such as a Meta login flow and a webhooks server to receive notifications.\n\n#### Media on a public server\n\nWe cURL media used in publishing attempts, so the media must be hosted on a publicly accessible server at the time of the attempt.\n\nYou will need the following:\n\n|  |  |\n| --- | --- |\n| **Access Levels** | \\- Advanced Access  <br>  <br>\\- Standard Access |\n| **Access Tokens** | \\- Instagram User access token |\n| **Host URL** | `graph.instagram.com` |\n| **Login Type** | Business Login for Instagram |\n| [<b>Permissions</b>](https://developers.facebook.com/docs/permissions/reference#i) | \\- `instagram_business_basic`  <br>  <br>\\- `instagram_business_content_publish` |\n| **Webhooks** | \\- |\n\n#### Endpoints\n\n- [<code>/media</code>](https://developers.facebook.com/docs/instagram-api/reference/ig-user/media#creating) — Create media container and upload the media\n    \n    - `upload_type=resumable` — Create a resumbable upload session to upload large videos from an area with frequent network interruptions or other transmission failures. Only for apps that have implemented Facebook Login for Business.\n        \n- [<code>/media_publish</code>](https://developers.facebook.com/docs/instagram-api/reference/ig-user/media_publish#creating) — publish uploaded media using their media containers.\n    \n- [<code>/?fields=status_code</code>](https://developers.facebook.com/docs/instagram-api/reference/ig-container#reading) — check media container publishing eligibility and status.\n    \n- [<code>/content_publishing_limit</code>](https://developers.facebook.com/docs/instagram-api/reference/ig-user/content_publishing_limit) — check app user's current publishing rate limit usage.\n    \n- `POST https://rupload.facebook.com/ig-api-upload/` — Upload the video to Meta servers\n    \n- `GET /?fields=status_code` — Check publishing eligibility and status of the video\n    \n\n#### HTML URL encoding troubleshooting\n\n- Some of the parameters are supported in list/dict format.\n    \n- Some characters need to be encoded into a format that can be transmitted over the Internet. For example: `user_tags=[{username:’ig_user_name’}]` is encoded to `user_tags=[{username:ig_user_name}]` where `[` is encoded to `[` and `{` is encoded to `{`. For more conversions, please refer to the HTML URL Encoding standard.\n    \n\n### Limitations\n\n- JPEG is the only image format supported. Extended JPEG formats such as MPO and JPS are not supported.\n    \n- Shopping tags are not supported.\n    \n- Branded content tags are not supported.\n    \n- Filters are not supported.\n    \n\nFor additional limitations, see each endpoint's reference.\n\n#### Rate Limit\n\nInstagram accounts are limited to 100 API-published posts within a 24-hour moving period. Carousels count as a single post. This limit is enforced on the `POST //media_publish` endpoint when attempting to publish a media container. We recommend that your app also enforce the publishing rate limit, especially if your app allows app users to schedule posts to be published in the future.\n\nTo check an Instagram professional account's current rate limit usage, query the `GET /content_publishing_limit` endpoint.\n\n## Troubleshooting\n\nIf you are able to create a container for a video but the `POST /media_publish` endpoint does not return the published media ID, you can get the container's publishing status by querying the `GET /?fields=status_code` endpoint. This endpoint will return one of the following:\n\n- `EXPIRED` — The container was not published within 24 hours and has expired.\n    \n- `ERROR` — The container failed to complete the publishing process.\n    \n- `FINISHED` — The container and its media object are ready to be published.\n    \n- `IN_PROGRESS` — The container is still in the publishing process.\n    \n- `PUBLISHED` — The container's media object has been published.\n    \n\nWe recommend querying a container's status once per minute, for no more than 5 minutes.\n\n## Errors\n\nSee the [Error Codes](https://developers.facebook.com/docs/instagram-api/reference/error-codes) reference.\n\n## Next Steps\n\nNow that you have published to an Instagram professional account, learn how to [moderate comments on your media](https://developers.facebook.com/docs/instagram/platform/instagram-api/comment-moderation)."
 				}
 			],
 			"description": "The Instagram API with Instagram Login allows [Instagram professionals&nbsp;](https://l.facebook.com/l.php?u=https%3A%2F%2Fhelp.instagram.com%2F502981923235522&h=AT1ASpREEMXxdykVj-QP02tVKNkwcQ2Nl_x7xvxvGksvpWqS9BdgBQWeiclc-oXzvNfRm2dFdyjLoT6H4G8w3pjkha7gUXpIuem8PhB40ANXErLcEtpZQl2CvQlavHzKidjr7Jycg6fERoByzvOzQG8vWcM)  — businesses and creators — to use your app to manage their presence on Instagram.\n\n## Limitations\n\n- This API setup cannot access ads or tagging.\n    \n\n## Access Token Permissions needed\n\nThese are the permissions needed for the requests in this collection:\n\n- `instagram_business_basic`\n    \n- `instagram_business_manage_messages`\n    \n- `instagram_business_manage_comments`\n    \n- `instagram_business_content_publish`"
