@@ -2298,6 +2298,1088 @@
 				}
 			],
 			"description": "Quick replies provide a way to present a set of up to 13 buttons in-conversation that contain a title and optional image, and appear prominently above the composer. You can also use quick replies to request a person's location, email address, and phone number.\n\nWhen a quick reply is tapped, the buttons are dismissed, and the title of the tapped button is posted to the conversation as a message. A `messages` event will be sent to your webhook that contains the button title and an optional payload.\n\nFor more details see: [https://developers.facebook.com/docs/messenger-platform/send-messages/quick-replies](https://developers.facebook.com/docs/messenger-platform/send-messages/quick-replies)"
+		},
+		{
+			"name": "Messenger Profile API",
+			"item": [
+				{
+					"name": "Persistent Menu",
+					"item": [
+						{
+							"name": "Setting the Persistent Menu",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"persistent_menu\": [\n        {\n            \"locale\": \"default\",\n            \"composer_input_disabled\": false,\n            \"call_to_actions\": [\n                {\n                    \"type\": \"postback\",\n                    \"title\": \"Talk to an agent\",\n                    \"payload\": \"CARE_HELP\"\n                },\n                {\n                    \"type\": \"postback\",\n                    \"title\": \"Outfit suggestions\",\n                    \"payload\": \"CURATION\"\n                },\n                {\n                    \"type\": \"web_url\",\n                    \"title\": \"Shop now\",\n                    \"url\": \"https://www.originalcoastclothing.com/\",\n                    \"webview_height_ratio\": \"full\"\n                }\n            ]\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://graph.facebook.com/{{version}}/106259855420533/messenger_profile?",
+									"protocol": "https",
+									"host": [
+										"graph",
+										"facebook",
+										"com"
+									],
+									"path": [
+										"{{version}}",
+										"106259855420533",
+										"messenger_profile"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": null
+										}
+									]
+								},
+								"description": "To set the persistent menu, send a `POST` request to the [Messenger Profile API](https://developers.facebook.com/docs/messenger-platform/reference/messenger-profile-api) to set the `persistent_menu` property of your bot's Messenger profile.\n\nWe allow up to 20 buttons in the `call_to_actions` array.\n\n## Disabling the Composer\n\nYou may disable the composer to make the persistent menu the only way for a person to interact with your Messenger bot. This is useful if your bot has a very specific purpose or set of options.\n\nTo do this, set `\"composer_input_disabled\":true` when you create the persistent menu.\n\n## Localization\n\nYou may provide default and localized button text for the persistent menu that will be displayed based on a person's locale.\n\nTo do this, specify a separate object in the `persistent_menu` array for each locale. To specify the locale for each object, set the `locale` property to a [supported locale](https://developers.facebook.com/docs/messenger-platform/messenger-profile/supported-locales):\n\n```\n{\n  \"locale\":\"default\",\n  \"call_to_actions\":[...]\n},\n{\n  \"locale: \"zh_CN\",\n  \"call_to_actions\":[...]\n}\n\n ```\n\n## User level menu\n\nYou can override the Page level persistent menu with a user level setting. This allows your app to dynamically control:\n\n- The click to action buttons on the menu for the user.\n    \n- The visibility of the composer for the user.\n    \n\nTo enable or disable the user level setting a different endpoint called `custom_user_settings` is used. This endpoint supports POST, GET and DELETE calls.\n\nThe same configurations available for the Page level persistent menu apply at user level. The main difference is that a `psid` param is needed to indicate the user that this override applies to.\n\n**NOTE:** The update of user level persistent menu happens in realtime, while the update of page level persistent menu can take up to 24 hours.\n\nThe user level settings are rate limited to 10 calls per user per 10 min."
+							},
+							"response": [
+								{
+									"name": "Setting the Persistent Menu",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"persistent_menu\": [\n        {\n            \"locale\": \"default\",\n            \"composer_input_disabled\": false,\n            \"call_to_actions\": [\n                {\n                    \"type\": \"postback\",\n                    \"title\": \"Talk to an agent\",\n                    \"payload\": \"CARE_HELP\"\n                },\n                {\n                    \"type\": \"postback\",\n                    \"title\": \"Outfit suggestions\",\n                    \"payload\": \"CURATION\"\n                },\n                {\n                    \"type\": \"web_url\",\n                    \"title\": \"Shop now\",\n                    \"url\": \"https://www.originalcoastclothing.com/\",\n                    \"webview_height_ratio\": \"full\"\n                }\n            ]\n        }\n    ],\n    \"psid\": 5371409746245822\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://graph.facebook.com/{{version}}/106259855420533/messenger_profile?",
+											"protocol": "https",
+											"host": [
+												"graph",
+												"facebook",
+												"com"
+											],
+											"path": [
+												"{{version}}",
+												"106259855420533",
+												"messenger_profile"
+											],
+											"query": [
+												{
+													"key": "",
+													"value": null
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=UTF-8"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										},
+										{
+											"key": "x-business-use-case-usage",
+											"value": "{\"106259855420533\":[{\"type\":\"messenger\",\"call_count\":1,\"total_cputime\":1,\"total_time\":1,\"estimated_time_to_regain_access\":0}]}"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "facebook-api-version",
+											"value": "v23.0"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=15552000; preload"
+										},
+										{
+											"key": "Pragma",
+											"value": "no-cache"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "private, no-cache, no-store, must-revalidate"
+										},
+										{
+											"key": "Expires",
+											"value": "Sat, 01 Jan 2000 00:00:00 GMT"
+										},
+										{
+											"key": "x-fb-request-id",
+											"value": "AiZRr3d7NwJu1igZNyPoKZC"
+										},
+										{
+											"key": "x-fb-trace-id",
+											"value": "FHwolke8DTB"
+										},
+										{
+											"key": "x-fb-rev",
+											"value": "1027045623"
+										},
+										{
+											"key": "X-FB-Debug",
+											"value": "7xZdxQMfifeWwqyDUyTaj1OSfykxVajbaAbTnqXcWAHC0DVHqGrjjEQiIKw2RZuAVvtoe0Q+1txl2beC9m0HqA=="
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 12 Sep 2025 14:44:29 GMT"
+										},
+										{
+											"key": "X-FB-Connection-Quality",
+											"value": "EXCELLENT; q=0.9, rtt=6, rtx=0, c=10, mss=1380, tbw=2727, tp=-1, tpl=-1, uplat=1132, ullat=0"
+										},
+										{
+											"key": "Alt-Svc",
+											"value": "h3=\":443\"; ma=86400"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Content-Length",
+											"value": "20"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"result\": \"success\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Getting the Persistent Menu",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://graph.facebook.com/{{version}}/me/messenger_profile?fields=persistent_menu",
+									"protocol": "https",
+									"host": [
+										"graph",
+										"facebook",
+										"com"
+									],
+									"path": [
+										"{{version}}",
+										"me",
+										"messenger_profile"
+									],
+									"query": [
+										{
+											"key": "fields",
+											"value": "persistent_menu"
+										}
+									]
+								},
+								"description": "To get the persistent menu, send a `GET` request to the [Messenger Profile API](https://developers.facebook.com/docs/messenger-platform/reference/messenger-profile-api) with fields=persistent_menu."
+							},
+							"response": [
+								{
+									"name": "Getting the Persistent Menu",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://graph.facebook.com/{{version}}/me/messenger_profile?fields=persistent_menu",
+											"protocol": "https",
+											"host": [
+												"graph",
+												"facebook",
+												"com"
+											],
+											"path": [
+												"{{version}}",
+												"me",
+												"messenger_profile"
+											],
+											"query": [
+												{
+													"key": "fields",
+													"value": "persistent_menu"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "Content-Encoding",
+											"value": "br"
+										},
+										{
+											"key": "ETag",
+											"value": "\"a3ab509f38928acd49f9efffbd7b8b4dbd8af139\""
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=UTF-8"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "x-business-use-case-usage",
+											"value": "{\"106259855420533\":[{\"type\":\"messenger\",\"call_count\":1,\"total_cputime\":1,\"total_time\":1,\"estimated_time_to_regain_access\":0}]}"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "facebook-api-version",
+											"value": "v23.0"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=15552000; preload"
+										},
+										{
+											"key": "Pragma",
+											"value": "no-cache"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "private, no-cache, no-store, must-revalidate"
+										},
+										{
+											"key": "Expires",
+											"value": "Sat, 01 Jan 2000 00:00:00 GMT"
+										},
+										{
+											"key": "x-fb-request-id",
+											"value": "AtSbfilY_KrM8hw0hnaTYCJ"
+										},
+										{
+											"key": "x-fb-trace-id",
+											"value": "AE0763cDyX4"
+										},
+										{
+											"key": "x-fb-rev",
+											"value": "1027048259"
+										},
+										{
+											"key": "X-FB-Debug",
+											"value": "Of3ZQH4GwXKVz6kQff32nDww/PDJKFKhY68ZHsuHygOB5YZDKNZ+Q80Hxe2rlO0tUZW/A3QdRi3lQ2sfVz1BPA=="
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 12 Sep 2025 17:49:03 GMT"
+										},
+										{
+											"key": "X-FB-Connection-Quality",
+											"value": "EXCELLENT; q=0.9, rtt=8, rtx=0, c=10, mss=1380, tbw=380, tp=-1, tpl=-1, uplat=790, ullat=0"
+										},
+										{
+											"key": "Alt-Svc",
+											"value": "h3=\":443\"; ma=86400"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Content-Length",
+											"value": "229"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": [\n        {\n            \"persistent_menu\": [\n                {\n                    \"locale\": \"default\",\n                    \"composer_input_disabled\": false,\n                    \"call_to_actions\": [\n                        {\n                            \"type\": \"postback\",\n                            \"title\": \"Talk to an agent\",\n                            \"payload\": \"CARE_HELP\"\n                        },\n                        {\n                            \"type\": \"postback\",\n                            \"title\": \"Outfit suggestions\",\n                            \"payload\": \"CURATION\"\n                        },\n                        {\n                            \"type\": \"web_url\",\n                            \"title\": \"Shop now\",\n                            \"url\": \"https://www.originalcoastclothing.com/\",\n                            \"webview_height_ratio\": \"full\"\n                        }\n                    ]\n                }\n            ]\n        }\n    ]\n}"
+								}
+							]
+						},
+						{
+							"name": "Deleting the Persistent Menu",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"fields\": [\"persistent_menu\"]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://graph.facebook.com/{{version}}/me/messenger_profile",
+									"protocol": "https",
+									"host": [
+										"graph",
+										"facebook",
+										"com"
+									],
+									"path": [
+										"{{version}}",
+										"me",
+										"messenger_profile"
+									]
+								},
+								"description": "To delete the persistent menu, send a `DELETE` request to the [Messenger Profile API](https://developers.facebook.com/docs/messenger-platform/reference/messenger-profile-api) with fields=\\[\"persistent_menu\"\\]."
+							},
+							"response": [
+								{
+									"name": "Deleting the Persistent Menu",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"fields\": [\"persistent_menu\"]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://graph.facebook.com/{{version}}/me/messenger_profile",
+											"protocol": "https",
+											"host": [
+												"graph",
+												"facebook",
+												"com"
+											],
+											"path": [
+												"{{version}}",
+												"me",
+												"messenger_profile"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=UTF-8"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										},
+										{
+											"key": "x-ad-api-version-warning",
+											"value": "You are calling a deprecated version of the Ads API."
+										},
+										{
+											"key": "cross-origin-resource-policy",
+											"value": "cross-origin"
+										},
+										{
+											"key": "x-app-usage",
+											"value": "{\"call_count\":0,\"total_cputime\":0,\"total_time\":2}"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "facebook-api-version",
+											"value": "v20.0"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=15552000; preload"
+										},
+										{
+											"key": "Pragma",
+											"value": "no-cache"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "private, no-cache, no-store, must-revalidate"
+										},
+										{
+											"key": "Expires",
+											"value": "Sat, 01 Jan 2000 00:00:00 GMT"
+										},
+										{
+											"key": "x-fb-request-id",
+											"value": "ABai-VQ6x0STCQhhbZ8d7-g"
+										},
+										{
+											"key": "x-fb-trace-id",
+											"value": "DLT1xbI7iuE"
+										},
+										{
+											"key": "x-fb-rev",
+											"value": "1027048259"
+										},
+										{
+											"key": "X-FB-Debug",
+											"value": "nXuGiFN2GdA0oaf06EUg5OcO2nuchypnQDE6rH8QFFZAt2ZPNWeerN+KdW7yt556e1p0pC+xRXugriQmLSgR4Q=="
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 12 Sep 2025 17:55:07 GMT"
+										},
+										{
+											"key": "X-FB-Connection-Quality",
+											"value": "EXCELLENT; q=0.9, rtt=7, rtx=0, c=10, mss=1380, tbw=380, tp=-1, tpl=-1, uplat=2328, ullat=0"
+										},
+										{
+											"key": "Alt-Svc",
+											"value": "h3=\":443\"; ma=86400"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Content-Length",
+											"value": "20"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"result\": \"success\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Setting a user-level Persistent Menu",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"persistent_menu\": [\n        {\n            \"locale\": \"default\",\n            \"composer_input_disabled\": false,\n            \"call_to_actions\": [\n                {\n                    \"type\": \"postback\",\n                    \"title\": \"Talk to an agent\",\n                    \"payload\": \"CARE_HELP\"\n                },\n                {\n                    \"type\": \"postback\",\n                    \"title\": \"Outfit suggestions\",\n                    \"payload\": \"CURATION\"\n                },\n                {\n                    \"type\": \"web_url\",\n                    \"title\": \"Shop now\",\n                    \"url\": \"https://www.originalcoastclothing.com/\",\n                    \"webview_height_ratio\": \"full\"\n                }\n            ]\n        }\n    ],\n    \"psid\": {{page-scoped-id}}\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://graph.facebook.com/{{version}}/106259855420533/custom_user_settings?",
+									"protocol": "https",
+									"host": [
+										"graph",
+										"facebook",
+										"com"
+									],
+									"path": [
+										"{{version}}",
+										"106259855420533",
+										"custom_user_settings"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": null
+										}
+									]
+								},
+								"description": "## User level menu\n\nYou can override the Page level persistent menu with a user level setting. This allows your app to dynamically control:\n\n- The click to action buttons on the menu for the user.\n    \n- The visibility of the composer for the user.\n    \n\nTo enable or disable the user level setting a different endpoint called `custom_user_settings` is used. This endpoint supports POST, GET and DELETE calls.\n\nThe same configurations available for the Page level persistent menu apply at user level. The main difference is that a `psid` param is needed to indicate the user that this override applies to.\n\n**NOTE:** The update of user level persistent menu happens in realtime, while the update of page level persistent menu can take up to 24 hours.\n\nThe user level settings are rate limited to 10 calls per user per 10 min."
+							},
+							"response": [
+								{
+									"name": "Setting a user-level Persistent Menu",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"persistent_menu\": [\n        {\n            \"locale\": \"default\",\n            \"composer_input_disabled\": false,\n            \"call_to_actions\": [\n                {\n                    \"type\": \"postback\",\n                    \"title\": \"Talk to an agent\",\n                    \"payload\": \"CARE_HELP\"\n                },\n                {\n                    \"type\": \"postback\",\n                    \"title\": \"Outfit suggestions\",\n                    \"payload\": \"CURATION\"\n                },\n                {\n                    \"type\": \"web_url\",\n                    \"title\": \"Shop now\",\n                    \"url\": \"https://www.originalcoastclothing.com/\",\n                    \"webview_height_ratio\": \"full\"\n                }\n            ]\n        }\n    ],\n    \"psid\": {{page-scoped-id}}\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://graph.facebook.com/{{version}}/106259855420533/custom_user_settings?",
+											"protocol": "https",
+											"host": [
+												"graph",
+												"facebook",
+												"com"
+											],
+											"path": [
+												"{{version}}",
+												"106259855420533",
+												"custom_user_settings"
+											],
+											"query": [
+												{
+													"key": "",
+													"value": null
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=UTF-8"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										},
+										{
+											"key": "x-business-use-case-usage",
+											"value": "{\"106259855420533\":[{\"type\":\"pages\",\"call_count\":0,\"total_cputime\":0,\"total_time\":0,\"estimated_time_to_regain_access\":0}]}"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "facebook-api-version",
+											"value": "v23.0"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=15552000; preload"
+										},
+										{
+											"key": "Pragma",
+											"value": "no-cache"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "private, no-cache, no-store, must-revalidate"
+										},
+										{
+											"key": "Expires",
+											"value": "Sat, 01 Jan 2000 00:00:00 GMT"
+										},
+										{
+											"key": "x-fb-request-id",
+											"value": "AG9qHoRif_gKDRfdRJCvHH4"
+										},
+										{
+											"key": "x-fb-trace-id",
+											"value": "DeYcL+YMiq/"
+										},
+										{
+											"key": "x-fb-rev",
+											"value": "1027045623"
+										},
+										{
+											"key": "X-FB-Debug",
+											"value": "CXeDVXIslUXEI9r7YVkqlA8H2mj1ybPdX9MBlAkWP54RChDaYEzWIa9U9thJa5znB4gDtUNJL8KCyei4Ato2og=="
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 12 Sep 2025 14:45:36 GMT"
+										},
+										{
+											"key": "X-FB-Connection-Quality",
+											"value": "EXCELLENT; q=0.9, rtt=8, rtx=0, c=10, mss=1380, tbw=380, tp=-1, tpl=-1, uplat=2631, ullat=0"
+										},
+										{
+											"key": "Alt-Svc",
+											"value": "h3=\":443\"; ma=86400"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Content-Length",
+											"value": "20"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"result\": \"success\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Getting a user level persistent menu",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://graph.facebook.com/{{version}}/106259855420533/custom_user_settings?psid={{page-scoped-id}}",
+									"protocol": "https",
+									"host": [
+										"graph",
+										"facebook",
+										"com"
+									],
+									"path": [
+										"{{version}}",
+										"106259855420533",
+										"custom_user_settings"
+									],
+									"query": [
+										{
+											"key": "psid",
+											"value": "{{page-scoped-id}}"
+										}
+									]
+								},
+								"description": "## User level menu\n\nYou can override the Page level persistent menu with a user level setting. This allows your app to dynamically control:\n\n- The click to action buttons on the menu for the user.\n    \n- The visibility of the composer for the user.\n    \n\nTo enable or disable the user level setting a different endpoint called `custom_user_settings` is used. This endpoint supports POST, GET and DELETE calls.\n\nThe same configurations available for the Page level persistent menu apply at user level. The main difference is that a `psid` param is needed to indicate the user that this override applies to.\n\n**NOTE:** The update of user level persistent menu happens in realtime, while the update of page level persistent menu can take up to 24 hours.\n\nThe user level settings are rate limited to 10 calls per user per 10 min."
+							},
+							"response": [
+								{
+									"name": "Getting a user level persistent menu",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://graph.facebook.com/{{version}}/106259855420533/custom_user_settings?psid={{page-scoped-id}}",
+											"protocol": "https",
+											"host": [
+												"graph",
+												"facebook",
+												"com"
+											],
+											"path": [
+												"{{version}}",
+												"106259855420533",
+												"custom_user_settings"
+											],
+											"query": [
+												{
+													"key": "psid",
+													"value": "{{page-scoped-id}}"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "Content-Encoding",
+											"value": "br"
+										},
+										{
+											"key": "ETag",
+											"value": "\"44d4645f72ed3e3d2e8c5591ce0b5bfcd4f18b3f\""
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=UTF-8"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "cross-origin-resource-policy",
+											"value": "cross-origin"
+										},
+										{
+											"key": "x-app-usage",
+											"value": "{\"call_count\":0,\"total_cputime\":0,\"total_time\":0}"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "facebook-api-version",
+											"value": "v23.0"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=15552000; preload"
+										},
+										{
+											"key": "Pragma",
+											"value": "no-cache"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "private, no-cache, no-store, must-revalidate"
+										},
+										{
+											"key": "Expires",
+											"value": "Sat, 01 Jan 2000 00:00:00 GMT"
+										},
+										{
+											"key": "x-fb-request-id",
+											"value": "Aub_hp-8ljNvN1E3Is1fKHh"
+										},
+										{
+											"key": "x-fb-trace-id",
+											"value": "Bx6U6jkkkFr"
+										},
+										{
+											"key": "x-fb-rev",
+											"value": "1027045623"
+										},
+										{
+											"key": "X-FB-Debug",
+											"value": "wqaAMs+iwp6nuoRJWhC4aeRqqO1I9Wx0T7ZxXH5vlfj/ezNXVoi1sq3ubI1Tk6gXjS25V3rT+4varvuR92gp/g=="
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 12 Sep 2025 14:48:45 GMT"
+										},
+										{
+											"key": "X-FB-Connection-Quality",
+											"value": "EXCELLENT; q=0.9, rtt=8, rtx=0, c=10, mss=1380, tbw=380, tp=-1, tpl=-1, uplat=708, ullat=0"
+										},
+										{
+											"key": "Alt-Svc",
+											"value": "h3=\":443\"; ma=86400"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Content-Length",
+											"value": "244"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": [\n        {\n            \"user_level_persistent_menu\": [\n                {\n                    \"locale\": \"default\",\n                    \"composer_input_disabled\": false,\n                    \"call_to_actions\": [\n                        {\n                            \"type\": \"postback\",\n                            \"title\": \"Talk to an agent\",\n                            \"payload\": \"CARE_HELP\"\n                        },\n                        {\n                            \"type\": \"postback\",\n                            \"title\": \"Outfit suggestions\",\n                            \"payload\": \"CURATION\"\n                        },\n                        {\n                            \"type\": \"web_url\",\n                            \"title\": \"Shop now\",\n                            \"url\": \"https://www.originalcoastclothing.com/\",\n                            \"webview_height_ratio\": \"full\"\n                        }\n                    ]\n                }\n            ],\n            \"page_level_persistent_menu\": [\n                {\n                    \"locale\": \"default\",\n                    \"composer_input_disabled\": false,\n                    \"call_to_actions\": [\n                        {\n                            \"type\": \"postback\",\n                            \"title\": \"Talk to an agent\",\n                            \"payload\": \"CARE_HELP\"\n                        },\n                        {\n                            \"type\": \"postback\",\n                            \"title\": \"Outfit suggestions\",\n                            \"payload\": \"CURATION\"\n                        },\n                        {\n                            \"type\": \"web_url\",\n                            \"title\": \"Shop now\",\n                            \"url\": \"https://www.originalcoastclothing.com/\",\n                            \"webview_height_ratio\": \"full\"\n                        }\n                    ]\n                }\n            ]\n        }\n    ]\n}"
+								}
+							]
+						},
+						{
+							"name": "Deleting a user-level Persistent Menu",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"params\":[\"persistent_menu\"]}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://graph.facebook.com/{{version}}/106259855420533/custom_user_settings?psid={{page-scoped-id}}",
+									"protocol": "https",
+									"host": [
+										"graph",
+										"facebook",
+										"com"
+									],
+									"path": [
+										"{{version}}",
+										"106259855420533",
+										"custom_user_settings"
+									],
+									"query": [
+										{
+											"key": "psid",
+											"value": "{{page-scoped-id}}"
+										}
+									]
+								},
+								"description": "## User level menu\n\nYou can override the Page level persistent menu with a user level setting. This allows your app to dynamically control:\n\n- The click to action buttons on the menu for the user.\n    \n- The visibility of the composer for the user.\n    \n\nTo enable or disable the user level setting a different endpoint called `custom_user_settings` is used. This endpoint supports POST, GET and DELETE calls.\n\nThe same configurations available for the Page level persistent menu apply at user level. The main difference is that a `psid` param is needed to indicate the user that this override applies to.\n\n**NOTE:** The update of user level persistent menu happens in realtime, while the update of page level persistent menu can take up to 24 hours.\n\nThe user level settings are rate limited to 10 calls per user per 10 min."
+							},
+							"response": [
+								{
+									"name": "Deleting a user-level Persistent Menu",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"params\":[\"persistent_menu\"]}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://graph.facebook.com/{{version}}/106259855420533/custom_user_settings?psid={{page-scoped-id}}",
+											"protocol": "https",
+											"host": [
+												"graph",
+												"facebook",
+												"com"
+											],
+											"path": [
+												"{{version}}",
+												"106259855420533",
+												"custom_user_settings"
+											],
+											"query": [
+												{
+													"key": "psid",
+													"value": "{{page-scoped-id}}"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=UTF-8"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										},
+										{
+											"key": "cross-origin-resource-policy",
+											"value": "cross-origin"
+										},
+										{
+											"key": "x-app-usage",
+											"value": "{\"call_count\":0,\"total_cputime\":0,\"total_time\":0}"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "facebook-api-version",
+											"value": "v23.0"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=15552000; preload"
+										},
+										{
+											"key": "Pragma",
+											"value": "no-cache"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "private, no-cache, no-store, must-revalidate"
+										},
+										{
+											"key": "Expires",
+											"value": "Sat, 01 Jan 2000 00:00:00 GMT"
+										},
+										{
+											"key": "x-fb-request-id",
+											"value": "AoXsesoxfWItlWRMCZazBJm"
+										},
+										{
+											"key": "x-fb-trace-id",
+											"value": "DozlgjpV1mD"
+										},
+										{
+											"key": "x-fb-rev",
+											"value": "1027045623"
+										},
+										{
+											"key": "X-FB-Debug",
+											"value": "61dEfRjELaqzVmrE8OqISCTfkpxesjCnhqiVKdXmPneWipgQnIt5sG/8zhPo1rp6ml27txiVt1O1iHKTRlnO6A=="
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 12 Sep 2025 14:50:39 GMT"
+										},
+										{
+											"key": "X-FB-Connection-Quality",
+											"value": "EXCELLENT; q=0.9, rtt=7, rtx=0, c=10, mss=1380, tbw=2829, tp=-1, tpl=-1, uplat=2303, ullat=0"
+										},
+										{
+											"key": "Alt-Svc",
+											"value": "h3=\":443\"; ma=86400"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Content-Length",
+											"value": "20"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"result\": \"success\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Disabling composer for a user",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"persistent_menu\": [\n        {\n            \"locale\": \"default\",\n            \"composer_input_disabled\": true,\n            \"call_to_actions\": [\n                {\n                    \"type\": \"postback\",\n                    \"title\": \"Talk to an agent\",\n                    \"payload\": \"CARE_HELP\"\n                },\n                {\n                    \"type\": \"postback\",\n                    \"title\": \"Outfit suggestions\",\n                    \"payload\": \"CURATION\"\n                },\n                {\n                    \"type\": \"web_url\",\n                    \"title\": \"Shop now\",\n                    \"url\": \"https://www.originalcoastclothing.com/\",\n                    \"webview_height_ratio\": \"full\"\n                }\n            ]\n        }\n    ],\n    \"psid\": {{page-scoped-id}},\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://graph.facebook.com/{{version}}/106259855420533/custom_user_settings?",
+									"protocol": "https",
+									"host": [
+										"graph",
+										"facebook",
+										"com"
+									],
+									"path": [
+										"{{version}}",
+										"106259855420533",
+										"custom_user_settings"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": null
+										}
+									]
+								},
+								"description": "## Disabling the Composer\n\nYou may disable the composer to make the persistent menu the only way for a person to interact with your Messenger bot. This is useful if your bot has a very specific purpose or set of options.\n\nTo do this, set `\"composer_input_disabled\":true` when you create the persistent menu."
+							},
+							"response": [
+								{
+									"name": "Disabling composer for a user",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"persistent_menu\": [\n        {\n            \"locale\": \"default\",\n            \"composer_input_disabled\": false,\n            \"call_to_actions\": [\n                {\n                    \"type\": \"postback\",\n                    \"title\": \"Talk to an agent\",\n                    \"payload\": \"CARE_HELP\"\n                },\n                {\n                    \"type\": \"postback\",\n                    \"title\": \"Outfit suggestions\",\n                    \"payload\": \"CURATION\"\n                },\n                {\n                    \"type\": \"web_url\",\n                    \"title\": \"Shop now\",\n                    \"url\": \"https://www.originalcoastclothing.com/\",\n                    \"webview_height_ratio\": \"full\"\n                }\n            ]\n        }\n    ],\n    \"psid\": {{page-scoped-id}},\n    \"composer_input_disabled\":true\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://graph.facebook.com/{{version}}/106259855420533/custom_user_settings?",
+											"protocol": "https",
+											"host": [
+												"graph",
+												"facebook",
+												"com"
+											],
+											"path": [
+												"{{version}}",
+												"106259855420533",
+												"custom_user_settings"
+											],
+											"query": [
+												{
+													"key": "",
+													"value": null
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=UTF-8"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										},
+										{
+											"key": "x-business-use-case-usage",
+											"value": "{\"106259855420533\":[{\"type\":\"pages\",\"call_count\":1,\"total_cputime\":1,\"total_time\":1,\"estimated_time_to_regain_access\":0}]}"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "facebook-api-version",
+											"value": "v23.0"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=15552000; preload"
+										},
+										{
+											"key": "Pragma",
+											"value": "no-cache"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "private, no-cache, no-store, must-revalidate"
+										},
+										{
+											"key": "Expires",
+											"value": "Sat, 01 Jan 2000 00:00:00 GMT"
+										},
+										{
+											"key": "x-fb-request-id",
+											"value": "Aru09rLgNA3AbcwCHJziTr1"
+										},
+										{
+											"key": "x-fb-trace-id",
+											"value": "CgUbw5gamF/"
+										},
+										{
+											"key": "x-fb-rev",
+											"value": "1027045623"
+										},
+										{
+											"key": "X-FB-Debug",
+											"value": "pJTq8kEEGe1yJvpbA0qXKUZn9SuuHMO8ShzB/z24S5YyoI+vV/rh9wPezGnK8y23asaC5qAM3vxd9qXA5hZ84A=="
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 12 Sep 2025 14:46:51 GMT"
+										},
+										{
+											"key": "X-FB-Connection-Quality",
+											"value": "EXCELLENT; q=0.9, rtt=7, rtx=0, c=10, mss=1380, tbw=1310, tp=-1, tpl=-1, uplat=2174, ullat=0"
+										},
+										{
+											"key": "Alt-Svc",
+											"value": "h3=\":443\"; ma=86400"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Content-Length",
+											"value": "20"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"result\": \"success\"\n}"
+								}
+							]
+						}
+					],
+					"description": "This documents shows you how to programmatically add the Persistent Menu to your messaging experience.\n\n<img src=\"https://content.pstmn.io/16ef0943-f638-4bca-89c9-ab018dcf9d6e/aW1hZ2UucG5n\" width=\"1125\" height=\"739\">\n\n## How It Works\n\nThe Persistent Menu allows you to create and send a menu of the main features of your business, such as hours of operation, store locations, and products, is always visible in a person's Messenger conversation with your business.\n\nWhen a person clicks an item in the menu, a `postback` webhook notification is sent to your serve. The webhook notification contains information about what item was select and by whom. This item selection action opens the standard messaging window. You have 24 hours to respond to the person.\n\n## Requirements\n\nFor the persistent menu to appear, the following must be true:\n\n- The person must be running Messenger v106 or above on iOS or Android.\n    \n- The Facebook Page the Messenger bot is subscribe to must be published.\n    \n- The Messenger bot must be set to \"public\" in the app settings.\n    \n- The Messenger bot must have the `pages_messaging` permission.\n    \n- The Messenger bot must have a [get started button](https://developers.facebook.com/docs/messenger-platform/discovery/welcome-screen#set_postback) set.\n    \n\n## Supported Buttons\n\nThe persistent menu is composed of an array of [buttons](https://developers.facebook.com/docs/messenger-platform/send-messages/buttons). The following button types are supported in the persistent menu:\n\n- `web_url`: Specifes the item is a [URL button](https://developers.facebook.com/docs/messenger-platform/send-api-reference/url-button).\n    \n- `postback`: Specifies the item is a [postback button](https://developers.facebook.com/docs/messenger-platform/send-api-reference/postback-button)."
+				}
+			],
+			"description": "The Messenger Profile for your Page is where you set properties that define various aspects of the following Messenger Platform features. For more information, see the [Messenger Profile Properties](https://developers.facebook.com/docs/messenger-platform/reference/messenger-profile-api#profile_properties) table below.\n\n- [Get Started Button](https://developers.facebook.com/docs/messenger-platform/reference/messenger-profile-api/get-started-button)\n    \n- [Welcome Page](https://developers.facebook.com/docs/messenger-platform/reference/messenger-profile-api/greeting)\n    \n- [Ice Breakers](https://developers.facebook.com/docs/messenger-platform/reference/messenger-profile-api/ice-breakers)\n    \n- [Persistent Menu](https://developers.facebook.com/docs/messenger-platform/reference/messenger-profile-api/persistent-menu)\n    \n- [Domain Whitelist](https://developers.facebook.com/docs/messenger-platform/reference/messenger-profile-api/domain-whitelisting)\n    \n- [Account Linking](https://developers.facebook.com/docs/messenger-platform/reference/messenger-profile-api/account-linking-url)\n    \n- [Commands](https://developers.facebook.com/docs/messenger-platform/reference/messenger-profile-api/commands)\n    \n\nThe Messenger Profile API allows you to set, update, retrieve, and delete properties from the Page Messenger Profile.\n\n## Permissions\n\nA page access token with `pages_messaging` permission is required to interact with this endpoint.\n\nApps in Development Mode, the Messenger Profile settings will only be visible to people with role on the app."
 		}
 	],
 	"auth": {
