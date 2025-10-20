@@ -2012,9 +2012,155 @@
 							"body": "{\n    \"recipient_id\": \"28860385560243840\",\n    \"message_id\": \"m_Le1-Y7nalA4FzA79SCuoSzm_d4OFucFpIfIKCO_Nf5piXza8E0yevXnE_tm0n6DbUzJoMP7rLTJx6g6XcVGjyQ\"\n}"
 						}
 					]
+				},
+				{
+					"name": "Structured Information Template",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"recipient\":{\n    \"id\":\"{{page-scoped-id}}\"\n  },\n  \"message\": {\n    \"attachment\": {\n      \"type\": \"template\",\n      \"payload\": {\n        \"template_type\": \"customer_information\",\n        \"countries\": [\n          \"US\"            \n        ],\n        \"business_privacy\": {\n          \"url\": \"<PRIVACY-POLICY-URL>\"\n        },\n        \"expires_in_days\": 1\n      }\n    }\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://graph.facebook.com/{{version}}/{{page-id}}/messages",
+							"protocol": "https",
+							"host": [
+								"graph",
+								"facebook",
+								"com"
+							],
+							"path": [
+								"{{version}}",
+								"{{page-id}}",
+								"messages"
+							]
+						},
+						"description": "The media template allows you to send images, GIFs, and video as a structured message with an optional [button](https://developers.facebook.com/docs/messenger-platform/send-api-reference/buttons). Videos and animated GIFs sent with the media template are playable in the conversation.\n\nTo send an image, send a `POST` request to the Send API, with the following `payload` property in the request body, where `attachment_id` is an ID generated from the [attachment upload API](https://developers.facebook.com/docs/messenger-platform/send-api-reference/attachment-upload). For requests using the `attachment_id` property, images and videos are supported.\n\nFor complete request property details, see [Media Template Reference](https://developers.facebook.com/docs/messenger-platform/reference/template/media)."
+					},
+					"response": [
+						{
+							"name": "Structured Information Template",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"recipient\":{\n    \"id\":\"{{page-scoped-id}}\"\n  },\n  \"message\": {\n    \"attachment\": {\n      \"type\": \"template\",\n      \"payload\": {\n        \"template_type\": \"customer_information\",\n        \"countries\": [\n          \"US\"            \n        ],\n        \"business_privacy\": {\n          \"url\": \"<PRIVACY-POLICY-URL>\"\n        },\n        \"expires_in_days\": 1\n      }\n    }\n  }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://graph.facebook.com/{{version}}/{{page-id}}/messages",
+									"protocol": "https",
+									"host": [
+										"graph",
+										"facebook",
+										"com"
+									],
+									"path": [
+										"{{version}}",
+										"{{page-id}}",
+										"messages"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "x-fb-aed",
+									"value": "596"
+								},
+								{
+									"key": "x-business-use-case-usage",
+									"value": "{\"556828760849295\":[{\"type\":\"messenger\",\"call_count\":1,\"total_cputime\":1,\"total_time\":1,\"estimated_time_to_regain_access\":0}]}"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "facebook-api-version",
+									"value": "v22.0"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; preload"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "private, no-cache, no-store, must-revalidate"
+								},
+								{
+									"key": "Expires",
+									"value": "Sat, 01 Jan 2000 00:00:00 GMT"
+								},
+								{
+									"key": "x-fb-request-id",
+									"value": "AToxhaOhaKWShKg97XzPCMy"
+								},
+								{
+									"key": "x-fb-trace-id",
+									"value": "CoSaMlDFf2O"
+								},
+								{
+									"key": "x-fb-rev",
+									"value": "1028345929"
+								},
+								{
+									"key": "X-FB-Debug",
+									"value": "xOjt3PtAsLTJu1IdEd+x5qvx2X3uPmz3HU50anZvENeI8NGGo4hXRTBHGTwal/bkG6dXQ8SHckEdsGDQ9ZhO5A=="
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 13 Oct 2025 20:18:15 GMT"
+								},
+								{
+									"key": "X-FB-Connection-Quality",
+									"value": "EXCELLENT; q=0.9, rtt=16, rtx=0, c=10, mss=1208, tbw=11490, tp=-1, tpl=-1, uplat=907, ullat=0"
+								},
+								{
+									"key": "Alt-Svc",
+									"value": "h3=\":443\"; ma=86400"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Content-Length",
+									"value": "140"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"recipient_id\": \"28860385560243840\",\n    \"message_id\": \"m_-qirblJ2OJZK19TMKldWsTm_d4OFucFpIfIKCO_Nf5qDco7MqUYgTGRdcw9Op4SZo_aQH6hAorgRRABhkT9nxQ\"\n}"
+						}
+					]
 				}
 			],
-			"description": "## **Generic Template**\n\nThe generic template is a simple structured message that includes a title, subtitle, image, and up to three buttons. You may also specify a `default_action` object that sets a URL that will be opened in the Messenger webview when the template is tapped.\n\nFor more details see [https://developers.facebook.com/docs/messenger-platform/send-messages/template/generic<br>](https://developers.facebook.com/docs/messenger-platform/send-messages/template/generic)\n\n## Receipt Template\n\nThe receipt template allows you to send an order confirmation as a structured message. The template may include an order summary, payment details, and shipping information.\n\nFor more details see [https://developers.facebook.com/docs/messenger-platform/send-messages/template/receipt](https://developers.facebook.com/docs/messenger-platform/send-messages/template/receipt)\n\n## Button Template\n\nThe button template sends a text message with up to three attached buttons. This template is useful for offering the message recipient options to choose from, such as pre-determined responses to a question, or actions to take.\n\nFor more details see [https://developers.facebook.com/docs/messenger-platform/send-messages/template/button](https://developers.facebook.com/docs/messenger-platform/send-messages/template/button)\n\n## Media Template\n\nThe media template allows you to send images, GIFs, and video as a structured message with an optional [button](https://developers.facebook.com/docs/messenger-platform/send-api-reference/buttons). Videos and animated GIFs sent with the media template are playable in the conversation.\n\nFor more details see [https://developers.facebook.com/docs/messenger-platform/send-messages/template/media<br>](https://developers.facebook.com/docs/messenger-platform/send-messages/template/media)\n\n## Customer Feedback Template\n\nBusinesses now have more robust tools such as Customer Feedback Template to measure the experience they provide to their customers. With Customer Feedback Template businesses can:\n\n1. **Increase response rates** for your customer feedback surveys with Messenger’s native customer feedback template.\n    \n2. **Aggregate customer satisfaction ratings across channels easily** with built-in Messenger templates such as Customer Satisfaction (CSAT), Net Promoter Score (NPS) and Customer Effort Score (CES) surveys.\n    \n3. **Reduce biases and inconsistency** in survey scores with optimized UX.\n    \n\nFor more details see: [https://developers.facebook.com/docs/messenger-platform/send-messages/templates/customer-feedback-template](https://developers.facebook.com/docs/messenger-platform/send-messages/templates/customer-feedback-template)"
+			"description": "## **Generic Template**\n\nThe generic template is a simple structured message that includes a title, subtitle, image, and up to three buttons. You may also specify a `default_action` object that sets a URL that will be opened in the Messenger webview when the template is tapped.\n\nFor more details see [https://developers.facebook.com/docs/messenger-platform/send-messages/template/generic<br>](https://developers.facebook.com/docs/messenger-platform/send-messages/template/generic)\n\n## Receipt Template\n\nThe receipt template allows you to send an order confirmation as a structured message. The template may include an order summary, payment details, and shipping information.\n\nFor more details see [https://developers.facebook.com/docs/messenger-platform/send-messages/template/receipt](https://developers.facebook.com/docs/messenger-platform/send-messages/template/receipt)\n\n## Button Template\n\nThe button template sends a text message with up to three attached buttons. This template is useful for offering the message recipient options to choose from, such as pre-determined responses to a question, or actions to take.\n\nFor more details see [https://developers.facebook.com/docs/messenger-platform/send-messages/template/button](https://developers.facebook.com/docs/messenger-platform/send-messages/template/button)\n\n## Media Template\n\nThe media template allows you to send images, GIFs, and video as a structured message with an optional [button](https://developers.facebook.com/docs/messenger-platform/send-api-reference/buttons). Videos and animated GIFs sent with the media template are playable in the conversation.\n\nFor more details see [https://developers.facebook.com/docs/messenger-platform/send-messages/template/media<br>](https://developers.facebook.com/docs/messenger-platform/send-messages/template/media)\n\n## Customer Feedback Template\n\nBusinesses now have more robust tools such as Customer Feedback Template to measure the experience they provide to their customers. With Customer Feedback Template businesses can:\n\n1. **Increase response rates** for your customer feedback surveys with Messenger’s native customer feedback template.\n    \n2. **Aggregate customer satisfaction ratings across channels easily** with built-in Messenger templates such as Customer Satisfaction (CSAT), Net Promoter Score (NPS) and Customer Effort Score (CES) surveys.\n    \n3. **Reduce biases and inconsistency** in survey scores with optimized UX.\n    \n\nFor more details see: [https://developers.facebook.com/docs/messenger-platform/send-messages/templates/customer-feedback-template<br>](https://developers.facebook.com/docs/messenger-platform/send-messages/templates/customer-feedback-template)\n\n## Structured Information Template\n\nThe Structured Information template allows you to send a customer a message that contains a form that gathers the customer's shipping information. You can select the fields you need, make fields required or optional, and receive webhooks with this information when the customer submits the form.\n\nFor more details see: [https://developers.facebook.com/docs/messenger-platform/send-messages/templates/structured-information-template](https://developers.facebook.com/docs/messenger-platform/send-messages/templates/structured-information-template)"
 		},
 		{
 			"name": "Quick Replies",
