@@ -3115,7 +3115,7 @@
 									},
 									"status": "OK",
 									"code": 200,
-									"_postman_previewlanguage": null,
+									"_postman_previewlanguage": "Text",
 									"header": [
 										{
 											"key": "Content-Type",
@@ -3251,7 +3251,7 @@
 									},
 									"status": "OK",
 									"code": 200,
-									"_postman_previewlanguage": null,
+									"_postman_previewlanguage": "Text",
 									"header": [
 										{
 											"key": "Content-Encoding",
@@ -3405,7 +3405,7 @@
 									},
 									"status": "OK",
 									"code": 200,
-									"_postman_previewlanguage": null,
+									"_postman_previewlanguage": "Text",
 									"header": [
 										{
 											"key": "Content-Type",
@@ -3567,7 +3567,7 @@
 									},
 									"status": "OK",
 									"code": 200,
-									"_postman_previewlanguage": null,
+									"_postman_previewlanguage": "Text",
 									"header": [
 										{
 											"key": "Content-Type",
@@ -3703,7 +3703,7 @@
 									},
 									"status": "OK",
 									"code": 200,
-									"_postman_previewlanguage": null,
+									"_postman_previewlanguage": "Text",
 									"header": [
 										{
 											"key": "Content-Encoding",
@@ -3873,7 +3873,7 @@
 									},
 									"status": "OK",
 									"code": 200,
-									"_postman_previewlanguage": null,
+									"_postman_previewlanguage": "Text",
 									"header": [
 										{
 											"key": "Content-Type",
@@ -4031,7 +4031,7 @@
 									},
 									"status": "OK",
 									"code": 200,
-									"_postman_previewlanguage": null,
+									"_postman_previewlanguage": "Text",
 									"header": [
 										{
 											"key": "Content-Type",
@@ -5636,7 +5636,7 @@
 					"name": "Page-owned utility message template",
 					"item": [
 						{
-							"name": "Create a page-owned template",
+							"name": "Text-only template",
 							"item": [
 								{
 									"name": "Create a text-only template",
@@ -5783,9 +5783,1071 @@
 											"body": "{\n    \"id\": \"1234567890\",\n    \"status\": \"APPROVED\",\n    \"category\": \"UTILITY\"\n}"
 										}
 									]
+								},
+								{
+									"name": "Send a text-only template message",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"recipient\": {\n        \"id\": \"{{page-scoped-id}}\"\n    },\n    \"messaging_type\": \"UTILITY\",\n    \"message\": {\n        \"template\": {\n            \"name\": \"order_confirmation_demo\",\n            \"language\": {\n                \"code\": \"en_US\"\n            },\n            \"components\": [\n                {\n                    \"type\": \"header\",\n                    \"parameters\": [\n                        {\n                            \"type\": \"text\",\n                            \"text\": \"Order\"\n                        }\n                    ]\n                },\n                {\n                    \"type\": \"body\",\n                    \"parameters\": [\n                        {\n                            \"type\": \"text\",\n                            \"text\": \"123456\"\n                        },\n                        {\n                            \"type\": \"text\",\n                            \"text\": \"John\"\n                        }\n                    ]\n                }\n            ]\n        }\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://graph.facebook.com/{{version}}/{{page-id}}/messages",
+											"protocol": "https",
+											"host": [
+												"graph",
+												"facebook",
+												"com"
+											],
+											"path": [
+												"{{version}}",
+												"{{page-id}}",
+												"messages"
+											]
+										},
+										"description": "### Send a message\n\nTo send a utility message from a cloned Meta template, send a `POST` request to the `/PAGE_ID/messages` endpoint with the following parameters:\n\n- `recipient.id` set to the Page-scoped ID for the person your app user is sending the message to\n    \n- `messaging_type` set to `UTILITY`\n    \n- `template` with the following parameters:\n    \n    - `name` set to the name of the specific template being used to create the message\n        \n    - `language.code` set to the language code for this message\n        \n    - `components` array with the following parameters:\n        \n        - `type` set to `body`\n            \n        - `parameters.type` set to `text`\n            \n        - `parameter.text` set to the input needed for the template\n            \n\n```\ncurl -X POST -H \"Content-Type: application/json\" -d '{\n  \"recipient\": {\n    \"id\":\"2348927398743287\"\n  },\n  \"template\": {\n    \"name\": \"jaspers_market_order_confirmation_1\",\n    \"language\": { \"code\": \"en\" },\n    \"components\": [\n      {\n        \"type\": \"body\",\n        \"parameters\": [\n          {\n            \"type\": \"body\",\n            \"text\": \"566701\"\n          }\n        ]\n      }\n    ]\n  } \n}' \"https://graph.facebook.com/v24.0/1909458034523498/messages?access_token=EAACE...\"\n\n ```"
+									},
+									"response": [
+										{
+											"name": "Send a message",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"recipient\": {\n        \"id\": \"{{page-scoped-id}}\"\n    },\n    \"messaging_type\": \"UTILITY\",\n    \"message\": {\n        \"template\": {\n            \"name\": \"account_creation_confirmation_3_cloned\",\n            \"language\": {\n                \"code\": \"en_US\"\n            },\n            \"components\": [\n                {\n                    \"type\": \"body\",\n                    \"parameters\": [\n                        {\n                            \"type\": \"text\",\n                            \"text\": \"John Doe\"\n                        },\n                        {\n                            \"type\": \"text\",\n                            \"text\": \"your email\"\n                        }\n                    ]\n                }\n            ]\n        }\n    }\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "https://graph.facebook.com/{{version}}/{{page-id}}/messages",
+													"protocol": "https",
+													"host": [
+														"graph",
+														"facebook",
+														"com"
+													],
+													"path": [
+														"{{version}}",
+														"{{page-id}}",
+														"messages"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json; charset=UTF-8"
+												},
+												{
+													"key": "Vary",
+													"value": "Origin"
+												},
+												{
+													"key": "x-fb-aed",
+													"value": "642"
+												},
+												{
+													"key": "x-business-use-case-usage",
+													"value": "{\"106259855420533\":[{\"type\":\"messenger\",\"call_count\":1,\"total_cputime\":1,\"total_time\":1,\"estimated_time_to_regain_access\":0}]}"
+												},
+												{
+													"key": "Access-Control-Allow-Origin",
+													"value": "*"
+												},
+												{
+													"key": "facebook-api-version",
+													"value": "v23.0"
+												},
+												{
+													"key": "Strict-Transport-Security",
+													"value": "max-age=15552000; preload"
+												},
+												{
+													"key": "Pragma",
+													"value": "no-cache"
+												},
+												{
+													"key": "Cache-Control",
+													"value": "private, no-cache, no-store, must-revalidate"
+												},
+												{
+													"key": "Expires",
+													"value": "Sat, 01 Jan 2000 00:00:00 GMT"
+												},
+												{
+													"key": "x-fb-request-id",
+													"value": "ALZl9GCgDgTChfjECxwnY1Z"
+												},
+												{
+													"key": "x-fb-trace-id",
+													"value": "D0vhg9aLYRv"
+												},
+												{
+													"key": "x-fb-rev",
+													"value": "1029839609"
+												},
+												{
+													"key": "X-FB-Debug",
+													"value": "KQTZHwLh7RS1eB6w+XpxEDM5OquGNm0zvr5Aq7VqhCYm/dQYdknLL9lyZysf6D2KDivcwpA4k7q/RhrnyEIUZw=="
+												},
+												{
+													"key": "Date",
+													"value": "Thu, 13 Nov 2025 18:57:05 GMT"
+												},
+												{
+													"key": "X-FB-Connection-Quality",
+													"value": "MODERATE; q=0.3, rtt=302, rtx=0, c=10, mss=1334, tbw=6235, tp=-1, tpl=-1, uplat=2678, ullat=0"
+												},
+												{
+													"key": "Alt-Svc",
+													"value": "h3=\":443\"; ma=86400"
+												},
+												{
+													"key": "Connection",
+													"value": "keep-alive"
+												},
+												{
+													"key": "Content-Length",
+													"value": "139"
+												}
+											],
+											"cookie": [
+												{
+													"expires": "Invalid Date",
+													"domain": "",
+													"path": ""
+												}
+											],
+											"body": "{\n    \"recipient_id\": \"1234567890\",\n    \"message_id\": \"m_MESSAGE_ID\"\n}"
+										}
+									]
 								}
 							],
-							"description": "### Step 1. Create a Page-owned template\n\nTo create a utility message template, send a `POST` request to the `/PAGE_ID/message_templates` endpoint with the following required parameters:\n\n- `name` set to the name of the template\n    \n- `language` set to the language of the message text\n    \n- `category` set to `UTILITY`\n    \n- `components` set to an array of message components including an example with message values\n    \n\n#### Text-Only Templates\n\nIn the following example, we have message body text and header text. The body component and header component includes example customer information that would be used to customize the message.\n\n```\ncurl -H 'Content-Type: application/json' \\\n     -d '{\n           \"name\": \"jaspers_market_order_delivery_update_us\",\n           \"language\": \"en\",\n           \"category\": \"UTILITY\",\n           \"components\": [\n            {\n              \"type\": \"HEADER\",\n              \"format\": \"TEXT\",\n              \"text\":\"{{1}} Update\",\n              \"example\": {\n               \"header_text\":[\"Order\"]\n              }\n             },\n             {\n               \"type\": \"BODY\",\n               \"text\": \"Good news! Your order #{{1}} is on its way. Thank you for your order!\"\n               \"example\": {\n                 \"body_text\": [\n                   [\n                     \"566701\"\n                   ]\n                 ]\n               }\n             }\n           ]\n         }' \"https://graph.facebook.com/v24.0/102290129340398/message_templates?access_token=EAAJB...\"\n\n ```\n\n#### Text + Image Templates\n\nYou can also create templates with images. Images need to be first uploaded using the [Resumable Upload API](https://developers.facebook.com/docs/graph-api/guides/upload) to generate the handle for the image. You can then use the handle and pass it in the Header component while creating the template.\n\n```\ncurl -H 'Content-Type: application/json' \\\n     -d '{\n           \"name\": \"jaspers_market_order_delivery_update_us\",\n           \"language\": \"en\",\n           \"category\": \"UTILITY\",\n           \"components\": [\n             {\n              \"type\": \"HEADER\",\n              \"format\": \"IMAGE\",\n              \"text\":\"{{1}} Update\",\n              \"example\": {\n               \"header_handle\": [\"4:dGVzdF9pbWFn.......\"],\n               \"header_text\":[\"Order\"]\n              }\n             },\n             {\n               \"type\": \"BODY\",\n               \"text\": \"Good news! Your order #{{1}} is on its way. Thank you for your order!\"\n               \"example\": {\n                 \"body_text\": [\n                   [\n                     \"566701\"\n                   ]\n                 ]\n               }\n             }\n           ]\n         }' \"https://graph.facebook.com/v24.0/102290129340398/message_templates?access_token=EAAJB...\"\n\n ```\n\nOn success your app receives a JSON response with the template ID, the review status, and the template category.\n\n```\n{\n  \"id\": \"104595129340398\",\n  \"status\": \"APPROVED\",\n  \"category\": \"UTILITY\"\n}\n\n ```"
+							"description": "#### Text-Only Templates\n\nIn the following example, we have message body text and header text. The body component and header component includes example customer information that would be used to customize the message.\n\n```\ncurl -H 'Content-Type: application/json' \\\n     -d '{\n           \"name\": \"jaspers_market_order_delivery_update_us\",\n           \"language\": \"en\",\n           \"category\": \"UTILITY\",\n           \"components\": [\n            {\n              \"type\": \"HEADER\",\n              \"format\": \"TEXT\",\n              \"text\":\"{{1}} Update\",\n              \"example\": {\n               \"header_text\":[\"Order\"]\n              }\n             },\n             {\n               \"type\": \"BODY\",\n               \"text\": \"Good news! Your order #{{1}} is on its way. Thank you for your order!\"\n               \"example\": {\n                 \"body_text\": [\n                   [\n                     \"566701\"\n                   ]\n                 ]\n               }\n             }\n           ]\n         }' \"https://graph.facebook.com/v24.0/102290129340398/message_templates?access_token=EAAJB...\"\n\n ```"
+						},
+						{
+							"name": "Text+image template",
+							"item": [
+								{
+									"name": "Create a text + Image template",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"order_confirmation_demo_with_image\",\n    \"language\": \"en_US\",\n    \"category\": \"UTILITY\",\n    \"components\": [\n        {\n            \"type\": \"HEADER\",\n            \"format\": \"IMAGE\",\n            \"text\": \"{{1}} Update\",\n            \"example\": {\n                \"header_handle\": [\n                    \"4:VGVzdCBpbWFnZ...\" // your file handle, refer to https://developers.facebook.com/docs/graph-api/guides/upload\n                ],\n                \"header_text\": [\n                    \"Order\"\n                ]\n            }\n        },\n        {\n            \"type\": \"BODY\",\n            \"text\": \"Good news! Your order #{{1}} is on its way. Thank you for your order, {{2}}!\",\n            \"example\": {\n                \"body_text\": [\n                    [\n                        \"566701\",\n                        \"John\"\n                    ]\n                ]\n            }\n        }\n    ]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://graph.facebook.com/{{version}}/{{page-id}}/message_templates",
+											"protocol": "https",
+											"host": [
+												"graph",
+												"facebook",
+												"com"
+											],
+											"path": [
+												"{{version}}",
+												"{{page-id}}",
+												"message_templates"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Create a text + image template",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n           \"name\": \"order_confirmation_demo\",\n           \"language\": \"en\",\n           \"category\": \"UTILITY\",\n           \"components\": [\n            {\n              \"type\": \"HEADER\",\n              \"format\": \"TEXT\",\n              \"text\":\"{{1}} Update\",\n              \"example\": {\n               \"header_text\":[\"Order\"]\n              }\n             },\n             {\n               \"type\": \"BODY\",\n               \"text\": \"Good news! Your order #{{1}} is on its way. Thank you for your order, {{2}}!\",\n               \"example\": {\n                 \"body_text\": [\n                   [\n                     \"566701\",\n                     \"John\"\n                   ]\n                 ]\n               }\n             }\n           ]\n         }\n",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "https://graph.facebook.com/{{version}}/{{page-id}}/message_templates",
+													"protocol": "https",
+													"host": [
+														"graph",
+														"facebook",
+														"com"
+													],
+													"path": [
+														"{{version}}",
+														"{{page-id}}",
+														"message_templates"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": null,
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json; charset=UTF-8"
+												},
+												{
+													"key": "Vary",
+													"value": "Origin"
+												},
+												{
+													"key": "x-fb-aed",
+													"value": "642"
+												},
+												{
+													"key": "x-business-use-case-usage",
+													"value": "{\"106259855420533\":[{\"type\":\"messenger_utility_messages\",\"call_count\":1,\"total_cputime\":1,\"total_time\":1,\"estimated_time_to_regain_access\":0}]}"
+												},
+												{
+													"key": "Access-Control-Allow-Origin",
+													"value": "*"
+												},
+												{
+													"key": "facebook-api-version",
+													"value": "v23.0"
+												},
+												{
+													"key": "Strict-Transport-Security",
+													"value": "max-age=15552000; preload"
+												},
+												{
+													"key": "Pragma",
+													"value": "no-cache"
+												},
+												{
+													"key": "Cache-Control",
+													"value": "private, no-cache, no-store, must-revalidate"
+												},
+												{
+													"key": "Expires",
+													"value": "Sat, 01 Jan 2000 00:00:00 GMT"
+												},
+												{
+													"key": "x-fb-request-id",
+													"value": "AhXzmiXDqKUWDDz5gecHX_J"
+												},
+												{
+													"key": "x-fb-trace-id",
+													"value": "H7fqkHf0kXQ"
+												},
+												{
+													"key": "x-fb-rev",
+													"value": "1029839609"
+												},
+												{
+													"key": "X-FB-Debug",
+													"value": "+vELnoABCqQxPaTwbNdVYsOER3UiCmoWBOm7lgZhrkAPjFXdW22aQzYVj1bO7WpX7/Zk8421cxhR4gYku+orhQ=="
+												},
+												{
+													"key": "Date",
+													"value": "Thu, 13 Nov 2025 19:11:10 GMT"
+												},
+												{
+													"key": "X-FB-Connection-Quality",
+													"value": "MODERATE; q=0.3, rtt=305, rtx=0, c=10, mss=1334, tbw=3458, tp=-1, tpl=-1, uplat=4949, ullat=0"
+												},
+												{
+													"key": "Alt-Svc",
+													"value": "h3=\":443\"; ma=86400"
+												},
+												{
+													"key": "Connection",
+													"value": "keep-alive"
+												},
+												{
+													"key": "Content-Length",
+													"value": "67"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"id\": \"1234567890\",\n    \"status\": \"APPROVED\",\n    \"category\": \"UTILITY\"\n}"
+										}
+									]
+								},
+								{
+									"name": "Send a text+image template message",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"recipient\": {\n        \"id\": \"{{page-scoped-id}}\"\n    },\n    \"messaging_type\": \"UTILITY\",\n    \"message\": {\n        \"template\": {\n            \"name\": \"order_confirmation_demo_with_image\",\n            \"language\": {\n                \"code\": \"en_US\"\n            },\n            \"components\": [\n                {\n                    \"type\": \"header\",\n                    \"parameters\": [\n                        {\n                            \"type\": \"text\",\n                            \"text\": \"Order\"\n                        }\n                    ]\n                },\n                {\n                    \"type\": \"body\",\n                    \"parameters\": [\n                        {\n                            \"type\": \"text\",\n                            \"text\": \"123456\"\n                        },\n                        {\n                            \"type\": \"text\",\n                            \"text\": \"John\"\n                        }\n                    ]\n                }\n            ]\n        }\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://graph.facebook.com/{{version}}/{{page-id}}/messages",
+											"protocol": "https",
+											"host": [
+												"graph",
+												"facebook",
+												"com"
+											],
+											"path": [
+												"{{version}}",
+												"{{page-id}}",
+												"messages"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Send a message",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"recipient\": {\n        \"id\": \"{{page-scoped-id}}\"\n    },\n    \"messaging_type\": \"UTILITY\",\n    \"message\": {\n        \"template\": {\n            \"name\": \"account_creation_confirmation_3_cloned\",\n            \"language\": {\n                \"code\": \"en_US\"\n            },\n            \"components\": [\n                {\n                    \"type\": \"body\",\n                    \"parameters\": [\n                        {\n                            \"type\": \"text\",\n                            \"text\": \"John Doe\"\n                        },\n                        {\n                            \"type\": \"text\",\n                            \"text\": \"your email\"\n                        }\n                    ]\n                }\n            ]\n        }\n    }\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "https://graph.facebook.com/{{version}}/{{page-id}}/messages",
+													"protocol": "https",
+													"host": [
+														"graph",
+														"facebook",
+														"com"
+													],
+													"path": [
+														"{{version}}",
+														"{{page-id}}",
+														"messages"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json; charset=UTF-8"
+												},
+												{
+													"key": "Vary",
+													"value": "Origin"
+												},
+												{
+													"key": "x-fb-aed",
+													"value": "642"
+												},
+												{
+													"key": "x-business-use-case-usage",
+													"value": "{\"106259855420533\":[{\"type\":\"messenger\",\"call_count\":1,\"total_cputime\":1,\"total_time\":1,\"estimated_time_to_regain_access\":0}]}"
+												},
+												{
+													"key": "Access-Control-Allow-Origin",
+													"value": "*"
+												},
+												{
+													"key": "facebook-api-version",
+													"value": "v23.0"
+												},
+												{
+													"key": "Strict-Transport-Security",
+													"value": "max-age=15552000; preload"
+												},
+												{
+													"key": "Pragma",
+													"value": "no-cache"
+												},
+												{
+													"key": "Cache-Control",
+													"value": "private, no-cache, no-store, must-revalidate"
+												},
+												{
+													"key": "Expires",
+													"value": "Sat, 01 Jan 2000 00:00:00 GMT"
+												},
+												{
+													"key": "x-fb-request-id",
+													"value": "ALZl9GCgDgTChfjECxwnY1Z"
+												},
+												{
+													"key": "x-fb-trace-id",
+													"value": "D0vhg9aLYRv"
+												},
+												{
+													"key": "x-fb-rev",
+													"value": "1029839609"
+												},
+												{
+													"key": "X-FB-Debug",
+													"value": "KQTZHwLh7RS1eB6w+XpxEDM5OquGNm0zvr5Aq7VqhCYm/dQYdknLL9lyZysf6D2KDivcwpA4k7q/RhrnyEIUZw=="
+												},
+												{
+													"key": "Date",
+													"value": "Thu, 13 Nov 2025 18:57:05 GMT"
+												},
+												{
+													"key": "X-FB-Connection-Quality",
+													"value": "MODERATE; q=0.3, rtt=302, rtx=0, c=10, mss=1334, tbw=6235, tp=-1, tpl=-1, uplat=2678, ullat=0"
+												},
+												{
+													"key": "Alt-Svc",
+													"value": "h3=\":443\"; ma=86400"
+												},
+												{
+													"key": "Connection",
+													"value": "keep-alive"
+												},
+												{
+													"key": "Content-Length",
+													"value": "139"
+												}
+											],
+											"cookie": [
+												{
+													"expires": "Invalid Date",
+													"domain": "",
+													"path": ""
+												}
+											],
+											"body": "{\n    \"recipient_id\": \"1234567890\",\n    \"message_id\": \"m_MESSAGE_ID\"\n}"
+										}
+									]
+								}
+							],
+							"description": "#### Text + Image Templates\n\nYou can also create templates with images. Images need to be first uploaded using the [Resumable Upload API](https://developers.facebook.com/docs/graph-api/guides/upload) to generate the handle for the image. You can then use the handle and pass it in the Header component while creating the template.\n\n```\ncurl -H 'Content-Type: application/json' \\\n     -d '{\n           \"name\": \"jaspers_market_order_delivery_update_us\",\n           \"language\": \"en\",\n           \"category\": \"UTILITY\",\n           \"components\": [\n             {\n              \"type\": \"HEADER\",\n              \"format\": \"IMAGE\",\n              \"text\":\"{{1}} Update\",\n              \"example\": {\n               \"header_handle\": [\"4:dGVzdF9pbWFn.......\"],\n               \"header_text\":[\"Order\"]\n              }\n             },\n             {\n               \"type\": \"BODY\",\n               \"text\": \"Good news! Your order #{{1}} is on its way. Thank you for your order!\"\n               \"example\": {\n                 \"body_text\": [\n                   [\n                     \"566701\"\n                   ]\n                 ]\n               }\n             }\n           ]\n         }' \"https://graph.facebook.com/v24.0/102290129340398/message_templates?access_token=EAAJB...\"\n\n ```\n\nOn success your app receives a JSON response with the template ID, the review status, and the template category.\n\n```\n{\n  \"id\": \"104595129340398\",\n  \"status\": \"APPROVED\",\n  \"category\": \"UTILITY\"\n}\n\n ```"
+						},
+						{
+							"name": "Postback Button template",
+							"item": [
+								{
+									"name": "Create a postback button template",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"order_confirmation_demo_with_postback_button\",\n    \"language\": \"en_US\",\n    \"category\": \"UTILITY\",\n    \"components\": [\n        {\n            \"type\": \"HEADER\",\n            \"format\": \"TEXT\",\n            \"text\": \"{{1}} Update\",\n            \"example\": {\n                \"header_text\": [\n                    \"Order\"\n                ]\n            }\n        },\n        {\n            \"type\": \"BODY\",\n            \"text\": \"Good news! Your order #{{1}} is on its way. Thank you for your order, {{2}}!\",\n            \"example\": {\n                \"body_text\": [\n                    [\n                        \"566701\",\n                        \"John\"\n                    ]\n                ]\n            }\n        },\n        {\n            \"type\": \"BUTTONS\",\n            \"buttons\": [\n                {\n                    \"type\": \"POSTBACK\",\n                    \"text\": \"Track Order\",\n                    \"payload\": \"order_id_{{2}}\"\n                }\n            ]\n        }\n    ]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://graph.facebook.com/{{version}}/{{page-id}}/message_templates",
+											"protocol": "https",
+											"host": [
+												"graph",
+												"facebook",
+												"com"
+											],
+											"path": [
+												"{{version}}",
+												"{{page-id}}",
+												"message_templates"
+											]
+										},
+										"description": "## Use a Template with Customizable Postback Button\n\n### Step 1. Create a template with a postback button\n\nTo create a utility message template, send a `POST` request to the `//message_templates` endpoint with the following required parameters:\n\n- `name` set to the name of the template\n    \n- `language` set to the language of the message text\n    \n- `category` set to `UTILITY`\n    \n- `components` set to an array of message components including an example with message values\n    \n\nIn the following example, we have a customizable message body text and a `POSTBACK` button with a customizable payload.\n\n```\ncurl -X POST -H \"Content-Type: application/json\" -d '{\n  \"name\": \"jaspers_market_order_confirmation_update_us\",\n  \"language\": \"en\",\n  \"category\": \"UTILITY\",\n  \"components\": [\n    {\n      \"type\": \"BODY\",\n      \"text\": \"Your order is now {{1}}\",\n      \"example\": {\n        \"body_text\": [\n          [\n            \"Your order is now confirmed\"\n          ]\n        ]\n      }\n    },\n    {\n      \"type\": \"BUTTONS\",\n      \"buttons\": [\n        {\n          \"type\": \"POSTBACK\",\n          \"text\": \"Track Order\",\n          \"payload\": \"order_id_{{2}}\"\n        }\n      ]\n    }\n  ]\n}' \"https://graph.facebook.com/v21.0/1909458034523498/messages?access_token=EAACE...\"\n\n ```\n\nOn success your app receives a JSON response with the template ID, the review status, and the template category.\n\n```\n{\n  \"id\": \"104595129340398\",\n  \"status\": \"APPROVED\",\n  \"category\": \"UTILITY\"\n}\n\n ```"
+									},
+									"response": [
+										{
+											"name": "Create a postback button template",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n           \"name\": \"order_confirmation_demo\",\n           \"language\": \"en\",\n           \"category\": \"UTILITY\",\n           \"components\": [\n            {\n              \"type\": \"HEADER\",\n              \"format\": \"TEXT\",\n              \"text\":\"{{1}} Update\",\n              \"example\": {\n               \"header_text\":[\"Order\"]\n              }\n             },\n             {\n               \"type\": \"BODY\",\n               \"text\": \"Good news! Your order #{{1}} is on its way. Thank you for your order, {{2}}!\",\n               \"example\": {\n                 \"body_text\": [\n                   [\n                     \"566701\",\n                     \"John\"\n                   ]\n                 ]\n               }\n             }\n           ]\n         }\n",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "https://graph.facebook.com/{{version}}/{{page-id}}/message_templates",
+													"protocol": "https",
+													"host": [
+														"graph",
+														"facebook",
+														"com"
+													],
+													"path": [
+														"{{version}}",
+														"{{page-id}}",
+														"message_templates"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": null,
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json; charset=UTF-8"
+												},
+												{
+													"key": "Vary",
+													"value": "Origin"
+												},
+												{
+													"key": "x-fb-aed",
+													"value": "642"
+												},
+												{
+													"key": "x-business-use-case-usage",
+													"value": "{\"106259855420533\":[{\"type\":\"messenger_utility_messages\",\"call_count\":1,\"total_cputime\":1,\"total_time\":1,\"estimated_time_to_regain_access\":0}]}"
+												},
+												{
+													"key": "Access-Control-Allow-Origin",
+													"value": "*"
+												},
+												{
+													"key": "facebook-api-version",
+													"value": "v23.0"
+												},
+												{
+													"key": "Strict-Transport-Security",
+													"value": "max-age=15552000; preload"
+												},
+												{
+													"key": "Pragma",
+													"value": "no-cache"
+												},
+												{
+													"key": "Cache-Control",
+													"value": "private, no-cache, no-store, must-revalidate"
+												},
+												{
+													"key": "Expires",
+													"value": "Sat, 01 Jan 2000 00:00:00 GMT"
+												},
+												{
+													"key": "x-fb-request-id",
+													"value": "AhXzmiXDqKUWDDz5gecHX_J"
+												},
+												{
+													"key": "x-fb-trace-id",
+													"value": "H7fqkHf0kXQ"
+												},
+												{
+													"key": "x-fb-rev",
+													"value": "1029839609"
+												},
+												{
+													"key": "X-FB-Debug",
+													"value": "+vELnoABCqQxPaTwbNdVYsOER3UiCmoWBOm7lgZhrkAPjFXdW22aQzYVj1bO7WpX7/Zk8421cxhR4gYku+orhQ=="
+												},
+												{
+													"key": "Date",
+													"value": "Thu, 13 Nov 2025 19:11:10 GMT"
+												},
+												{
+													"key": "X-FB-Connection-Quality",
+													"value": "MODERATE; q=0.3, rtt=305, rtx=0, c=10, mss=1334, tbw=3458, tp=-1, tpl=-1, uplat=4949, ullat=0"
+												},
+												{
+													"key": "Alt-Svc",
+													"value": "h3=\":443\"; ma=86400"
+												},
+												{
+													"key": "Connection",
+													"value": "keep-alive"
+												},
+												{
+													"key": "Content-Length",
+													"value": "67"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"id\": \"1234567890\",\n    \"status\": \"APPROVED\",\n    \"category\": \"UTILITY\"\n}"
+										}
+									]
+								},
+								{
+									"name": "Send a postback button template message",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"recipient\": {\n        \"id\": \"{{page-scoped-id}}\"\n    },\n    \"messaging_type\": \"UTILITY\",\n    \"message\": {\n        \"template\": {\n            \"name\": \"order_confirmation_demo_with_postback_button\",\n            \"language\": {\n                \"code\": \"en_US\"\n            },\n            \"components\": [\n                {\n                    \"type\": \"header\",\n                    \"parameters\": [\n                        {\n                            \"type\": \"text\",\n                            \"text\": \"Order\"\n                        }\n                    ]\n                },\n                {\n                    \"type\": \"body\",\n                    \"parameters\": [\n                        {\n                            \"type\": \"text\",\n                            \"text\": \"123456\"\n                        },\n                        {\n                            \"type\": \"text\",\n                            \"text\": \"John\"\n                        }\n                    ]\n                },\n                {\n                    \"type\": \"buttons\",\n                    \"parameters\": [\n                        {\n                            \"type\": \"POSTBACK\",\n                            \"payload\": \"12345\"\n                        }\n                    ]\n                }\n            ]\n        }\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://graph.facebook.com/{{version}}/{{page-id}}/messages",
+											"protocol": "https",
+											"host": [
+												"graph",
+												"facebook",
+												"com"
+											],
+											"path": [
+												"{{version}}",
+												"{{page-id}}",
+												"messages"
+											]
+										},
+										"description": "### Step 2. Send a message\n\nTo send a utility message using a template from your app user's template library, send a `POST` request to the `//messages` endpoint with the following required parameters:\n\n- `recipient.id` set to the Page-scoped ID for the person your app user is sending the message to\n    \n- `message.template` set to a list of parameters:\n    \n    - `name` set to the name of the specific template being used to create the message\n        \n    - `language` set to the language code for this template\n        \n    - `components` set to the name of the app user's template library\n        \n\nAdd additional parameters to customize the message. In the following example, `{{1}}` and `{{2}}` will be replaced with the recipient's order ID, updating both the body text and the `POSTBACK` button's payload.\n\n```\ncurl -X POST -H \"Content-Type: application/json\" -d '{\n  \"recipient\": {\n    \"id\": \"25381719828140932\"\n  },\n  \"messaging_type\": \"UTILITY\",\n  \"message\": {\n    \"template\": {\n      \"name\": \"jaspers_market_order_confirmation_update_us\",\n      \"language\": {\n        \"code\": \"en\"\n      },\n      \"components\": [\n        {\n          \"type\": \"body\",\n          \"parameters\": [\n            {\n              \"type\": \"text\",\n              \"text\": \"confirmed\"\n            }\n          ]\n        },\n        {\n          \"type\": \"buttons\",\n          \"parameters\": [\n            {\n              \"type\": \"POSTBACK\",\n              \"payload\": \"12345\"\n            }\n          ]\n        }\n      ]\n    }\n  }\n}' \"https://graph.facebook.com/v21.0/1909458034523498/messages?access_token=EAACE...\"\n\n ```\n\nOn success your app will receive a JSON response with the template ID, review status, and template category.\n\n```\n{\n  \"recipient_id\": \"25381719828140932\",\n  \"message_id\": \"m_zm2fACsz21560tai1om-TvABABVG5smou58Xoe7OB4ekibklqP8d2WdzC-Z8j2LVG1G43QVrtVr-jwVZFg72kg\"\n}\n\n ```"
+									},
+									"response": [
+										{
+											"name": "Send a message",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"recipient\": {\n        \"id\": \"{{page-scoped-id}}\"\n    },\n    \"messaging_type\": \"UTILITY\",\n    \"message\": {\n        \"template\": {\n            \"name\": \"account_creation_confirmation_3_cloned\",\n            \"language\": {\n                \"code\": \"en_US\"\n            },\n            \"components\": [\n                {\n                    \"type\": \"body\",\n                    \"parameters\": [\n                        {\n                            \"type\": \"text\",\n                            \"text\": \"John Doe\"\n                        },\n                        {\n                            \"type\": \"text\",\n                            \"text\": \"your email\"\n                        }\n                    ]\n                }\n            ]\n        }\n    }\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "https://graph.facebook.com/{{version}}/{{page-id}}/messages",
+													"protocol": "https",
+													"host": [
+														"graph",
+														"facebook",
+														"com"
+													],
+													"path": [
+														"{{version}}",
+														"{{page-id}}",
+														"messages"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json; charset=UTF-8"
+												},
+												{
+													"key": "Vary",
+													"value": "Origin"
+												},
+												{
+													"key": "x-fb-aed",
+													"value": "642"
+												},
+												{
+													"key": "x-business-use-case-usage",
+													"value": "{\"106259855420533\":[{\"type\":\"messenger\",\"call_count\":1,\"total_cputime\":1,\"total_time\":1,\"estimated_time_to_regain_access\":0}]}"
+												},
+												{
+													"key": "Access-Control-Allow-Origin",
+													"value": "*"
+												},
+												{
+													"key": "facebook-api-version",
+													"value": "v23.0"
+												},
+												{
+													"key": "Strict-Transport-Security",
+													"value": "max-age=15552000; preload"
+												},
+												{
+													"key": "Pragma",
+													"value": "no-cache"
+												},
+												{
+													"key": "Cache-Control",
+													"value": "private, no-cache, no-store, must-revalidate"
+												},
+												{
+													"key": "Expires",
+													"value": "Sat, 01 Jan 2000 00:00:00 GMT"
+												},
+												{
+													"key": "x-fb-request-id",
+													"value": "ALZl9GCgDgTChfjECxwnY1Z"
+												},
+												{
+													"key": "x-fb-trace-id",
+													"value": "D0vhg9aLYRv"
+												},
+												{
+													"key": "x-fb-rev",
+													"value": "1029839609"
+												},
+												{
+													"key": "X-FB-Debug",
+													"value": "KQTZHwLh7RS1eB6w+XpxEDM5OquGNm0zvr5Aq7VqhCYm/dQYdknLL9lyZysf6D2KDivcwpA4k7q/RhrnyEIUZw=="
+												},
+												{
+													"key": "Date",
+													"value": "Thu, 13 Nov 2025 18:57:05 GMT"
+												},
+												{
+													"key": "X-FB-Connection-Quality",
+													"value": "MODERATE; q=0.3, rtt=302, rtx=0, c=10, mss=1334, tbw=6235, tp=-1, tpl=-1, uplat=2678, ullat=0"
+												},
+												{
+													"key": "Alt-Svc",
+													"value": "h3=\":443\"; ma=86400"
+												},
+												{
+													"key": "Connection",
+													"value": "keep-alive"
+												},
+												{
+													"key": "Content-Length",
+													"value": "139"
+												}
+											],
+											"cookie": [
+												{
+													"expires": "Invalid Date",
+													"domain": "",
+													"path": ""
+												}
+											],
+											"body": "{\n    \"recipient_id\": \"1234567890\",\n    \"message_id\": \"m_MESSAGE_ID\"\n}"
+										}
+									]
+								}
+							],
+							"description": "## Use a Template with Customizable Postback Button\n\n### Step 1. Create a template with a postback button\n\nTo create a utility message template, send a `POST` request to the `//message_templates` endpoint with the following required parameters:\n\n- `name` set to the name of the template\n    \n- `language` set to the language of the message text\n    \n- `category` set to `UTILITY`\n    \n- `components` set to an array of message components including an example with message values\n    \n\nIn the following example, we have a customizable message body text and a `POSTBACK` button with a customizable payload.\n\n```\ncurl -X POST -H \"Content-Type: application/json\" -d '{\n  \"name\": \"jaspers_market_order_confirmation_update_us\",\n  \"language\": \"en\",\n  \"category\": \"UTILITY\",\n  \"components\": [\n    {\n      \"type\": \"BODY\",\n      \"text\": \"Your order is now {{1}}\",\n      \"example\": {\n        \"body_text\": [\n          [\n            \"Your order is now confirmed\"\n          ]\n        ]\n      }\n    },\n    {\n      \"type\": \"BUTTONS\",\n      \"buttons\": [\n        {\n          \"type\": \"POSTBACK\",\n          \"text\": \"Track Order\",\n          \"payload\": \"order_id_{{2}}\"\n        }\n      ]\n    }\n  ]\n}' \"https://graph.facebook.com/v21.0/1909458034523498/messages?access_token=EAACE...\"\n\n ```\n\nOn success your app receives a JSON response with the template ID, the review status, and the template category.\n\n```\n{\n  \"id\": \"104595129340398\",\n  \"status\": \"APPROVED\",\n  \"category\": \"UTILITY\"\n}\n\n ```\n\n### Step 2. Send a message\n\nTo send a utility message using a template from your app user's template library, send a `POST` request to the `//messages` endpoint with the following required parameters:\n\n- `recipient.id` set to the Page-scoped ID for the person your app user is sending the message to\n    \n- `message.template` set to a list of parameters:\n    \n    - `name` set to the name of the specific template being used to create the message\n        \n    - `language` set to the language code for this template\n        \n    - `components` set to the name of the app user's template library\n        \n\nAdd additional parameters to customize the message. In the following example, `{{1}}` and `{{2}}` will be replaced with the recipient's order ID, updating both the body text and the `POSTBACK` button's payload.\n\n```\ncurl -X POST -H \"Content-Type: application/json\" -d '{\n  \"recipient\": {\n    \"id\": \"25381719828140932\"\n  },\n  \"messaging_type\": \"UTILITY\",\n  \"message\": {\n    \"template\": {\n      \"name\": \"jaspers_market_order_confirmation_update_us\",\n      \"language\": {\n        \"code\": \"en\"\n      },\n      \"components\": [\n        {\n          \"type\": \"body\",\n          \"parameters\": [\n            {\n              \"type\": \"text\",\n              \"text\": \"confirmed\"\n            }\n          ]\n        },\n        {\n          \"type\": \"buttons\",\n          \"parameters\": [\n            {\n              \"type\": \"POSTBACK\",\n              \"payload\": \"12345\"\n            }\n          ]\n        }\n      ]\n    }\n  }\n}' \"https://graph.facebook.com/v21.0/1909458034523498/messages?access_token=EAACE...\"\n\n ```\n\nOn success your app will receive a JSON response with the template ID, review status, and template category.\n\n```\n{\n  \"recipient_id\": \"25381719828140932\",\n  \"message_id\": \"m_zm2fACsz21560tai1om-TvABABVG5smou58Xoe7OB4ekibklqP8d2WdzC-Z8j2LVG1G43QVrtVr-jwVZFg72kg\"\n}\n\n ```"
+						},
+						{
+							"name": "URL Button template",
+							"item": [
+								{
+									"name": "Create a URL button template",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"order_confirmation_demo_with_url_button\",\n    \"language\": \"en_US\",\n    \"category\": \"UTILITY\",\n    \"components\": [\n        {\n            \"type\": \"HEADER\",\n            \"format\": \"TEXT\",\n            \"text\": \"{{1}} Update\",\n            \"example\": {\n                \"header_text\": [\n                    \"Order\"\n                ]\n            }\n        },\n        {\n            \"type\": \"BODY\",\n            \"text\": \"Good news! Your order #{{1}} is on its way. Thank you for your order, {{2}}!\",\n            \"example\": {\n                \"body_text\": [\n                    [\n                        \"566701\",\n                        \"John\"\n                    ]\n                ]\n            }\n        },\n        {\n            \"type\": \"buttons\",\n            \"buttons\": [\n                {\n                    \"type\": \"URL\",\n                    \"text\": \"Track Order\",\n                    \"url\": \"http://www.example.com/orders/{{1}}\",\n                    \"example\": {\n                        \"url_suffix_example\": \"1234\"\n                    }\n                }\n            ]\n        }\n    ]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://graph.facebook.com/{{version}}/{{page-id}}/message_templates",
+											"protocol": "https",
+											"host": [
+												"graph",
+												"facebook",
+												"com"
+											],
+											"path": [
+												"{{version}}",
+												"{{page-id}}",
+												"message_templates"
+											]
+										},
+										"description": "## Use a Template with Customizable URL Button\n\n### Step 1. Create a template with a URL button\n\nTo create a utility message template, send a `POST` request to the `//message_templates` endpoint with the following required parameters:\n\n- `name` set to the name of the template\n    \n- `language` set to the language of the message text\n    \n- `category` set to `UTILITY`\n    \n- `components` set to an array of message components including an example with message values\n    \n\nIn the following example, we have a customizable message body text and a `URL` button with a customizable URL.\n\n```\ncurl -X POST -H \"Content-Type: application/json\" -d '{\n  \"name\": \"jaspers_market_order_confirmation_update_us\",\n  \"language\": \"en\",\n  \"category\": \"UTILITY\",\n  \"components\": [\n    {\n      \"type\": \"BODY\",\n      \"text\": \"Your order is now {{1}}\",\n      \"example\": {\n        \"body_text\": [\n          [\n            \"Your order is now confirmed\"\n          ]\n        ]\n      }\n    },\n    {\n      \"type\": \"BUTTONS\",\n      \"buttons\": [\n        {\n          \"type\": \"URL\",\n          \"text\": \"Track Order\",\n          \"url\": \"http://www.example.com/orders/{{1}}\",\n          \"example\": {\n            \"url_suffix_example\": \"https://www.example.com/orders/1234\"\n          }\n        }\n      ]\n    }\n  ]\n}' \"https://graph.facebook.com/v21.0/1909458034523498/messages?access_token=EAACE...\"\n\n ```\n\nOn success your app receives a JSON response with the template ID, the review status, and the template category.\n\n```\n{\n  \"id\": \"104595129340398\",\n  \"status\": \"APPROVED\",\n  \"category\": \"UTILITY\"\n}\n\n ```"
+									},
+									"response": [
+										{
+											"name": "Create a URL button template",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n           \"name\": \"order_confirmation_demo\",\n           \"language\": \"en\",\n           \"category\": \"UTILITY\",\n           \"components\": [\n            {\n              \"type\": \"HEADER\",\n              \"format\": \"TEXT\",\n              \"text\":\"{{1}} Update\",\n              \"example\": {\n               \"header_text\":[\"Order\"]\n              }\n             },\n             {\n               \"type\": \"BODY\",\n               \"text\": \"Good news! Your order #{{1}} is on its way. Thank you for your order, {{2}}!\",\n               \"example\": {\n                 \"body_text\": [\n                   [\n                     \"566701\",\n                     \"John\"\n                   ]\n                 ]\n               }\n             }\n           ]\n         }\n",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "https://graph.facebook.com/{{version}}/{{page-id}}/message_templates",
+													"protocol": "https",
+													"host": [
+														"graph",
+														"facebook",
+														"com"
+													],
+													"path": [
+														"{{version}}",
+														"{{page-id}}",
+														"message_templates"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": null,
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json; charset=UTF-8"
+												},
+												{
+													"key": "Vary",
+													"value": "Origin"
+												},
+												{
+													"key": "x-fb-aed",
+													"value": "642"
+												},
+												{
+													"key": "x-business-use-case-usage",
+													"value": "{\"106259855420533\":[{\"type\":\"messenger_utility_messages\",\"call_count\":1,\"total_cputime\":1,\"total_time\":1,\"estimated_time_to_regain_access\":0}]}"
+												},
+												{
+													"key": "Access-Control-Allow-Origin",
+													"value": "*"
+												},
+												{
+													"key": "facebook-api-version",
+													"value": "v23.0"
+												},
+												{
+													"key": "Strict-Transport-Security",
+													"value": "max-age=15552000; preload"
+												},
+												{
+													"key": "Pragma",
+													"value": "no-cache"
+												},
+												{
+													"key": "Cache-Control",
+													"value": "private, no-cache, no-store, must-revalidate"
+												},
+												{
+													"key": "Expires",
+													"value": "Sat, 01 Jan 2000 00:00:00 GMT"
+												},
+												{
+													"key": "x-fb-request-id",
+													"value": "AhXzmiXDqKUWDDz5gecHX_J"
+												},
+												{
+													"key": "x-fb-trace-id",
+													"value": "H7fqkHf0kXQ"
+												},
+												{
+													"key": "x-fb-rev",
+													"value": "1029839609"
+												},
+												{
+													"key": "X-FB-Debug",
+													"value": "+vELnoABCqQxPaTwbNdVYsOER3UiCmoWBOm7lgZhrkAPjFXdW22aQzYVj1bO7WpX7/Zk8421cxhR4gYku+orhQ=="
+												},
+												{
+													"key": "Date",
+													"value": "Thu, 13 Nov 2025 19:11:10 GMT"
+												},
+												{
+													"key": "X-FB-Connection-Quality",
+													"value": "MODERATE; q=0.3, rtt=305, rtx=0, c=10, mss=1334, tbw=3458, tp=-1, tpl=-1, uplat=4949, ullat=0"
+												},
+												{
+													"key": "Alt-Svc",
+													"value": "h3=\":443\"; ma=86400"
+												},
+												{
+													"key": "Connection",
+													"value": "keep-alive"
+												},
+												{
+													"key": "Content-Length",
+													"value": "67"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"id\": \"1234567890\",\n    \"status\": \"APPROVED\",\n    \"category\": \"UTILITY\"\n}"
+										}
+									]
+								},
+								{
+									"name": "Send a URL button template message",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"recipient\": {\n        \"id\": \"{{page-scoped-id}}\"\n    },\n    \"messaging_type\": \"UTILITY\",\n    \"message\": {\n        \"template\": {\n            \"name\": \"order_confirmation_demo_with_url_button\",\n            \"language\": {\n                \"code\": \"en_US\"\n            },\n            \"components\": [\n                {\n                    \"type\": \"header\",\n                    \"parameters\": [\n                        {\n                            \"type\": \"text\",\n                            \"text\": \"Order\"\n                        }\n                    ]\n                },\n                {\n                    \"type\": \"body\",\n                    \"parameters\": [\n                        {\n                            \"type\": \"text\",\n                            \"text\": \"123456\"\n                        },\n                        {\n                            \"type\": \"text\",\n                            \"text\": \"John\"\n                        }\n                    ]\n                },\n                {\n                    \"type\": \"buttons\",\n                    \"parameters\": [\n                        {\n                            \"type\": \"URL\",\n                            \"url\": \"1234\"\n                        }\n                    ]\n                }\n            ]\n        }\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://graph.facebook.com/{{version}}/{{page-id}}/messages",
+											"protocol": "https",
+											"host": [
+												"graph",
+												"facebook",
+												"com"
+											],
+											"path": [
+												"{{version}}",
+												"{{page-id}}",
+												"messages"
+											]
+										},
+										"description": "### Step 2. Send a message\n\nTo send a utility message using a template from your app user's template library, send a `POST` request to the `//messages` endpoint with the following required parameters:\n\n- `recipient.id` set to the Page-scoped ID for the person your app user is sending the message to\n    \n- `message.template` set to a list of parameters:\n    \n    - `name` set to the name of the specific template being used to create the message\n        \n    - `language` set to the language code for this template\n        \n    - `components` set to the name of the app user's template library\n        \n\nAdd additional parameters to customize the message. In the following example, `{{1}}` in the body text will be replaced with with the word `confirmed` and the `{{1}}` in the URL of the button will be replaced with the order ID.\n\n```\ncurl -X POST -H \"Content-Type: application/json\" -d '{\n  \"recipient\": {\n    \"id\": \"25381719828140932\"\n  },\n  \"messaging_type\": \"UTILITY\",\n  \"message\": {\n    \"template\": {\n      \"name\": \"jaspers_market_order_confirmation_update_us\",\n      \"language\": {\n        \"code\": \"en\"\n      },\n      \"components\": [\n        {\n          \"type\": \"body\",\n          \"parameters\": [\n            {\n              \"type\": \"text\",\n              \"text\": \"confirmed\"\n            }\n          ]\n        },\n        {\n          \"type\": \"buttons\",\n          \"parameters\": [\n            {\n              \"type\": \"URL\",\n              \"url\": \"1234\"\n            }\n          ]\n        }\n      ]\n    }\n  }\n}' \"https://graph.facebook.com/v21.0/1909458034523498/messages?access_token=EAACE...\"\n\n ```\n\nOn success your app will receive a JSON response with the template ID, review status, and template category.\n\n```\n{\n  \"recipient_id\": \"25381719828140932\",\n  \"message_id\": \"m_zm2fACsz21560tai1om-TvABABVG5smou58Xoe7OB4ekibklqP8d2WdzC-Z8j2LVG1G43QVrtVr-jwVZFg72kg\"\n}\n\n ```"
+									},
+									"response": [
+										{
+											"name": "Send a message",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"recipient\": {\n        \"id\": \"{{page-scoped-id}}\"\n    },\n    \"messaging_type\": \"UTILITY\",\n    \"message\": {\n        \"template\": {\n            \"name\": \"account_creation_confirmation_3_cloned\",\n            \"language\": {\n                \"code\": \"en_US\"\n            },\n            \"components\": [\n                {\n                    \"type\": \"body\",\n                    \"parameters\": [\n                        {\n                            \"type\": \"text\",\n                            \"text\": \"John Doe\"\n                        },\n                        {\n                            \"type\": \"text\",\n                            \"text\": \"your email\"\n                        }\n                    ]\n                }\n            ]\n        }\n    }\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "https://graph.facebook.com/{{version}}/{{page-id}}/messages",
+													"protocol": "https",
+													"host": [
+														"graph",
+														"facebook",
+														"com"
+													],
+													"path": [
+														"{{version}}",
+														"{{page-id}}",
+														"messages"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json; charset=UTF-8"
+												},
+												{
+													"key": "Vary",
+													"value": "Origin"
+												},
+												{
+													"key": "x-fb-aed",
+													"value": "642"
+												},
+												{
+													"key": "x-business-use-case-usage",
+													"value": "{\"106259855420533\":[{\"type\":\"messenger\",\"call_count\":1,\"total_cputime\":1,\"total_time\":1,\"estimated_time_to_regain_access\":0}]}"
+												},
+												{
+													"key": "Access-Control-Allow-Origin",
+													"value": "*"
+												},
+												{
+													"key": "facebook-api-version",
+													"value": "v23.0"
+												},
+												{
+													"key": "Strict-Transport-Security",
+													"value": "max-age=15552000; preload"
+												},
+												{
+													"key": "Pragma",
+													"value": "no-cache"
+												},
+												{
+													"key": "Cache-Control",
+													"value": "private, no-cache, no-store, must-revalidate"
+												},
+												{
+													"key": "Expires",
+													"value": "Sat, 01 Jan 2000 00:00:00 GMT"
+												},
+												{
+													"key": "x-fb-request-id",
+													"value": "ALZl9GCgDgTChfjECxwnY1Z"
+												},
+												{
+													"key": "x-fb-trace-id",
+													"value": "D0vhg9aLYRv"
+												},
+												{
+													"key": "x-fb-rev",
+													"value": "1029839609"
+												},
+												{
+													"key": "X-FB-Debug",
+													"value": "KQTZHwLh7RS1eB6w+XpxEDM5OquGNm0zvr5Aq7VqhCYm/dQYdknLL9lyZysf6D2KDivcwpA4k7q/RhrnyEIUZw=="
+												},
+												{
+													"key": "Date",
+													"value": "Thu, 13 Nov 2025 18:57:05 GMT"
+												},
+												{
+													"key": "X-FB-Connection-Quality",
+													"value": "MODERATE; q=0.3, rtt=302, rtx=0, c=10, mss=1334, tbw=6235, tp=-1, tpl=-1, uplat=2678, ullat=0"
+												},
+												{
+													"key": "Alt-Svc",
+													"value": "h3=\":443\"; ma=86400"
+												},
+												{
+													"key": "Connection",
+													"value": "keep-alive"
+												},
+												{
+													"key": "Content-Length",
+													"value": "139"
+												}
+											],
+											"cookie": [
+												{
+													"expires": "Invalid Date",
+													"domain": "",
+													"path": ""
+												}
+											],
+											"body": "{\n    \"recipient_id\": \"1234567890\",\n    \"message_id\": \"m_MESSAGE_ID\"\n}"
+										}
+									]
+								}
+							],
+							"description": "## Use a Template with Customizable URL Button\n\n### Step 1. Create a template with a postback button\n\nTo create a utility message template, send a `POST` request to the `//message_templates` endpoint with the following required parameters:\n\n- `name` set to the name of the template\n    \n- `language` set to the language of the message text\n    \n- `category` set to `UTILITY`\n    \n- `components` set to an array of message components including an example with message values\n    \n\nIn the following example, we have a customizable message body text and a `URL` button with a customizable URL.\n\n```\ncurl -X POST -H \"Content-Type: application/json\" -d '{\n  \"name\": \"jaspers_market_order_confirmation_update_us\",\n  \"language\": \"en\",\n  \"category\": \"UTILITY\",\n  \"components\": [\n    {\n      \"type\": \"BODY\",\n      \"text\": \"Your order is now {{1}}\",\n      \"example\": {\n        \"body_text\": [\n          [\n            \"Your order is now confirmed\"\n          ]\n        ]\n      }\n    },\n    {\n      \"type\": \"BUTTONS\",\n      \"buttons\": [\n        {\n          \"type\": \"URL\",\n          \"text\": \"Track Order\",\n          \"url\": \"http://www.example.com/orders/{{1}}\",\n          \"example\": {\n            \"url_suffix_example\": \"https://www.example.com/orders/1234\"\n          }\n        }\n      ]\n    }\n  ]\n}' \"https://graph.facebook.com/v21.0/1909458034523498/messages?access_token=EAACE...\"\n\n ```\n\nOn success your app receives a JSON response with the template ID, the review status, and the template category.\n\n```\n{\n  \"id\": \"104595129340398\",\n  \"status\": \"APPROVED\",\n  \"category\": \"UTILITY\"\n}\n\n ```\n\n### Step 2. Send a message\n\nTo send a utility message using a template from your app user's template library, send a `POST` request to the `//messages` endpoint with the following required parameters:\n\n- `recipient.id` set to the Page-scoped ID for the person your app user is sending the message to\n    \n- `message.template` set to a list of parameters:\n    \n    - `name` set to the name of the specific template being used to create the message\n        \n    - `language` set to the language code for this template\n        \n    - `components` set to the name of the app user's template library\n        \n\nAdd additional parameters to customize the message. In the following example, `{{1}}` in the body text will be replaced with with the word `confirmed` and the `{{1}}` in the URL of the button will be replaced with the order ID.\n\n```\ncurl -X POST -H \"Content-Type: application/json\" -d '{\n  \"recipient\": {\n    \"id\": \"25381719828140932\"\n  },\n  \"messaging_type\": \"UTILITY\",\n  \"message\": {\n    \"template\": {\n      \"name\": \"jaspers_market_order_confirmation_update_us\",\n      \"language\": {\n        \"code\": \"en\"\n      },\n      \"components\": [\n        {\n          \"type\": \"body\",\n          \"parameters\": [\n            {\n              \"type\": \"text\",\n              \"text\": \"confirmed\"\n            }\n          ]\n        },\n        {\n          \"type\": \"buttons\",\n          \"parameters\": [\n            {\n              \"type\": \"URL\",\n              \"url\": \"1234\"\n            }\n          ]\n        }\n      ]\n    }\n  }\n}' \"https://graph.facebook.com/v21.0/1909458034523498/messages?access_token=EAACE...\"\n\n ```\n\nOn success your app will receive a JSON response with the template ID, review status, and template category.\n\n```\n{\n  \"recipient_id\": \"25381719828140932\",\n  \"message_id\": \"m_zm2fACsz21560tai1om-TvABABVG5smou58Xoe7OB4ekibklqP8d2WdzC-Z8j2LVG1G43QVrtVr-jwVZFg72kg\"\n}\n\n ```"
 						},
 						{
 							"name": "Search for a template",
@@ -5937,161 +6999,9 @@
 									"body": "{\n    \"data\": [\n        {\n            \"name\": \"account_creation_confirmation_3_cloned_v2\",\n            \"components\": [\n                {\n                    \"type\": \"HEADER\",\n                    \"format\": \"TEXT\",\n                    \"text\": \"Finalize account set-up\"\n                },\n                {\n                    \"type\": \"BODY\",\n                    \"text\": \"Hi {{1}},\\n\\nYour new account has been created successfully. \\n\\nPlease verify {{2}} to complete your profile.\",\n                    \"example\": {\n                        \"body_text\": [\n                            [\n                                \"John\",\n                                \"your email address\"\n                            ]\n                        ]\n                    }\n                },\n                {\n                    \"type\": \"BUTTONS\",\n                    \"buttons\": [\n                        {\n                            \"type\": \"URL\",\n                            \"text\": \"Verify account\",\n                            \"url\": \"https://www.jaspersmarket.com/\"\n                        }\n                    ]\n                }\n            ],\n            \"language\": \"en_US\",\n            \"status\": \"APPROVED\",\n            \"category\": \"UTILITY\",\n            \"library_template_name\": \"account_creation_confirmation_3\",\n            \"id\": \"1234567890\"\n        },\n        {\n            \"name\": \"account_creation_confirmation_3_cloned\",\n            \"components\": [\n                {\n                    \"type\": \"HEADER\",\n                    \"format\": \"TEXT\",\n                    \"text\": \"Finalize account set-up\"\n                },\n                {\n                    \"type\": \"BODY\",\n                    \"text\": \"Hi {{1}},\\n\\nYour new account has been created successfully. \\n\\nPlease verify {{2}} to complete your profile.\",\n                    \"example\": {\n                        \"body_text\": [\n                            [\n                                \"John\",\n                                \"your email address\"\n                            ]\n                        ]\n                    }\n                },\n                {\n                    \"type\": \"BUTTONS\",\n                    \"buttons\": [\n                        {\n                            \"type\": \"URL\",\n                            \"text\": \"Verify account\",\n                            \"url\": \"https://www.jaspersmarket.com/\"\n                        }\n                    ]\n                }\n            ],\n            \"language\": \"en_US\",\n            \"status\": \"APPROVED\",\n            \"category\": \"UTILITY\",\n            \"library_template_name\": \"account_creation_confirmation_3\",\n            \"id\": \"1234567890\"\n        }\n    ],\n    \"paging\": {\n        \"cursors\": {\n            \"before\": \"MAZDZD\",\n            \"after\": \"MjQZD\"\n        }\n    }\n}"
 								}
 							]
-						},
-						{
-							"name": "Send a message",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"recipient\": {\n        \"id\": \"{{page-scoped-id}}\"\n    },\n    \"messaging_type\": \"UTILITY\",\n    \"message\": {\n        \"template\": {\n            \"name\": \"order_confirmation_demo\",\n            \"language\": {\n                \"code\": \"en_US\"\n            },\n            \"components\": [\n                {\n                    \"type\": \"body\",\n                    \"parameters\": [\n                        {\n                            \"type\": \"text\",\n                            \"text\": \"123456\"\n                        },\n                        {\n                            \"type\": \"text\",\n                            \"text\": \"John\"\n                        }\n                    ]\n                }\n            ]\n        }\n    }\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "https://graph.facebook.com/{{version}}/{{page-id}}/messages",
-									"protocol": "https",
-									"host": [
-										"graph",
-										"facebook",
-										"com"
-									],
-									"path": [
-										"{{version}}",
-										"{{page-id}}",
-										"messages"
-									]
-								},
-								"description": "### Send a message\n\nTo send a utility message from a cloned Meta template, send a `POST` request to the `/PAGE_ID/messages` endpoint with the following parameters:\n\n- `recipient.id` set to the Page-scoped ID for the person your app user is sending the message to\n    \n- `messaging_type` set to `UTILITY`\n    \n- `template` with the following parameters:\n    \n    - `name` set to the name of the specific template being used to create the message\n        \n    - `language.code` set to the language code for this message\n        \n    - `components` array with the following parameters:\n        \n        - `type` set to `body`\n            \n        - `parameters.type` set to `text`\n            \n        - `parameter.text` set to the input needed for the template\n            \n\n```\ncurl -X POST -H \"Content-Type: application/json\" -d '{\n  \"recipient\": {\n    \"id\":\"2348927398743287\"\n  },\n  \"template\": {\n    \"name\": \"jaspers_market_order_confirmation_1\",\n    \"language\": { \"code\": \"en\" },\n    \"components\": [\n      {\n        \"type\": \"body\",\n        \"parameters\": [\n          {\n            \"type\": \"body\",\n            \"text\": \"566701\"\n          }\n        ]\n      }\n    ]\n  } \n}' \"https://graph.facebook.com/v24.0/1909458034523498/messages?access_token=EAACE...\"\n\n ```"
-							},
-							"response": [
-								{
-									"name": "Send a message",
-									"originalRequest": {
-										"method": "POST",
-										"header": [],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n    \"recipient\": {\n        \"id\": \"{{page-scoped-id}}\"\n    },\n    \"messaging_type\": \"UTILITY\",\n    \"message\": {\n        \"template\": {\n            \"name\": \"account_creation_confirmation_3_cloned\",\n            \"language\": {\n                \"code\": \"en_US\"\n            },\n            \"components\": [\n                {\n                    \"type\": \"body\",\n                    \"parameters\": [\n                        {\n                            \"type\": \"text\",\n                            \"text\": \"John Doe\"\n                        },\n                        {\n                            \"type\": \"text\",\n                            \"text\": \"your email\"\n                        }\n                    ]\n                }\n            ]\n        }\n    }\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "https://graph.facebook.com/{{version}}/{{page-id}}/messages",
-											"protocol": "https",
-											"host": [
-												"graph",
-												"facebook",
-												"com"
-											],
-											"path": [
-												"{{version}}",
-												"{{page-id}}",
-												"messages"
-											]
-										}
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "application/json; charset=UTF-8"
-										},
-										{
-											"key": "Vary",
-											"value": "Origin"
-										},
-										{
-											"key": "x-fb-aed",
-											"value": "642"
-										},
-										{
-											"key": "x-business-use-case-usage",
-											"value": "{\"106259855420533\":[{\"type\":\"messenger\",\"call_count\":1,\"total_cputime\":1,\"total_time\":1,\"estimated_time_to_regain_access\":0}]}"
-										},
-										{
-											"key": "Access-Control-Allow-Origin",
-											"value": "*"
-										},
-										{
-											"key": "facebook-api-version",
-											"value": "v23.0"
-										},
-										{
-											"key": "Strict-Transport-Security",
-											"value": "max-age=15552000; preload"
-										},
-										{
-											"key": "Pragma",
-											"value": "no-cache"
-										},
-										{
-											"key": "Cache-Control",
-											"value": "private, no-cache, no-store, must-revalidate"
-										},
-										{
-											"key": "Expires",
-											"value": "Sat, 01 Jan 2000 00:00:00 GMT"
-										},
-										{
-											"key": "x-fb-request-id",
-											"value": "ALZl9GCgDgTChfjECxwnY1Z"
-										},
-										{
-											"key": "x-fb-trace-id",
-											"value": "D0vhg9aLYRv"
-										},
-										{
-											"key": "x-fb-rev",
-											"value": "1029839609"
-										},
-										{
-											"key": "X-FB-Debug",
-											"value": "KQTZHwLh7RS1eB6w+XpxEDM5OquGNm0zvr5Aq7VqhCYm/dQYdknLL9lyZysf6D2KDivcwpA4k7q/RhrnyEIUZw=="
-										},
-										{
-											"key": "Date",
-											"value": "Thu, 13 Nov 2025 18:57:05 GMT"
-										},
-										{
-											"key": "X-FB-Connection-Quality",
-											"value": "MODERATE; q=0.3, rtt=302, rtx=0, c=10, mss=1334, tbw=6235, tp=-1, tpl=-1, uplat=2678, ullat=0"
-										},
-										{
-											"key": "Alt-Svc",
-											"value": "h3=\":443\"; ma=86400"
-										},
-										{
-											"key": "Connection",
-											"value": "keep-alive"
-										},
-										{
-											"key": "Content-Length",
-											"value": "139"
-										}
-									],
-									"cookie": [
-										{
-											"expires": "Invalid Date",
-											"domain": "",
-											"path": ""
-										}
-									],
-									"body": "{\n    \"recipient_id\": \"1234567890\",\n    \"message_id\": \"m_MESSAGE_ID\"\n}"
-								}
-							]
 						}
 					],
-					"description": "Your app users can create their own template for their utility messages."
+					"description": "Your app users can create their own template for their utility messages.\n\n### Step 1. Create a Page-owned template\n\nTo create a utility message template, send a `POST` request to the `/PAGE_ID/message_templates` endpoint with the following required parameters:\n\n- `name` set to the name of the template\n    \n- `language` set to the language of the message text\n    \n- `category` set to `UTILITY`\n    \n- `components` set to an array of message components including an example with message values\n    \n\n#### Text-Only Templates\n\nIn the following example, we have message body text and header text. The body component and header component includes example customer information that would be used to customize the message.\n\n```\ncurl -H 'Content-Type: application/json' \\\n     -d '{\n           \"name\": \"jaspers_market_order_delivery_update_us\",\n           \"language\": \"en\",\n           \"category\": \"UTILITY\",\n           \"components\": [\n            {\n              \"type\": \"HEADER\",\n              \"format\": \"TEXT\",\n              \"text\":\"{{1}} Update\",\n              \"example\": {\n               \"header_text\":[\"Order\"]\n              }\n             },\n             {\n               \"type\": \"BODY\",\n               \"text\": \"Good news! Your order #{{1}} is on its way. Thank you for your order!\"\n               \"example\": {\n                 \"body_text\": [\n                   [\n                     \"566701\"\n                   ]\n                 ]\n               }\n             }\n           ]\n         }' \"https://graph.facebook.com/v24.0/102290129340398/message_templates?access_token=EAAJB...\"\n\n ```\n\n#### Text + Image Templates\n\nYou can also create templates with images. Images need to be first uploaded using the [Resumable Upload API](https://developers.facebook.com/docs/graph-api/guides/upload) to generate the handle for the image. You can then use the handle and pass it in the Header component while creating the template.\n\n```\ncurl -H 'Content-Type: application/json' \\\n     -d '{\n           \"name\": \"jaspers_market_order_delivery_update_us\",\n           \"language\": \"en\",\n           \"category\": \"UTILITY\",\n           \"components\": [\n             {\n              \"type\": \"HEADER\",\n              \"format\": \"IMAGE\",\n              \"text\":\"{{1}} Update\",\n              \"example\": {\n               \"header_handle\": [\"4:dGVzdF9pbWFn.......\"],\n               \"header_text\":[\"Order\"]\n              }\n             },\n             {\n               \"type\": \"BODY\",\n               \"text\": \"Good news! Your order #{{1}} is on its way. Thank you for your order!\"\n               \"example\": {\n                 \"body_text\": [\n                   [\n                     \"566701\"\n                   ]\n                 ]\n               }\n             }\n           ]\n         }' \"https://graph.facebook.com/v24.0/102290129340398/message_templates?access_token=EAAJB...\"\n\n ```\n\nOn success your app receives a JSON response with the template ID, the review status, and the template category.\n\n```\n{\n  \"id\": \"104595129340398\",\n  \"status\": \"APPROVED\",\n  \"category\": \"UTILITY\"\n}\n\n ```\n\n### Step 2. Send a message\n\nTo send a utility message using a template from your app user's template library, send a `POST` request to the `//messages` endpoint with the following required parameters:\n\n- `recipient.id` set to the Page-scoped ID for the person your app user is sending the message to\n    \n- `message.template` set to a list of parameters:\n    \n    - `name` set to the name of the specific template being used to create the message\n        \n    - `language` set to the language code for this template\n        \n    - `components` set to the name of the app user's template library\n        \n\nAdd additional parameters to customize the message. In the following example, `{{1}}` will be replaced with the recipient's order ID.\n\n```\ncurl -X POST -H \"Content-Type: application/json\" -d '{\n  \"recipient\": {\n    \"id\": \"2348927398743287\"\n  },\n  \"message\": {\n    \"template\": {\n      \"name\": \"jaspers_market_order_delivery_update_us\",\n      \"language\": {\n        \"code\": \"en\"\n      },\n      \"components\": [\n        {\n          \"type\": \"header\",\n          \"parameters\": [\n            {\n              \"type\": \"text\",\n              \"text\": \"this is the title\"\n            }\n          ]\n        },\n        {\n          \"type\": \"body\",\n          \"parameters\": [\n            {\n              \"type\": \"text\",\n              \"text\": \"this is the body\"\n            }\n          ]\n        }\n      ]\n    }\n  }\n}' \"https://graph.facebook.com/v21.0/1909458034523498/messages?access_token=EAACE...\"\n\n ```\n\nOn success your app will receive a JSON response with the template ID, review status, and template category.\n\n```\n{\n  \"recipient_id\": \"25381719828140932\",\n  \"message_id\": \"m_zm2fACsz21560tai1om-TvABABVG5smou58Xoe7OB4ekibklqP8d2WdzC-Z8j2LVG1G43QVrtVr-jwVZFg72kg\"\n}\n\n ```\n\n## Use an existing Page's template\n\n### Step 1. Search for a template\n\nTo get a list of a Page's utility message templates, send a `GET` request to the `//message_templates` endpoint.\n\nAdd additional parameters to find specific utility message types. In the following example we are searching for templates that include the word \"`delivery_confirmation`\" in the template name.\n\n```\ncurl -X GET \"https://graph.facebook.com/v24.0/102290129340398/message_templates?name=delivery_confirmation&access_token=EAAJB...\"\n\n ```\n\nOn success your app receives a JSON response with a list of templates that match your query. You will need the template `name` value to use the template for your app user's utility messages.\n\n```\n{\n  \"data\": [\n    {\n      \"name\": \"delivery_confirmation_1\",\n      \"language\": \"en\",\n      \"category\": \"UTILITY\",\n      \"topic\": \"ORDER_MANAGEMENT\",\n      \"usecase\": \"DELIVERY_CONFIRMATION\",\n      \"industry\": [\n        \"E_COMMERCE\"\n      ],\n      \"body\": \"{{1}}, your order was successfully delivered!\",\n      \"body_params\": [\n        \"Mark\"\n      ],\n      \"body_param_types\": [\n        \"TEXT\"\n      ],\n      \"id\": \"7635027653257090\"\n    },\n    {\n      \"name\": \"delivery_confirmation_2\",\n    ...\n    },\n  ]\n}\n\n ```\n\n### Step 2. Send a message\n\nTo send a utility message using a template from your app user's template library, send a `POST` request to the `//messages` endpoint with the following required parameters:\n\n- `recipient.id` set to the Page-scoped ID for the person your app user is sending the message to\n    \n- `message.template` set to a list of parameters:\n    \n    - `name` set to the name of the specific template being used to create the message\n        \n    - `language` set to the language code for this template\n        \n    - `components` set to the name of the app user's template library\n        \n\nAdd additional parameters to customize the message. In the following example, `{{1}}` will be replaced with the recipient's order ID.\n\n```\ncurl -X POST -H \"Content-Type: application/json\" -d '{\n  \"recipient\": {\n    \"id\": \"2348927398743287\"\n  },\n  \"message\": {\n    \"template\": {\n      \"name\": \"jaspers_market_order_delivery_update_us\",\n      \"language\": {\n        \"code\": \"en\"\n      },\n      \"components\": [\n        {\n          \"type\": \"header\",\n          \"parameters\": [\n            {\n              \"type\": \"text\",\n              \"text\": \"this is the title\"\n            }\n          ]\n        },\n        {\n          \"type\": \"body\",\n          \"parameters\": [\n            {\n              \"type\": \"text\",\n              \"text\": \"this is the body\"\n            }\n          ]\n        }\n      ]\n    }\n  }\n}' \"https://graph.facebook.com/v21.0/1909458034523498/messages?access_token=EAACE...\"\n\n ```\n\nOn success your app will receive a JSON response with the template ID, review status, and template category.\n\n```\n{\n  \"recipient_id\": \"25381719828140932\",\n  \"message_id\": \"m_zm2fACsz21560tai1om-TvABABVG5smou58Xoe7OB4ekibklqP8d2WdzC-Z8j2LVG1G43QVrtVr-jwVZFg72kg\"\n}\n\n ```\n\n## Use a Template with Customizable Postback Button\n\n### Step 1. Create a template with a postback button\n\nTo create a utility message template, send a `POST` request to the `//message_templates` endpoint with the following required parameters:\n\n- `name` set to the name of the template\n    \n- `language` set to the language of the message text\n    \n- `category` set to `UTILITY`\n    \n- `components` set to an array of message components including an example with message values\n    \n\nIn the following example, we have a customizable message body text and a `POSTBACK` button with a customizable payload.\n\n```\ncurl -X POST -H \"Content-Type: application/json\" -d '{\n  \"name\": \"jaspers_market_order_confirmation_update_us\",\n  \"language\": \"en\",\n  \"category\": \"UTILITY\",\n  \"components\": [\n    {\n      \"type\": \"BODY\",\n      \"text\": \"Your order is now {{1}}\",\n      \"example\": {\n        \"body_text\": [\n          [\n            \"Your order is now confirmed\"\n          ]\n        ]\n      }\n    },\n    {\n      \"type\": \"BUTTONS\",\n      \"buttons\": [\n        {\n          \"type\": \"POSTBACK\",\n          \"text\": \"Track Order\",\n          \"payload\": \"order_id_{{2}}\"\n        }\n      ]\n    }\n  ]\n}' \"https://graph.facebook.com/v21.0/1909458034523498/messages?access_token=EAACE...\"\n\n ```\n\nOn success your app receives a JSON response with the template ID, the review status, and the template category.\n\n```\n{\n  \"id\": \"104595129340398\",\n  \"status\": \"APPROVED\",\n  \"category\": \"UTILITY\"\n}\n\n ```\n\n### Step 2. Send a message\n\nTo send a utility message using a template from your app user's template library, send a `POST` request to the `//messages` endpoint with the following required parameters:\n\n- `recipient.id` set to the Page-scoped ID for the person your app user is sending the message to\n    \n- `message.template` set to a list of parameters:\n    \n    - `name` set to the name of the specific template being used to create the message\n        \n    - `language` set to the language code for this template\n        \n    - `components` set to the name of the app user's template library\n        \n\nAdd additional parameters to customize the message. In the following example, `{{1}}` and `{{2}}` will be replaced with the recipient's order ID, updating both the body text and the `POSTBACK` button's payload.\n\n```\ncurl -X POST -H \"Content-Type: application/json\" -d '{\n  \"recipient\": {\n    \"id\": \"25381719828140932\"\n  },\n  \"messaging_type\": \"UTILITY\",\n  \"message\": {\n    \"template\": {\n      \"name\": \"jaspers_market_order_confirmation_update_us\",\n      \"language\": {\n        \"code\": \"en\"\n      },\n      \"components\": [\n        {\n          \"type\": \"body\",\n          \"parameters\": [\n            {\n              \"type\": \"text\",\n              \"text\": \"confirmed\"\n            }\n          ]\n        },\n        {\n          \"type\": \"buttons\",\n          \"parameters\": [\n            {\n              \"type\": \"POSTBACK\",\n              \"payload\": \"12345\"\n            }\n          ]\n        }\n      ]\n    }\n  }\n}' \"https://graph.facebook.com/v21.0/1909458034523498/messages?access_token=EAACE...\"\n\n ```\n\nOn success your app will receive a JSON response with the template ID, review status, and template category.\n\n```\n{\n  \"recipient_id\": \"25381719828140932\",\n  \"message_id\": \"m_zm2fACsz21560tai1om-TvABABVG5smou58Xoe7OB4ekibklqP8d2WdzC-Z8j2LVG1G43QVrtVr-jwVZFg72kg\"\n}\n\n ```\n\n## Use a Template with Customizable URL Button\n\n### Step 1. Create a template with a postback button\n\nTo create a utility message template, send a `POST` request to the `//message_templates` endpoint with the following required parameters:\n\n- `name` set to the name of the template\n    \n- `language` set to the language of the message text\n    \n- `category` set to `UTILITY`\n    \n- `components` set to an array of message components including an example with message values\n    \n\nIn the following example, we have a customizable message body text and a `URL` button with a customizable URL.\n\n```\ncurl -X POST -H \"Content-Type: application/json\" -d '{\n  \"name\": \"jaspers_market_order_confirmation_update_us\",\n  \"language\": \"en\",\n  \"category\": \"UTILITY\",\n  \"components\": [\n    {\n      \"type\": \"BODY\",\n      \"text\": \"Your order is now {{1}}\",\n      \"example\": {\n        \"body_text\": [\n          [\n            \"Your order is now confirmed\"\n          ]\n        ]\n      }\n    },\n    {\n      \"type\": \"BUTTONS\",\n      \"buttons\": [\n        {\n          \"type\": \"URL\",\n          \"text\": \"Track Order\",\n          \"url\": \"http://www.example.com/orders/{{1}}\",\n          \"example\": {\n            \"url_suffix_example\": \"https://www.example.com/orders/1234\"\n          }\n        }\n      ]\n    }\n  ]\n}' \"https://graph.facebook.com/v21.0/1909458034523498/messages?access_token=EAACE...\"\n\n ```\n\nOn success your app receives a JSON response with the template ID, the review status, and the template category.\n\n```\n{\n  \"id\": \"104595129340398\",\n  \"status\": \"APPROVED\",\n  \"category\": \"UTILITY\"\n}\n\n ```\n\n### Step 2. Send a message\n\nTo send a utility message using a template from your app user's template library, send a `POST` request to the `//messages` endpoint with the following required parameters:\n\n- `recipient.id` set to the Page-scoped ID for the person your app user is sending the message to\n    \n- `message.template` set to a list of parameters:\n    \n    - `name` set to the name of the specific template being used to create the message\n        \n    - `language` set to the language code for this template\n        \n    - `components` set to the name of the app user's template library\n        \n\nAdd additional parameters to customize the message. In the following example, `{{1}}` in the body text will be replaced with with the word `confirmed` and the `{{1}}` in the URL of the button will be replaced with the order ID.\n\n```\ncurl -X POST -H \"Content-Type: application/json\" -d '{\n  \"recipient\": {\n    \"id\": \"25381719828140932\"\n  },\n  \"messaging_type\": \"UTILITY\",\n  \"message\": {\n    \"template\": {\n      \"name\": \"jaspers_market_order_confirmation_update_us\",\n      \"language\": {\n        \"code\": \"en\"\n      },\n      \"components\": [\n        {\n          \"type\": \"body\",\n          \"parameters\": [\n            {\n              \"type\": \"text\",\n              \"text\": \"confirmed\"\n            }\n          ]\n        },\n        {\n          \"type\": \"buttons\",\n          \"parameters\": [\n            {\n              \"type\": \"URL\",\n              \"url\": \"1234\"\n            }\n          ]\n        }\n      ]\n    }\n  }\n}' \"https://graph.facebook.com/v21.0/1909458034523498/messages?access_token=EAACE...\"\n\n ```\n\nOn success your app will receive a JSON response with the template ID, review status, and template category.\n\n```\n{\n  \"recipient_id\": \"25381719828140932\",\n  \"message_id\": \"m_zm2fACsz21560tai1om-TvABABVG5smou58Xoe7OB4ekibklqP8d2WdzC-Z8j2LVG1G43QVrtVr-jwVZFg72kg\"\n}\n\n ```\n\n## Utility Messages in Conversation API\n\nUtility Messages that use only a `BODY` component will be represented in the Conversation API the same as [basic text](https://developers.facebook.com/docs/messenger-platform/introduction/conversation-components#text_messages) messages whereas messages that use a `HEADER` and `BUTTONS` components will be represented the same as [generic template messages](https://developers.facebook.com/docs/messenger-platform/send-messages/templates#generic).\n\n### Example: Utility Message with Only a Body in Conversation API\n\n```\ncurl -X GET \"https://graph.facebook.com/v21.0/me/messages?access_token=EAACE...\"\n\n ```\n\n```\n{\n  \"data\": [\n    {\n      \"messages\": {\n        \"data\": [\n          {\n            \"message\": \"Good news! Your order #123123123 is confirmed!\",\n            \"id\": \"m_-9paUc9QYpm9VbVRgslJlNAcspcsz2P9LWJH6flWihChxY9ujvS623AfYOMWiHeq_fgsSh4GXjGwTPWN9Slm2Q\"\n          },\n  ...\n}\n\n ```\n\n### Example: Utility Message With Header or Buttons in Conversation API\n\n```\ncurl -X GET \"https://graph.facebook.com/v21.0/me/messages?access_token=EAACE...\"\n\n ```\n\n```\n{\n  \"data\": [\n    {\n      \"messages\": {\n        \"data\": [\n          {\n            \"attachments\": {\n              \"data\": [\n                {\n                  \"generic_template\": {\n                    \"title\": \"Order is being shipped\",\n                    \"subtitle\": \"Good news! Your order #123123123 is now shipped. The tracking number is #track123\"\n                  }\n                }\n              ]\n            },\n            \"message\": \"\",\n            \"id\": \"m_qvfnMpHYUNzLf__jekbCjdAcspcsz2P9LWJH6flWihCIJ-wkOtKKkRzUDwl0nKO-is6mGR_WeP0caoCVKTWfLw\"\n          },\n  ...\n}\n\n ```\n\n## Common Template Rejection Reasons\n\nSubmissions are commonly rejected for the following reasons, so make sure you avoid these mistakes.\n\n### Parameter Formatting\n\n- Variable parameters are missing or have mismatched curly braces. The correct format is {{1}}.\n    \n- Variable parameters contain special characters such as a #, $, or %.\n    \n- Variable parameters are not sequential. For example, {{1}}, {{2}}, {{4}}, {{5}} are defined but {{3}} does not exist.\n    \n- Template contains too many variable parameters relative to the message length. You need to decrease the number of variable parameters or increase the message length.\n    \n- The message template cannot start or end with a parameter. In essence, dangling parameters are not allowed. In this case, the template will not be able to be created.\n    \n\n### Content and Policy Violations\n\n- The message template contains content that violates Utility Messages policy: When you offer goods or services for sale, we consider all messages and media related to your goods or services, including any descriptions, prices, fees, taxes and/or any required legal disclosures, to constitute transactions.\n    \n- Do not request sensitive identifiers from users. For example, do not ask people to share full length individual payment card numbers, financial account numbers, National Identification numbers, or other sensitive identifiers. This also includes not requesting documents from users that might contain sensitive identifiers. Requesting partial identifiers (ex: last 4 digits of their Social Security number) is OK.\n    \n- The content contains potentially abusive or threatening content, such as threatening a customer with legal action or threatening to publicly shame them.\n    \n\n## See Also\n\nTo learn more about the concepts, endpoints, and mentioned in this document, please visit the following guides:\n\n- [Message Template Library API Reference](https://developers.facebook.com/docs/messenger-platform/reference/templates/message-template-library)"
 				}
 			],
 			"description": "This document shows you how to send a utility message.\n\n#### What's a utility message?\n\nA utility message is a message, created from a template, sent to your customers that contain order or account status updates, and appointment or event reminders, and can be personalized with a customer’s name, locale, appointment or event date, and more. A utility message template contains placeholder values such as a person’s name, order id, tracking number, and so on, that are filled in at the time the message is sent to the consumer. Your app users can create their own utility message templates or use one of Meta's utility message templates to create these messages.\n\n### How it works\n\nThere are a number of flows for your app users to send utility messages:\n\n| **Use a Meta template** | Create and send a Page-owned template | Use an existing Page-owned template |\n| --- | --- | --- |\n| 1\\. Search for a template  <br>2\\. Clone it to the Page's template library  <br>3\\. Send a message | 1\\. Create a template  <br>2\\. Receive approval (within seconds of creation)  <br>3\\. Send a message | 1\\. Search for a template (already approved)  <br>2\\. Send a message |\n\n**Note:** Facebook Pages are not required to be linked to a business to send utility messages.\n\n<img src=\"https://content.pstmn.io/1874f1bc-c164-4dd3-bd49-c2a9cb3b0dc6/aW1hZ2UucG5n\" width=\"1370\" height=\"782\">\n\n## Before You Start\n\nThis guide assumes you have set up your webhooks server to receive notifications and subscribed to the `message_template_status_update` field as well as other webhook messaging fields your app user's utility messages need.\n\nYou need the following:\n\n- The ID for the Page sending the message\n    \n- The Page-scoped ID of the customer receiving the message\n    \n- A Page access token from your app user who is sending the message\n    \n- Your app user has granted your app the `page_utility_messaging` permission\n    \n\n### Limitations\n\n- Utility messages must not contain marketing materials. Learn more in our [Marketing Messages documentation](https://developers.facebook.com/docs/messenger-platform/marketing-messages).\n    \n- The Utility Messaging feature is currently available only to pages and users in the United States, Thailand, Philippines, and Vietnam.\n    \n\n## See Also\n\nTo learn more about the concepts, endpoints, and mentioned in this document, please visit the following guides:\n\n- [Message Template Library API Reference](https://developers.facebook.com/docs/messenger-platform/reference/templates/message-template-library)"
