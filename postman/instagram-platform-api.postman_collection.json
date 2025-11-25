@@ -3743,6 +3743,108 @@
 						}
 					],
 					"description": "This guide shows you how to publish single images, videos, reels (single media posts), or posts containing multiple images and videos (carousel posts) on Instagram professional accounts using the Instagram Platform.\n\n## Requirements\n\nThis guide assumes you have read the [Instagram Platform Overview](https://developers.facebook.com/docs/instagram-platform/overview) and implemented the needed components for using this API, such as a Meta login flow and a webhooks server to receive notifications.\n\n#### Media on a public server\n\nWe cURL media used in publishing attempts, so the media must be hosted on a publicly accessible server at the time of the attempt.\n\nYou will need the following:\n\n|  |  |\n| --- | --- |\n| **Access Levels** | \\- Advanced Access  <br>  <br>\\- Standard Access |\n| **Access Tokens** | \\- Instagram User access token |\n| **Host URL** | `graph.instagram.com` |\n| **Login Type** | Business Login for Instagram |\n| [<b>Permissions</b>](https://developers.facebook.com/docs/permissions/reference#i) | \\- `instagram_business_basic`  <br>  <br>\\- `instagram_business_content_publish` |\n| **Webhooks** | \\- |\n\n#### Endpoints\n\n- [<code>/media</code>](https://developers.facebook.com/docs/instagram-api/reference/ig-user/media#creating) — Create media container and upload the media\n    \n    - `upload_type=resumable` — Create a resumbable upload session to upload large videos from an area with frequent network interruptions or other transmission failures. Only for apps that have implemented Facebook Login for Business.\n        \n- [<code>/media_publish</code>](https://developers.facebook.com/docs/instagram-api/reference/ig-user/media_publish#creating) — publish uploaded media using their media containers.\n    \n- [<code>/?fields=status_code</code>](https://developers.facebook.com/docs/instagram-api/reference/ig-container#reading) — check media container publishing eligibility and status.\n    \n- [<code>/content_publishing_limit</code>](https://developers.facebook.com/docs/instagram-api/reference/ig-user/content_publishing_limit) — check app user's current publishing rate limit usage.\n    \n- `POST https://rupload.facebook.com/ig-api-upload/` — Upload the video to Meta servers\n    \n- `GET /?fields=status_code` — Check publishing eligibility and status of the video\n    \n\n#### HTML URL encoding troubleshooting\n\n- Some of the parameters are supported in list/dict format.\n    \n- Some characters need to be encoded into a format that can be transmitted over the Internet. For example: `user_tags=[{username:’ig_user_name’}]` is encoded to `user_tags=[{username:ig_user_name}]` where `[` is encoded to `[` and `{` is encoded to `{`. For more conversions, please refer to the HTML URL Encoding standard.\n    \n\n### Limitations\n\n- JPEG is the only image format supported. Extended JPEG formats such as MPO and JPS are not supported.\n    \n- Shopping tags are not supported.\n    \n- Branded content tags are not supported.\n    \n- Filters are not supported.\n    \n\nFor additional limitations, see each endpoint's reference.\n\n#### Rate Limit\n\nInstagram accounts are limited to 100 API-published posts within a 24-hour moving period. Carousels count as a single post. This limit is enforced on the `POST //media_publish` endpoint when attempting to publish a media container. We recommend that your app also enforce the publishing rate limit, especially if your app allows app users to schedule posts to be published in the future.\n\nTo check an Instagram professional account's current rate limit usage, query the `GET /content_publishing_limit` endpoint.\n\n## Troubleshooting\n\nIf you are able to create a container for a video but the `POST /media_publish` endpoint does not return the published media ID, you can get the container's publishing status by querying the `GET /?fields=status_code` endpoint. This endpoint will return one of the following:\n\n- `EXPIRED` — The container was not published within 24 hours and has expired.\n    \n- `ERROR` — The container failed to complete the publishing process.\n    \n- `FINISHED` — The container and its media object are ready to be published.\n    \n- `IN_PROGRESS` — The container is still in the publishing process.\n    \n- `PUBLISHED` — The container's media object has been published.\n    \n\nWe recommend querying a container's status once per minute, for no more than 5 minutes.\n\n## Errors\n\nSee the [Error Codes](https://developers.facebook.com/docs/instagram-api/reference/error-codes) reference.\n\n## Next Steps\n\nNow that you have published to an Instagram professional account, learn how to [moderate comments on your media](https://developers.facebook.com/docs/instagram/platform/instagram-api/comment-moderation)."
+				},
+				{
+					"name": "Webhooks",
+					"item": [
+						{
+							"name": "Subscribe App to Pro Account's webhooks",
+							"item": [
+								{
+									"name": "Subscribe to webhooks",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"subscribed_fields\": [\n        \"messages\",\n        \"messaging_postbacks\",\n        \"messaging_seen\",\n        \"messaging_handover\",\n        \"messaging_referral\",\n        \"message_reactions\",\n        \"standby\",\n        \"comments\",\n        \"live_comments\",\n        \"mentions\",\n        \"story_insights\"\n      ]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://graph.instagram.com/{{api_version}}/{{ig_user_id}}/subscribed_apps",
+											"protocol": "https",
+											"host": [
+												"graph",
+												"instagram",
+												"com"
+											],
+											"path": [
+												"{{api_version}}",
+												"{{ig_user_id}}",
+												"subscribed_apps"
+											]
+										},
+										"description": "#### Example Request\n\n```\ncurl -i -X POST \\\n  \"https://graph.instagram.com/v24.0/1755847768034402/subscribed_apps\n  ?subscribed_fields=comments,messages\n  &access_token=EAAFB...\"\n\n ```\n\nOn success, your app receives a JSON response with `success` set to `true`.\n\n```\n{\n  \"success\": true\n}\n\n ```\n\nGuide: [Subscribe to webhooks](https://developers.facebook.com/docs/instagram-platform/webhooks#enable-subscriptions)"
+									},
+									"response": []
+								}
+							],
+							"description": "# Subscribe to a Instagram professional account\n\nYour app must enable subscriptions by sending a `POST` request to the `/{{ig_user_id}}/subscribed_apps` endpoint with the `subscribed_fields` parameter set to a comma-separated list of webhooks fields.\n\nFor more information about subscribing to a WhatsApp Business Account, see [Subscribe to webhooks](https://developers.facebook.com/docs/instagram-platform/webhooks#enable-subscriptions)\n\n[View complete documentation](https://developers.facebook.com/docs/instagram-platform/webhooks)"
+						},
+						{
+							"name": "Get All Pro Account's webhooks subscribed by App",
+							"item": [
+								{
+									"name": "Get subscribed webhook fields",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://graph.instagram.com/{{api_version}}/{{ig_user_id}}/subscribed_apps",
+											"protocol": "https",
+											"host": [
+												"graph",
+												"instagram",
+												"com"
+											],
+											"path": [
+												"{{api_version}}",
+												"{{ig_user_id}}",
+												"subscribed_apps"
+											]
+										},
+										"description": "#### Example Request\n\n```\ncurl -i -X GET \\\n  \"https://graph.instagram.com/v24.0/1755847768034402/subscribed_apps\n  &access_token=EAAFB...\"\n\n ```\n\nOn success, your app receives a JSON response with `success` set to `true`.\n\n```\n{\n    \"data\": [\n        {\n            \"id\": \"45202396782467\",\n            \"subscribed_fields\": [\n                \"messages\",\n                \"messaging_postbacks\",\n                \"messaging_seen\",\n                \"messaging_handover\",\n                \"messaging_referral\",\n                \"message_reactions\",\n                \"standby\",\n                \"comments\",\n                \"live_comments\",\n                \"mentions\",\n                \"story_insights\"\n            ]\n        }\n    ]\n}\n\n ```\n\n[View complete documentation](https://developers.facebook.com/docs/instagram-platform/webhooks)"
+									},
+									"response": []
+								}
+							],
+							"description": "# Get All Subscriptions for a Instagram professional account\n\nYour app can get webhook feild subscriptions for an Instagram professional account by sending a `GET` request to the `/{{ig_user_id}}/subscribed_apps` endpoint\n\n[View complete documentation](https://www.postman.com/meta/whatsapp-business-platform/documentation/wlk6lh4/whatsapp-cloud-api?entity=request-13382743-ad675e61-a4b4-4a5e-a7e7-7e8ed3d4af7d)[](https://www.postman.com/meta/whatsapp-business-platform/documentation/wlk6lh4/whatsapp-cloud-api?entity=request-13382743-ed780f51-d6e8-43e1-a2e5-13a6cdbfbb80)"
+						},
+						{
+							"name": "Delete App's Pro account webhook subscription",
+							"item": [
+								{
+									"name": "Delete webhook subscription",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "https://graph.instagram.com/{{api_version}}/{{ig_user_id}}/subscribed_apps",
+											"protocol": "https",
+											"host": [
+												"graph",
+												"instagram",
+												"com"
+											],
+											"path": [
+												"{{api_version}}",
+												"{{ig_user_id}}",
+												"subscribed_apps"
+											]
+										},
+										"description": "#### Example Request\n\n```\ncurl -i -X DELETE \\\n  \"https://graph.instagram.com/v24.0/1755847768034402/subscribed_apps\n  &access_token=EAAFB...\"\n\n ```\n\nOn success, your app receives a JSON response with `success` set to `true`.\n\n```\n{\n  \"success\": true\n}\n\n ```\n\n[View complete documentation](https://developers.facebook.com/docs/instagram-platform/webhooks)"
+									},
+									"response": []
+								}
+							],
+							"description": "# Delete Subscriptions for a Instagram professional account\n\nYour app can delete webhook feild subscriptions for an Instagram professional account by sending a `DELETE` request to the `/{{ig_user_id}}/subscribed_apps` endpoint\n\nBe cautious using the API as it will stop webhook notifications to your App for the Instagram professional account\n\n[View complete documentation](https://developers.facebook.com/docs/instagram-platform/webhooks)"
+						}
+					],
+					"description": "The steps required to receive webhook notifications are as follows:\n\n- Subscribe your app to webhook fields – Occurs in the Meta App Dashboard\n    \n- Enable your app to receive webhook notification for app user's Instagram professional account via an API call to Meta\n    \n\n[View complete documentation](https://developers.facebook.com/docs/instagram-platform/webhooks)"
 				}
 			],
 			"description": "The Instagram API with Instagram Login allows [Instagram professionals&nbsp;](https://l.facebook.com/l.php?u=https%3A%2F%2Fhelp.instagram.com%2F502981923235522&h=AT1ASpREEMXxdykVj-QP02tVKNkwcQ2Nl_x7xvxvGksvpWqS9BdgBQWeiclc-oXzvNfRm2dFdyjLoT6H4G8w3pjkha7gUXpIuem8PhB40ANXErLcEtpZQl2CvQlavHzKidjr7Jycg6fERoByzvOzQG8vWcM)  — businesses and creators — to use your app to manage their presence on Instagram.\n\n## Limitations\n\n- This API setup cannot access ads or tagging.\n    \n\n## Access Token Permissions needed\n\nThese are the permissions needed for the requests in this collection:\n\n- `instagram_business_basic`\n    \n- `instagram_business_manage_messages`\n    \n- `instagram_business_manage_comments`\n    \n- `instagram_business_content_publish`"
