@@ -3842,6 +3842,214 @@
 								}
 							],
 							"description": "# Delete Subscriptions for a Instagram professional account\n\nYour app can delete webhook feild subscriptions for an Instagram professional account by sending a `DELETE` request to the `/{{ig_user_id}}/subscribed_apps` endpoint\n\nBe cautious using the API as it will stop webhook notifications to your App for the Instagram professional account\n\n[View complete documentation](https://developers.facebook.com/docs/instagram-platform/webhooks)"
+						},
+						{
+							"name": "Webhook payload reference",
+							"item": [
+								{
+									"name": "Self webhook",
+									"item": [
+										{
+											"name": "Self messaging echo webhook",
+											"request": {
+												"method": "VIEW",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"object\": \"instagram\",\n  \"entry\": [\n    {\n      \"id\": \"<YOUR_APP_USERS_IG_USER_ID>\",\n      \"time\": \"<TIME_META_SENT_THIS_NOTIFICATION>\",\n      \"messaging\": [\n        {\n          \"sender\": { \"id\": \"<YOUR_APP_USERS_IG_USER_ID>\" },\n          \"recipient\": { \"id\": \"<YOUR_APP_USERS_INSTAGRAM_SCOPED_ID>\" }, \n          \"timestamp\": \"<TIME_META_SENT_THIS_NOTIFICATION>\",\n          \"message\": {\n            \"mid\": \"<MESSAGE_ID>\",\n            \"text\": \"<MESSAGE_TEXT>\",\n            \"is_echo\": true,\n            \"is_self\": true\n          }\n        }\n      ]\n    }\n  ]\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"description": "When an Instagram Professional account sends a message to itself in the Instagram app, an **echo webhook** is triggered, including the **Instagram-scoped ID** of the account. `is_self` with a value of `true` indicates it is a self message."
+											},
+											"response": []
+										},
+										{
+											"name": "Self postback webhook",
+											"request": {
+												"method": "VIEW",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"object\": \"instagram\",\n  \"entry\": [\n    {\n      \"id\": \"45202218377435\",\n      \"time\": 1743480368963,\n      \"messaging\": [\n        {\n          \"sender\": { \"id\": \"<YOUR_APP_USERS_IG_USER_ID>\" },\n          \"recipient\": { \"id\": \"<YOUR_APP_USERS_INSTAGRAM_SCOPED_ID>\" }, \n          \"timestamp\": 1743480368714,\n          \"is_self\": true,\n          \"postback\": {\n            \"title\": \"Start Chatting\",\n            \"payload\": \"DEVELOPER_DEFINED_PAYLOAD\",\n            \"mid\": \"<MESSAGE_ID>\"\n          }\n        }\n      ]\n    }\n  ]\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"description": "When an Instagram Professional user clicks a CTA button or interacts with their own message, a **postback webhook** is generated with `\"is_self\": true`."
+											},
+											"response": []
+										},
+										{
+											"name": "Self comment webhook",
+											"request": {
+												"method": "VIEW",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"object\": \"instagram\",\n  \"entry\": [\n    {\n      \"id\": \"<YOUR_APP_USERS_INSTAGRAM_ACCOUNT_ID>\",\n      \"time\": \"<TIME_META_SENT_THIS_NOTIFICATION>\",\n      \"changes\": [\n        {\n          \"field\": \"comments\",\n          \"value\": {\n            \"from\": {\n              \"id\": \"<YOUR_APP_USERS_INSTAGRAM_ACCOUNT_ID>\",\n              \"username\": \"<INSTAGRAM_USER_USERNAME>\",\n              \"self_ig_scoped_id\": \"<YOUR_APP_USERS_INSTAGRAM_SCOPED_ID>\"\n            },\n            \"id\": \"<COMMENT_ID>\",\n            \"text\": \"<COMMENT_TEXT>\",\n            \"media\": {\n              \"id\": \"<MEDIA_ID>\",\n              \"media_product_type\": \"<MEDIA_PRODUCT_TYPE>\"\n            }\n          }\n        }\n      ]\n    }\n  ]\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"description": "When an Instagram Professional user comments on their own post, a **comments webhook** is generated with `self_ig_scoped_id` as the `IGSID` of their professional account."
+											},
+											"response": []
+										}
+									],
+									"description": "# Self Messaging\n\nSelf messaging enables a single Instagram Professional account to act as both a **business** and an **Instagram user**, eliminating the need for two separate accounts when testing message previews or automation. This helps showcase messaging automation previews to your newly onboarded business users.\n\nSince the business is messaging itself, the **24-hour response window** does **not apply to send self message using API** (IG pro account has to message itself atleast once in the Instagram app first)\n\n[View complete documentation](https://developers.facebook.com/docs/instagram-platform/self-messaging)"
+								},
+								{
+									"name": "Comment webhook",
+									"request": {
+										"method": "VIEW",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"object\": \"instagram\",\n    \"entry\": [\n        {\n            \"id\": \"<YOUR_APP_USERS_INSTAGRAM_ACCOUNT_ID>\",\n            \"time\": \"<TIME_META_SENT_THIS_NOTIFICATION>\",\n            \"field\": \"comments\",\n            \"value\": {\n                \"id\": \"<COMMENT_ID>\",\n                \"from\": {\n                    \"username\": \"<USERNAME>\"\n                },\n                \"text\": \"<COMMENT_TEXT>\",\n                \"media\": {\n                    \"id\": \"<MEDIA_ID>\",\n                    \"media_product_type\": \"<MEDIA_PRODUCT_TYPE>\"\n                }\n            }\n        }\n    ]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"description": "### Comments payload\n\n| The comment event notification payloads include the following:<br><br>- `field` set to `comments` or `live_comments`<br>    <br>- `value` set to an array that contains:<br>    <br>    - The comment ID<br>        <br>    - The Instagram-scoped user ID of the Instagram user who commented on your app user's media<br>        <br>    - The username of the Instagram user who commented on your app user's media<br>        <br>    - Any text that was included in the comment<br>        <br>    - The media's ID<br>        <br>    - Where the media was located, in an ad, feed, story, or reel |"
+									},
+									"response": []
+								},
+								{
+									"name": "Messaging webhook",
+									"request": {
+										"method": "VIEW",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"object\":\"instagram\",\n    \"entry\":[\n      {\n        \"id\":\"<YOUR_APP_USERS_INSTAGRAM_USER_ID>\",\n        \"time\":\"<TIME_NOTIFICATION_WAS_SENT>\",\n        \"messaging\":[\n          {\n            \"sender\":{ \"id\":\"<SENDER_ID>\" },\n            \"recipient\":{ \"id\":\"<RECIPIENT_ID>\" },\n            \"timestamp\": \"<TIME_WEBHOOK_WAS_TRIGGERED>\",\n              \"message\": { \n              \"mid\": \"<MESSAGE_ID>\",  \n              \"text\": \"Hello\"            \n              }\n          }\n      ]\n    }\n  ]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"description": "Identifying the values for the multiple `id`s within a notification can be confusing since the recipient and sender can vary depending on the action that triggered the webhook. The following table shows the action that triggered the webhook and the ID set for each `id` parameter.\n\n| Action that triggers a messaging webhook | `id` | `recipient.id` | `sender.id` |\n| --- | --- | --- | --- |\n| Your app user **receives** a message from an Instagram user | Your app user's Instagram professional account ID | Your app user's Instagram professional account ID | The Instagram user's Instagram-scoped ID |\n| Your app user **sends** a message to an Instagram user | Your app user's Instagram professional account ID | The Instagram user's Instagram-scoped ID | Your app user's Instagram professional account ID |\n\nThe `message` event notification payloads include the following:\n\n- `message` set to object that contains data about the message that was sent with:\n    \n    - `mid` set to the message ID that was sent\n        \n\nThe payload might also include the following depending on the contents of the message:\n\n- `text` included when the message contains text\n    \n- `is_deleted` set to `true` is included when the Instagram user deleted the message\n    \n- `is_echo` set to `true` is included when the message was sent by your app user\n    \n- `is_self` set to `true` is included when you send a test message to your Instagram professional account (a public Instagram professional account linked to your app in the Meta App Dashboard)\n    \n- `is_unsupported` set to true when the message contains unsupported media\n    \n- `quick_reply` set to an object with `payload` set to the payload your app user wants to see for the quick reply chosen by the Instagram user\n    \n- `referral` set to an object that includes information about the CTD ad the Instagram user clicked:\n    \n    - `ref` set to the `ref` parameter value of the ad, if set by your app user\n        \n    - `ad_id` set to the ad ID\n        \n    - `source` set to `ADS`\n        \n    - `type` set to `OPEN_THREAD`\n        \n    - `ads_context_data` set to an object that contains the ad title, photo url if the Instagram user clicked an image in the ad or video url if the Instagram user clicked a video in the ad\n        \n- `reply_to` set to an object with the message ID if the user sends an inline reply\n    \n- `reply_to` set to an object with a `story` object that include the URL of the story and the story ID\n    \n- `attachments` set to an array that includes one or more objects with the type of media, audio, file, image (image or sticker), share, story_mention, video, ig_reel or reel and the payload that contains the URL for the media."
+									},
+									"response": []
+								},
+								{
+									"name": "Messaging reactions webhook",
+									"request": {
+										"method": "VIEW",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"object\":\"instagram\",\n    \"entry\":[\n      {\n        \"id\":\"<YOUR_APP_USERS_INSTAGRAM_USER_ID>\",\n        \"time\":\"<TIME_NOTIFICATION_WAS_SENT>\",\n        \"messaging\":[\n          {\n            \"sender\":{ \"id\":\"<INSTAGRAM_SCOPED_ID>\" },\n            \"recipient\":{ \"id\":\"<YOUR_APP_USERS_INSTAGRAM_USER_ID>\" },\n            \"timestamp\":\"<TIME_WEBHOOK_WAS_TRIGGERED>\",\n            \"reaction\" :{\n              \"mid\" : \"<MESSAGE_ID>\",\n              \"action\": \"react\",\n              \"reaction\": \"love\",\n              \"emoji\": \"❤\"\n            }\n          }\n        ]\n      }\n    ]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"description": "The `message_reactions` event notification payloads include the following:\n\n- `reaction` set to an object with the following:\n    \n    - `mid` set to the message ID\n        \n    - `action` set to `react` or `unreact`, if removing a reaction\n        \n    - If reacting, `reaction` set to `love` and `emoji` set to `\\u{2764}\\u{FE0F}`"
+									},
+									"response": []
+								},
+								{
+									"name": "Messaging postbacks webhook",
+									"request": {
+										"method": "VIEW",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"object\": \"instagram\",\n    \"entry\": [\n        {\n            \"id\": \"<YOUR_APP_USERS_INSTAGRAM_USER_ID>\",\n            \"time\": \"<TIME_NOTIFICATION_WAS_SENT>\",\n            \"messaging\": [\n                {\n                    \"sender\": {\n                        \"id\": \"<INSTAGRAM_SCOPED_ID>\"\n                    },\n                    \"recipient\": {\n                        \"id\": \"<YOUR_APP_USERS_INSTAGRAM_USER_ID>\"\n                    },\n                    \"timestamp\": \"<TIME_WEBHOOK_WAS_TRIGGERED>\",\n                    \"postback\": {\n                        \"mid\": \"<MESSAGE_ID>\",\n                        \"title\": \"<USER_SELECTED_ICEBREAKER_OPTION_OR_CTA_BUTTON>\",\n                        \"payload\": \"<OPTION_OR_BUTTON_PAYLOAD>\"\n                    }\n                }\n            ]\n        }\n    ]\n}\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"description": "### `messaging_postbacks`\n\n| The `messaging_postbacks` event notification payloads include the following:<br><br>- `postback` set to an object with:<br>    <br>    - `mid` set to the message ID<br>        <br>    - `title` set to the icebreaker or CTA button the Instagram user selected<br>        <br>    - `payload` set to the payload your app user wants to receive for that selection |"
+									},
+									"response": []
+								},
+								{
+									"name": "Messaging seen webhook",
+									"request": {
+										"method": "VIEW",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"object\": \"instagram\",\n    \"entry\": [\n        {\n            \"id\": \"<YOUR_APP_USERS_INSTAGRAM_USER_ID>\",\n            \"time\": \"<TIME_NOTIFICATION_WAS_SENT>\",\n            \"messaging\": [\n                {\n                    \"sender\": {\n                        \"id\": \"<INSTAGRAM_SCOPED_ID>\"\n                    },\n                    \"recipient\": {\n                        \"id\": \"<YOUR_APP_USERS_INSTAGRAM_USER_ID>\"\n                    },\n                    \"timestamp\": \"<TIME_WEBHOOK_WAS_TRIGGERED>\",\n                    \"read\": {\n                        \"mid\": \"<MESSAGE_ID>\"\n                    }\n                }\n            ]\n        }\n    ]\n}\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"description": "The `messaging_seen` event notification payloads include the following:\n\n- `read` set to an object with:\n    \n    - `mid` set to the message ID that was read"
+									},
+									"response": []
+								},
+								{
+									"name": "Message edit webhook",
+									"request": {
+										"method": "VIEW",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"object\": \"instagram\",\n    \"entry\": [\n        {\n            \"id\": \"<YOUR_APP_USERS_INSTAGRAM_USER_ID>\",\n            \"time\": \"<TIME_NOTIFICATION_WAS_SENT>\",\n            \"messaging\": [\n                {\n                    \"sender\": {\n                        \"id\": \"<INSTAGRAM_SCOPED_ID>\"\n                    },\n                    \"recipient\": {\n                        \"id\": \"<YOUR_APP_USERS_INSTAGRAM_USER_ID>\"\n                    },\n                    \"timestamp\": \"<TIME_WEBHOOK_WAS_TRIGGERED>\",\n                    \"message_edit\": {\n                        \"mid\": \"<MESSAGE_ID>\",\n                        \"text\": \"<USER_EDITED_MESSAGE>\",\n                        \"num_edit\": \"<NUMBER_OF_TIMES_MESSAGE_IS_EDITED>\"\n                    }\n                }\n            ]\n        }\n    ]\n}\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"description": "The `message_edit` event notification payloads include the following:\n\n- `message_edit` set to an object with:\n    \n    - `mid` set to the message ID that was read\n        \n    - `text` set to the edited text message by user\n        \n    - `num_edit` set to the number of times message has been edited"
+									},
+									"response": []
+								},
+								{
+									"name": "Messaging reply to story webhook",
+									"request": {
+										"method": "VIEW",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"object\": \"instagram\",\n    \"entry\": [\n        {\n            \"id\": \"<YOUR_APP_USERS_INSTAGRAM_USER_ID>\",\n            \"time\": \"<TIME_NOTIFICATION_WAS_SENT>\",\n            \"messaging\": [\n                {\n                    \"sender\": {\n                        \"id\": \"<SENDER_ID>\"\n                    },\n                    \"recipient\": {\n                        \"id\": \"<RECIPIENT_ID>\"\n                    },\n                    \"timestamp\": \"<TIME_WEBHOOK_WAS_TRIGGERED>\",\n                    \"message\": {\n                        \"mid\": \"<MESSAGE_ID>\",\n                        \"is_deleted\": true,\n                        \"is_echo\": true,\n                        \"is_self\": false,\n                        \"is_unsupported\": true,\n                        \"reply_to\": {\n                            \"story\": {\n                                \"url\": \"<CDN_URL_FOR_THE_STORY>\",\n                                \"id\": \"<STORY_ID>\"\n                            }\n                        },\n                        \"text\": \"<MESSAGE_TEXT>\"\n                    }\n                }\n            ]\n        }\n    ]\n}\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Messaging referral webhook",
+									"request": {
+										"method": "VIEW",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"object\": \"instagram\",\n    \"entry\": [\n        {\n            \"id\": \"<YOUR_APP_USERS_INSTAGRAM_USER_ID>\",\n            \"time\": \"<TIME_NOTIFICATION_WAS_SENT>\",\n            \"messaging\": [\n                {\n                    \"sender\": {\n                        \"id\": \"<INSTAGRAM_SCOPED_ID>\"\n                    },\n                    \"recipient\": {\n                        \"id\": \"<YOUR_APP_USERS_INSTAGRAM_USER_ID>\"\n                    },\n                    \"timestamp\": \"<TIME_WEBHOOK_WAS_TRIGGERED>\",\n                    \"referral\": {\n                        \"ref\": \"<IGME_LINK_REF_PARAMETER_VALUE>\",\n                        \"source\": \"<IGME_SOURCE_LINK>\",\n                        \"type\": \"OPEN_THREAD\"\n                    }\n                }\n            ]\n        }\n    ]\n}\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										}
+									},
+									"response": []
+								}
+							],
+							"description": "# Instagram Platform Webhook Notification Examples\n\nThis guide contains example JSON payloads for Instagram webhook notifications sent from Meta when a webhook field has been triggered. Syntax returned in notifications vary slightly depending on log in type implemented in your app and triggering event.\n\n[View complete documentation](https://developers.facebook.com/docs/instagram-platform/webhooks/examples)"
 						}
 					],
 					"description": "The steps required to receive webhook notifications are as follows:\n\n- Subscribe your app to webhook fields – Occurs in the Meta App Dashboard\n    \n- Enable your app to receive webhook notification for app user's Instagram professional account via an API call to Meta\n    \n\n[View complete documentation](https://developers.facebook.com/docs/instagram-platform/webhooks)"
