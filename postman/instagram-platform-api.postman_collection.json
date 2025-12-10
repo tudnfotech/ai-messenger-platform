@@ -4085,6 +4085,647 @@
 						}
 					],
 					"description": "The steps required to receive webhook notifications are as follows:\n\n- Subscribe your app to webhook fields – Occurs in the Meta App Dashboard\n    \n- Enable your app to receive webhook notification for app user's Instagram professional account via an API call to Meta\n    \n\n[View complete documentation](https://developers.facebook.com/docs/instagram-platform/webhooks)"
+				},
+				{
+					"name": "Insights",
+					"item": [
+						{
+							"name": "Instagram Account Insights",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://graph.instagram.com/{{api_version}}/{{ig_user_id}}/insights?metric=reach,profile_views&period=day",
+									"protocol": "https",
+									"host": [
+										"graph",
+										"instagram",
+										"com"
+									],
+									"path": [
+										"{{api_version}}",
+										"{{ig_user_id}}",
+										"insights"
+									],
+									"query": [
+										{
+											"key": "metric",
+											"value": "reach,profile_views",
+											"description": "Metric - reach, follower_count, website_clicks, profile_views, online_followers, accounts_engaged, total_interactions, likes, comments, shares, saves, replies, engaged_audience_demographics, reached_audience_demographics, follower_demographics, follows_and_unfollows, profile_links_taps, views, threads_likes, threads_replies, reposts, quotes, threads_followers, threads_follower_demographics, content_views, threads_views, threads_clicks, threads_reposts"
+										},
+										{
+											"key": "period",
+											"value": "day",
+											"description": "Time period - day, week, days_28, month, lifetime, total_over_range"
+										}
+									]
+								},
+								"description": "The following Instagram API with Instagram Login example is getting the number of `impressions`, `profile_views`, and `reach` for your app user's Instagram professional account over one 24 hour period.\n\nTo get metrics for an Instagram business or creator account, query the [<code>GET /insights</code>](https://developers.facebook.com/docs/instagram-api/reference/ig-user/insights) endpoint with the `metrics` parameter set to a comma-separated list of the metrics, `impressions`, `profile_views`, and `reach`, and the `period` set to `day`.\n\n#### Sample Response\n\nOn success, your app receives an array for each metric that includes, the metric description, ID of the metric, name and title, the time period over which the metric was measured, and values of the metric."
+							},
+							"response": [
+								{
+									"name": "Instagram Account Insights",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://graph.instagram.com/{{ig_user_id}}/insights?metric=reach,profile_views&period=day",
+											"protocol": "https",
+											"host": [
+												"graph",
+												"instagram",
+												"com"
+											],
+											"path": [
+												"{{ig_user_id}}",
+												"insights"
+											],
+											"query": [
+												{
+													"key": "metric",
+													"value": "reach,profile_views",
+													"description": "Metric - reach, follower_count, website_clicks, profile_views, online_followers, accounts_engaged, total_interactions, likes, comments, shares, saves, replies, engaged_audience_demographics, reached_audience_demographics, follower_demographics, follows_and_unfollows, profile_links_taps, views, threads_likes, threads_replies, reposts, quotes, threads_followers, threads_follower_demographics, content_views, threads_views, threads_clicks, threads_reposts"
+												},
+												{
+													"key": "period",
+													"value": "day",
+													"description": "Time period - day, week, days_28, month, lifetime, total_over_range"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "Content-Encoding",
+											"value": "br"
+										},
+										{
+											"key": "ETag",
+											"value": "\"fab201613f35c204ad60cc297dd20be650166802\""
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=UTF-8"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "cross-origin-resource-policy",
+											"value": "cross-origin"
+										},
+										{
+											"key": "x-app-usage",
+											"value": "{\"call_volume\":0,\"cpu_time\":0}"
+										},
+										{
+											"key": "instagram-api-version",
+											"value": "v18.0"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=31536000; preload; includeSubDomains"
+										},
+										{
+											"key": "Pragma",
+											"value": "no-cache"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "private, no-cache, no-store, must-revalidate"
+										},
+										{
+											"key": "Expires",
+											"value": "Sat, 01 Jan 2000 00:00:00 GMT"
+										},
+										{
+											"key": "x-fb-request-id",
+											"value": "ABwSPBObNEQRV0hEioRrtqS"
+										},
+										{
+											"key": "x-fb-trace-id",
+											"value": "GARuRMLIZTc"
+										},
+										{
+											"key": "x-fb-rev",
+											"value": "1030899092"
+										},
+										{
+											"key": "x-stack",
+											"value": "www"
+										},
+										{
+											"key": "X-FB-Debug",
+											"value": "CH13L7AZxaZrHHGAvTxwzLlsT05ZGEB1TANDWq3RPvc3nZqbaJWTxWYOy1jzkE6MCxYmj4w2vtYkVOLaOGcDMQ=="
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 10 Dec 2025 22:21:16 GMT"
+										},
+										{
+											"key": "X-FB-Connection-Quality",
+											"value": "EXCELLENT; q=0.9, rtt=8, rtx=0, c=12, mss=1380, tbw=387, tp=-1, tpl=-1, uplat=215, ullat=0"
+										},
+										{
+											"key": "Alt-Svc",
+											"value": "h3=\":443\"; ma=86400"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Content-Length",
+											"value": "212"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": [\n        {\n            \"name\": \"reach\",\n            \"period\": \"day\",\n            \"values\": [\n                {\n                    \"value\": 0,\n                    \"end_time\": \"2025-12-09T08:00:00+0000\"\n                },\n                {\n                    \"value\": 0,\n                    \"end_time\": \"2025-12-10T08:00:00+0000\"\n                }\n            ],\n            \"title\": \"Reach\",\n            \"description\": \"Total number of times the Business Account's media objects have been uniquely viewed\",\n            \"id\": \"INSTAGRAM_USER_ID/insights/reach/day\"\n        }\n    ]\n}"
+								}
+							]
+						},
+						{
+							"name": "Media Insights",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://graph.instagram.com/{{api_version}}/{{ig_media_id}}/insights?metric=shares,comments",
+									"protocol": "https",
+									"host": [
+										"graph",
+										"instagram",
+										"com"
+									],
+									"path": [
+										"{{api_version}}",
+										"{{ig_media_id}}",
+										"insights"
+									],
+									"query": [
+										{
+											"key": "metric",
+											"value": "shares,comments",
+											"description": "Metric - impressions, shares, comments, plays, likes, saved, replies, total_interactions, navigation, follows, profile_visits, profile_activity, reach, ig_reels_video_view_total_time, ig_reels_avg_watch_time, clips_replays_count, ig_reels_aggregated_all_plays_count, views, thread_replies, reposts, quotes, thread_shares, content_views, threads_views, threads_media_clicks, reels_skip_rate, threads_reposts, facebook_views, crossposted_views"
+										}
+									]
+								},
+								"description": "### Instagram media request\n\nThe following Instagram API with Instagram Login example is getting the number of `engagement`, `impressions`, and `reach` for your app user's Instagram media over one 24 hour period.\n\nTo get metrics for an Instagram business or creator account's media, query the [<code>GET /insights</code>](https://developers.facebook.com/docs/instagram-api/reference/ig-media/insights) endpoint with the `metrics` parameter set to a comma-separated list of the metrics, `engagement`, `impressions`, and `reach`, and the `period` set to `day`.\n\n#### Sample Response\n\nOn success, your app receives an array for each metric that includes, the metric description, ID of the metric, name and title, the time period over which the metric was measured, and values of the metric."
+							},
+							"response": [
+								{
+									"name": "Media Insights",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://graph.instagram.com/{{ig_media_id}}/insights?metric=shares,comments",
+											"protocol": "https",
+											"host": [
+												"graph",
+												"instagram",
+												"com"
+											],
+											"path": [
+												"{{ig_media_id}}",
+												"insights"
+											],
+											"query": [
+												{
+													"key": "metric",
+													"value": "shares,comments"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "Content-Encoding",
+											"value": "br"
+										},
+										{
+											"key": "ETag",
+											"value": "\"ad028dd459d62913a15f5bfbb77d548f2df26ae2\""
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=UTF-8"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "cross-origin-resource-policy",
+											"value": "cross-origin"
+										},
+										{
+											"key": "x-app-usage",
+											"value": "{\"call_volume\":0,\"cpu_time\":0}"
+										},
+										{
+											"key": "instagram-api-version",
+											"value": "v18.0"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=31536000; preload; includeSubDomains"
+										},
+										{
+											"key": "Pragma",
+											"value": "no-cache"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "private, no-cache, no-store, must-revalidate"
+										},
+										{
+											"key": "Expires",
+											"value": "Sat, 01 Jan 2000 00:00:00 GMT"
+										},
+										{
+											"key": "x-fb-request-id",
+											"value": "AuAENWYCmp4ZUrvAt3RstpR"
+										},
+										{
+											"key": "x-fb-trace-id",
+											"value": "Euso8Fmhn2I"
+										},
+										{
+											"key": "x-fb-rev",
+											"value": "1030899092"
+										},
+										{
+											"key": "x-stack",
+											"value": "www"
+										},
+										{
+											"key": "X-FB-Debug",
+											"value": "Z6hDcrjorpU4ACr5JMBO1RE0uYrcWb/LD73BHimLTGYJ7uqxA8lsFh7E3EEiYneO7Qj+iG3OLWxpQW/8Fu4Zzw=="
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 10 Dec 2025 22:23:43 GMT"
+										},
+										{
+											"key": "X-FB-Connection-Quality",
+											"value": "EXCELLENT; q=0.9, rtt=8, rtx=0, c=12, mss=1380, tbw=387, tp=-1, tpl=-1, uplat=153, ullat=0"
+										},
+										{
+											"key": "Alt-Svc",
+											"value": "h3=\":443\"; ma=86400"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Content-Length",
+											"value": "171"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": [\n        {\n            \"name\": \"shares\",\n            \"period\": \"lifetime\",\n            \"values\": [\n                {\n                    \"value\": 0\n                }\n            ],\n            \"title\": \"Shares\",\n            \"description\": \"The number of shares of your reel.\",\n            \"id\": \"INSTAGRAM_MEDIA_ID/insights/shares/lifetime\"\n        },\n        {\n            \"name\": \"comments\",\n            \"period\": \"lifetime\",\n            \"values\": [\n                {\n                    \"value\": 0\n                }\n            ],\n            \"title\": \"Comments\",\n            \"description\": \"The number of comments on your reel.\",\n            \"id\": \"INSTAGRAM_MEDIA_ID/insights/comments/lifetime\"\n        }\n    ]\n}"
+								}
+							]
+						}
+					],
+					"description": "# Insights\n\nThis guide shows you how to get insights for your app users' Instagram media and professional accounts using the Instagram Platform.\n\nIn this guide we will be using **Instagram user** and **Instagram professional account** interchangeably. An Instagram User object represents your app user's Instagram professional account.\n\n## Before you start\n\nYou will need the following:\n\n### Requirements\n\nThis guide assumes you have read the [Instagram Platform Overview](https://developers.facebook.com/docs/instagram-platform/overview) and implemented the needed components for using this API, such as a Meta login flow and a webhooks server to receive notifications.\n\n|  | Instagram API with Instagram Login | Instagram API with Facebook Login |\n| --- | --- | --- |\n| **Access Tokens** | \\- Instagram User access token | \\- [Facebook User access token](https://developers.facebook.com/docs/facebook-login/access-tokens/#usertokens) |\n| **Host URL** | `graph.instagram.com` | `graph.facebook.com` |\n| **Login Type** | Business Login for Instagram | Facebook Login for Business |\n| [<b>Permissions</b>](https://developers.facebook.com/docs/permissions/reference#i) | \\- `instagram_business_basic`  <br>  <br>\\- `instagram_business_manage_insights` | \\- `instagram_basic`  <br>  <br>\\- `instagram_manage_insights`  <br>  <br>\\- `pages_read_engagement`  <br>  <br>  <br>If the app user was granted a role on the [Page](https://developers.facebook.com/docs/instagram-api/overview#pages) connected to your app user's Instagram professional account via the Business Manager, your app will also need:  <br>  <br>\\- `ads_management`  <br>  <br>\\- `ads_read` |\n\n#### Access Level\n\n- Advanced Access if your app serves Instagram professional accounts you don't own or manage\n    \n- Standard Access if your app serves Instagram professional accounts you own or manage and have added to your app in the App Dashboard\n    \n\n#### Endpoints\n\n- [<code>GET /insights</code>](https://developers.facebook.com/docs/instagram-api/reference/ig-media/insights) — Gets metrics on a media object\n    \n- [<code>GET /insights</code>](https://developers.facebook.com/docs/instagram-api/reference/ig-user/insights) — Gets metrics on an Instagram Business Account or Instagram Creator account.\n    \n\nRefer to each endpoint's reference documentation for additional metrics, parameters, and permission requirements.\n\n#### UTC\n\nTimestamps in API responses use UTC with zero offset and are formatted using ISO-8601. For example: `2019-04-05T07:56:32+0000`\n\n#### Webhook event subscriptions\n\n### Limitations\n\n#### Media insights\n\n- Fields that return aggregated values don't include ads-driven data. For example, `comments_count` returns the number of comments on a photo, but not comments on ads that contain that photo.\n    \n- Captions don't include the `@` symbol unless the app user is also able to perform admin-equivalent [tasks](https://developers.facebook.com/docs/pages/overview#tasks) on the app.\n    \n- Some fields, such as `permalink`, cannot be used on photos within albums (children).\n    \n- Live video Instagram Media can only be read while they are being broadcast.\n    \n- This API returns only data for media owned by Instagram professional accounts. It can not be used to get data for media owned by personal Instagram accounts.\n    \n\n#### Account insights\n\n- Some metrics are not available on Instagram accounts with fewer than 100 followers.\n    \n- User Metrics data is stored for up to 90 days.\n    \n- You can only get insights for a single user at a time.\n    \n- You cannot get insights for Facebook Pages.\n    \n- If insights data you are requesting does not exist or is currently unavailable the API will return an empty data set instead of `0` for individual metrics.\n    \n\n## Next Steps\n\nVisit the API Reference to see all available metrics for [Instagram business and creator accounts](https://developers.facebook.com/docs/instagram-api/reference/ig-user) and their [Instagram Media](https://developers.facebook.com/docs/instagram-api/reference/ig-media) objects."
+				},
+				{
+					"name": "Comment Moderation",
+					"item": [
+						{
+							"name": "Get Comments",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://graph.instagram.com/{{api_version}}/{{ig_media_id}}/comments?fields=from,text",
+									"protocol": "https",
+									"host": [
+										"graph",
+										"instagram",
+										"com"
+									],
+									"path": [
+										"{{api_version}}",
+										"{{ig_media_id}}",
+										"comments"
+									],
+									"query": [
+										{
+											"key": "fields",
+											"value": "from,text"
+										}
+									]
+								},
+								"description": "There are two ways to get comments on published Instagram media, an API query or a webhook notification. We strongly recommend using webhooks to prevent rate limiting.\n\n### API Request\n\nTo get all the comments on a published Instagram media object, send a `GET` request to the `/comments` endpoint.\n\nOn success your app receives a JSON response with an array of objects containing the comment ID, the comment text, and the time the comment was published."
+							},
+							"response": [
+								{
+									"name": "Get Comments",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://graph.instagram.com/{{api_version}}/{{ig_media_id}}/comments?fields=from,text",
+											"protocol": "https",
+											"host": [
+												"graph",
+												"instagram",
+												"com"
+											],
+											"path": [
+												"{{api_version}}",
+												"{{ig_media_id}}",
+												"comments"
+											],
+											"query": [
+												{
+													"key": "fields",
+													"value": "from,text"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "Content-Encoding",
+											"value": "br"
+										},
+										{
+											"key": "ETag",
+											"value": "\"5ef8127474641c389a605f623d624087d53a6966\""
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=UTF-8"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "cross-origin-resource-policy",
+											"value": "cross-origin"
+										},
+										{
+											"key": "x-app-usage",
+											"value": "{\"call_volume\":0,\"cpu_time\":0}"
+										},
+										{
+											"key": "instagram-api-version",
+											"value": "v23.0"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=31536000; preload; includeSubDomains"
+										},
+										{
+											"key": "Pragma",
+											"value": "no-cache"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "private, no-cache, no-store, must-revalidate"
+										},
+										{
+											"key": "Expires",
+											"value": "Sat, 01 Jan 2000 00:00:00 GMT"
+										},
+										{
+											"key": "x-fb-request-id",
+											"value": "AziTA98AZjODYFYSmlO4JfR"
+										},
+										{
+											"key": "x-fb-trace-id",
+											"value": "BHc7egQNkya"
+										},
+										{
+											"key": "x-fb-rev",
+											"value": "1030899092"
+										},
+										{
+											"key": "x-stack",
+											"value": "www"
+										},
+										{
+											"key": "X-FB-Debug",
+											"value": "XxwkVAo/VdvcaH3/G65GN72N7WS2oaHn0I0qm4Iq2EWj7m0IWwv66s82q9MRGaoanCpLcC7DwpYRmJJdZk4wtA=="
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 10 Dec 2025 22:33:28 GMT"
+										},
+										{
+											"key": "X-FB-Connection-Quality",
+											"value": "EXCELLENT; q=0.9, rtt=6, rtx=0, c=14, mss=1380, tbw=1624, tp=-1, tpl=-1, uplat=136, ullat=0"
+										},
+										{
+											"key": "Alt-Svc",
+											"value": "h3=\":443\"; ma=86400"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Content-Length",
+											"value": "238"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": [\n        {\n            \"from\": {\n                \"id\": \"1234567890\",\n                \"username\": \"commenter_username\"\n            },\n            \"text\": \"so cool!\",\n            \"id\": \"1234567890\" // comment ID\n        }\n    ],\n    \"paging\": {\n        \"cursors\": {\n            \"before\": \"QVFIUz...\",\n            \"after\": \"QVFIUz...\"\n        }\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Reply to a comment",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"message\": \"Thanks for your comment!\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://graph.instagram.com/{{api_version}}/{{ig_comment_id}}/replies",
+									"protocol": "https",
+									"host": [
+										"graph",
+										"instagram",
+										"com"
+									],
+									"path": [
+										"{{api_version}}",
+										"{{ig_comment_id}}",
+										"replies"
+									]
+								},
+								"description": "To reply to a comment, send a `POST` request to the `/replies` endpoint, where is the ID for the comment which you want to reply, with the `message` parameter set to your message text.\n\nOn success, your app receives a JSON response with the comment ID for your comment.\n\nIf your app user has a lot of comments to reply to, you could [batch the replies into a single request](https://developers.facebook.com/docs/graph-api/making-multiple-requests/)."
+							},
+							"response": [
+								{
+									"name": "Reply to a comment",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"message\": \"Thanks for your comment!\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://graph.instagram.com/{{api_version}}/{{ig_comment_id}}/replies",
+											"protocol": "https",
+											"host": [
+												"graph",
+												"instagram",
+												"com"
+											],
+											"path": [
+												"{{api_version}}",
+												"{{ig_comment_id}}",
+												"replies"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=UTF-8"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										},
+										{
+											"key": "cross-origin-resource-policy",
+											"value": "cross-origin"
+										},
+										{
+											"key": "x-app-usage",
+											"value": "{\"call_volume\":0,\"cpu_time\":0}"
+										},
+										{
+											"key": "instagram-api-version",
+											"value": "v23.0"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=31536000; preload; includeSubDomains"
+										},
+										{
+											"key": "Pragma",
+											"value": "no-cache"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "private, no-cache, no-store, must-revalidate"
+										},
+										{
+											"key": "Expires",
+											"value": "Sat, 01 Jan 2000 00:00:00 GMT"
+										},
+										{
+											"key": "x-fb-request-id",
+											"value": "AQxMn-jstfIVW_-9Ovwuh9d"
+										},
+										{
+											"key": "x-fb-trace-id",
+											"value": "FkcvLMIgYJI"
+										},
+										{
+											"key": "x-fb-rev",
+											"value": "1030899092"
+										},
+										{
+											"key": "x-stack",
+											"value": "www"
+										},
+										{
+											"key": "X-FB-Debug",
+											"value": "vEo2QKGHoB5gz/radFpZP+kbW8KL2LR5Cj9GTWd84c7th2goTw7bN8GcF0cxtcDoXeYMnMX7oeZSq1Amjf0nlQ=="
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 10 Dec 2025 22:37:39 GMT"
+										},
+										{
+											"key": "X-FB-Connection-Quality",
+											"value": "EXCELLENT; q=0.9, rtt=8, rtx=0, c=12, mss=1380, tbw=387, tp=-1, tpl=-1, uplat=837, ullat=0"
+										},
+										{
+											"key": "Alt-Svc",
+											"value": "h3=\":443\"; ma=86400"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Content-Length",
+											"value": "26"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": \"18006022967821076\"\n}"
+								}
+							]
+						}
+					],
+					"description": "# Comment Moderation\n\nThis guide shows you how to get comments, reply to comments, delete comments, hide/unhide comments, and disable/enable comments on Instagram Media owned by your app users using the Instagram Platform.\n\nIn this guide we will be using **Instagram user** and **Instagram professional account** interchangeably. An Instagram User object represents your app user's Instagram professional account.\n\n## Requirements\n\nThis guide assumes you have read the [Instagram Platform Overview](https://developers.facebook.com/docs/instagram-platform/overview) and implemented the needed components for using this API, such as a Meta login flow and a webhooks server to receive notifications.\n\nYou will need the following:\n\nou will need the following:\n\n|  | Instagram API with Instagram Login | Instagram API with Facebook Login |\n| --- | --- | --- |\n| **Access Levels** | \\- Advanced Access  <br>  <br>\\- Standard Access | \\- Advanced Access  <br>  <br>\\- Standard Access |\n| **Access Tokens** | \\- Instagram User access token | \\- Facebook Page access token |\n| **Host URL** | `graph.instagram.com` | `graph.facebook.com` |\n| **Login Type** | Business Login for Instagram | Facebook Login for Business |\n| [<b>Permissions</b>](https://developers.facebook.com/docs/permissions/reference#i) | \\- `instagram_business_basic`  <br>  <br>\\- `instagram_business_manage_comments` | \\- `instagram_basic`  <br>  <br>\\- `instagram_manage_comments`  <br>  <br>\\- `pages_read_engagement`  <br>  <br>  <br>If the app user was granted a role on the [Page](https://developers.facebook.com/docs/instagram-api/overview#pages) connected to your app user's Instagram professional account via the Business Manager, your app will also need:  <br>  <br>\\- `ads_management`  <br>  <br>\\- `ads_read` |\n| **Webhooks** | \\- `comments`  <br>  <br>\\- `live_comments` | \\- `comments`  <br>  <br>\\- `live_comments` |\n\n#### Access Level\n\n- Advanced Access if your app serves Instagram professional accounts you don't own or manage\n    \n- Standard Access if your app serves Instagram professional accounts you own or manage and have added to your app in the App Dashboard\n    \n\n#### Endpoints\n\n- [<code>GET /comments</code>](https://developers.facebook.com/docs/instagram-api/reference/ig-media/comments#reading) — Get comments on an IG Media\n    \n- [<code>GET /replies</code>](https://developers.facebook.com/docs/instagram-api/reference/ig-comment/replies#read) — Get replies on an IG Comment\n    \n- [<code>POST /replies</code>](https://developers.facebook.com/docs/instagram-api/reference/ig-comment/replies#create) — Reply to an IG Comment\n    \n- [<code>POST /</code>](https://developers.facebook.com/docs/instagram-api/reference/ig-comment#update) — Hide/unhide an IG Comment\n    \n- [<code>POST /</code>](https://developers.facebook.com/docs/instagram-api/reference/ig-media#update) — Disable/enable comments on an IG Media\n    \n- [<code>DELETE /</code>](https://developers.facebook.com/docs/instagram-api/reference/ig-comment#delete) — Delete an IG Comment\n    \n\n## Next steps\n\nLearn how to send a message to the person who commented on your app user's media post using [Private Replies](https://developers.facebook.com/docs/instagram/messaging-api/private-replies)."
 				}
 			],
 			"description": "The Instagram API with Instagram Login allows [Instagram professionals&nbsp;](https://l.facebook.com/l.php?u=https%3A%2F%2Fhelp.instagram.com%2F502981923235522&h=AT1ASpREEMXxdykVj-QP02tVKNkwcQ2Nl_x7xvxvGksvpWqS9BdgBQWeiclc-oXzvNfRm2dFdyjLoT6H4G8w3pjkha7gUXpIuem8PhB40ANXErLcEtpZQl2CvQlavHzKidjr7Jycg6fERoByzvOzQG8vWcM)  — businesses and creators — to use your app to manage their presence on Instagram.\n\n## Limitations\n\n- This API setup cannot access ads or tagging.\n    \n\n## Access Token Permissions needed\n\nThese are the permissions needed for the requests in this collection:\n\n- `instagram_business_basic`\n    \n- `instagram_business_manage_messages`\n    \n- `instagram_business_manage_comments`\n    \n- `instagram_business_content_publish`"
