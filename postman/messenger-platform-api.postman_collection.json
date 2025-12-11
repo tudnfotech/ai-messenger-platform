@@ -2176,6 +2176,308 @@
 			"name": "Templates",
 			"item": [
 				{
+					"name": "Coupon Template",
+					"item": [
+						{
+							"name": "Send a basic coupon",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"recipient\": {\n        \"id\": {{page-scoped-id}}\n    },\n    \"message\": {\n        \"attachment\": {\n            \"type\": \"template\",\n            \"payload\": {\n                \"template_type\": \"coupon\",\n                \"title\": \"10% off everything\",\n                \"coupon_code\": \"10PERCENT\"\n            }\n        }\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://graph.facebook.com/{{version}}/{{page-id}}/messages",
+									"protocol": "https",
+									"host": [
+										"graph",
+										"facebook",
+										"com"
+									],
+									"path": [
+										"{{version}}",
+										"{{page-id}}",
+										"messages"
+									]
+								},
+								"description": "In the following example, we are sending a basic coupon message that contains a coupon code.\n\nTo send a coupon message, send a `POST` request to the `/PAGE-ID/messages` endpoint with a JSON object with the attachment type set to `template` and payload set with the `template_type` set to `coupon`, `title` set to coupon text, and the `coupon_code` set to the coupon code to send to the person.\n\n<img src=\"https://content.pstmn.io/da936712-9da4-4ea8-a925-1e56ac80286b/aW1hZ2UucG5n\" width=\"332\" height=\"232\">\n\nIn the following code example we have set `title` to \"10% off everything\" and `coupon_code` to \"10PERCENT\".\n\nThe subtitle text, **Terms may apply.**, and **Reveal code** button text are the default text for these coupon message properties."
+							},
+							"response": [
+								{
+									"name": "Send a basic coupon",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"recipient\": {\n        \"id\": {{page-scoped-id}}\n    },\n    \"message\": {\n        \"attachment\": {\n            \"type\": \"template\",\n            \"payload\": {\n                \"template_type\": \"coupon\",\n                \"title\": \"10% off everything\",\n                \"coupon_code\": \"10PERCENT\"\n            }\n        }\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://graph.facebook.com/{{api_version}}/{{page-id}}/messages",
+											"protocol": "https",
+											"host": [
+												"graph",
+												"facebook",
+												"com"
+											],
+											"path": [
+												"{{api_version}}",
+												"{{page-id}}",
+												"messages"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=UTF-8"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										},
+										{
+											"key": "x-fb-aed",
+											"value": "685"
+										},
+										{
+											"key": "x-business-use-case-usage",
+											"value": "{\"106259855420533\":[{\"type\":\"messenger\",\"call_count\":0,\"total_cputime\":0,\"total_time\":0,\"estimated_time_to_regain_access\":0}]}"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "facebook-api-version",
+											"value": "v23.0"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=15552000; preload"
+										},
+										{
+											"key": "Pragma",
+											"value": "no-cache"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "private, no-cache, no-store, must-revalidate"
+										},
+										{
+											"key": "Expires",
+											"value": "Sat, 01 Jan 2000 00:00:00 GMT"
+										},
+										{
+											"key": "x-fb-request-id",
+											"value": "A8Dg32TB--VfRMJ-E5ME2Dk"
+										},
+										{
+											"key": "x-fb-trace-id",
+											"value": "EANHGXIauO6"
+										},
+										{
+											"key": "x-fb-rev",
+											"value": "1030946142"
+										},
+										{
+											"key": "X-FB-Debug",
+											"value": "bndkck3WbJySB6d6zeyKPjM+gQZBX2P52dsXbUCEr/wgGOIZq8SuEreV9feJVZi1EeEGT5RMVr4EnQOx421oYA=="
+										},
+										{
+											"key": "x-fb-server-load",
+											"value": "12"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 11 Dec 2025 17:05:45 GMT"
+										},
+										{
+											"key": "X-FB-Connection-Quality",
+											"value": "EXCELLENT; q=0.9, rtt=24, rtx=0, c=10, mss=1380, tbw=9027, tp=-1, tpl=-1, uplat=4043, ullat=0"
+										},
+										{
+											"key": "Alt-Svc",
+											"value": "h3=\":443\"; ma=86400"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Content-Length",
+											"value": "139"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"recipient_id\": \"1234567890\",\n    \"message_id\": \"m_MessageIDString\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Send a complex coupon",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"recipient\": {\n        \"id\": {{page-scoped-id}}\n    },\n    \"message\": {\n        \"attachment\": {\n            \"type\": \"template\",\n            \"payload\": {\n                \"template_type\": \"coupon\",\n                \"title\": \"10% off everything\",\n                \"subtitle\": \"10% off. Limit 1 per customer. Expires on October 1st, 2022\",\n                \"coupon_code\": \"10PERCENT\",\n                \"coupon_url\": \"https://www.myshop.com/\",\n                \"coupon_url_button_title\": \"Shop now\",\n                \"coupon_pre_message\":\"Here is a deal just for you!\",\n                \"image_url\": \"https://www.myshop.com/sale-image.png\",\n                \"payload\": \"The coupon for 10% off everything that expires 2022-10-1\"\n            }\n        }\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://graph.facebook.com/{{api_version}}/{{page-id}}/messages",
+									"protocol": "https",
+									"host": [
+										"graph",
+										"facebook",
+										"com"
+									],
+									"path": [
+										"{{api_version}}",
+										"{{page-id}}",
+										"messages"
+									]
+								},
+								"description": "## Send a Complex Coupon\n\nIn the following example, we are sending a more complex coupon message that contains all the properties you can send in the coupon template payload.\n\n<img src=\"https://content.pstmn.io/fc3d950f-6bf9-440c-97b7-754b695f9d75/aW1hZ2UucG5n\" alt=\"\" height=\"281\" width=\"218\">\n\nIn the following code example we have configured a greeting using the `coupon_pre_message`, `title`, `subtitle`, the disclaimer that applies to this coupon, the second button with my store's URL and \"Shop now\" text, an image from my store, and additional information to be sent in the webhook notification when a person clicks the **Reveal code** button."
+							},
+							"response": [
+								{
+									"name": "Send a complex coupon",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"recipient\": {\n        \"id\": {{page-scoped-id}}\n    },\n    \"message\": {\n        \"attachment\": {\n            \"type\": \"template\",\n            \"payload\": {\n                \"template_type\": \"coupon\",\n                \"title\": \"10% off everything\",\n                \"subtitle\": \"10% off. Limit 1 per customer. Expires on October 1st, 2022\",\n                \"coupon_code\": \"10PERCENT\",\n                \"coupon_url\": \"https://www.myshop.com/\",\n                \"coupon_url_button_title\": \"Shop now\",\n                \"coupon_pre_message\":\"Here is a deal just for you!\",\n                \"image_url\": \"https://s3-eu-west-1.amazonaws.com/ehq-production-europe/ef88cd4ae6cbc77493fa355328ef0a470cd34b01/original/1748861729/466816f84fef2f8398c7e46127bf31c3_landscape_hires_4000x2667_6.83mb.jpg?1748861729\",\n                \"payload\": \"The coupon for 10% off everything that expires 2022-10-1\"\n            }\n        }\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://graph.facebook.com/{{api_version}}/{{page-id}}/messages",
+											"protocol": "https",
+											"host": [
+												"graph",
+												"facebook",
+												"com"
+											],
+											"path": [
+												"{{api_version}}",
+												"{{page-id}}",
+												"messages"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=UTF-8"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										},
+										{
+											"key": "x-fb-aed",
+											"value": "685"
+										},
+										{
+											"key": "x-business-use-case-usage",
+											"value": "{\"106259855420533\":[{\"type\":\"messenger\",\"call_count\":1,\"total_cputime\":1,\"total_time\":1,\"estimated_time_to_regain_access\":0}]}"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "facebook-api-version",
+											"value": "v23.0"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=15552000; preload"
+										},
+										{
+											"key": "Pragma",
+											"value": "no-cache"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "private, no-cache, no-store, must-revalidate"
+										},
+										{
+											"key": "Expires",
+											"value": "Sat, 01 Jan 2000 00:00:00 GMT"
+										},
+										{
+											"key": "x-fb-request-id",
+											"value": "AX0VZn6F9lJSLmjRgHKOHw6"
+										},
+										{
+											"key": "x-fb-trace-id",
+											"value": "GnRvgcrS0Nn"
+										},
+										{
+											"key": "x-fb-rev",
+											"value": "1030947950"
+										},
+										{
+											"key": "X-FB-Debug",
+											"value": "CInTgpK/8OpArzd67H27FfOIXCptmavpxtWBoJVr+8gXjYLqL9bsWgMi9GjOmZ+QYRcUas7u7U21LQfZb0HJ0w=="
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 11 Dec 2025 17:07:59 GMT"
+										},
+										{
+											"key": "X-FB-Connection-Quality",
+											"value": "EXCELLENT; q=0.9, rtt=26, rtx=0, c=10, mss=1380, tbw=4554, tp=-1, tpl=-1, uplat=2705, ullat=0"
+										},
+										{
+											"key": "Alt-Svc",
+											"value": "h3=\":443\"; ma=86400"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Content-Length",
+											"value": "139"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"recipient_id\": \"1234567890\",\n    \"message_id\": \"m_MessageIDString\"\n}"
+								}
+							]
+						}
+					],
+					"description": "# Coupon Template\n\nThis document describes how to create and send a coupon to a person in a Messenger conversation.\n\n### How It Works\n\nA coupon template message has some preset elements and a number of optional properties. The title for the message recipient is required and gives the recipient details about the coupon. The disclaimer, **Terms may apply.**, is a preset element but can be configured. The **Reveal code** button is a preset element that can not be changed. You can add a second button, with default text **Shop now**, that is configurable with your own text and a URL to redirect a person to your store.\n\n<img src=\"https://content.pstmn.io/1a91312e-7151-41b2-8c5a-e71367363b26/aW1hZ2UucG5n\" width=\"442\" height=\"346\">\n\nWhen a person clicks the **Reveal code** button, the coupon code is displayed in the conversation and a webhook notification is sent to your server.\n\n## Before You Start\n\nThis guide assumes you have read the [Messenger Platform Overview](https://developers.facebook.com/docs/messenger-platform/overview) and implemented the needed components for sending and receiving messages and notifications.\n\nYou need the following:\n\n- The Page ID for the Facebook Page sending the message\n    \n- A Page access token representing the Facebook Page sending the message\n    \n- The `pages_show_list` and `pages_messaging` permissions\n    \n- Your app subscribed to the `messages` webhook\n    \n- The ID for the person receiving the coupon message. Can be one of the following:\n    \n    - Page-scoped ID (PSID)\n        \n    - Post or Comment ID\n        \n    - Notification Message Token\n        \n    - User Ref"
+				},
+				{
 					"name": "Generic Template",
 					"request": {
 						"method": "POST",
@@ -3523,7 +3825,7 @@
 									"query": [
 										{
 											"key": "",
-											"value": null
+											"value": ""
 										}
 									]
 								},
@@ -3987,7 +4289,7 @@
 									"query": [
 										{
 											"key": "",
-											"value": null
+											"value": ""
 										}
 									]
 								},
@@ -4184,7 +4486,7 @@
 									},
 									"status": "OK",
 									"code": 200,
-									"_postman_previewlanguage": "",
+									"_postman_previewlanguage": "Text",
 									"header": [
 										{
 											"key": "Content-Type",
@@ -4263,13 +4565,7 @@
 											"value": "139"
 										}
 									],
-									"cookie": [
-										{
-											"expires": "Invalid Date",
-											"domain": "",
-											"path": ""
-										}
-									],
+									"cookie": [],
 									"body": "{\n    \"recipient_id\": \"1234567890\",\n    \"message_id\": \"m_MESSAGE_ID\"\n}"
 								}
 							]
@@ -4335,7 +4631,7 @@
 									},
 									"status": "OK",
 									"code": 200,
-									"_postman_previewlanguage": "",
+									"_postman_previewlanguage": "Text",
 									"header": [
 										{
 											"key": "Content-Type",
@@ -4414,13 +4710,7 @@
 											"value": "139"
 										}
 									],
-									"cookie": [
-										{
-											"expires": "Invalid Date",
-											"domain": "",
-											"path": ""
-										}
-									],
+									"cookie": [],
 									"body": "{\n    \"recipient_id\": \"1234567890\",\n    \"message_id\": \"m_MESSAGE_ID\"\n}"
 								}
 							]
@@ -4486,7 +4776,7 @@
 									},
 									"status": "OK",
 									"code": 200,
-									"_postman_previewlanguage": "",
+									"_postman_previewlanguage": "Text",
 									"header": [
 										{
 											"key": "Content-Type",
@@ -4565,13 +4855,7 @@
 											"value": "139"
 										}
 									],
-									"cookie": [
-										{
-											"expires": "Invalid Date",
-											"domain": "",
-											"path": ""
-										}
-									],
+									"cookie": [],
 									"body": "{\n    \"recipient_id\": \"1234567890\",\n    \"message_id\": \"m_MESSAGE_ID\"\n}"
 								}
 							]
@@ -4637,7 +4921,7 @@
 									},
 									"status": "OK",
 									"code": 200,
-									"_postman_previewlanguage": "",
+									"_postman_previewlanguage": "Text",
 									"header": [
 										{
 											"key": "Content-Type",
@@ -4716,13 +5000,7 @@
 											"value": "139"
 										}
 									],
-									"cookie": [
-										{
-											"expires": "Invalid Date",
-											"domain": "",
-											"path": ""
-										}
-									],
+									"cookie": [],
 									"body": "{\n    \"recipient_id\": \"1234567890\",\n    \"message_id\": \"m_MESSAGE_ID\"\n}"
 								}
 							]
@@ -4788,7 +5066,7 @@
 									},
 									"status": "OK",
 									"code": 200,
-									"_postman_previewlanguage": "",
+									"_postman_previewlanguage": "Text",
 									"header": [
 										{
 											"key": "Content-Type",
@@ -4867,13 +5145,7 @@
 											"value": "139"
 										}
 									],
-									"cookie": [
-										{
-											"expires": "Invalid Date",
-											"domain": "",
-											"path": ""
-										}
-									],
+									"cookie": [],
 									"body": "{\n    \"recipient_id\": \"1234567890\",\n    \"message_id\": \"m_MESSAGE_ID\"\n}"
 								}
 							]
@@ -4949,7 +5221,7 @@
 							},
 							"status": "OK",
 							"code": 200,
-							"_postman_previewlanguage": null,
+							"_postman_previewlanguage": "Text",
 							"header": [
 								{
 									"key": "Content-Type",
@@ -5062,7 +5334,7 @@
 							},
 							"status": "OK",
 							"code": 200,
-							"_postman_previewlanguage": null,
+							"_postman_previewlanguage": "Text",
 							"header": [
 								{
 									"key": "ETag",
@@ -5221,7 +5493,7 @@
 									},
 									"status": "OK",
 									"code": 200,
-									"_postman_previewlanguage": null,
+									"_postman_previewlanguage": "Text",
 									"header": [
 										{
 											"key": "Content-Encoding",
@@ -5385,7 +5657,7 @@
 									},
 									"status": "OK",
 									"code": 200,
-									"_postman_previewlanguage": null,
+									"_postman_previewlanguage": "Text",
 									"header": [
 										{
 											"key": "Content-Type",
@@ -5539,7 +5811,7 @@
 									},
 									"status": "OK",
 									"code": 200,
-									"_postman_previewlanguage": "",
+									"_postman_previewlanguage": "Text",
 									"header": [
 										{
 											"key": "Content-Type",
@@ -5618,13 +5890,7 @@
 											"value": "139"
 										}
 									],
-									"cookie": [
-										{
-											"expires": "Invalid Date",
-											"domain": "",
-											"path": ""
-										}
-									],
+									"cookie": [],
 									"body": "{\n    \"recipient_id\": \"1234567890\",\n    \"message_id\": \"m_MESSAGE_ID\"\n}"
 								}
 							]
@@ -5700,7 +5966,7 @@
 											},
 											"status": "OK",
 											"code": 200,
-											"_postman_previewlanguage": null,
+											"_postman_previewlanguage": "Text",
 											"header": [
 												{
 													"key": "Content-Type",
@@ -5846,7 +6112,7 @@
 											},
 											"status": "OK",
 											"code": 200,
-											"_postman_previewlanguage": "",
+											"_postman_previewlanguage": "Text",
 											"header": [
 												{
 													"key": "Content-Type",
@@ -5925,13 +6191,7 @@
 													"value": "139"
 												}
 											],
-											"cookie": [
-												{
-													"expires": "Invalid Date",
-													"domain": "",
-													"path": ""
-												}
-											],
+											"cookie": [],
 											"body": "{\n    \"recipient_id\": \"1234567890\",\n    \"message_id\": \"m_MESSAGE_ID\"\n}"
 										}
 									]
@@ -6003,7 +6263,7 @@
 											},
 											"status": "OK",
 											"code": 200,
-											"_postman_previewlanguage": null,
+											"_postman_previewlanguage": "Text",
 											"header": [
 												{
 													"key": "Content-Type",
@@ -6148,7 +6408,7 @@
 											},
 											"status": "OK",
 											"code": 200,
-											"_postman_previewlanguage": "",
+											"_postman_previewlanguage": "Text",
 											"header": [
 												{
 													"key": "Content-Type",
@@ -6227,13 +6487,7 @@
 													"value": "139"
 												}
 											],
-											"cookie": [
-												{
-													"expires": "Invalid Date",
-													"domain": "",
-													"path": ""
-												}
-											],
+											"cookie": [],
 											"body": "{\n    \"recipient_id\": \"1234567890\",\n    \"message_id\": \"m_MESSAGE_ID\"\n}"
 										}
 									]
@@ -6306,7 +6560,7 @@
 											},
 											"status": "OK",
 											"code": 200,
-											"_postman_previewlanguage": null,
+											"_postman_previewlanguage": "Text",
 											"header": [
 												{
 													"key": "Content-Type",
@@ -6452,7 +6706,7 @@
 											},
 											"status": "OK",
 											"code": 200,
-											"_postman_previewlanguage": "",
+											"_postman_previewlanguage": "Text",
 											"header": [
 												{
 													"key": "Content-Type",
@@ -6531,13 +6785,7 @@
 													"value": "139"
 												}
 											],
-											"cookie": [
-												{
-													"expires": "Invalid Date",
-													"domain": "",
-													"path": ""
-												}
-											],
+											"cookie": [],
 											"body": "{\n    \"recipient_id\": \"1234567890\",\n    \"message_id\": \"m_MESSAGE_ID\"\n}"
 										}
 									]
@@ -6610,7 +6858,7 @@
 											},
 											"status": "OK",
 											"code": 200,
-											"_postman_previewlanguage": null,
+											"_postman_previewlanguage": "Text",
 											"header": [
 												{
 													"key": "Content-Type",
@@ -6756,7 +7004,7 @@
 											},
 											"status": "OK",
 											"code": 200,
-											"_postman_previewlanguage": "",
+											"_postman_previewlanguage": "Text",
 											"header": [
 												{
 													"key": "Content-Type",
@@ -6835,13 +7083,7 @@
 													"value": "139"
 												}
 											],
-											"cookie": [
-												{
-													"expires": "Invalid Date",
-													"domain": "",
-													"path": ""
-												}
-											],
+											"cookie": [],
 											"body": "{\n    \"recipient_id\": \"1234567890\",\n    \"message_id\": \"m_MESSAGE_ID\"\n}"
 										}
 									]
@@ -6900,7 +7142,7 @@
 									},
 									"status": "OK",
 									"code": 200,
-									"_postman_previewlanguage": null,
+									"_postman_previewlanguage": "Text",
 									"header": [
 										{
 											"key": "Content-Encoding",
@@ -7052,7 +7294,7 @@
 							},
 							"status": "OK",
 							"code": 200,
-							"_postman_previewlanguage": "",
+							"_postman_previewlanguage": "Text",
 							"header": [
 								{
 									"key": "Content-Encoding",
@@ -7207,7 +7449,7 @@
 							},
 							"status": "OK",
 							"code": 200,
-							"_postman_previewlanguage": "",
+							"_postman_previewlanguage": "Text",
 							"header": [
 								{
 									"key": "ETag",
@@ -7294,13 +7536,7 @@
 									"value": "152"
 								}
 							],
-							"cookie": [
-								{
-									"expires": "Invalid Date",
-									"domain": "",
-									"path": ""
-								}
-							],
+							"cookie": [],
 							"body": "{\n    \"data\": [\n        {\n            \"id\": \"t_123456789\",\n            \"link\": \"/12345678910123456/inbox/987654321/?section=messages\",\n            \"updated_time\": \"2025-07-18T18:22:27+0000\"\n        }\n    ]\n}"
 						}
 					]
@@ -7346,7 +7582,7 @@
 							},
 							"status": "Bad Request",
 							"code": 400,
-							"_postman_previewlanguage": "",
+							"_postman_previewlanguage": "Text",
 							"header": [
 								{
 									"key": "debug-link",
@@ -7449,13 +7685,7 @@
 									"value": "120"
 								}
 							],
-							"cookie": [
-								{
-									"expires": "Invalid Date",
-									"domain": "",
-									"path": ""
-								}
-							],
+							"cookie": [],
 							"body": "{\n  \"messages\": {\n    \"data\": [\n      {\n        \"id\": \"Message ID-1\",      \n        \"created_time\": \"UNIX-TIMESTAMP-MOST-RECENT-MESSAGE\"  \n      },\n      {\n        \"id\": \"Message ID-2\",\n        \"created_time\": \"UNIX-TIMESTAMP\"\n      },\n      {\n        \"id\": \"Message ID-3\",\n        \"created_time\": \"UNIX-TIMESTAMP\"\n      },\n...\n    ]\n  },\n  \"id\": \"Conversation ID\", \n}"
 						}
 					]
@@ -7501,7 +7731,7 @@
 							},
 							"status": "Bad Request",
 							"code": 400,
-							"_postman_previewlanguage": "",
+							"_postman_previewlanguage": "Text",
 							"header": [
 								{
 									"key": "Content-Encoding",
@@ -7612,13 +7842,7 @@
 									"value": "256"
 								}
 							],
-							"cookie": [
-								{
-									"expires": "Invalid Date",
-									"domain": "",
-									"path": ""
-								}
-							],
+							"cookie": [],
 							"body": "{\n  \"id\": \"aWdGGiblWZ...\",\n  \"created_time\": \"2022-07-12T19:11:07+0000\",\n  \"to\": {\n    \"data\": [\n      {\n        \"username\": \"INSTAGRAM-PROFESSIONAL-ACCOUNT-USERNAME\",\n        \"id\": \"INSTAGRAM-PROFESSIONAL-ACCOUNT-ID\"\n      }\n    ]\n  },\n  \"from\": {\n    \"username\": \"INSTAGRAM-USERNAME\",\n    \"id\": \"INSTAGRAM-SCOPED-ID\"\n  },\n  \"message\": \"Hi Kitty!\",\n  \"reply_to\": {\n  \t\"mid\":\"zEspJ9wmRG9…\",\n  \t\"is_self_reply\":true\n  }\n}"
 						}
 					]
@@ -7661,7 +7885,7 @@
 							},
 							"status": "OK",
 							"code": 200,
-							"_postman_previewlanguage": null,
+							"_postman_previewlanguage": "Text",
 							"header": [
 								{
 									"key": "Content-Encoding",
