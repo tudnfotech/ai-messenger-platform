@@ -20,7 +20,8 @@ const
     request = require('request'),
     express = require('express'),
     body_parser = require('body-parser'),
-    app = express().use(body_parser.json()); // creates express http server
+    { verifyRequestSignature } = require('../../utils/webhook-signature'),
+    app = express().use(body_parser.json({ verify: verifyRequestSignature })); // creates express http server
 
 // Sets server port and logs message on success
 app.listen(process.env.PORT || 5001, () => console.log('webhook is listening'));

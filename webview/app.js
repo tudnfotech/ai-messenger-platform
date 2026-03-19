@@ -21,17 +21,17 @@ const
     request = require('request'),
     express = require('express'),
     body_parser = require('body-parser'),
+    { verifyRequestSignature } = require('../utils/webhook-signature'),
     dotenv = require('dotenv').config();
 
 var app = express();
 
 app.set('port', process.env.PORT || 5000);
-app.use(body_parser.json());
+app.use(body_parser.json({ verify: verifyRequestSignature }));
 app.use(express.static('public'));
 
 const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
 const SERVER_URL = process.env.SERVER_URL;
-const APP_SECRET = process.env.APP_SECRET;
 
 app.listen(app.get('port'), () => {
     console.log('Node app is running on port', app.get('port'));
@@ -44,19 +44,31 @@ app.get('/options', (req, res, next) => {
     let referer = req.get('Referer');
     if (referer) {
         if (referer.indexOf('www.messenger.com') >= 0) {
-            res.setHeader('X-Frame-Options', 'ALLOW-FROM https://www.messenger.com/');
+            res.setHeader('Content-Security-Policy', "frame-ancestors 'self' https://www.messenger.com");
         } else if (referer.indexOf('www.facebook.com') >= 0) {
-            res.setHeader('X-Frame-Options', 'ALLOW-FROM https://www.facebook.com/');
+            res.setHeader('Content-Security-Policy', "frame-ancestors 'self' https://www.facebook.com");
         }
         res.sendFile('public/options.html', {root: __dirname});
+    } else {
+        res.sendStatus(403);
     }
 });
 
 // Handle postback from webview
 app.get('/optionspostback', (req, res) => {
     let body = req.query;
+
+    // Sanitize inputs to prevent injection
+    const allowedBedTypes = ['twin', 'full', 'queen', 'king'];
+    const allowedPillowCounts = ['1', '2', '3', '4'];
+    const allowedViews = ['garden', 'pool', 'city'];
+
+    const bed = allowedBedTypes.includes(body.bed) ? body.bed : 'unknown';
+    const pillows = allowedPillowCounts.includes(body.pillows) ? body.pillows : 'unknown';
+    const view = allowedViews.includes(body.view) ? body.view : 'unknown';
+
     let response = {
-        "text": `Great, I will book you a ${body.bed} bed, with ${body.pillows} pillows and a ${body.view} view.`
+        "text": `Great, I will book you a ${bed} bed, with ${pillows} pillows and a ${view} view.`
     };
 
     res.status(200).send('Please close this window to return to the conversation thread.');

@@ -20,8 +20,9 @@ const
     request = require('request'),
     express = require('express'),
     body_parser = require('body-parser'),
+    { verifyRequestSignature } = require('../../utils/webhook-signature'),
     access_token = process.env.ACCESS_TOKEN,
-    app = express().use(body_parser.json()); // creates express http server
+    app = express().use(body_parser.json({ verify: verifyRequestSignature })); // creates express http server
 
 // Sets server port and logs message on success
 app.listen(process.env.PORT || 5000, () => console.log('webhook is listening'));
@@ -90,7 +91,6 @@ function processComments(comment) {
 
 // Accepts GET requests at the /webhook endpoint
 app.get('/webhook', (req, res) => {
-    console.log(req);
     const verify_token = process.env.VERIFY_TOKEN;
 
     // Parse params from the webhook verification request

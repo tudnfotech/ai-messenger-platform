@@ -26,14 +26,15 @@ require('dotenv').config();
 const
   request = require('request'),
   express = require('express'),
+  { verifyRequestSignature } = require('../utils/webhook-signature'),
   { urlencoded, json } = require('body-parser'),
   app = express();
 
 // Parse application/x-www-form-urlencoded
 app.use(urlencoded({ extended: true }));
 
-// Parse application/json
-app.use(json());
+// Parse application/json. Verify that callback came from Facebook
+app.use(json({ verify: verifyRequestSignature }));
 
 // Respond with 'Hello World' when a GET request is made to the homepage
 app.get('/', function (_req, res) {

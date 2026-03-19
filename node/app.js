@@ -128,12 +128,18 @@ app.get('/authorize', function(req, res) {
   var accountLinkingToken = req.query.account_linking_token;
   var redirectURI = req.query.redirect_uri;
 
-  // Authorization Code should be generated per user by the developer. This will 
+  // Validate that the redirect URI points to Facebook
+  if (!redirectURI || !redirectURI.startsWith('https://www.facebook.com/')) {
+    res.status(400).send('Invalid redirect URI');
+    return;
+  }
+
+  // Authorization Code should be generated per user by the developer. This will
   // be passed to the Account Linking callback.
-  var authCode = "1234567890";
+  var authCode = crypto.randomBytes(20).toString('hex');
 
   // Redirect users to this URI on successful login
-  var redirectURISuccess = redirectURI + "&authorization_code=" + authCode;
+  var redirectURISuccess = redirectURI + "&authorization_code=" + encodeURIComponent(authCode);
 
   res.render('authorize', {
     accountLinkingToken: accountLinkingToken,
@@ -154,9 +160,7 @@ function verifyRequestSignature(req, res, buf) {
   var signature = req.headers["x-hub-signature"];
 
   if (!signature) {
-    // For testing, let's log an error. In production, you should throw an 
-    // error.
-    console.error("Couldn't validate the signature.");
+    throw new Error("Couldn't validate the signature. Missing x-hub-signature header.");
   } else {
     var elements = signature.split('=');
     var method = elements[0];
@@ -400,8 +404,8 @@ function receivedAccountLink(event) {
   var status = event.account_linking.status;
   var authCode = event.account_linking.authorization_code;
 
-  console.log("Received account link event with for user %d with status %s " +
-    "and auth code %s ", senderID, status, authCode);
+  console.log("Received account link event with for user %d with status %s",
+    senderID, status);
 }
 
 /*
