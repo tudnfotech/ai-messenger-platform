@@ -9,13 +9,15 @@ LICENSE file in the root directory of this source tree.
 import hashlib
 import hmac
 import json
+import os
 
 import requests
 from flask import Flask, request
 
 app = Flask(__name__)
-TOKEN = "your-secret-token"
-PAGE_ACCESS_TOKEN = "secret_page_access_token"
+TOKEN = os.environ.get("VERIFY_TOKEN", "")
+PAGE_ACCESS_TOKEN = os.environ.get("PAGE_ACCESS_TOKEN", "")
+APP_SECRET = os.environ.get("APP_SECRET", "")
 
 
 @app.route("/webhook", methods=["GET", "POST"])
@@ -31,15 +33,21 @@ def webhook():
             return request.args["hub.challenge"], 200
     elif request.method == "POST":
         # Validate payload
-        signature = request.headers["X-Hub-Signature-256"].split("=")[1]
+        signature_header = request.headers.get("X-Hub-Signature-256")
+        if not signature_header:
+            return "MISSING SIGNATURE HEADER", 403
+        parts = signature_header.split("=", 1)
+        if len(parts) != 2:
+            return "MALFORMED SIGNATURE HEADER", 403
+        signature = parts[1]
         payload = request.get_data()
         expected_signature = hmac.new(
-            TOKEN.encode("utf-8"), payload, hashlib.sha256
+            APP_SECRET.encode("utf-8"), payload, hashlib.sha256
         ).hexdigest()
 
-        if signature != expected_signature:
+        if not hmac.compare_digest(signature, expected_signature):
             print("Signature hash does not match")
-        return "INVALID SIGNATURE HASH", 403
+            return "INVALID SIGNATURE HASH", 403
 
         body = json.loads(payload.decode("utf-8"))
 
@@ -72,4 +80,4 @@ def comment_on_post(post_id):
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)
