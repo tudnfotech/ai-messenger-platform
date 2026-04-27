@@ -21,7 +21,7 @@
 
 // Use dotenv to read .env vars into Node
 require('dotenv').config();
-
+const handleAI = require('./handleai');
 // Imports dependencies and set up http server
 const
   request = require('request'),
@@ -106,16 +106,22 @@ app.post('/webhook', (req, res) => {
 });
 
 // Handles messages events
-function handleMessage(senderPsid, receivedMessage) {
+async function handleMessage(senderPsid, receivedMessage) {
   let response;
 
   // Checks if the message contains text
   if (receivedMessage.text) {
-    // Create the payload for a basic text message, which
-    // will be added to the body of your request to the Send API
+    // // Create the payload for a basic text message, which
+    // // will be added to the body of your request to the Send API
+    // response = {
+    //   'text': `You sent the message: '${receivedMessage.text}'. Now send me an attachment!`
+    // };
+     const userText = received_message.text;
+     const reply = await handleAI(userText);
     response = {
-      'text': `You sent the message: '${receivedMessage.text}'. Now send me an attachment!`
+      text: reply
     };
+
   } else if (receivedMessage.attachments) {
 
     // Get the URL of the message attachment
@@ -198,6 +204,11 @@ function callSendAPI(senderPsid, response) {
 }
 
 // listen for requests :)
-var listener = app.listen(process.env.PORT, function() {
+// var listener = app.listen(process.env.PORT, function() {
+//   console.log('Your app is listening on port ' + listener.address().port);
+// });
+const PORT = process.env.PORT || 8081;
+
+var listener = app.listen(PORT, function () {
   console.log('Your app is listening on port ' + listener.address().port);
 });
