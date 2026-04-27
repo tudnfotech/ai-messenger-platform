@@ -8,7 +8,12 @@
 import "dotenv/config";
 import { Platforms, Messenger } from "./messenger";
 
-if( !process.env.PAGE_ID ) { throw new Error( "Missing Page ID" ); }
+if( !process.env.PAGE_ID ) { 
+	console.log("--- DEBUG ENVIRONMENT ---");
+console.log("PAGE_ID value is:", process.env.PAGE_ID);
+console.log("All keys present:", Object.keys(process.env));
+console.log("-------------------------");
+	throw new Error( "Missing Page ID" ); }
 if( !process.env.PAGE_TOKEN ) { throw new Error( "Missing Page Token" ); }
 
 async function getLatestConversationMessage( messenger : Messenger ) {
